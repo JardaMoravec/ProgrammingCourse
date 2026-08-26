@@ -1,0 +1,10 @@
+id: 19-slovniky
+rocnik: 1
+nazev: Slovníky (asociativní pole)
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [18-tuples-a-range]
+kompetence: [k1-datove-typy, k3-strukturovane-programy]
+svp: [pole]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

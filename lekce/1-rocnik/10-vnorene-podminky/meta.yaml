@@ -1,0 +1,11 @@
+id: 10-vnorene-podminky
+rocnik: 1
+nazev: Vnořené podmínky
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [09-vetveni-podminek]
+kompetence: [k2-ridici-struktury]
+svp: [vnořené podmínky, řídicí struktury]
+migrovano_z:
+  - "zdroje/Programování 1.docx"

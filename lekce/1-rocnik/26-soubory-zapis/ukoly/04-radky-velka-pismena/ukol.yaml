@@ -1,0 +1,14 @@
+title: Řádky velkými písmeny
+stars: 2
+description: |
+  Napište program, který přečte soubor `data.txt` a vypíše každý řádek převedený na velká písmena.
+cases:
+- name: 2 radky
+  input: |2+
+
+  output: 'AHOJ
+
+    SVET'
+io: |
+  **Vstup:** soubor data.txt
+  **Výstup:** řádky UPPERCASE

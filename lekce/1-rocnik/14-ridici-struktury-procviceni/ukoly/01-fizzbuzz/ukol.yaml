@@ -1,0 +1,27 @@
+title: Násobky sedmi
+stars: 2
+description: 'Napište program, který vypíše všechny násobky 7 od 7 do 49 (včetně) — každý na vlastní řádek.
+
+
+  Program **nenačítá vstup**.'
+cases:
+- name: 7-49
+  input: '
+
+    '
+  output: '7
+
+    14
+
+    21
+
+    28
+
+    35
+
+    42
+
+    49'
+io: '**Vstup:** žádný
+
+  **Výstup:** násobky 7'

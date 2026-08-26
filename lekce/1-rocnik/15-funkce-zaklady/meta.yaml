@@ -1,0 +1,10 @@
+id: 15-funkce-zaklady
+rocnik: 1
+nazev: Funkce — definice, parametry, návratová hodnota
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [14-ridici-struktury-procviceni]
+kompetence: [k3-strukturovane-programy]
+svp: [cykly, funkce]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

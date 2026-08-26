@@ -1,0 +1,11 @@
+lekce: XX-nazev-lekce
+rocnik: 1
+otazky: []
+# Příklad:
+# - typ: vyber
+#   text: "Otázka?"
+#   moznosti: [a, b, c]
+#   spravne: a
+# - typ: kod
+#   text: "Co vypíše ...?"
+#   spravne: "výsledek"

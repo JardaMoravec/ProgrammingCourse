@@ -1,0 +1,24 @@
+title: Plocha čtverce
+stars: 1
+description: Napište program, který načte délku strany čtverce a vypíše jeho plochu.
+cases:
+- name: a=4
+  input: '4
+
+    '
+  output: 'Plocha: 16'
+- name: a=7
+  input: '7
+
+    '
+  output: 'Plocha: 49'
+- name: a=1
+  input: '1
+
+    '
+  output: 'Plocha: 1'
+io: '**Vstup:** strana (celé číslo)
+
+  **Výstup:** `Plocha: X`
+
+  '

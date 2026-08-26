@@ -1,0 +1,16 @@
+title: Knihy po roce 2000
+stars: 2
+description: |
+  Napište program s pevným seznamem knih (slovníky s klíči `nazev`, `rok`) a vypište názvy knih vydaných **po roce 2000** (každý na řádek).
+
+  Program **nenačítá vstup**.
+cases:
+- name: 2 knihy
+  input: |2+
+
+  output: 'B
+
+    C'
+io: |
+  **Vstup:** žádný
+  **Výstup:** názvy knih

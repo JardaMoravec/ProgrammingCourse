@@ -1,0 +1,12 @@
+title: Nejlevnější měsíc
+stars: 2
+description: 'Napište program s pevným slovníkem prodejů {"leden": 10, "únor": 25, "březen": 15} a vypište měsíc s nejnižší hodnotou a tu hodnotu: `měsíc hodnota`'
+cases:
+- name: fixni
+  input: '
+
+    '
+  output: leden 10
+io: '**Vstup:** žádný
+
+  **Výstup:** měsíc a minimum'

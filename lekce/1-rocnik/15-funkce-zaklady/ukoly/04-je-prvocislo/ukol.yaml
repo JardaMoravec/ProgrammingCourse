@@ -1,0 +1,22 @@
+title: Je sudé?
+stars: 1
+description: Napište funkci `je_sude(n)` vracející True/False. V hlavním programu načtěte celé číslo a vypište `Ano` nebo `Ne`.
+cases:
+- name: '4'
+  input: '4
+
+    '
+  output: Ano
+- name: '7'
+  input: '7
+
+    '
+  output: Ne
+- name: '0'
+  input: '0
+
+    '
+  output: Ano
+io: '**Vstup:** celé číslo
+
+  **Výstup:** Ano/Ne'

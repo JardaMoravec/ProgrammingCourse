@@ -1,0 +1,15 @@
+title: Spojení slov
+stars: 2
+description: |
+  Napište program, který načte N a N slov a spojí je do věty (jedna mezera mezi slovy). Vypište výslednou větu.
+cases:
+- name: 3 slova
+  input: |
+    3
+    Python
+    je
+    skvělý
+  output: Python je skvělý
+io: |
+  **Vstup:** N a N slov
+  **Výstup:** věta

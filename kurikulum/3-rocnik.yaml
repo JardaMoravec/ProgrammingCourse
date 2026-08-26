@@ -1,0 +1,19 @@
+rocnik: 3
+nazev: Tvorba webových stránek
+hodiny_tydne: 2
+hodiny_celkem: 68
+modul: web
+
+kompetence:
+  - aplikuje zásady tvorby WWW stránek
+  - orientuje se ve struktuře HTML stránky
+  - vytvoří webové stránky včetně optimalizace a validace
+  - použije formuláře a skriptovací jazyk
+
+lekce: []
+# Příklad záznamu po migraci:
+# - id: "01-html-zaklady"
+#   soubor: lekce/3-rocnik/01-html-zaklady
+#   nazev: Úvod do HTML
+#   hodiny: 4
+#   prerekvizity: []

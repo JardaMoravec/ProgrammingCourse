@@ -1,0 +1,15 @@
+title: Průměr ze souboru
+stars: 2
+description: Napište program, který přečte soubor `data.txt` (desetinná čísla, jedno na řádek) a vypíše průměr.
+cases:
+- name: 3 cisla
+  input: '
+
+    '
+  output: 'Průměr: 20.0'
+  numeric: true
+io: '**Vstup:** soubor data.txt
+
+  **Výstup:** průměr
+
+  '

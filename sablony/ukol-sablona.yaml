@@ -1,0 +1,35 @@
+# Šablona: zkopírujte do lekce/1-rocnik/NN-nazev/ukoly/01-slug/ukol.yaml
+# Název složky = číslo + slug (např. 01-soucet-dvou)
+
+title: Název úkolu
+stars: 1  # 1–3 (★☆☆ až ★★★)
+moodle: PRG-1-NN-01  # volitelné; jinak PRG-1-<lekce>-<id>
+
+description: |
+  Popis zadání pro studenty — co program má dělat.
+  (Řádek „Formát:“ sem nedávejte — použijte pole io níže.)
+
+  **Důležité:** úkol nesmí být kopie cvičení v téže lekci (u cvičení je řešení).
+  Stačí **analogie** — stejná dovednost, jiný kontext. Např. cvičení = obvod
+  trojúhelníku, úkol = obsah čtverce (obojí: načti hodnoty, spočítej, vypiš).
+
+io: |
+  **Vstup:** …
+  **Výstup:** …
+
+cases:
+  - name: prvni test
+    input: |
+      10
+      20
+    output: "Součet: 30"
+
+  - name: druhy test
+    input: "5\n"
+    output: "Vysledek: 5"
+
+# Volitelně u úkolů se soubory (nebo data.txt uložte vedle tohoto souboru):
+# files:
+#   data.txt: |
+#     radek1
+#     radek2

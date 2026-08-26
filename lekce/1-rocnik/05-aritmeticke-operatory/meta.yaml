@@ -1,0 +1,12 @@
+id: 05-aritmeticke-operatory
+rocnik: 1
+nazev: Aritmetické operátory a konzole
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [04-vstup-a-vystup]
+kompetence: [k1-datove-typy]
+svp: [aritmetické, logické operátory]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Základní operace a proměnné)"
+  - "zdroje/02 - Proměnné, datové typy a operátory v Pythonu.pptx"

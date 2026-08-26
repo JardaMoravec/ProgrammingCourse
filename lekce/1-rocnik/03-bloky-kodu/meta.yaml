@@ -1,0 +1,11 @@
+id: 03-bloky-kodu
+rocnik: 1
+nazev: Anatomie programu a bloky kódu
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [02-python-a-prostredi]
+kompetence: [k3-strukturovane-programy]
+svp: [anatomie programu, vývojové prostředí]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Bloky kodu)"

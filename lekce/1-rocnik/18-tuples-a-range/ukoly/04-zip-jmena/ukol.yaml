@@ -1,0 +1,21 @@
+title: Jména a známky
+stars: 2
+description: |
+  Napište program, který načte 3 jména a 3 známky a vypíše páry ve tvaru `Jméno: známka` (3 řádky).
+cases:
+- name: 3 studenti
+  input: |
+    Anna
+    Petr
+    Eva
+    1
+    2
+    3
+  output: 'Anna: 1
+
+    Petr: 2
+
+    Eva: 3'
+io: |
+  **Vstup:** 3 jména a 3 známky
+  **Výstup:** 3 řádky

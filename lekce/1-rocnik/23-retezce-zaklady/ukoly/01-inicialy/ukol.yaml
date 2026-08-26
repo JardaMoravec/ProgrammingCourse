@@ -1,0 +1,17 @@
+title: Počet samohlásek
+stars: 1
+description: Napište program, který načte slovo a vypíše počet samohlásek (a, e, i, o, u — bez ohledu na velikost písmen).
+cases:
+- name: program
+  input: 'program
+
+    '
+  output: 'Samohlásek: 2'
+- name: xyz
+  input: 'xyz
+
+    '
+  output: 'Samohlásek: 0'
+io: '**Vstup:** slovo
+
+  **Výstup:** počet samohlásek'

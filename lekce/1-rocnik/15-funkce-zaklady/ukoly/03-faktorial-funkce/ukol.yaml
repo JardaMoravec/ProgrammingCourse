@@ -1,0 +1,27 @@
+title: Přepona trojúhelníku
+stars: 2
+description: 'Napište funkci `prepona(a, b)` vracející délku přepony pravoúhlého trojúhelníku se odvěnami a, b (math.sqrt). Načtěte a, b a vypište `Přepona: X`.'
+cases:
+- name: 3-4
+  input: '3
+
+
+    4
+
+
+    '
+  output: 'Přepona: 5.00'
+  numeric: true
+- name: 5-12
+  input: '5
+
+
+    12
+
+
+    '
+  output: 'Přepona: 13.00'
+  numeric: true
+io: '**Vstup:** odvěny a, b
+
+  **Výstup:** délka přepony'

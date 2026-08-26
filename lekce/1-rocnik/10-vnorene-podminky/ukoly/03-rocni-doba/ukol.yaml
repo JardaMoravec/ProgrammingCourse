@@ -1,0 +1,26 @@
+title: Roční období
+stars: 2
+description: |
+  Napište program, který načte číslo měsíce (1–12) a vypíše roční období:
+
+  - 12, 1, 2 → `Zima`
+  - 3, 4, 5 → `Jaro`
+  - 6, 7, 8 → `Léto`
+  - 9, 10, 11 → `Podzim`
+  - mimo rozsah → `Neplatný měsíc`
+cases:
+- name: leden
+  input: |
+    1
+  output: Zima
+- name: cerven
+  input: |
+    6
+  output: Léto
+- name: '13'
+  input: |
+    13
+  output: Neplatný měsíc
+io: |
+  **Vstup:** měsíc 1–12
+  **Výstup:** období

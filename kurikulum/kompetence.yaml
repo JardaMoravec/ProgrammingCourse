@@ -1,0 +1,58 @@
+# Kompetence podle ŠVP — přepsáno ze školních osnov
+# Zdroj: zdroje/_Osnovy 1 roč.docx, zdroje/_Osnovy 2 roč.docx
+
+rocniky:
+  1:
+    predmet: Programování (PRG)
+    hodiny: 102
+    kompetence:
+      - id: k1-datove-typy
+        text: použije základní datové typy
+      - id: k2-ridici-struktury
+        text: použije řídící struktury programu
+      - id: k3-strukturovane-programy
+        text: vytvoří jednoduché strukturované programy
+    modul: Strukturované programování
+
+  2:
+    predmet: Programování (PRG)
+    hodiny: 170
+    predchozi_znalosti:
+      - Strukturované programování (102h)
+      - C#
+    kompetence:
+      - id: k1-datove-typy
+        text: použije základní datové typy
+      - id: k2-ridici-struktury
+        text: použije řídící struktury programu
+      - id: k3-strukturovane-programy
+        text: vytvoří jednoduché strukturované programy
+      - id: k4-trida-objekt
+        text: rozumí pojmům třída, objekt a zná jejich základní vlastnosti
+      - id: k5-jednoduche-objekty
+        text: použije jednoduché objekty
+      - id: k6-sql-zaklady
+        text: zná výhody použití jazyka SQL; použije základní příkazy jazyka SQL
+      - id: k7-databaze
+        text: schopen navrhovat, spravovat a aktualizovat relační databáze
+      - id: k8-aplikace
+        text: vytvoří jednoúčelové aplikace dle zadání; aplikuje objektový model ve svém kódu
+    moduly:
+      - Algoritmizace (21h)
+      - Úvod do objektového programování (47h)
+      - Základy jazyka SQL (51h)
+      - Aplikované programování (51h)
+
+  3:
+    predmet: Programování (PRG)
+    hodiny: 68
+    kompetence:
+      - id: k1-www
+        text: aplikuje zásady tvorby WWW stránek
+      - id: k2-html
+        text: orientuje se ve struktuře HTML stránky
+      - id: k3-web-vytvoreni
+        text: vytvoří webové stránky včetně optimalizace a validace
+      - id: k4-formulare-skript
+        text: použije formuláře a skriptovací jazyk
+    modul: Tvorba statických a dynamických webových stránek

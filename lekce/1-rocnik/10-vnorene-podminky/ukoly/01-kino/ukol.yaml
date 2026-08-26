@@ -1,0 +1,28 @@
+title: Vstupenka do kina
+stars: 3
+description: |
+  Napište program, který načte věk a vypíše cenu vstupenky podle kategorií:
+
+  | Věk | Cena |
+  |-----|------|
+  | neplatný (< 0 nebo > 120) | `Neplatný věk.` |
+  | dítě (< 12) | `Cena vstupenky: 100 Kč` |
+  | student (12–26) | `Cena vstupenky: 150 Kč` |
+  | dospělý (27–64) | `Cena vstupenky: 200 Kč` |
+  | senior (65+) | `Cena vstupenky: 120 Kč` |
+cases:
+- name: dite
+  input: |
+    8
+  output: 'Cena vstupenky: 100 Kč'
+- name: student
+  input: |
+    20
+  output: 'Cena vstupenky: 150 Kč'
+- name: neplatny
+  input: |
+    -5
+  output: Neplatný věk.
+io: |
+  **Vstup:** věk
+  **Výstup:** cena nebo chyba

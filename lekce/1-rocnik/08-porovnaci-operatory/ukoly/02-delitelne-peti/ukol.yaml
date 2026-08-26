@@ -1,0 +1,20 @@
+title: Dělitelnost pěti
+stars: 2
+description: |
+  Napište program, který načte celé číslo a vypíše `Ano`, pokud je dělitelné pěti, jinak `Ne`.
+cases:
+- name: '25'
+  input: |
+    25
+  output: Ano
+- name: '12'
+  input: |
+    12
+  output: Ne
+- name: '0'
+  input: |
+    0
+  output: Ano
+io: |
+  **Vstup:** celé číslo
+  **Výstup:** `Ano` nebo `Ne`

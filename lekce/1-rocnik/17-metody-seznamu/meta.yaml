@@ -1,0 +1,10 @@
+id: 17-metody-seznamu
+rocnik: 1
+nazev: Metody pro práci se seznamy
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [16-seznamy]
+kompetence: [k3-strukturovane-programy]
+svp: [pole]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

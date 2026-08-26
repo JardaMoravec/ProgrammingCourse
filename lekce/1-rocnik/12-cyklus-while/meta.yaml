@@ -1,0 +1,12 @@
+id: 12-cyklus-while
+rocnik: 1
+nazev: Cyklus while
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [11-chyby-a-vyjimky]
+kompetence: [k2-ridici-struktury]
+svp: [cykly, funkce]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Cykly — While)"
+  - "zdroje/Úkoly 1/úkol 15 - hádání čísla.docx"

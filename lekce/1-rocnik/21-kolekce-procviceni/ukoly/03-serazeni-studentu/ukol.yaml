@@ -1,0 +1,30 @@
+title: Jména na písmeno
+stars: 2
+description: Napište program, který načte N jmen a písmeno. Vypište jména začínající na to písmeno (bez ohledu na velikost), každé na řádek.
+cases:
+- name: P
+  input: '4
+
+
+    Petr
+
+
+    Anna
+
+
+    Pavel
+
+
+    Eva
+
+
+    P
+
+
+    '
+  output: 'Petr
+
+    Pavel'
+io: '**Vstup:** N, jména, písmeno
+
+  **Výstup:** odpovídající jména'

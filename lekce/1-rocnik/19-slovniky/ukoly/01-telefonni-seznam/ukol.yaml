@@ -1,0 +1,26 @@
+title: Překlad barev
+stars: 1
+description: 'Napište program s pevným slovníkem:
+
+  - červená → red
+
+  - modrá → blue
+
+  - zelená → green
+
+
+  Načtěte barvu v češtině a vypište anglický název, nebo `neznámá`.'
+cases:
+- name: cervena
+  input: 'červená
+
+    '
+  output: red
+- name: zluta
+  input: 'žlutá
+
+    '
+  output: neznámá
+io: '**Vstup:** barva (text)
+
+  **Výstup:** překlad'

@@ -1,0 +1,32 @@
+title: Plné krabice a zbytek
+stars: 2
+description: 'Napište program, který načte počet položek a kapacitu krabice (celá kladná čísla) a vypíše, kolik je plných krabic a kolik položek zbývá.
+
+
+  Použijte `//` a `%`.'
+cases:
+- name: 17/5
+  input: '17
+
+
+    5
+
+
+    '
+  output: 'Krabic: 3
+
+    Zbytek: 2'
+- name: 20/4
+  input: '20
+
+
+    4
+
+
+    '
+  output: 'Krabic: 5
+
+    Zbytek: 0'
+io: '**Vstup:** počet položek, kapacita
+
+  **Výstup:** počet krabic a zbytek'

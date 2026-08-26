@@ -1,0 +1,31 @@
+title: Cena po slevě
+stars: 2
+description: 'Napište program, který načte původní cenu a slevu v procentech (desetinná čísla) a vypíše cenu po slevě:
+
+
+  `Cena po slevě: X Kč`'
+cases:
+- name: 20%
+  input: '1000
+
+
+    20
+
+
+    '
+  output: 'Cena po slevě: 800.0 Kč'
+  numeric: true
+- name: 10%
+  input: '500
+
+
+    10
+
+
+    '
+  output: 'Cena po slevě: 450.0 Kč'
+  numeric: true
+io: '**Vstup:** cena, sleva v %
+
+  **Výstup:** cena po slevě'
+moodle: PRG-1-09-01

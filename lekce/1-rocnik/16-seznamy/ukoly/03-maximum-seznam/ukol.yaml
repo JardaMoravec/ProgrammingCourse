@@ -1,0 +1,22 @@
+title: Druhý nejmenší
+stars: 2
+description: Napište program, který načte N a N celých čísel (N ≥ 2, různé hodnoty) a bez vestavěných funkcí najde druhé nejmenší číslo.
+cases:
+- name: 5-1-9
+  input: '3
+
+
+    5
+
+
+    1
+
+
+    9
+
+
+    '
+  output: 'Druhý nejmenší: 5'
+io: '**Vstup:** N, N čísel
+
+  **Výstup:** druhé nejmenší'

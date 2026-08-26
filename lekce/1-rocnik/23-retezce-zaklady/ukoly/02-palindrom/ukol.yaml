@@ -1,0 +1,25 @@
+title: Jsou anagramy?
+stars: 2
+description: Napište program, který načte dvě slova a vypíše `Ano`, pokud jsou anagramy (stejná písmena, jiné pořadí), jinak `Ne`.
+cases:
+- name: listen-silent
+  input: 'listen
+
+
+    silent
+
+
+    '
+  output: Ano
+- name: abc-abd
+  input: 'abc
+
+
+    abd
+
+
+    '
+  output: Ne
+io: '**Vstup:** dvě slova
+
+  **Výstup:** Ano/Ne'

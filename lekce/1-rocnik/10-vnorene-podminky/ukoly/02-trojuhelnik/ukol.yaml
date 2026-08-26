@@ -1,0 +1,31 @@
+title: Existence trojúhelníku
+stars: 3
+description: |
+  Napište program, který načte délky stran a, b, c. Pokud některá ≤ 0, vypište `Chyba: strany musí být kladné.`
+
+  Jinak rozhodněte, zda trojúhelník existuje (součet každých dvou stran > třetí):
+
+  - `Trojúhelník existuje.`
+  - `Trojúhelník neexistuje.`
+cases:
+- name: existuje
+  input: |
+    3
+    4
+    5
+  output: Trojúhelník existuje.
+- name: neexistuje
+  input: |
+    1
+    2
+    5
+  output: Trojúhelník neexistuje.
+- name: zaporna
+  input: |
+    3
+    -1
+    5
+  output: 'Chyba: strany musí být kladné.'
+io: |
+  **Vstup:** tři strany
+  **Výstup:** jedna zpráva

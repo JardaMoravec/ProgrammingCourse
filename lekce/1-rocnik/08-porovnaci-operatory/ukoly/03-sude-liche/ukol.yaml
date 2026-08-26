@@ -1,0 +1,19 @@
+title: Sudé nebo liché
+stars: 1
+description: Napište program, který načte celé číslo a vypíše `Sudé` nebo `Liché`.
+cases:
+- name: '4'
+  input: |
+    4
+  output: Sudé
+- name: '7'
+  input: |
+    7
+  output: Liché
+- name: '0'
+  input: |
+    0
+  output: Sudé
+io: |
+  **Vstup:** celé číslo
+  **Výstup:** `Sudé` nebo `Liché`

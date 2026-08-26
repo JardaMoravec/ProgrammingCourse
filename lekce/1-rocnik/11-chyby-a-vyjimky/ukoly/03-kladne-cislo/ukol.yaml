@@ -1,0 +1,29 @@
+title: Kladné celé číslo
+stars: 2
+description: |
+  Napište program, který opakovaně načítá vstup, dokud uživatel nezadá **kladné celé číslo**.
+
+  Při chybě: `Neplatný vstup. Zkuste znovu.`
+
+  Po úspěchu: `Děkuji, zadali jste: X`
+cases:
+- name: ok
+  input: |
+    5
+  output: 'Děkuji, zadali jste: 5'
+- name: chyba-pak-ok
+  input: |
+    0
+    -3
+    abc
+    7
+  output: 'Neplatný vstup. Zkuste znovu.
+
+    Neplatný vstup. Zkuste znovu.
+
+    Neplatný vstup. Zkuste znovu.
+
+    Děkuji, zadali jste: 7'
+io: |
+  **Vstup:** jedno nebo více pokusů
+  **Výstup:** chyby a potvrzení

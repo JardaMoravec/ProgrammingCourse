@@ -1,0 +1,10 @@
+id: 20-cykly-nad-kolekcemi
+rocnik: 1
+nazev: Cykly nad seznamy a slovníky
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [19-slovniky]
+kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+svp: [pole, cykly]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

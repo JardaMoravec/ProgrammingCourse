@@ -1,0 +1,23 @@
+title: Počet neprázdných řádků
+stars: 2
+description: 'Napište program, který přečte soubor `data.txt` a vypíše počet neprázdných řádků (řádky obsahující aspoň jeden znak).
+
+
+  Soubor `data.txt` je ve složce s programem.'
+cases:
+- name: mix
+  input: '
+
+    '
+  output: 'Neprázdných: 2'
+io: '**Vstup:** soubor data.txt
+
+  **Výstup:** počet neprázdných řádků'
+files:
+  data.txt: 'prvni
+
+
+
+    druhy
+
+    '

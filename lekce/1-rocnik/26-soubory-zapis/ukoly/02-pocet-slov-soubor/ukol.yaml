@@ -1,0 +1,14 @@
+title: Počet slov v souboru
+stars: 2
+description: Napište program, který přečte soubor `data.txt` (jeden řádek textu) a vypíše počet slov.
+cases:
+- name: 4 slova
+  input: '
+
+    '
+  output: 'Počet slov: 4'
+io: '**Vstup:** soubor data.txt
+
+  **Výstup:** počet slov
+
+  '

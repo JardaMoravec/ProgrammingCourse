@@ -1,0 +1,17 @@
+title: Součet sudých do N
+stars: 2
+description: Napište program, který načte celé kladné N a for cyklem sečte všechna sudá čísla od 2 do N včetně.
+cases:
+- name: '6'
+  input: '6
+
+    '
+  output: 'Součet sudých: 12'
+- name: '5'
+  input: '5
+
+    '
+  output: 'Součet sudých: 6'
+io: '**Vstup:** N
+
+  **Výstup:** součet sudých čísel'

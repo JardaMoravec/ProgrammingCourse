@@ -1,0 +1,25 @@
+title: Dlouhá slova
+stars: 2
+description: Napište program, který načte N a N slov a vypíše seznam slov delších než 4 znaky.
+cases:
+- name: 4 slova
+  input: '4
+
+
+    auto
+
+
+    programovani
+
+
+    kod
+
+
+    python
+
+
+    '
+  output: '[''programovani'', ''python'']'
+io: '**Vstup:** N, N slov
+
+  **Výstup:** seznam dlouhých slov'

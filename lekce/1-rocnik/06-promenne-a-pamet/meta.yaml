@@ -1,0 +1,11 @@
+id: 06-promenne-a-pamet
+rocnik: 1
+nazev: Proměnné, paměť a pojmenování
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [05-aritmeticke-operatory]
+kompetence: [k1-datove-typy]
+svp: [proměnné, paměť a datové typy]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Proměnné a typy proměnných)"

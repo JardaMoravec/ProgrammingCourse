@@ -1,0 +1,17 @@
+title: Počet dělitelů
+stars: 2
+description: Napište program, který načte celé kladné číslo n a for cyklem spočítá, kolik kladných dělitelů má (včetně 1 a n).
+cases:
+- name: '12'
+  input: '12
+
+    '
+  output: 'Dělitelů: 6'
+- name: '7'
+  input: '7
+
+    '
+  output: 'Dělitelů: 2'
+io: '**Vstup:** n
+
+  **Výstup:** počet dělitelů'

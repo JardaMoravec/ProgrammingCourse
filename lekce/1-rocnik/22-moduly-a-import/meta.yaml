@@ -1,0 +1,10 @@
+id: 22-moduly-a-import
+rocnik: 1
+nazev: Moduly, import a knihovna math
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [21-kolekce-procviceni]
+kompetence: [k3-strukturovane-programy]
+svp: [funkce]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

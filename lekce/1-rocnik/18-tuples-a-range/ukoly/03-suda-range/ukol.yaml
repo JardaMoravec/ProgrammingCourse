@@ -1,0 +1,14 @@
+title: Sudá čísla z range
+stars: 2
+description: |
+  Napište program, který vytvoří seznam sudých čísel 0 až 20 pomocí `range` a `list()` a vypíše ho.
+
+  Program **nenačítá vstup**.
+cases:
+- name: 0-20
+  input: |2+
+
+  output: '[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]'
+io: |
+  **Vstup:** žádný
+  **Výstup:** seznam sudých 0–20

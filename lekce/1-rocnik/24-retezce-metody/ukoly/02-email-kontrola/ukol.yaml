@@ -1,0 +1,16 @@
+title: Kontrola e-mailu
+stars: 2
+description: |
+  Napište program, který načte e-mail a vypíše `Vypadá platně` nebo `Neplatný formát` (zjednodušeně: musí obsahovat `@` a `.`).
+cases:
+- name: ok
+  input: |
+    jan@seznam.cz
+  output: Vypadá platně
+- name: spatne
+  input: |
+    janseznam.cz
+  output: Neplatný formát
+io: |
+  **Vstup:** e-mail
+  **Výstup:** platnost

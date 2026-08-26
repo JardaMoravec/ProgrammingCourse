@@ -1,0 +1,23 @@
+title: Vzdálenost bodů
+stars: 2
+description: Napište program, který načte souřadnice dvou bodů (x1, y1, x2, y2) a vypočítá jejich vzdálenost pomocí `math.sqrt`.
+cases:
+- name: 0-0-3-4
+  input: '0
+
+
+    0
+
+
+    3
+
+
+    4
+
+
+    '
+  output: 'Vzdálenost: 5.00'
+  numeric: true
+io: '**Vstup:** x1, y1, x2, y2
+
+  **Výstup:** vzdálenost'

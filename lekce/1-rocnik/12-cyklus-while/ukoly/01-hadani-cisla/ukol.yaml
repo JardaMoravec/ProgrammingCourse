@@ -1,0 +1,26 @@
+title: Odpočítávání
+stars: 1
+description: Napište program, který načte celé kladné číslo N a while cyklem vypíše odpočítávání od N do 0 — každé číslo na vlastní řádek.
+cases:
+- name: '3'
+  input: '3
+
+    '
+  output: '3
+
+    2
+
+    1
+
+    0'
+- name: '1'
+  input: '1
+
+    '
+  output: '1
+
+    0'
+io: '**Vstup:** N
+
+  **Výstup:** N, N-1, …, 0'
+moodle: PRG-1-12-01

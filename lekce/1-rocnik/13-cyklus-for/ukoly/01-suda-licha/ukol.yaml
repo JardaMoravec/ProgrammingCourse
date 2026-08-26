@@ -1,0 +1,18 @@
+title: Faktoriál for cyklem
+stars: 2
+description: Napište program, který načte celé číslo n ≥ 0 a for cyklem vypočítá n!.
+cases:
+- name: '5'
+  input: '5
+
+    '
+  output: 5! = 120
+- name: '0'
+  input: '0
+
+    '
+  output: 0! = 1
+io: '**Vstup:** n
+
+  **Výstup:** `n! = X`'
+moodle: PRG-1-13-01

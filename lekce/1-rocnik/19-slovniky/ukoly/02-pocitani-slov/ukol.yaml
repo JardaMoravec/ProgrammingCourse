@@ -1,0 +1,25 @@
+title: Frekvence písmene
+stars: 2
+description: Napište program, který načte slovo a písmeno a vypíše, kolikrát se písmeno vyskytuje ve slově (bez ohledu na velikost).
+cases:
+- name: banana-a
+  input: 'banana
+
+
+    a
+
+
+    '
+  output: 'Výskytů: 3'
+- name: Ahoj-o
+  input: 'Ahoj
+
+
+    o
+
+
+    '
+  output: 'Výskytů: 1'
+io: '**Vstup:** slovo, písmeno
+
+  **Výstup:** počet výskytů'

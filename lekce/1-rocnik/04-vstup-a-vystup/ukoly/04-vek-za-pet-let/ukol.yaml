@@ -1,0 +1,25 @@
+title: Věk za pět let
+stars: 1
+description: Napište program, který načte současný věk (celé číslo) a vypíše, kolik let bude za 5 let.
+cases:
+- name: '16'
+  input: '16
+
+    '
+  output: Za 5 let vám bude 21.
+- name: '0'
+  input: '0
+
+    '
+  output: Za 5 let vám bude 5.
+- name: '40'
+  input: '40
+
+    '
+  output: Za 5 let vám bude 45.
+io: '**Vstup:** věk
+
+  **Výstup:** `Za 5 let vám bude X.`
+
+  '
+moodle: PRG-1-04-04

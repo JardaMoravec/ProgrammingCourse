@@ -1,0 +1,27 @@
+title: Součet zadaných čísel
+stars: 2
+description: 'Napište program, který while cyklem načítá celá čísla a sčítá je. Když uživatel zadá **0**, cyklus skončí a program vypíše `Součet: X`.'
+cases:
+- name: 1+2+3
+  input: '1
+
+
+    2
+
+
+    3
+
+
+    0
+
+
+    '
+  output: 'Součet: 6'
+- name: prazdny
+  input: '0
+
+    '
+  output: 'Součet: 0'
+io: '**Vstup:** čísla, ukončení nulou
+
+  **Výstup:** součet'

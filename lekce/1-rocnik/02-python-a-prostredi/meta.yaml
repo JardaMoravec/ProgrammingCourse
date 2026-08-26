@@ -1,0 +1,12 @@
+id: 02-python-a-prostredi
+rocnik: 1
+nazev: Python, instalace a vývojové prostředí
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [01-programovani-a-jazyky]
+kompetence: [k3-strukturovane-programy]
+svp: [vývojové prostředí]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Python, Instalace, Vývojové prostředí)"
+  - "zdroje/01 - Úvod do Pythonu.pptx"

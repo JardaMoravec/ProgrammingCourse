@@ -1,0 +1,17 @@
+title: Počet znaků v souboru
+stars: 2
+description: 'Napište program, který přečte soubor `data.txt` a vypíše počet znaků v celém souboru (včetně mezer, bez koncových znaků nového řádku na konci souboru).
+
+
+  Soubor `data.txt` je ve složce s programem.'
+cases:
+- name: abc
+  input: '
+
+    '
+  output: 'Znaků: 5'
+io: '**Vstup:** soubor data.txt
+
+  **Výstup:** počet znaků'
+files:
+  data.txt: abc de

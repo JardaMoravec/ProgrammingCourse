@@ -1,0 +1,24 @@
+title: Číslo v intervalu
+stars: 2
+description: |
+  Napište program, který načte celé číslo `x` a vypíše `Ano`, pokud je x v intervalu **10 až 20 včetně**, jinak `Ne`.
+cases:
+- name: '15'
+  input: |
+    15
+  output: Ano
+- name: '10'
+  input: |
+    10
+  output: Ano
+- name: '5'
+  input: |
+    5
+  output: Ne
+- name: '21'
+  input: |
+    21
+  output: Ne
+io: |
+  **Vstup:** celé číslo x
+  **Výstup:** `Ano` nebo `Ne`

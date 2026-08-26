@@ -1,0 +1,10 @@
+id: 18-tuples-a-range
+rocnik: 1
+nazev: Tuples a range
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [17-metody-seznamu]
+kompetence: [k1-datove-typy]
+svp: [pole]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

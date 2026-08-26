@@ -1,0 +1,30 @@
+title: Součet po převodu
+stars: 1
+description: Napište program, který načte dvě celá čísla jako text (pomocí `input()`) a vypíše jejich součet jako celé číslo.
+cases:
+- name: 10+5
+  input: '10
+
+    5
+
+    '
+  output: 'Součet: 15'
+- name: 3+7
+  input: '3
+
+    7
+
+    '
+  output: 'Součet: 10'
+- name: 0+0
+  input: '0
+
+    0
+
+    '
+  output: 'Součet: 0'
+io: '**Vstup:** dva řetězce s číslicemi
+
+  **Výstup:** součet po převodu na int
+
+  '

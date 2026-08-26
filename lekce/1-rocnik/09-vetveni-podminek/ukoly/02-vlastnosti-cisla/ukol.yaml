@@ -1,0 +1,29 @@
+title: Kategorie věku
+stars: 2
+description: 'Napište program, který načte věk (celé číslo) a vypíše kategorii:
+
+  - méně než 18 → `dítě`
+
+  - 18 až 64 → `dospělý`
+
+  - 65 a více → `senior`'
+cases:
+- name: '10'
+  input: '10
+
+    '
+  output: dítě
+- name: '30'
+  input: '30
+
+    '
+  output: dospělý
+- name: '70'
+  input: '70
+
+    '
+  output: senior
+io: '**Vstup:** věk
+
+  **Výstup:** kategorie'
+moodle: PRG-1-09-02

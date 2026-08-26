@@ -1,0 +1,20 @@
+title: Nejkratší řádek
+stars: 2
+description: Napište program, který přečte soubor `data.txt` a vypíše nejkratší neprázdný řádek.
+cases:
+- name: 3 radky
+  input: '
+
+    '
+  output: a
+io: '**Vstup:** soubor data.txt
+
+  **Výstup:** nejkratší řádek'
+files:
+  data.txt: 'nejdelsi radek
+
+    a
+
+    stredni
+
+    '

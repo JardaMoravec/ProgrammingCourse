@@ -1,0 +1,15 @@
+title: Průměr známek
+stars: 2
+description: |
+  Napište program s pevným slovníkem známek `{"mat": 2, "cj": 1, "prg": 1}` a vypište průměr ve tvaru `Průměr: X` (desetinné číslo).
+
+  Program **nenačítá vstup**.
+cases:
+- name: 3 predmety
+  input: |2+
+
+  output: 'Průměr: 1.3333333333333333'
+  numeric: true
+io: |
+  **Vstup:** žádný
+  **Výstup:** průměr známek

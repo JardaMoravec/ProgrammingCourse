@@ -1,0 +1,24 @@
+title: Převod teploty
+stars: 2
+description: |
+  Napište program, který načte teplotu ve stupních Celsia (celé číslo) a vypíše ekvivalent ve Fahrenheitu.
+
+  Vzorec: F = C × 9/5 + 32
+
+  Výstup ve tvaru: `25 °C = 77.0 °F`
+cases:
+- name: 25C
+  input: |
+    25
+  output: 25 °C = 77.0 °F
+- name: 0C
+  input: |
+    0
+  output: 0 °C = 32.0 °F
+- name: 100C
+  input: |
+    100
+  output: 100 °C = 212.0 °F
+io: |
+  **Vstup:** celé číslo C
+  **Výstup:** jeden řádek s oběma teplotami

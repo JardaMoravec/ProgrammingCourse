@@ -1,0 +1,28 @@
+title: Počet jedniček
+stars: 1
+description: Napište program, který načte N a N známek (1–5) a vypíše, kolik je známek 1.
+cases:
+- name: 2 jednicky
+  input: '5
+
+
+    1
+
+
+    2
+
+
+    1
+
+
+    3
+
+
+    4
+
+
+    '
+  output: 'Počet jedniček: 2'
+io: '**Vstup:** N, N známek
+
+  **Výstup:** počet jedniček'

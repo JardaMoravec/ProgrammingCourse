@@ -1,0 +1,12 @@
+title: Velká písmena
+stars: 1
+description: Napište program, který načte větu a vypíše ji celou velkými písmeny.
+cases:
+- name: ahoj
+  input: 'ahoj svete
+
+    '
+  output: AHOJ SVETE
+io: '**Vstup:** věta
+
+  **Výstup:** UPPERCASE'

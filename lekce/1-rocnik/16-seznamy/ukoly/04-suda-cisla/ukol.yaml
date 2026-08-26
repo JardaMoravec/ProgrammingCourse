@@ -1,0 +1,37 @@
+title: Součin seznamu
+stars: 2
+description: Napište program, který načte N a N celých čísel a vypíše součin všech prvků seznamu.
+cases:
+- name: 2-3-4
+  input: '3
+
+
+    2
+
+
+    3
+
+
+    4
+
+
+    '
+  output: 'Součin: 24'
+- name: s nulou
+  input: '3
+
+
+    5
+
+
+    0
+
+
+    2
+
+
+    '
+  output: 'Součin: 0'
+io: '**Vstup:** N, N čísel
+
+  **Výstup:** součin prvků'

@@ -1,0 +1,25 @@
+title: Ciferný součet
+stars: 2
+description: 'Napište program, který načte nezáporné celé číslo a while cyklem vypočítá součet jeho cifer.
+
+
+  Příklad: 123 → `Ciferný součet: 6`'
+cases:
+- name: '123'
+  input: '123
+
+    '
+  output: 'Ciferný součet: 6'
+- name: '9'
+  input: '9
+
+    '
+  output: 'Ciferný součet: 9'
+- name: '0'
+  input: '0
+
+    '
+  output: 'Ciferný součet: 0'
+io: '**Vstup:** celé číslo
+
+  **Výstup:** ciferný součet'

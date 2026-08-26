@@ -1,0 +1,29 @@
+title: Celočíselný a desetinný tvar
+stars: 2
+description: |
+  Napište program, který načte desetinné číslo a vypíše jeho celočíselnou a desetinnou část na dvou řádcích:
+
+  ```
+  Celočíselná část: ...
+  Desetinná část: ...
+  ```
+
+  Desetinná část vypište beze změny (float).
+cases:
+- name: '3.14'
+  input: |
+    3.14
+  output: 'Celočíselná část: 3
+
+    Desetinná část: 3.14'
+  numeric: true
+- name: '5.0'
+  input: |
+    5.0
+  output: 'Celočíselná část: 5
+
+    Desetinná část: 5.0'
+  numeric: true
+io: |
+  **Vstup:** desetinné číslo
+  **Výstup:** dva řádky

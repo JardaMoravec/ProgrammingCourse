@@ -1,0 +1,28 @@
+title: Filtr sudých
+stars: 2
+description: Napište program, který načte N a N celých čísel a vypíše seznam jen sudých čísel.
+cases:
+- name: mix
+  input: '5
+
+
+    1
+
+
+    2
+
+
+    3
+
+
+    4
+
+
+    5
+
+
+    '
+  output: '[2, 4]'
+io: '**Vstup:** N, N čísel
+
+  **Výstup:** seznam sudých'

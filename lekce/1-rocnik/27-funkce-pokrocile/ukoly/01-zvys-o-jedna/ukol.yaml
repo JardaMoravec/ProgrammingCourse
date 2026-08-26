@@ -1,0 +1,19 @@
+title: Zvýšení o jedna
+stars: 2
+description: Napište funkci `zvys(o)` vracející hodnotu o 1 větší. V hlavním programu načtěte celé číslo a vypište výsledek.
+cases:
+- name: '5'
+  input: '5
+
+    '
+  output: 'Výsledek: 6'
+- name: '0'
+  input: '0
+
+    '
+  output: 'Výsledek: 1'
+io: '**Vstup:** celé číslo
+
+  **Výstup:** zvýšená hodnota
+
+  '

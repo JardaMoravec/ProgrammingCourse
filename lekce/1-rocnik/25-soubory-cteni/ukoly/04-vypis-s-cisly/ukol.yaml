@@ -1,0 +1,14 @@
+title: Výpis s čísly řádků
+stars: 2
+description: |
+  Napište program, který přečte soubor `data.txt` a vypíše každý řádek s prefixem čísla řádku: `1: text`.
+cases:
+- name: 2 radky
+  input: |2+
+
+  output: '1: alfa
+
+    2: beta'
+io: |
+  **Vstup:** soubor data.txt
+  **Výstup:** číslované řádky

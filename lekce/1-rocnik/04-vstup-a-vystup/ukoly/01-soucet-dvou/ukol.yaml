@@ -1,0 +1,31 @@
+title: Součet dvou čísel
+stars: 1
+description: Napište program, který načte dvě celá čísla a vypíše jejich součet.
+cases:
+- name: 2+3
+  input: '2
+
+    3
+
+    '
+  output: 'Součet: 5'
+- name: -1+1
+  input: '-1
+
+    1
+
+    '
+  output: 'Součet: 0'
+- name: 10+20
+  input: '10
+
+    20
+
+    '
+  output: 'Součet: 30'
+io: '**Vstup:** dvě celá čísla
+
+  **Výstup:** `Součet: X`
+
+  '
+moodle: PRG-1-04-01

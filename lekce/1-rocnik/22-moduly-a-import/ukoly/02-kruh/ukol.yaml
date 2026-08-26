@@ -1,0 +1,20 @@
+title: Obvod a obsah kruhu
+stars: 2
+description: |
+  Napište program, který načte poloměr r a vypíše obvod a obsah kruhu (použijte `math.pi`):
+
+  ```
+  Obvod: ...
+  Obsah: ...
+  ```
+cases:
+- name: r=1
+  input: |
+    1
+  output: 'Obvod: 6.283185307179586
+
+    Obsah: 3.141592653589793'
+  numeric: true
+io: |
+  **Vstup:** poloměr
+  **Výstup:** obvod a obsah

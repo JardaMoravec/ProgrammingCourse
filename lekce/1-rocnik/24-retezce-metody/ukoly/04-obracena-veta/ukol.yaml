@@ -1,0 +1,12 @@
+title: Capitalize slov
+stars: 2
+description: Napište program, který načte větu a vypíše každé slovo s velkým počátečním písmenem (metoda `capitalize` nebo ekvivalent).
+cases:
+- name: ahoj svete
+  input: 'ahoj svete
+
+    '
+  output: Ahoj Svete
+io: '**Vstup:** věta
+
+  **Výstup:** capitalized slova'

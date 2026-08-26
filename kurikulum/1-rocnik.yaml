@@ -1,0 +1,310 @@
+# Kurikulum 1. ročník — podle ŠVP
+# Přepsáno z: zdroje/_Osnovy 1 roč.docx (po ověření lze smazat)
+# Znalostní báze = MD/YAML v lekce/, ne původní DOCX/PPTX
+
+rocnik: 1
+predmet: Programování (PRG)
+obor: Informační technologie – Cloud (I+Im-It)
+kod_oboru: 18-20-M/01
+jazyk: Python
+
+hodiny:
+  tydne: 3
+  cvičeni: 3
+  celkem: 81
+  tydnu: 27
+
+predchozi_znalosti: []
+
+kompetence:
+  - id: k1-datove-typy
+    text: použije základní datové typy
+  - id: k2-ridici-struktury
+    text: použije řídící struktury programu
+  - id: k3-strukturovane-programy
+    text: vytvoří jednoduché strukturované programy
+
+moduly:
+  - id: strukturovane-programovani
+    nazev: Strukturované programování
+    hodiny: 81
+    svp_temata:
+      - vývojové prostředí
+      - anatomie programu
+      - paměť a datové typy
+      - proměnné
+      - aritmetické, logické operátory
+      - vnořené podmínky
+      - cykly, funkce
+      - znaky, řetězce
+      - řídicí struktury
+      - pole
+      - IO operace (čtení a zápis dat do souboru)
+
+    bloky:
+      - id: uvod-a-prostredi
+        nazev: Úvod do programování a prostředí
+        hodiny: 9
+        lekce:
+          - id: "01-programovani-a-jazyky"
+            soubor: lekce/1-rocnik/01-programovani-a-jazyky
+            nazev: Programování a programovací jazyky
+            hodiny: 3
+            svp: [anatomie programu]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: []
+
+          - id: "02-python-a-prostredi"
+            soubor: lekce/1-rocnik/02-python-a-prostredi
+            nazev: Python, instalace a vývojové prostředí
+            hodiny: 3
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [01-programovani-a-jazyky]
+
+          - id: "03-bloky-kodu"
+            soubor: lekce/1-rocnik/03-bloky-kodu
+            nazev: Anatomie programu a bloky kódu
+            hodiny: 3
+            svp: [anatomie programu, vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [02-python-a-prostredi]
+
+      - id: promenne-a-operatory
+        nazev: Proměnné, datové typy a operátory
+        hodiny: 18
+        lekce:
+          - id: "04-vstup-a-vystup"
+            soubor: lekce/1-rocnik/04-vstup-a-vystup
+            nazev: Vstup a výstup (input, print)
+            hodiny: 3
+            svp: [proměnné]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [03-bloky-kodu]
+
+          - id: "05-aritmeticke-operatory"
+            soubor: lekce/1-rocnik/05-aritmeticke-operatory
+            nazev: Aritmetické operátory a konzole
+            hodiny: 3
+            svp: [aritmetické, logické operátory]
+            kompetence: [k1-datove-typy]
+            prerekvizity: [04-vstup-a-vystup]
+
+          - id: "06-promenne-a-pamet"
+            soubor: lekce/1-rocnik/06-promenne-a-pamet
+            nazev: Proměnné, paměť a pojmenování
+            hodiny: 3
+            svp: [proměnné, paměť a datové typy]
+            kompetence: [k1-datove-typy]
+            prerekvizity: [05-aritmeticke-operatory]
+
+          - id: "07-datove-typy"
+            soubor: lekce/1-rocnik/07-datove-typy
+            nazev: Základní datové typy a přetypování
+            hodiny: 3
+            svp: [paměť a datové typy]
+            kompetence: [k1-datove-typy]
+            prerekvizity: [06-promenne-a-pamet]
+
+          - id: "08-porovnaci-operatory"
+            soubor: lekce/1-rocnik/08-porovnaci-operatory
+            nazev: Porovnávací a logické operátory
+            hodiny: 3
+            svp: [aritmetické, logické operátory]
+            kompetence: [k2-ridici-struktury]
+            prerekvizity: [07-datove-typy]
+
+          - id: "09-vetveni-podminek"
+            soubor: lekce/1-rocnik/09-vetveni-podminek
+            nazev: Větvení programu (if, elif, else)
+            hodiny: 3
+            svp: [řídicí struktury]
+            kompetence: [k2-ridici-struktury]
+            prerekvizity: [08-porovnaci-operatory]
+
+      - id: ridici-struktury
+        nazev: Řídicí struktury a cykly
+        hodiny: 18
+        lekce:
+          - id: "10-vnorene-podminky"
+            soubor: lekce/1-rocnik/10-vnorene-podminky
+            nazev: Vnořené podmínky
+            hodiny: 3
+            svp: [vnořené podmínky, řídicí struktury]
+            kompetence: [k2-ridici-struktury]
+            prerekvizity: [09-vetveni-podminek]
+
+          - id: "11-chyby-a-vyjimky"
+            soubor: lekce/1-rocnik/11-chyby-a-vyjimky
+            nazev: Chyby a výjimky (try, except)
+            hodiny: 3
+            svp: [řídicí struktury]
+            kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+            prerekvizity: [10-vnorene-podminky]
+
+          - id: "12-cyklus-while"
+            soubor: lekce/1-rocnik/12-cyklus-while
+            nazev: Cyklus while
+            hodiny: 3
+            svp: [cykly, funkce]
+            kompetence: [k2-ridici-struktury]
+            prerekvizity: [11-chyby-a-vyjimky]
+
+          - id: "13-cyklus-for"
+            soubor: lekce/1-rocnik/13-cyklus-for
+            nazev: Cyklus for a funkce range
+            hodiny: 3
+            svp: [cykly, funkce]
+            kompetence: [k2-ridici-struktury]
+            prerekvizity: [12-cyklus-while]
+
+          - id: "14-ridici-struktury-procviceni"
+            soubor: lekce/1-rocnik/14-ridici-struktury-procviceni
+            nazev: Řídicí struktury — souhrn a procvičení
+            hodiny: 3
+            svp: [řídicí struktury, vnořené podmínky, cykly]
+            kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+            prerekvizity: [13-cyklus-for]
+
+          - id: "15-funkce-zaklady"
+            soubor: lekce/1-rocnik/15-funkce-zaklady
+            nazev: Funkce — definice, parametry, návratová hodnota
+            hodiny: 3
+            svp: [cykly, funkce]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [14-ridici-struktury-procviceni]
+
+      - id: pole-a-kolekce
+        nazev: Pole a datové struktury
+        hodiny: 21
+        lekce:
+          - id: "16-seznamy"
+            soubor: lekce/1-rocnik/16-seznamy
+            nazev: Seznamy (pole) — základy
+            hodiny: 3
+            svp: [pole]
+            kompetence: [k1-datove-typy, k3-strukturovane-programy]
+            prerekvizity: [15-funkce-zaklady]
+
+          - id: "17-metody-seznamu"
+            soubor: lekce/1-rocnik/17-metody-seznamu
+            nazev: Metody pro práci se seznamy
+            hodiny: 3
+            svp: [pole]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [16-seznamy]
+
+          - id: "18-tuples-a-range"
+            soubor: lekce/1-rocnik/18-tuples-a-range
+            nazev: Tuples a range
+            hodiny: 3
+            svp: [pole]
+            kompetence: [k1-datove-typy]
+            prerekvizity: [17-metody-seznamu]
+
+          - id: "19-slovniky"
+            soubor: lekce/1-rocnik/19-slovniky
+            nazev: Slovníky (asociativní pole)
+            hodiny: 3
+            svp: [pole]
+            kompetence: [k1-datove-typy, k3-strukturovane-programy]
+            prerekvizity: [18-tuples-a-range]
+
+          - id: "20-cykly-nad-kolekcemi"
+            soubor: lekce/1-rocnik/20-cykly-nad-kolekcemi
+            nazev: Cykly nad seznamy a slovníky
+            hodiny: 3
+            svp: [pole, cykly]
+            kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+            prerekvizity: [19-slovniky]
+
+          - id: "21-kolekce-procviceni"
+            soubor: lekce/1-rocnik/21-kolekce-procviceni
+            nazev: Kolekce — souhrnné procvičení
+            hodiny: 3
+            svp: [pole]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [20-cykly-nad-kolekcemi]
+
+          - id: "22-moduly-a-import"
+            soubor: lekce/1-rocnik/22-moduly-a-import
+            nazev: Moduly, import a knihovna math
+            hodiny: 3
+            svp: [funkce]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [21-kolekce-procviceni]
+
+      - id: retezce-a-soubory
+        nazev: Znaky, řetězce a práce se soubory
+        hodiny: 15
+        lekce:
+          - id: "23-retezce-zaklady"
+            soubor: lekce/1-rocnik/23-retezce-zaklady
+            nazev: Znaky a řetězce — operátory
+            hodiny: 3
+            svp: [znaky, řetězce]
+            kompetence: [k1-datove-typy]
+            prerekvizity: [22-moduly-a-import]
+
+          - id: "24-retezce-metody"
+            soubor: lekce/1-rocnik/24-retezce-metody
+            nazev: Metody řetězců
+            hodiny: 3
+            svp: [znaky, řetězce]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [23-retezce-zaklady]
+
+          - id: "25-soubory-cteni"
+            soubor: lekce/1-rocnik/25-soubory-cteni
+            nazev: IO operace — čtení ze souboru
+            hodiny: 3
+            svp: [IO operace (čtení a zápis dat do souboru)]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [24-retezce-metody]
+
+          - id: "26-soubory-zapis"
+            soubor: lekce/1-rocnik/26-soubory-zapis
+            nazev: IO operace — zápis do souboru
+            hodiny: 3
+            svp: [IO operace (čtení a zápis dat do souboru)]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [25-soubory-cteni]
+
+          - id: "27-funkce-pokrocile"
+            soubor: lekce/1-rocnik/27-funkce-pokrocile
+            nazev: Funkce — lokální a globální proměnné
+            hodiny: 3
+            svp: [funkce]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [26-soubory-zapis]
+
+hodnoceni:
+  - elektronické testy (Moodle VPL)
+  - samostatné úkoly (Moodle VPL)
+  - práce v hodině (cvičení)
+  - aktivita
+
+literatura:
+  - elektronické texty v rámci školních informačních a vzdělávacích systémů
+
+pomucky:
+  - základní počítačová sestava
+  - dataprojektor
+  - potřebné softwarové vybavení (Python 3, IDE)
+
+mapovani_zdroju:
+  - soubor: zdroje/_Osnovy 1 roč.docx
+    typ: svp-osnova
+  - soubor: zdroje/Programování 1.docx
+    typ: ucitelsky-text
+  - soubor: zdroje/Programování 1 - Python manuál.docx
+    typ: ucitelsky-text
+  - soubor: zdroje/01 - Úvod do Pythonu.pptx
+    lekce: [01-programovani-a-jazyky, 02-python-a-prostredi]
+  - soubor: zdroje/02 - Proměnné, datové typy a operátory v Pythonu.pptx
+    lekce: [05-aritmeticke-operatory, 06-promenne-a-pamet, 07-datove-typy, 08-porovnaci-operatory]
+  - soubor: zdroje/03 - Seznamy, Tuples, Slovníky a range v Pythonu.pptx
+    lekce: [16-seznamy, 18-tuples-a-range, 19-slovniky]
+  - slozka: zdroje/Úkoly 1/
+    typ: cviceni
+    pocet: 39

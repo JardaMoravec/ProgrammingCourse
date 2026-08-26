@@ -1,0 +1,22 @@
+title: Obsah kruhu
+stars: 2
+description: 'Napište funkci `obsah_kruhu(r)` vracející obsah kruhu o poloměru r (π ≈ 3.14159). V hlavním programu načtěte poloměr a vypište:
+
+
+  `Obsah: X`'
+cases:
+- name: r=1
+  input: '1
+
+    '
+  output: 'Obsah: 3.14'
+  numeric: true
+- name: r=2
+  input: '2
+
+    '
+  output: 'Obsah: 12.57'
+  numeric: true
+io: '**Vstup:** poloměr
+
+  **Výstup:** obsah kruhu'

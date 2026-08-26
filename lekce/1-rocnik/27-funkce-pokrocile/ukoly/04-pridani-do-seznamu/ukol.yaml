@@ -1,0 +1,15 @@
+title: Přidání do seznamu
+stars: 3
+description: |
+  Napište funkci `pridej(seznam, prvek)` přidávající prvek do seznamu. Načtěte N, vytvořte prázdný seznam, N-krát načtěte číslo, volejte `pridej`, na závěr vypište seznam.
+cases:
+- name: 3 cisla
+  input: |
+    3
+    1
+    2
+    3
+  output: '[1, 2, 3]'
+io: |
+  **Vstup:** N a N čísel
+  **Výstup:** finální seznam

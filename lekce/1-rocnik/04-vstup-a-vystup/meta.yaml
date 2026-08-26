@@ -1,0 +1,12 @@
+id: 04-vstup-a-vystup
+rocnik: 1
+nazev: Vstup a výstup (input, print)
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [03-bloky-kodu]
+kompetence: [k3-strukturovane-programy]
+svp: [proměnné]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Vstup a výstup)"
+  - "zdroje/Úkoly 1/úkol 1 - výpočet let do důchodu.docx"

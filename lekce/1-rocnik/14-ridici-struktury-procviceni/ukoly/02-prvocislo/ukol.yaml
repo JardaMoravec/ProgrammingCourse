@@ -1,0 +1,33 @@
+title: Collatzova posloupnost
+stars: 3
+description: Napište program, který načte celé kladné n a vypíše Collatzovu posloupnost (n → n/2 pokud sudé, jinak 3n+1) až do 1 — každé číslo na řádek.
+cases:
+- name: '6'
+  input: '6
+
+    '
+  output: '6
+
+    3
+
+    10
+
+    5
+
+    16
+
+    8
+
+    4
+
+    2
+
+    1'
+- name: '1'
+  input: '1
+
+    '
+  output: '1'
+io: '**Vstup:** n
+
+  **Výstup:** posloupnost'

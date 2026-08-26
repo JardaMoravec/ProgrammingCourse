@@ -1,0 +1,16 @@
+title: Výřez seznamu
+stars: 2
+description: |
+  Napište program, který vytvoří seznam čísel 1 až 10 a vypíše první polovinu a druhou polovinu na dvou řádcích (jako Python seznamy).
+
+  Program **nenačítá vstup**.
+cases:
+- name: 1-10
+  input: |2+
+
+  output: '[1, 2, 3, 4, 5]
+
+    [6, 7, 8, 9, 10]'
+io: |
+  **Vstup:** žádný
+  **Výstup:** dvě poloviny

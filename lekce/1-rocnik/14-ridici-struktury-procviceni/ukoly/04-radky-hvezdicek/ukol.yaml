@@ -1,0 +1,34 @@
+title: Trojúhelník čísel
+stars: 2
+description: 'Napište program, který vypíše trojúhelník čísel o 4 řádcích:
+
+
+  ```
+
+  1
+
+  22
+
+  333
+
+  4444
+
+  ```
+
+
+  Program **nenačítá vstup**.'
+cases:
+- name: 4 radky
+  input: '
+
+    '
+  output: '1
+
+    22
+
+    333
+
+    4444'
+io: '**Vstup:** žádný
+
+  **Výstup:** trojúhelník čísel'

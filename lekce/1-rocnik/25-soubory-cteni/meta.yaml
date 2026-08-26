@@ -1,0 +1,10 @@
+id: 25-soubory-cteni
+rocnik: 1
+nazev: IO operace — čtení ze souboru
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [24-retezce-metody]
+kompetence: [k3-strukturovane-programy]
+svp: [IO operace (čtení a zápis dat do souboru)]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

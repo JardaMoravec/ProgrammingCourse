@@ -1,0 +1,23 @@
+title: Logické operátory
+stars: 2
+description: |
+  Napište program, který načte dvě celá čísla `a` a `b` a vypíše `True` nebo `False` podle toho, zda platí **(a > 0) and (b > 0)**.
+cases:
+- name: 3 a 5
+  input: |
+    3
+    5
+  output: 'True'
+- name: -1 a 5
+  input: |
+    -1
+    5
+  output: 'False'
+- name: 0 a 1
+  input: |
+    0
+    1
+  output: 'False'
+io: |
+  **Vstup:** a, b
+  **Výstup:** `True` nebo `False`

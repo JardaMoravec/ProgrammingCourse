@@ -1,0 +1,31 @@
+title: Počet výskytů
+stars: 2
+description: Napište program, který načte N, pak N celých čísel a cílové číslo h. Vypište, kolikrát se h v seznamu vyskytuje.
+cases:
+- name: 2x3
+  input: '5
+
+
+    1
+
+
+    3
+
+
+    3
+
+
+    2
+
+
+    3
+
+
+    3
+
+
+    '
+  output: 'Výskytů: 3'
+io: '**Vstup:** N, N čísel, h
+
+  **Výstup:** počet výskytů'

@@ -1,0 +1,10 @@
+id: 23-retezce-zaklady
+rocnik: 1
+nazev: Znaky a řetězce — operátory
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [22-moduly-a-import]
+kompetence: [k1-datove-typy]
+svp: [znaky, řetězce]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

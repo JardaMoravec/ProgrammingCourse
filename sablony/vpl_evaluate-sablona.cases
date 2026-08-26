@@ -1,0 +1,8 @@
+Case = Popis prvního testu
+Input = 5
+Output = "Očekávaný výstup"
+
+Case = Popis druhého testu
+Input = 10
+20
+Output = "Druhý očekávaný výstup"

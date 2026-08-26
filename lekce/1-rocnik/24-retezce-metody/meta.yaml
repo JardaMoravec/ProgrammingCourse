@@ -1,0 +1,10 @@
+id: 24-retezce-metody
+rocnik: 1
+nazev: Metody řetězců
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [23-retezce-zaklady]
+kompetence: [k3-strukturovane-programy]
+svp: [znaky, řetězce]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

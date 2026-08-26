@@ -1,0 +1,17 @@
+title: Počet vět
+stars: 2
+description: Napište program, který načte text a vypíše počet vět (věty oddělené tečkou `.`).
+cases:
+- name: 2 vety
+  input: 'Ahoj. Jak se mas.
+
+    '
+  output: 'Počet vět: 2'
+- name: 1 veta
+  input: 'Jedna veta
+
+    '
+  output: 'Počet vět: 1'
+io: '**Vstup:** text
+
+  **Výstup:** počet vět'

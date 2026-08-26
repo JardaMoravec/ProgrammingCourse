@@ -1,0 +1,33 @@
+title: Minimum ze tří
+stars: 2
+description: 'Napište funkci `minimum(a, b, c)` vracející nejmenší ze tří čísel (bez vestavěné `min`). V hlavním programu načtěte tři čísla a vypište `Minimum: X`.'
+cases:
+- name: 1-5-3
+  input: '1
+
+
+    5
+
+
+    3
+
+
+    '
+  output: 'Minimum: 1.0'
+  numeric: true
+- name: 7-2-9
+  input: '7
+
+
+    2
+
+
+    9
+
+
+    '
+  output: 'Minimum: 2.0'
+  numeric: true
+io: '**Vstup:** tři čísla
+
+  **Výstup:** minimum'

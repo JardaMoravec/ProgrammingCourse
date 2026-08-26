@@ -1,0 +1,12 @@
+id: 09-vetveni-podminek
+rocnik: 1
+nazev: Větvení programu (if, elif, else)
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [08-porovnaci-operatory]
+kompetence: [k2-ridici-struktury]
+svp: [řídicí struktury]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Logické operátory — Příklady kódu)"
+  - "zdroje/Úkoly 1/úkol 3, 6, 9"

@@ -1,0 +1,17 @@
+title: Minimum a maximum
+stars: 2
+description: |
+  Napište funkci `min_max(cisla)` vracející tuple (minimum, maximum). Načtěte N a N čísel, vypište `Min: X Max: Y`.
+cases:
+- name: 5 cisel
+  input: |
+    5
+    5
+    2
+    8
+    1
+    9
+  output: 'Min: 1 Max: 9'
+io: |
+  **Vstup:** N a N čísel
+  **Výstup:** min a max

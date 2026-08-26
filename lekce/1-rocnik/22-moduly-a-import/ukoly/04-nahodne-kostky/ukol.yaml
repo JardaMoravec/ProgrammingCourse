@@ -1,0 +1,22 @@
+title: Hody kostkou
+stars: 2
+description: |
+  Napište program, který pomocí `random.randint` simuluje 5 hodů kostkou (1–6) a vypíše každý hod na vlastní řádek.
+
+  Pro reprodukovatelné testy použijte `random.seed(42)` na začátku programu.
+cases:
+- name: seed 42
+  input: |2+
+
+  output: '6
+
+    1
+
+    1
+
+    6
+
+    3'
+io: |
+  **Vstup:** žádný
+  **Výstup:** 5 hodů

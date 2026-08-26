@@ -1,0 +1,10 @@
+id: 21-kolekce-procviceni
+rocnik: 1
+nazev: Kolekce — souhrnné procvičení
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [20-cykly-nad-kolekcemi]
+kompetence: [k3-strukturovane-programy]
+svp: [pole]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

@@ -1,0 +1,22 @@
+title: Objem krychle
+stars: 1
+description: |
+  Napište program `main.py`, který načte délku hrany krychle (celé číslo) a vypíše její objem.
+
+  Vzorec: V = a³
+cases:
+- name: a=5
+  input: |
+    5
+  output: 'Objem: 125'
+- name: a=3
+  input: |
+    3
+  output: 'Objem: 27'
+- name: a=10
+  input: |
+    10
+  output: 'Objem: 1000'
+io: |
+  **Vstup:** jedno celé číslo a
+  **Výstup:** řádek `Objem: X`

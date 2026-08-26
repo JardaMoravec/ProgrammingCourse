@@ -1,0 +1,18 @@
+title: Souřadnice bodu
+stars: 1
+description: |
+  Napište program, který načte souřadnice x a y a vypíše bod ve tvaru `Bod (X, Y)`.
+cases:
+- name: 12-7
+  input: |
+    12
+    7
+  output: Bod (12, 7)
+- name: 0-0
+  input: |
+    0
+    0
+  output: Bod (0, 0)
+io: |
+  **Vstup:** x, y
+  **Výstup:** bod

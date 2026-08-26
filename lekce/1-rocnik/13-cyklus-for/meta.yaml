@@ -1,0 +1,12 @@
+id: 13-cyklus-for
+rocnik: 1
+nazev: Cyklus for a funkce range
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [12-cyklus-while]
+kompetence: [k2-ridici-struktury]
+svp: [cykly, funkce]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Cykly — For, Range)"
+  - "zdroje/Úkoly 1/úkol 16 - sudá a lichá čísla.docx"

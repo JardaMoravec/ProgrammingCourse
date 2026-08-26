@@ -1,0 +1,23 @@
+title: Obsah čtverce
+stars: 2
+description: Napište program, který načte délku strany čtverce (desetinné číslo) a vypíše jeho obsah.
+cases:
+- name: strana 4
+  input: |
+    4
+  output: 'Obsah čtverce: 16.0'
+  numeric: true
+- name: strana 5
+  input: |
+    5
+  output: 'Obsah čtverce: 25.0'
+  numeric: true
+- name: strana 2.5
+  input: |
+    2.5
+  output: 'Obsah čtverce: 6.25'
+  numeric: true
+io: |
+  **Vstup:** délka strany
+  **Výstup:** `Obsah čtverce: X`
+moodle: PRG-1-04-02

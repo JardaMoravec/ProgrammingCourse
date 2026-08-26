@@ -1,0 +1,12 @@
+rocnik: 2
+nazev: Pokročilý Python
+hodiny_tydne: 2
+modul: python-pokrocile
+
+lekce: []
+# Příklad záznamu po migraci:
+# - id: "01-rekurze"
+#   soubor: lekce/2-rocnik/01-rekurze
+#   nazev: Rekurze
+#   hodiny: 2
+#   prerekvizity: []

@@ -1,0 +1,11 @@
+id: XX-nazev-lekce
+rocnik: 1
+nazev: Název lekce
+modul: python-zaklady
+hodiny: 2
+obtiznost: zacatecnik  # zobrazení: Začátečník | Střední | Pokročilý
+prerekvizity: []
+tagy: []
+# Původní soubory, ze kterých lekce vznikla (pro dohledání i po smazání zdrojů)
+# Příklad: ["zdroje/Programování 1.docx (kap. Proměnné)"]
+migrovano_z: []

@@ -1,0 +1,12 @@
+id: 08-porovnaci-operatory
+rocnik: 1
+nazev: Porovnávací a logické operátory
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: [07-datove-typy]
+kompetence: [k2-ridici-struktury]
+svp: [aritmetické, logické operátory]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Logické operátory)"
+  - "zdroje/02 - Proměnné, datové typy a operátory v Pythonu.pptx"

@@ -1,0 +1,22 @@
+title: Akumulátor součtu
+stars: 2
+description: 'Napište funkci `pridej(x)` s globálním akumulátorem, která přičte x k celkovému součtu. Program načte N a N čísel, N-krát zavolá `pridej`, pak vypíše `Součet: X`.'
+cases:
+- name: 1+2+3
+  input: '3
+
+
+    1
+
+
+    2
+
+
+    3
+
+
+    '
+  output: 'Součet: 6'
+io: '**Vstup:** N, N čísel
+
+  **Výstup:** celkový součet'

@@ -1,0 +1,12 @@
+title: Nahrazení mezer
+stars: 2
+description: |
+  Napište program, který načte text a vypíše ho se všemi mezerami nahrazenými podtržítkem `_`.
+cases:
+- name: hello world
+  input: |
+    hello world python
+  output: hello_world_python
+io: |
+  **Vstup:** text
+  **Výstup:** text s podtržítky

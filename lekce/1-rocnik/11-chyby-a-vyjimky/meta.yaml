@@ -1,0 +1,12 @@
+id: 11-chyby-a-vyjimky
+rocnik: 1
+nazev: Chyby a výjimky (try, except)
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [10-vnorene-podminky]
+kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+svp: [řídicí struktury]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Chyby a výjimky)"
+  - "zdroje/Úkoly 1/úkol 12 - procvičení výjimek.docx"

@@ -1,0 +1,22 @@
+title: Seřazení sestupně
+stars: 2
+description: Napište program, který načte N a N celých čísel, seřadí je sestupně a vypíše jako Python seznam.
+cases:
+- name: 3-1-2
+  input: '3
+
+
+    3
+
+
+    1
+
+
+    2
+
+
+    '
+  output: '[3, 2, 1]'
+io: '**Vstup:** N, N čísel
+
+  **Výstup:** seřazený seznam'

@@ -1,0 +1,22 @@
+title: Převod na celé číslo
+stars: 2
+description: |
+  Napište program, který načte text a pokusí se ho převést na celé číslo. Při úspěchu vypíše `Hodnota: X`, při chybě `Chyba: neplatné celé číslo.`
+
+  Použijte try/except ValueError.
+cases:
+- name: '42'
+  input: |
+    42
+  output: 'Hodnota: 42'
+- name: '12.5'
+  input: |
+    12.5
+  output: 'Chyba: neplatné celé číslo.'
+- name: abc
+  input: |
+    abc
+  output: 'Chyba: neplatné celé číslo.'
+io: |
+  **Vstup:** text
+  **Výstup:** hodnota nebo chyba

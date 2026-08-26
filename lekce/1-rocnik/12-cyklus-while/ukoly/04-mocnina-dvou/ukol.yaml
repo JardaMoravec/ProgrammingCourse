@@ -1,0 +1,24 @@
+title: Největší mocnina dvou
+stars: 2
+description: Napište program, který načte celé číslo n > 0 a while cyklem najde největší mocninu 2, která je ≤ n.
+cases:
+- name: n=20
+  input: '20
+
+    '
+  output: 'Největší mocnina 2: 16'
+- name: n=8
+  input: '8
+
+    '
+  output: 'Největší mocnina 2: 8'
+- name: n=3
+  input: '3
+
+    '
+  output: 'Největší mocnina 2: 2'
+io: '**Vstup:** n
+
+  **Výstup:** mocnina dvou
+
+  '

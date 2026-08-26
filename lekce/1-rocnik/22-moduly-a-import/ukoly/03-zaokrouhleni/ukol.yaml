@@ -1,0 +1,15 @@
+title: Zaokrouhlení
+stars: 2
+description: Napište program, který načte desetinné číslo a vypíše hodnotu zaokrouhlenou na 2 desetinná místa pomocí `round`.
+cases:
+- name: pi/3
+  input: '1.234567
+
+    '
+  output: 'Výsledek: 1.23'
+  numeric: true
+io: '**Vstup:** desetinné číslo
+
+  **Výstup:** zaokrouhlená hodnota
+
+  '

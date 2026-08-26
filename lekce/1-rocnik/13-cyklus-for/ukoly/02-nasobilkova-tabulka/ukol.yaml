@@ -1,0 +1,17 @@
+title: Součet čtverců
+stars: 2
+description: Napište program, který načte celé kladné N a for cyklem vypočítá součet 1² + 2² + … + N².
+cases:
+- name: '3'
+  input: '3
+
+    '
+  output: 'Součet čtverců: 14'
+- name: '1'
+  input: '1
+
+    '
+  output: 'Součet čtverců: 1'
+io: '**Vstup:** N
+
+  **Výstup:** součet čtverců'

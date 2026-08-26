@@ -1,0 +1,21 @@
+title: Bezpečné dělení
+stars: 2
+description: |
+  Napište program, který načte dvě celá čísla a vypíše podíl a/b. Pokud dělíte nulou, vypište `Chyba: dělení nulou.` místo pádu programu.
+
+  Použijte try/except.
+cases:
+- name: 10/2
+  input: |
+    10
+    2
+  output: 'Podíl: 5.0'
+  numeric: true
+- name: deleni-nulou
+  input: |
+    5
+    0
+  output: 'Chyba: dělení nulou.'
+io: |
+  **Vstup:** a, b
+  **Výstup:** podíl nebo chyba

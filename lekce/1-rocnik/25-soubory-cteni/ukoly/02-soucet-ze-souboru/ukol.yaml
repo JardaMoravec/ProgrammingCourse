@@ -1,0 +1,20 @@
+title: Maximum ze souboru
+stars: 2
+description: Napište program, který přečte soubor `data.txt` — každý řádek obsahuje jedno celé číslo — a vypíše maximum.
+cases:
+- name: 3 cisla
+  input: '
+
+    '
+  output: 'Maximum: 30'
+io: '**Vstup:** soubor data.txt
+
+  **Výstup:** maximum'
+files:
+  data.txt: '10
+
+    20
+
+    30
+
+    '

@@ -1,0 +1,19 @@
+title: Histogram známek
+stars: 3
+description: |
+  Napište program, který načte N a N známek (1–5) a vypíše slovník — kolikrát se každá známka vyskytla.
+cases:
+- name: 7 znamek
+  input: |
+    7
+    1
+    2
+    2
+    3
+    1
+    5
+    2
+  output: '{1: 2, 2: 3, 3: 1, 5: 1}'
+io: |
+  **Vstup:** N a N známek
+  **Výstup:** histogram

@@ -1,0 +1,43 @@
+title: Medián známek
+stars: 2
+description: 'Napište program, který načte 5 známek (1–5), seřadí je a vypíše prostřední (medián): `Medián: X`'
+cases:
+- name: 1-2-3-4-5
+  input: '1
+
+
+    2
+
+
+    3
+
+
+    4
+
+
+    5
+
+
+    '
+  output: 'Medián: 3'
+- name: 5-1-3-2-4
+  input: '5
+
+
+    1
+
+
+    3
+
+
+    2
+
+
+    4
+
+
+    '
+  output: 'Medián: 3'
+io: '**Vstup:** 5 známek
+
+  **Výstup:** medián'

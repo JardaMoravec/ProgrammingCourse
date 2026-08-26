@@ -1,0 +1,22 @@
+title: Násobení akumulátorem
+stars: 2
+description: 'Napište funkci `vynasob(x)` s globálním akumulátorem (počáteční hodnota 1). Program načte N a N kladných celých čísel, N-krát zavolá `vynasob`, pak vypíše `Součin: X`.'
+cases:
+- name: 2*3*4
+  input: '3
+
+
+    2
+
+
+    3
+
+
+    4
+
+
+    '
+  output: 'Součin: 24'
+io: '**Vstup:** N, N čísel
+
+  **Výstup:** součin'

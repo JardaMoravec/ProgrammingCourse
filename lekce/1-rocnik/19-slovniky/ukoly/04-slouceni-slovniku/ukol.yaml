@@ -1,0 +1,14 @@
+title: Sloučení slovníků
+stars: 2
+description: |
+  Napište program, který sloučí dva pevné slovníky `a = {"x": 1, "y": 2}` a `b = {"y": 99, "z": 3}` (druhý přepíše shodné klíče) a vypíše výsledek.
+
+  Program **nenačítá vstup**.
+cases:
+- name: slouceni
+  input: |2+
+
+  output: '{''x'': 1, ''y'': 99, ''z'': 3}'
+io: |
+  **Vstup:** žádný
+  **Výstup:** sloučený slovník

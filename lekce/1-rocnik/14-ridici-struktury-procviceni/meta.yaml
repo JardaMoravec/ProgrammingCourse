@@ -1,0 +1,10 @@
+id: 14-ridici-struktury-procviceni
+rocnik: 1
+nazev: Řídicí struktury — souhrn a procvičení
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [13-cyklus-for]
+kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+svp: [řídicí struktury, vnořené podmínky, cykly]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

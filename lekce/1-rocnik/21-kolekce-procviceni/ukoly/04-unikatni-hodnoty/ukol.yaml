@@ -1,0 +1,18 @@
+title: Unikátní hodnoty
+stars: 2
+description: |
+  Napište program, který načte N a N celých čísel a vypíše seznam unikátních hodnot (zachovejte pořadí prvního výskytu, bez `set`).
+cases:
+- name: duplicity
+  input: |
+    6
+    1
+    2
+    2
+    3
+    1
+    4
+  output: '[1, 2, 3, 4]'
+io: |
+  **Vstup:** N a N čísel
+  **Výstup:** unikátní seznam

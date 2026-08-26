@@ -1,0 +1,25 @@
+title: Pozdrav podle jména
+stars: 1
+description: |
+  Napište program, který načte jméno (text) a vypíše:
+
+  `Ahoj, JMÉNO!`
+
+  (např. vstup `Anna` → `Ahoj, Anna!`)
+cases:
+- name: Anna
+  input: |
+    Anna
+  output: Ahoj, Anna!
+- name: Petr
+  input: |
+    Petr
+  output: Ahoj, Petr!
+- name: X
+  input: |
+    X
+  output: Ahoj, X!
+io: |
+  **Vstup:** jméno (text)
+  **Výstup:** `Ahoj, JMÉNO!`
+moodle: PRG-1-04-03

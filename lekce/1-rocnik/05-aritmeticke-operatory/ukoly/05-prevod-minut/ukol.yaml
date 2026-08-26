@@ -1,0 +1,21 @@
+title: Cena s DPH
+stars: 2
+description: 'Napište program, který načte cenu bez DPH (desetinné číslo) a vypíše cenu s 21 % DPH.
+
+
+  Příklad: 100 → `Cena s DPH: 121.0 Kč`'
+cases:
+- name: '100'
+  input: '100
+
+    '
+  output: 'Cena s DPH: 121.0 Kč'
+- name: '50'
+  input: '50
+
+    '
+  output: 'Cena s DPH: 60.5 Kč'
+io: '**Vstup:** cena bez DPH
+
+  **Výstup:** `Cena s DPH: X Kč`'
+moodle: PRG-1-05-05

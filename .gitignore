@@ -1,0 +1,33 @@
+# Generovaný HTML výstup — sestavuje se v CI / lokálně
+graficky-vystup/
+
+# Generované úkoly (zdroj: lekce/**/ukoly/*/ukol.yaml)
+lekce/**/ukoly.md
+lekce/**/ukoly/*/vpl_evaluate.cases
+
+# Referenční řešení úkolů (negenerují se, VPL je nepotřebuje)
+lekce/**/ukoly/reseni/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Tajné údaje
+.env
+.env.*
+*.pem
+credentials.json
+
+zdroje/

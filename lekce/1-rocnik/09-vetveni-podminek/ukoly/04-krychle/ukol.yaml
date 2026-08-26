@@ -1,0 +1,29 @@
+title: Objem a povrch krychle
+stars: 2
+description: |
+  Napište program, který načte stranu krychle `a`. Pokud je záporná, vypište:
+
+  `Chyba: strana nemůže být záporná.`
+
+  Jinak vypište objem a povrch na dvou řádcích:
+
+  ```
+  Objem: ...
+  Povrch: ...
+  ```
+cases:
+- name: a=3
+  input: |
+    3
+  output: 'Objem: 27.0
+
+    Povrch: 54.0'
+  numeric: true
+- name: zaporna
+  input: |
+    -1
+  output: 'Chyba: strana nemůže být záporná.'
+io: |
+  **Vstup:** strana a
+  **Výstup:** chyba nebo objem a povrch
+moodle: PRG-1-09-04

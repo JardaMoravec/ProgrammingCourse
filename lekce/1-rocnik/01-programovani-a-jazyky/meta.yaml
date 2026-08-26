@@ -1,0 +1,12 @@
+id: 01-programovani-a-jazyky
+rocnik: 1
+nazev: Programování a programovací jazyky
+modul: strukturovane-programovani
+hodiny: 3
+obtiznost: zacatecnik
+prerekvizity: []
+kompetence: [k3-strukturovane-programy]
+svp: [anatomie programu]
+migrovano_z:
+  - "zdroje/Programování 1.docx (kap. Programovací jazyky)"
+  - "zdroje/01 - Úvod do Pythonu.pptx"
