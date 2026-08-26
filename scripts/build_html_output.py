@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import html as html_module
 import re
+import shutil
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -20,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LEKCE_ROOT = ROOT / "lekce"
 KURIKULUM_DIR = ROOT / "kurikulum"
 VYSTUP_DIR = ROOT / "graficky-vystup"
+FAVICON_SRC = ROOT / "assets" / "favicon.svg"
 
 ROCNIKY = ("1-rocnik", "2-rocnik", "3-rocnik")
 AUTHOR = "Ing. Jaroslav Moravec"
@@ -38,7 +40,26 @@ CSS = """
   --radius: 10px;
   --font: "Segoe UI", system-ui, -apple-system, sans-serif;
   --mono: "Cascadia Code", "Consolas", monospace;
-  --sidebar-width: 260px;
+  --sidebar-width: 384px;
+  --content-max: 72rem;
+  --backdrop: rgba(15, 23, 42, 0.45);
+  --lineno-bg: #0b1220;
+  --lineno-text: #64748b;
+  --lineno-border: #1e293b;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1419;
+  --surface: #1a2332;
+  --text: #e8eaed;
+  --muted: #94a3b8;
+  --accent: #60a5fa;
+  --accent-soft: #1e3a5f;
+  --border: #2d3748;
+  --code-bg: #0b1220;
+  --code-text: #e2e8f0;
+  --backdrop: rgba(0, 0, 0, 0.55);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,7 +80,7 @@ body {
 .sidebar {
   background: var(--surface);
   border-right: 1px solid var(--border);
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1.25rem;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -128,7 +149,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.45);
+  background: var(--backdrop);
   z-index: 1000;
   border: none;
   padding: 0;
@@ -159,11 +180,12 @@ body.nav-open .sidebar-backdrop {
 
 .sidebar nav a {
   display: block;
-  padding: 0.45rem 0.65rem;
+  padding: 0.45rem 0.75rem;
   border-radius: 6px;
   color: var(--text);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
   margin-bottom: 2px;
 }
 
@@ -193,10 +215,87 @@ body.nav-open .sidebar-backdrop {
   padding: 0.35rem 0.65rem;
 }
 
+.theme-switch {
+  margin-bottom: 1rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  cursor: pointer;
+  line-height: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+}
+
+.theme-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 4.25rem;
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+.theme-thumb {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: calc(50% - 0.2rem);
+  height: calc(100% - 0.4rem);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  transition: transform 0.22s ease;
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .theme-thumb {
+  transform: translateX(100%);
+}
+
+.theme-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.theme-icon svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+html:not([data-theme="dark"]) .theme-sun { color: var(--accent); }
+html[data-theme="dark"] .theme-moon { color: var(--accent); }
+
+.theme-toggle-compact {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.theme-toggle-compact .theme-track {
+  width: 3.75rem;
+  height: 1.85rem;
+}
+
 .main {
-  padding: 2rem clamp(1.25rem, 3vw, 3rem) 4rem;
+  padding: 2rem clamp(1.5rem, 3vw, 3rem) 4rem;
   min-width: 0;
   width: 100%;
+  max-width: var(--content-max);
+  margin-inline: 0 auto;
 }
 
 .breadcrumb {
@@ -348,12 +447,12 @@ body.nav-open .sidebar-backdrop {
 .content .highlighttable .linenos {
   width: 1%;
   padding: 1rem 0.85rem 1rem 1rem;
-  background: #0b1220;
-  color: #64748b;
+  background: var(--lineno-bg);
+  color: var(--lineno-text);
   text-align: right;
   vertical-align: top;
   user-select: none;
-  border-right: 1px solid #1e293b;
+  border-right: 1px solid var(--lineno-border);
 }
 
 .content .highlighttable .linenos pre {
@@ -530,6 +629,8 @@ body.nav-open .sidebar-backdrop {
 
   .main {
     padding: 1rem 1rem 3rem;
+    max-width: none;
+    margin-inline: 0;
   }
 
   .hero {
@@ -593,6 +694,51 @@ body.nav-open .sidebar-backdrop {
 
 
 NAV_JS = """(() => {
+  const STORAGE_KEY = "course-theme";
+
+  const applyTheme = (theme) => {
+    const dark = theme === "dark";
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    document.querySelectorAll(".theme-toggle").forEach((button) => {
+      button.setAttribute("aria-checked", dark ? "true" : "false");
+      button.setAttribute(
+        "aria-label",
+        dark ? "Přepnout světlý režim" : "Přepnout tmavý režim"
+      );
+    });
+  };
+
+  const getStoredTheme = () => {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  };
+
+  const saveTheme = (theme) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  document.querySelectorAll(".theme-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark"
+        ? "light"
+        : "dark";
+      applyTheme(next);
+      saveTheme(next);
+    });
+  });
+
+  const stored = getStoredTheme();
+  if (stored === "dark" || stored === "light") {
+    applyTheme(stored);
+  }
+
   const toggle = document.querySelector(".nav-toggle");
   const sidebar = document.getElementById("site-sidebar");
   const backdrop = document.querySelector(".sidebar-backdrop");
@@ -624,6 +770,10 @@ NAV_JS = """(() => {
   });
 })();
 """
+
+THEME_INIT_SCRIPT = """<script>
+(function(){try{var t=localStorage.getItem("course-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();
+</script>"""
 
 
 RESENI_PATTERN = re.compile(r"@reseni\s*\n(.*?)\n@end", re.DOTALL)
@@ -877,6 +1027,24 @@ def js_href(ctx: RocnikContext | None) -> str:
     return "../nav.js" if ctx else "nav.js"
 
 
+def favicon_href(ctx: RocnikContext | None) -> str:
+    return "../favicon.svg" if ctx else "favicon.svg"
+
+
+THEME_ICONS = """<span class="theme-icon theme-sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+        <span class="theme-thumb" aria-hidden="true"></span>
+        <span class="theme-icon theme-moon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>"""
+
+
+def theme_toggle_html(*, compact: bool = False) -> str:
+    cls = "theme-toggle theme-toggle-compact" if compact else "theme-toggle"
+    wrap_open = "" if compact else '<div class="theme-switch">'
+    wrap_close = "" if compact else "</div>"
+    return f"""{wrap_open}<button type="button" class="{cls}" role="switch" aria-checked="false" aria-label="Přepnout tmavý režim">
+        <span class="theme-track">{THEME_ICONS}</span>
+      </button>{wrap_close}"""
+
+
 def layout_html(sidebar_inner: str, body: str) -> str:
     return f"""  <button type="button" class="sidebar-backdrop" hidden aria-label="Zavřít menu"></button>
   <header class="mobile-bar">
@@ -884,6 +1052,7 @@ def layout_html(sidebar_inner: str, body: str) -> str:
       <span></span><span></span><span></span>
     </button>
     <span class="mobile-bar-title">Kurz programování</span>
+    {theme_toggle_html(compact=True)}
   </header>
   <div class="layout">
     <aside class="sidebar" id="site-sidebar">
@@ -911,7 +1080,9 @@ def document_shell(
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{AUTHOR}">
   <title>{window_title}</title>
+  <link rel="icon" href="{favicon_href(ctx)}" type="image/svg+xml">
   <link rel="stylesheet" href="{css_href(ctx) if ctx else "styles.css"}">
+  {THEME_INIT_SCRIPT}
 </head>
 <body>
 {layout_html(sidebar_inner, body)}
@@ -955,7 +1126,8 @@ def sidebar_html(ctx: RocnikContext, active_id: str = "") -> str:
 def sidebar_header_html(subtitle: str) -> str:
     return f"""<h1>Kurz programování</h1>
       <p class="sub">{subtitle}</p>
-      <p class="author">{AUTHOR}</p>"""
+      <p class="author">{AUTHOR}</p>
+      {theme_toggle_html()}"""
 
 
 def page_shell(ctx: RocnikContext, title: str, body: str, active_id: str = "") -> str:
@@ -1010,7 +1182,7 @@ def build_rocnik_index(ctx: RocnikContext) -> None:
           <span class="badge">{len(ctx.lessons)} lekcí</span>
         </div>
       </div>
-      <p style="color: var(--muted); max-width: 60ch;">
+      <p style="color: var(--muted); max-width: 72ch;">
         Studijní materiály k předmětu Programování — {ctx.label.lower()}, jazyk {rocnik_jazyk(ctx)}.
         Vyberte lekci v menu nebo níže.
       </p>
@@ -1126,7 +1298,7 @@ def build_root_index(contexts: list[RocnikContext]) -> None:
           <span class="badge">{AUTHOR}</span>
         </div>
       </div>
-      <p style="color: var(--muted); max-width: 60ch;">
+      <p style="color: var(--muted); max-width: 72ch;">
         Studijní materiály rozdělené podle ročníků. Vyberte ročník — každý má vlastní přehled a navigaci lekcí.
       </p>
       <div class="index-grid">{"".join(cards)}</div>
@@ -1173,6 +1345,8 @@ def main() -> None:
     VYSTUP_DIR.mkdir(exist_ok=True)
     (VYSTUP_DIR / "styles.css").write_text(build_styles_css(), encoding="utf-8")
     (VYSTUP_DIR / "nav.js").write_text(NAV_JS.strip() + "\n", encoding="utf-8")
+    if FAVICON_SRC.is_file():
+        shutil.copy2(FAVICON_SRC, VYSTUP_DIR / "favicon.svg")
     cleanup_legacy_root_html()
 
     contexts = [make_context(slug) for slug in ROCNIKY]
