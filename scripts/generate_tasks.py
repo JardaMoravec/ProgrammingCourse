@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Generuje ukoly.md a VPL testy z lekce/**/ukoly/*/ukol.yaml."""
+"""Generuje ukoly.md a VPL testy (cases / Flask hodnotitel) z lekce/**/ukoly/*/ukol.yaml."""
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 import sys
@@ -12,6 +13,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 LEKCE_ROOT = ROOT / "lekce"
+SABLONY = ROOT / "sablony"
 
 TASK_DIR_RE = re.compile(r"^(\d{2})-([a-z0-9-]+)$")
 
@@ -76,6 +78,10 @@ def load_task(task_dir: Path) -> dict | None:
         task["files"] = raw["files"]
     if raw.get("odevzdani"):
         task["odevzdani"] = raw["odevzdani"]
+    if raw.get("soubor"):
+        task["soubor"] = raw["soubor"]
+    if raw.get("evaluate"):
+        task["evaluate"] = raw["evaluate"]
     return task
 
 
@@ -116,7 +122,9 @@ def build_ukoly_md(
     lesson_id: str, lesson_name: str, tasks: list[dict], rocnik: str
 ) -> str:
     num = lesson_id[:2]
-    has_vpl = any((t.get("typ") or "vpl") == "vpl" and t.get("cases") for t in tasks)
+    types = {(t.get("typ") or "vpl") for t in tasks}
+    has_vpl = "vpl" in types and any(t.get("cases") for t in tasks)
+    has_flask = "flask" in types
     parts = [
         f"# Úkoly — {lesson_name}",
         "",
@@ -129,6 +137,12 @@ def build_ukoly_md(
             "> V Moodle spusťte **Evaluate** — automatický test ověří výstup programu.",
             "",
             "**Odevzdání:** soubor `main.py` (nebo název / způsob uvedený u úkolu).",
+            "",
+        ]
+    elif has_flask:
+        parts += [
+            "> V Moodle spusťte **Evaluate** — test ověří routy a HTML značky",
+            "> (text na stránce může být vlastní).",
             "",
         ]
     for t in tasks:
@@ -171,8 +185,43 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
             cases_path.write_text(format_vpl_cases(t["cases"]), encoding="utf-8")
         elif cases_path.exists():
             cases_path.unlink()
+        write_flask_vpl(task_dir, t)
         for fname, content in t.get("files", {}).items():
             (task_dir / fname).write_text(content, encoding="utf-8")
+
+
+def format_flask_evaluator(soubor: str, tests: list) -> str:
+    template = (SABLONY / "vpl_evaluate_flask.py").read_text(encoding="utf-8")
+    if "__STUDENT_FILE__" not in template or "__TESTS__" not in template:
+        raise ValueError("sablony/vpl_evaluate_flask.py: chybí placeholdery")
+    return template.replace("__STUDENT_FILE__", soubor, 1).replace(
+        "__TESTS__",
+        json.dumps(tests, ensure_ascii=True, indent=2),
+        1,
+    )
+
+
+def write_flask_vpl(task_dir: Path, task: dict) -> None:
+    py_path = task_dir / "vpl_evaluate.py"
+    sh_path = task_dir / "vpl_evaluate.sh"
+    if task.get("typ") != "flask":
+        if py_path.exists():
+            py_path.unlink()
+        if sh_path.exists():
+            sh_path.unlink()
+        return
+    soubor = task.get("soubor")
+    tests = task.get("evaluate") or []
+    if not soubor or not tests:
+        raise ValueError(
+            f"{task_dir / 'ukol.yaml'}: typ flask vyžaduje soubor: a evaluate:"
+        )
+    py_path.write_text(format_flask_evaluator(soubor, tests), encoding="utf-8")
+    sh_text = (SABLONY / "vpl_evaluate_flask.sh").read_text(encoding="utf-8")
+    sh_text = sh_text.replace("\r\n", "\n")
+    if not sh_text.endswith("\n"):
+        sh_text += "\n"
+    sh_path.write_bytes(sh_text.encode("utf-8"))
 
 
 def lesson_dirs() -> list[Path]:

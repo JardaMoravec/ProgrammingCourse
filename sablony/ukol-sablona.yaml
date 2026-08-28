@@ -33,3 +33,16 @@ cases:
 #   data.txt: |
 #     radek1
 #     radek2
+
+# Flask (3. ročník) — místo cases použijte:
+# typ: flask
+# soubor: aplikace.py
+# evaluate:
+#   - name: Hlavní stránka
+#     get: /
+#     status: 200
+#     tags: [h1, p]
+#     min_tags:
+#       p: 2
+#     href: [/kontakt]
+

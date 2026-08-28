@@ -16,12 +16,14 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `ukoly/*/ukol.yaml`          | Zadání úkolu + VPL testy (**zdroj pravdy**)         | učitel             |
 | `ukoly/*/data.txt`           | Testovací data u souborových úkolů                  | učitel             |
 | `ukoly.md`                   | Souhrn úkolů pro žáky (**generované**, není v Gitu) | CI / lokální build |
-| `ukoly/*/vpl_evaluate.cases` | VPL soubor pro Moodle (**generované**)              | CI / lokální build |
+| `ukoly/*/vpl_evaluate.cases` | VPL stdin testy (**generované**, 1. ročník)         | CI / lokální build |
+| `ukoly/*/vpl_evaluate.py`    | VPL Flask hodnotitel (**generované**)               | CI / lokální build |
+| `ukoly/*/vpl_evaluate.sh`    | VPL obálka pro Flask hodnotitel (**generované**)    | CI / lokální build |
 | `meta.yaml`                  | Metadata lekce                                      | systém             |
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03** má 1 úkol (soubor `.py`, ne VPL). Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
+Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03** a **04** mají Flask úkoly s VPL hodnotitelem (routy a HTML). Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
 
 ## Přehled lekcí
 
@@ -29,8 +31,8 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 |---|-----|------|-----------|
 | 01 | `01-jak-funguje-web` | Jak funguje web | 1 (soubor) |
 | 02 | `02-html-css-shrnuti` | HTML a CSS — shrnutí | — |
-| 03 | `03-uvod-do-flasku` | Úvod do Flasku | 1 (soubor) |
-| 04 | `04-routy-a-pohledy` | Routy a pohledové funkce | — |
+| 03 | `03-uvod-do-flasku` | Úvod do Flasku | 1 |
+| 04 | `04-routy-a-pohledy` | Routy a pohledové funkce | 2 |
 | 05 | `05-sablony-jinja` | Šablony Jinja2 (4 h) | — |
 | 06 | `06-dedicnost-sablon` | Dědičnost šablon | — |
 | 07 | `07-staticke-soubory` | Statické soubory (CSS, obrázky) | — |
@@ -51,12 +53,12 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 22 | `22-projekt-implementace` | Projekt — implementace (20 h) | — |
 | 23 | `23-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
 
-**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 04–20; lekce 01 a 03 mají úkol bez VPL).
+**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 05–20; lekce 01 má úkol bez VPL, lekce 03–04 mají Flask VPL).
 
 ## Build
 
 ```bash
-python scripts/generate_tasks.py          # ukoly.md + vpl_evaluate.cases z ukol.yaml
+python scripts/generate_tasks.py          # ukoly.md + VPL testy z ukol.yaml
 python scripts/build_html_output.py   # HTML pro žáky
 ```
 

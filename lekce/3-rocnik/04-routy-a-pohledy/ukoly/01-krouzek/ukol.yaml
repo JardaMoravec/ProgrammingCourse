@@ -1,0 +1,38 @@
+title: Stránky kroužku
+stars: 2
+moodle: PRG-3-04-01
+typ: flask
+soubor: krouzek.py
+description: |
+  Napište Flask aplikaci v souboru `krouzek.py` pro **školní kroužek**
+  (programování, robotika, foto — vyberte si).
+
+  Tři cesty, odpověď je **krátké HTML** (ne prostý text). Na každé stránce
+  odkazy na **obě ostatní** cesty (`<a href="…">`):
+
+  | Cesta | Obsah stránky |
+  |-------|----------------|
+  | `/` | název kroužku a jedna věta, o čem je |
+  | `/termin` | kdy a kde se scházíte (vymyslete) |
+  | `/kontakt` | jméno vedoucího nebo e-mail (může být fiktivní) |
+
+  Na každé stránce aspoň `<h1>` a jeden `<p>`. Spusťte aplikaci a v prohlížeči
+  ověřte, že odkazy nekončí na 404.
+odevzdani: |
+  Do Moodle nahrajte soubor `krouzek.py` a spusťte **Evaluate**.
+evaluate:
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1, p]
+    href: [/termin, /kontakt]
+  - name: Termín
+    get: /termin
+    status: 200
+    tags: [h1, p]
+    href: [/, /kontakt]
+  - name: Kontakt
+    get: /kontakt
+    status: 200
+    tags: [h1, p]
+    href: [/, /termin]

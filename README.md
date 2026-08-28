@@ -19,7 +19,8 @@ Vše ostatní je **generované**, **šablony**, **nástroje** nebo **archiv migr
 |--------|-----------|-------|
 | `graficky-vystup/` | `build_html_output.py` | `lekce/**/*.md` |
 | `lekce/**/ukoly.md` | `generate_tasks.py` | `lekce/**/ukoly/*/ukol.yaml` |
-| `lekce/**/ukoly/*/vpl_evaluate.cases` | `generate_tasks.py` | `ukol.yaml` |
+| `lekce/**/ukoly/*/vpl_evaluate.cases` | `generate_tasks.py` | `ukol.yaml` (1. ročník) |
+| `lekce/**/ukoly/*/vpl_evaluate.py` + `.sh` | `generate_tasks.py` | `ukol.yaml` (Flask, 3. ročník) |
 
 ### Není datová vrstva
 
@@ -58,7 +59,7 @@ Detailní osnova: `kurikulum/`.
 
 ```bash
 pip install -r requirements.txt
-python scripts/generate_tasks.py          # ukoly.md + vpl_evaluate.cases z ukol.yaml
+python scripts/generate_tasks.py          # ukoly.md + VPL testy z ukol.yaml
 python scripts/build_html_output.py   # HTML pro prohlížeč
 ```
 

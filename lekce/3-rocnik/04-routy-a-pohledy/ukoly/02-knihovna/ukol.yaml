@@ -1,0 +1,39 @@
+title: Městská knihovna
+stars: 3
+moodle: PRG-3-04-02
+typ: flask
+soubor: knihovna.py
+description: |
+  Napište Flask aplikaci v souboru `knihovna.py` pro **městskou knihovnu**
+  (název si vymyslete).
+
+  Tři cesty, odpověď je **HTML**. Na každé stránce odkazy na obě ostatní:
+
+  | Cesta | Obsah |
+  |-------|--------|
+  | `/` | `<h1>` s názvem knihovny a `<p>` s jednou větou, kde sídlí |
+  | `/katalog` | `<h1>Katalog</h1>` a seznam **alespoň tří** titulů jako `<ul>` / `<li>` |
+  | `/kontakt` | otevírací doba nebo e-mail v `<p>` |
+
+  Katalog musí být seznam (`ul`), ne tři odstavce. Spusťte aplikaci a ověřte
+  všechny tři adresy i odkazy mezi nimi.
+odevzdani: |
+  Do Moodle nahrajte soubor `knihovna.py` a spusťte **Evaluate**.
+evaluate:
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1, p]
+    href: [/katalog, /kontakt]
+  - name: Katalog
+    get: /katalog
+    status: 200
+    tags: [h1, ul, li]
+    min_tags:
+      li: 3
+    href: [/, /kontakt]
+  - name: Kontakt
+    get: /kontakt
+    status: 200
+    tags: [p]
+    href: [/, /katalog]

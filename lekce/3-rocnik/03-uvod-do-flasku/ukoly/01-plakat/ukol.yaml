@@ -1,7 +1,8 @@
 title: Plakát školní akce
 stars: 2
 moodle: PRG-3-03-01
-typ: soubor
+typ: flask
+soubor: plakat.py
 description: |
   Napište Flask aplikaci v souboru `plakat.py`. Na adrese `/` vraťte **jednu**
   stránku — krátké HTML (ne prostý text) s plakátem **školní akce**
@@ -18,4 +19,11 @@ description: |
   Spusťte aplikaci a v prohlížeči ověřte, že se značky vykreslily (nadpis
   vypadá jako nadpis, ne jako `<h1>`).
 odevzdani: |
-  Do Moodle nahrajte soubor `plakat.py`.
+  Do Moodle nahrajte soubor `plakat.py` a spusťte **Evaluate**.
+evaluate:
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1, p]
+    min_tags:
+      p: 2

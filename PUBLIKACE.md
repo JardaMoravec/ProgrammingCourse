@@ -4,7 +4,7 @@ Studijní web se po každém pushi do větve `main` automaticky znovu sestaví a
 
 ## Doporučené nastavení repozitáře
 
-Repozitář může být **veřejný** — referenční řešení úkolů v repozitáři nejsou (VPL používá jen `vpl_evaluate.cases`). Řešení cvičení v hodině jsou v HTML materiálech u `@reseni` (záměr pro výuku).
+Repozitář může být **veřejný** — referenční řešení úkolů v repozitáři nejsou (VPL používá `vpl_evaluate.cases` a u Flasku `vpl_evaluate.py`). Řešení cvičení v hodině jsou v HTML materiálech u `@reseni` (záměr pro výuku).
 
 Pro soukromý zdrojový kód je stále možné repo nechat private; Pages ze soukromého repa vyžaduje **GitHub Pro** nebo **[GitHub Education](https://education.github.com/)**.
 

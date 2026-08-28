@@ -2,7 +2,7 @@
 
 Návod pro učitele: jak z repozitáře založit automaticky hodnocené úkoly v Moodle.
 
-## Struktura v repozitáři
+## 1. ročník — stdin / stdout (`vpl_evaluate.cases`)
 
 Každá lekce **04–27** obsahuje:
 
@@ -18,7 +18,7 @@ lekce/1-rocnik/NN-nazev/
 
 Lekce **01–03** jsou teoretické — úkoly nemají.
 
-## Založení aktivity v Moodle
+### Založení aktivity
 
 1. Přidejte aktivitu **Virtual programming lab**.
 2. Jazyk: **Python 3**.
@@ -30,7 +30,7 @@ Lekce **01–03** jsou teoretické — úkoly nemají.
 6. V **Test cases** vložte stejný obsah `vpl_evaluate.cases` (nebo jen v Execution files — dle verze VPL).
 7. Zkratka názvu: kód z `ukoly.md`, např. `PRG-1-09-01`.
 
-## Formát vpl_evaluate.cases (BIOTES)
+### Formát vpl_evaluate.cases (BIOTES)
 
 ```
 Case = Popis testu
@@ -48,6 +48,43 @@ Output = "Součet: 30"
 - Pro čísla s desetinnou tečkou lze použít numerický režim (viz dokumentace VPL).
 
 Dokumentace: [VPL BIOTES](https://vpl.dis.ulpgc.es/documentation/vpl-4.4.2/biotes.html)
+
+## 3. ročník — Flask (`vpl_evaluate.py` + `vpl_evaluate.sh`)
+
+Úkoly ve Flasku nečtou stdin. Generátor z `ukol.yaml` (`typ: flask`) vytvoří **validační skripty**, které aplikaci načtou a přes testovací klient ověří routy a HTML značky (ne přesný text na stránce).
+
+```
+lekce/3-rocnik/NN-nazev/ukoly/01-slug/
+  ukol.yaml
+  vpl_evaluate.py    ← generované
+  vpl_evaluate.sh    ← generované
+```
+
+Lekce **01** (záložka Síť) zůstává odevzdání **souboru** (snímek / výpis) — bez VPL.
+
+### Prostředí jailu
+
+V automatickém hodnocení musí být nainstalovaný **Flask** (stejně jako ho žáci mají lokálně):
+
+```bash
+python3 -m pip install flask
+```
+
+Bez toho skript napíše, že Flask v jailu chybí, a dá 0 bodů.
+
+### Založení aktivity
+
+1. Přidejte aktivitu **Virtual programming lab**.
+2. Jazyk: **Python 3**.
+3. Požadovaný soubor od studenta: přesně název z zadání (`plakat.py`, `krouzek.py`, …).
+4. Zapněte **Automatic evaluation**.
+5. Do **Execution files** vložte oba generované soubory:
+   - `vpl_evaluate.sh`
+   - `vpl_evaluate.py`
+6. Označte je jako soubory **ke spuštění / hodnocení**, ne jako odevzdání žáka.
+7. Zkratka názvu: kód z `ukoly.md`, např. `PRG-3-04-01`.
+
+Skript hodnotí strukturu (stav 200, značky `h1`/`p`/`ul`, odkazy `href`). Vlastní text (název kroužku, jídlo, tituly knih) je v pořádku.
 
 ## Generování / úpravy
 
@@ -77,4 +114,4 @@ python scripts/build_html_output.py
 ## Hodnocení
 
 - **Cvičení** v hodině — s řešením v materiálech (záložka Cvičení).
-- **Úkoly** — samostatná práce, odevzdání a bodování přes VPL v Moodle.
+- **Úkoly** — samostatná práce, odevzdání a bodování přes VPL v Moodle (1. ročník stdin, 3. ročník Flask), nebo soubor u úkolů bez automatického testu.

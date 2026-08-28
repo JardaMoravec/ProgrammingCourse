@@ -4,6 +4,8 @@ graficky-vystup/
 # Generované úkoly (zdroj: lekce/**/ukoly/*/ukol.yaml)
 lekce/**/ukoly.md
 lekce/**/ukoly/*/vpl_evaluate.cases
+lekce/**/ukoly/*/vpl_evaluate.py
+lekce/**/ukoly/*/vpl_evaluate.sh
 
 # Referenční řešení úkolů (negenerují se, VPL je nepotřebuje)
 lekce/**/ukoly/reseni/
