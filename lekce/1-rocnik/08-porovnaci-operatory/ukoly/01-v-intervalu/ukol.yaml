@@ -1,24 +1,29 @@
-title: Číslo v intervalu
+title: Body v rozsahu prospěchu
 stars: 2
+moodle: PRG-1-08-01
 description: |
-  Napište program, který načte celé číslo `x` a vypíše `Ano`, pokud je x v intervalu **10 až 20 včetně**, jinak `Ne`.
-cases:
-- name: '15'
-  input: |
-    15
-  output: Ano
-- name: '10'
-  input: |
-    10
-  output: Ano
-- name: '5'
-  input: |
-    5
-  output: Ne
-- name: '21'
-  input: |
-    21
-  output: Ne
+  Škola považuje test za **splněný**, pokud má student **50 až 100 bodů včetně**.
+  Napište program, který načte počet bodů a vypíše `True` nebo `False` podle toho,
+  zda body spadají do tohoto rozsahu.
+
+  Použijte řetězení porovnání.
 io: |
-  **Vstup:** celé číslo x
-  **Výstup:** `Ano` nebo `Ne`
+  **Vstup:** celé číslo (body)
+  **Výstup:** `True` nebo `False`
+cases:
+  - name: 75 bodu
+    input: |
+      75
+    output: "True"
+  - name: 50 bodu
+    input: |
+      50
+    output: "True"
+  - name: 49 bodu
+    input: |
+      49
+    output: "False"
+  - name: 100 bodu
+    input: |
+      100
+    output: "True"

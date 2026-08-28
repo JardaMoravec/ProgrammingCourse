@@ -8,7 +8,7 @@ description: |
   Desetinná část: ...
   ```
 
-  Desetinná část vypište beze změny (float).
+  Celočíselnou část získejte přes `int(...)`, desetinnou část vypište beze změny (původní float).
 cases:
 - name: '3.14'
   input: |

@@ -1,19 +1,26 @@
-title: Sudé nebo liché
+title: Dvojciferné číslo
 stars: 1
-description: Napište program, který načte celé číslo a vypíše `Sudé` nebo `Liché`.
-cases:
-- name: '4'
-  input: |
-    4
-  output: Sudé
-- name: '7'
-  input: |
-    7
-  output: Liché
-- name: '0'
-  input: |
-    0
-  output: Sudé
+moodle: PRG-1-08-03
+description: |
+  Napište program, který načte celé číslo a vypíše `True` nebo `False` podle toho,
+  zda je **dvojciferné** (od 10 do 99 včetně).
 io: |
   **Vstup:** celé číslo
-  **Výstup:** `Sudé` nebo `Liché`
+  **Výstup:** `True` nebo `False`
+cases:
+  - name: "42"
+    input: |
+      42
+    output: "True"
+  - name: "9"
+    input: |
+      9
+    output: "False"
+  - name: "100"
+    input: |
+      100
+    output: "False"
+  - name: "10"
+    input: |
+      10
+    output: "True"

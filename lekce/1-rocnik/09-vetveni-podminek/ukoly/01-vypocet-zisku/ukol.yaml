@@ -1,31 +1,29 @@
-title: Cena po slevě
+title: Levnější obchod
 stars: 2
-description: 'Napište program, který načte původní cenu a slevu v procentech (desetinná čísla) a vypíše cenu po slevě:
-
-
-  `Cena po slevě: X Kč`'
-cases:
-- name: 20%
-  input: '1000
-
-
-    20
-
-
-    '
-  output: 'Cena po slevě: 800.0 Kč'
-  numeric: true
-- name: 10%
-  input: '500
-
-
-    10
-
-
-    '
-  output: 'Cena po slevě: 450.0 Kč'
-  numeric: true
-io: '**Vstup:** cena, sleva v %
-
-  **Výstup:** cena po slevě'
 moodle: PRG-1-09-01
+description: |
+  Napište program, který načte cenu stejného zboží v **obchodě A** a **obchodě B** (Kč)
+  a vypíše, kde je výhodněji:
+
+  - levnější je A → `Obchod A`
+  - levnější je B → `Obchod B`
+  - stejná cena → `Stejná cena`
+io: |
+  **Vstup:** cena v A, cena v B
+  **Výstup:** jeden řádek
+cases:
+  - name: B levnejsi
+    input: |
+      100
+      80
+    output: "Obchod B"
+  - name: stejna cena
+    input: |
+      50
+      50
+    output: "Stejná cena"
+  - name: A levnejsi
+    input: |
+      30
+      40
+    output: "Obchod A"

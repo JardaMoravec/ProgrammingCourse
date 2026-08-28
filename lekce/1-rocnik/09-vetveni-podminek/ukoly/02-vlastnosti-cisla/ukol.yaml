@@ -1,29 +1,23 @@
-title: Kategorie věku
+title: Prospěl na testu
 stars: 2
-description: 'Napište program, který načte věk (celé číslo) a vypíše kategorii:
-
-  - méně než 18 → `dítě`
-
-  - 18 až 64 → `dospělý`
-
-  - 65 a více → `senior`'
-cases:
-- name: '10'
-  input: '10
-
-    '
-  output: dítě
-- name: '30'
-  input: '30
-
-    '
-  output: dospělý
-- name: '70'
-  input: '70
-
-    '
-  output: senior
-io: '**Vstup:** věk
-
-  **Výstup:** kategorie'
 moodle: PRG-1-09-02
+description: |
+  Napište program, který načte body z testu (0–100). Pokud je hodnota **mimo rozsah**,
+  vypište `Chyba: body mimo rozsah.` Jinak vypište `Prospěl` (50 bodů a více)
+  nebo `Neprospěl` (méně než 50).
+io: |
+  **Vstup:** body (celé číslo)
+  **Výstup:** chyba, nebo Prospěl / Neprospěl
+cases:
+  - name: prospech
+    input: |
+      75
+    output: "Prospěl"
+  - name: neprospech
+    input: |
+      49
+    output: "Neprospěl"
+  - name: mimo rozsah
+    input: |
+      101
+    output: "Chyba: body mimo rozsah."

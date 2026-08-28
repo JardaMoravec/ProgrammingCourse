@@ -1,0 +1,25 @@
+title: Cena z e-shopu
+stars: 1
+moodle: PRG-1-07-02
+description: |
+  E-shop posílá cenu produktu z webového formuláře vždy jako **text** (např. `"89.90"`).
+  Napište program, který cenu načte, pomocí `float()` ji převede na desetinné číslo
+  a vypíše:
+
+  `K úhradě: 89.9 Kč`
+io: |
+  **Vstup:** text s cenou v Kč
+  **Výstup:** `K úhradě: X Kč`
+cases:
+  - name: 89.90
+    input: |
+      89.90
+    output: "K úhradě: 89.9 Kč"
+  - name: 12.50
+    input: |
+      12.50
+    output: "K úhradě: 12.5 Kč"
+  - name: 100
+    input: |
+      100
+    output: "K úhradě: 100.0 Kč"

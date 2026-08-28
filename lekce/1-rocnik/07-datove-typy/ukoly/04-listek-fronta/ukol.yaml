@@ -1,0 +1,32 @@
+title: Pořadí ve frontě
+stars: 2
+moodle: PRG-1-07-04
+description: |
+  Na úřadě si vyzvednete lístek a na displeji vidíte, které číslo se právě volá.
+  Napište program, který načte:
+
+  1. **vaše číslo lístku** (celé číslo),
+  2. **právě volané číslo** (celé číslo).
+
+  Spočítejte, kolik lidí je před vámi ve frontě.
+
+  Vypište např.: `Váš lístek: č. 23, před vámi: 4`
+io: |
+  **Vstup:** vaše číslo, právě volané číslo
+  **Výstup:** `Váš lístek: č. X, před vámi: Y`
+cases:
+  - name: listek 23, vola 18
+    input: |
+      23
+      18
+    output: "Váš lístek: č. 23, před vámi: 4"
+  - name: listek 10, vola 7
+    input: |
+      10
+      7
+    output: "Váš lístek: č. 10, před vámi: 2"
+  - name: listek 15, vola 14
+    input: |
+      15
+      14
+    output: "Váš lístek: č. 15, před vámi: 0"

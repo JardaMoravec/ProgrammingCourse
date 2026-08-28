@@ -1,38 +1,32 @@
-title: Výpočet BMI
+title: Teplotní režim
 stars: 3
-description: |
-  Napište program, který načte váhu (kg) a výšku (m), vypočítá BMI a vypíše kategorii.
-
-  BMI = váha / výška²
-
-  Nejdříve řádek `BMI je X.XX.` (dvě desetinná místa), pak kategorie:
-
-  | BMI | Kategorie |
-  |-----|-----------|
-  | < 16.5 | Podvýživa. |
-  | < 18.5 | Podváha. |
-  | < 25 | Ideální váha. |
-  | < 30 | Nadváha. |
-  | < 35 | Mírná obezita. |
-  | jinak | Obezita. |
-cases:
-- name: idealni
-  input: |
-    70
-    1.75
-  output: 'BMI je 22.86.
-
-    Ideální váha.'
-  numeric: true
-- name: podvaha
-  input: |
-    45
-    1.75
-  output: 'BMI je 14.69.
-
-    Podvýživa.'
-  numeric: true
-io: |
-  **Vstup:** váha (kg), výška (m)
-  **Výstup:** BMI a kategorie
 moodle: PRG-1-09-03
+description: |
+  Napište program, který načte teplotu venku (°C, desetinné číslo) a vypíše jednu z kategorií:
+
+  | Teplota | Výstup |
+  |---------|--------|
+  | < 0 | `Ledová` |
+  | < 15 | `Chladno` |
+  | < 25 | `Příjemně` |
+  | jinak | `Horko` |
+io: |
+  **Vstup:** teplota v °C
+  **Výstup:** jedno slovo (kategorie)
+cases:
+  - name: ledova
+    input: |
+      -5
+    output: "Ledová"
+  - name: chladno
+    input: |
+      10
+    output: "Chladno"
+  - name: prijemne
+    input: |
+      20
+    output: "Příjemně"
+  - name: horko
+    input: |
+      30
+    output: "Horko"

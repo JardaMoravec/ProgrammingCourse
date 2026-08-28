@@ -4,7 +4,13 @@
 
 Pro každou hodnotu určete typ pomocí `type()`:
 
-`42`, `3.0`, `"3"`, `True`, `False`, `0`
+- `42`
+- `3.0`
+- `"3"`
+- `True`
+- `False`
+- `"False"`
+- `0`
 
 @reseni
 ```python
@@ -13,6 +19,7 @@ print(type(3.0))     # <class 'float'>
 print(type("3"))     # <class 'str'>
 print(type(True))    # <class 'bool'>
 print(type(False))   # <class 'bool'>
+print(type("False)") # <class 'str'>
 print(type(0))       # <class 'int'>  — nula je int, ne bool
 ```
 @end

@@ -86,6 +86,32 @@ print((ovoce + ", ") * 3)    # opakování řetězce
 
 → viz `priklady/promenne.py`
 
+## Mutable a immutable
+
+**Mutable** = objekt lze **měnit za běhu** (doplnit prvek, změnit obsah). **Immutable** = objekt **nelze změnit** — každá „úprava“ vytvoří **nový** objekt.
+
+| Mutable (měnitelné) | Immutable (neměnitelné) |
+|---------------------|-------------------------|
+| `list`, `dict`, `set` | `int`, `float`, `bool`, `str`, `tuple` |
+
+```python
+seznam = [1, 2, 3]
+seznam.append(4)      # OK — seznam je mutable
+
+text = "Ahoj"
+# text[0] = "X"     # chyba — řetězec je immutable
+text = text + "!"     # vytvoří se nový řetězec
+```
+
+V Pythonu **nejde nastavit proměnnou jako immutable** (neexistuje `const` jako v jiných jazycích). Jméno `x` vždy jen ukazuje na objekt — klidně na jiný:
+
+```python
+x = 10
+x = 20   # dovoleno — přesměrování jména
+```
+
+> **Poznámka:** Neměnnost je u Pythonu věcí **typu objektu** a **kultury jazyka** (standardní knihovna, zvyklosti programátorů) — ne příkazu, kterým byste proměnnou „uzamkli“. Konstanty proto píšeme konvencí `MAX_HODNOT = 100`; interpret to sice nevynucuje, ale **dodržuje se to jako pravidlo týmu / komunity** kolem Pythonu. Detailněji o typech v [lekci 07](../07-datove-typy/lekce.md).
+
 ## Deklarace, definice, inicializace
 
 | Pojem | V Pythonu |
@@ -103,6 +129,8 @@ V Pythonu inicializace a definice proběhnou **v jednom kroku** pomocí `=`.
 | Proměnná | Pojmenovaný odkaz na hodnotu |
 | Dynamický typ | Typ se nemusí deklarovat |
 | Přiřazení | `=` uloží hodnotu do proměnné |
+| Mutable | objekt lze měnit (např. `list`) |
+| Immutable | objekt nelze měnit (např. `str`, `int`) |
 
 ## Co dál
 

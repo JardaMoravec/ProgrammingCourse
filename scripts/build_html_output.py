@@ -430,6 +430,8 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
   background: var(--bg);
   padding: 0.15rem 0.35rem;
   border-radius: 4px;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
 .content .code-block {
@@ -451,6 +453,8 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
   font-family: var(--mono);
   font-size: 0.85rem;
   line-height: 1.5;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
 .content .highlighttable .linenos {

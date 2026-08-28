@@ -1,20 +1,22 @@
-title: Dělitelnost pěti
+title: Dělitelnost třemi
 stars: 2
+moodle: PRG-1-08-02
 description: |
-  Napište program, který načte celé číslo a vypíše `Ano`, pokud je dělitelné pěti, jinak `Ne`.
-cases:
-- name: '25'
-  input: |
-    25
-  output: Ano
-- name: '12'
-  input: |
-    12
-  output: Ne
-- name: '0'
-  input: |
-    0
-  output: Ano
+  Napište program, který načte celé číslo a vypíše `True` nebo `False` podle toho,
+  zda je **dělitelné třemi** (beze zbytku).
 io: |
   **Vstup:** celé číslo
-  **Výstup:** `Ano` nebo `Ne`
+  **Výstup:** `True` nebo `False`
+cases:
+  - name: "9"
+    input: |
+      9
+    output: "True"
+  - name: "10"
+    input: |
+      10
+    output: "False"
+  - name: "0"
+    input: |
+      0
+    output: "True"

@@ -67,21 +67,6 @@ else:
     print("To je mi líto.")
 ```
 
-## Praktický příklad — výpočet zisku
-
-> Zdroj: `úkol 3 - výpočet zisku.docx`
-
-```python
-nakupni = float(input("Nákupní cena (Kč): "))
-prodejni = float(input("Prodejní cena (Kč): "))
-rozdil = prodejni - nakupni
-
-if rozdil >= 0:
-    print(f"Vydělali jste: {rozdil} Kč")
-else:
-    print(f"Prodělali jste: {abs(rozdil)} Kč")
-```
-
 ## Vnořené podmínky — náhled
 
 Podmínku lze vnořit do další podmínky — detailně v [lekci 10](../10-vnorene-podminky/lekce.md).

@@ -1,31 +1,25 @@
-title: Obsah a obvod obdélníku
+title: Dostatek peněz
 stars: 2
-description: |
-  Napište program, který načte strany obdélníku `a` a `b`. Pokud je některá záporná, vypište:
-
-  `Chyba: strany nemohou být záporné.`
-
-  Jinak vypište obsah a obvod:
-
-  ```
-  Obsah: ...
-  Obvod: ...
-  ```
-cases:
-- name: 4x5
-  input: |
-    4
-    5
-  output: 'Obsah: 20.0
-
-    Obvod: 18.0'
-  numeric: true
-- name: zaporna
-  input: |
-    4
-    -2
-  output: 'Chyba: strany nemohou být záporné.'
-io: |
-  **Vstup:** strany a, b
-  **Výstup:** chyba nebo obsah a obvod
 moodle: PRG-1-09-05
+description: |
+  Napište program, který načte **cenu zboží** a **kolik máte v peněžence** (Kč).
+  Vypište `Koupíte`, pokud máte dost peněz, jinak `Nemáte dost`.
+io: |
+  **Vstup:** cena, peníze v peněžence
+  **Výstup:** `Koupíte` nebo `Nemáte dost`
+cases:
+  - name: staci
+    input: |
+      100
+      150
+    output: "Koupíte"
+  - name: nestaci
+    input: |
+      100
+      50
+    output: "Nemáte dost"
+  - name: presne
+    input: |
+      200
+      200
+    output: "Koupíte"

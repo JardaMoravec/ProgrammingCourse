@@ -1,29 +1,36 @@
-title: Objem a povrch krychle
+title: Kruh — obvod a obsah
 stars: 2
-description: |
-  Napište program, který načte stranu krychle `a`. Pokud je záporná, vypište:
-
-  `Chyba: strana nemůže být záporná.`
-
-  Jinak vypište objem a povrch na dvou řádcích:
-
-  ```
-  Objem: ...
-  Povrch: ...
-  ```
-cases:
-- name: a=3
-  input: |
-    3
-  output: 'Objem: 27.0
-
-    Povrch: 54.0'
-  numeric: true
-- name: zaporna
-  input: |
-    -1
-  output: 'Chyba: strana nemůže být záporná.'
-io: |
-  **Vstup:** strana a
-  **Výstup:** chyba nebo objem a povrch
 moodle: PRG-1-09-04
+description: |
+  Napište program, který načte poloměr kruhu. Pokud je **záporný**, vypište:
+
+  `Chyba: poloměr nemůže být záporný.`
+
+  Jinak vypočítejte obvod a obsah (π = 3.14159) a vypište na dvou řádcích:
+
+  ```
+  Obvod: ...
+  Obsah: ...
+  ```
+
+  Výsledek zaokrouhlete na **2 desetinná místa**.
+io: |
+  **Vstup:** poloměr
+  **Výstup:** chyba, nebo obvod a obsah
+cases:
+  - name: r=2
+    input: |
+      2
+    output: |
+      Obvod: 12.57
+      Obsah: 12.57
+  - name: r=3
+    input: |
+      3
+    output: |
+      Obvod: 18.85
+      Obsah: 28.27
+  - name: zaporny
+    input: |
+      -1
+    output: "Chyba: poloměr nemůže být záporný."

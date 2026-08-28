@@ -1,21 +1,30 @@
-title: Parkovné
+title: Vstupné do kina
 stars: 2
-description: 'Napište program, který načte počet hodin parkování (celé kladné číslo) a vypíše cenu při sazbě **50 Kč/hod**:
-
-
-  `Parkovné: X Kč`'
-cases:
-- name: 3h
-  input: '3
-
-    '
-  output: 'Parkovné: 150 Kč'
-- name: 1h
-  input: '1
-
-    '
-  output: 'Parkovné: 50 Kč'
-io: '**Vstup:** počet hodin
-
-  **Výstup:** celkové parkovné'
 moodle: PRG-1-09-06
+description: |
+  Napište program, který načte **věk** (celé číslo) a **plné vstupné** (Kč).
+  Děti do 12 let včetně platí **polovinu**. Vypište:
+
+  - `Dětské: X Kč` (polovina)
+  - `Plné: X Kč` (plná cena)
+
+  Příklad: věk 8, cena 200 → `Dětské: 100.0 Kč`
+io: |
+  **Vstup:** věk, plné vstupné
+  **Výstup:** jeden řádek s cenou
+cases:
+  - name: detske
+    input: |
+      8
+      200
+    output: "Dětské: 100.0 Kč"
+  - name: plne
+    input: |
+      15
+      200
+    output: "Plné: 200.0 Kč"
+  - name: hranice 12
+    input: |
+      12
+      180
+    output: "Dětské: 90.0 Kč"
