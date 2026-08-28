@@ -389,6 +389,32 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
   border: 1px solid var(--border);
 }
 
+.content svg.diagram {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25rem auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.content svg.diagram.themed .d-bg { fill: var(--bg); stroke: var(--border); }
+.content svg.diagram.themed .d-surface { fill: var(--surface); stroke: var(--accent); }
+.content svg.diagram.themed .d-soft { fill: var(--accent-soft); stroke: var(--accent); }
+.content svg.diagram.themed .d-text { fill: var(--text); }
+.content svg.diagram.themed .d-muted { fill: var(--muted); }
+.content svg.diagram.themed .d-accent { fill: var(--accent); }
+.content svg.diagram.themed .d-stroke-accent { stroke: var(--accent); fill: none; }
+.content svg.diagram.themed .d-stroke-muted { stroke: var(--muted); fill: none; }
+.content svg.diagram.themed .d-stroke-border { stroke: var(--border); fill: none; }
+
+html[data-theme="dark"] .content img[src$=".svg"],
+html[data-theme="dark"] .content svg.diagram:not(.themed) {
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.75) brightness(1.05);
+}
+
 .content ul, .content ol {
   margin: 0.75rem 0 0.75rem 1.5rem;
 }
@@ -843,6 +869,50 @@ def _reseni_details(inner_md: str) -> str:
     )
 
 
+IMG_SVG_RE = re.compile(
+    r"<img([^>]*?)src=\"(diagramy/[^\"]+\.svg)\"([^>]*?)/?>",
+    re.IGNORECASE,
+)
+
+
+def _html_attr(attrs: str, name: str) -> str:
+    match = re.search(rf'{name}="([^"]*)"', attrs, re.IGNORECASE)
+    return match.group(1) if match else ""
+
+
+def inline_diagram_svgs(html: str, vystup_dir: Path) -> str:
+    """Vloží lokální SVG do HTML, aby převzala barvy světlého/tmavého režimu."""
+
+    def repl(match: re.Match[str]) -> str:
+        before, src, after = match.group(1), match.group(2), match.group(3)
+        path = vystup_dir / Path(*src.split("/"))
+        if not path.is_file():
+            return match.group(0)
+        svg = path.read_text(encoding="utf-8")
+        svg = re.sub(r"<\?xml[^?]*\?>", "", svg).strip()
+        stem = re.sub(r"[^a-zA-Z0-9_-]+", "-", path.stem)
+        svg = re.sub(
+            r'id="([^"]+)"',
+            lambda m: f'id="{stem}-{m.group(1)}"',
+            svg,
+        )
+        svg = svg.replace("url(#", f"url(#{stem}-")
+        themed = 'class="d-' in svg or "class='d-" in svg
+        cls = "diagram themed" if themed else "diagram"
+        svg = re.sub(r"<svg\b", f'<svg class="{cls}"', svg, count=1)
+        alt = _html_attr(before + after, "alt")
+        if alt and "aria-label" not in svg:
+            svg = re.sub(
+                r"<svg\b",
+                f'<svg aria-label="{html_module.escape(alt)}"',
+                svg,
+                count=1,
+            )
+        return svg
+
+    return IMG_SVG_RE.sub(repl, html)
+
+
 def md_to_html(text: str) -> str:
     text = re.sub(r"^---\n.*?\n---\n", "", text, count=1, flags=re.DOTALL)
 
@@ -901,6 +971,11 @@ def build_styles_css() -> str:
 def postprocess_student_html(html: str) -> str:
     """Odstraní učitelské odkazy (.md, zdroje) — výstup pro žáky."""
 
+    html = re.sub(
+        r'href="\.\./\.\./(\d-rocnik)/(\d{2}-[a-z0-9-]+)/lekce\.md"',
+        r'href="../\1/\2.html"',
+        html,
+    )
     html = re.sub(
         r'href="\.\./(\d{2}-[a-z0-9-]+)/lekce\.md"',
         r'href="\1.html"',
@@ -1259,6 +1334,7 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
         html = postprocess_student_html(md_to_html(text))
         if diagramy_src.is_dir():
             html = html.replace('src="diagramy/', f'src="diagramy/{lid}/')
+            html = inline_diagram_svgs(html, ctx.vystup_dir)
         return html
 
     lekce_html = (

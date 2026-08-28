@@ -1,0 +1,11 @@
+id: 02-html-css-shrnuti
+rocnik: 3
+nazev: HTML a CSS — shrnutí
+modul: uvod-a-shrnuti
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [01-jak-funguje-web]
+kompetence: [k1-www, k2-html]
+svp: [struktura HTML stránky, kaskádové styly]
+tagy: [html, css, dom, box-model]
+migrovano_z: []

@@ -1,0 +1,26 @@
+title: Záložka Síť
+stars: 2
+moodle: PRG-3-01-01
+typ: soubor
+description: |
+  Otevřete v prohlížeči **veřejnou webovou stránku podle vlastního výběru**
+  (zpravodajství, e-shop, školní web — ne `127.0.0.1`).
+
+  Zapněte nástroje pro vývojáře (`F12`) → záložka **Síť** (Network) a **obnovte**
+  stránku, aby se požadavky zaznamenaly.
+
+  Do odevzdání uveďte:
+
+  1. adresu stránky, kterou jste otevřeli,
+  2. u **prvního dokumentu** (typicky HTML): metodu, stavový kód, cestu,
+  3. u **jednoho dalšího požadavku** (CSS, obrázek, skript, nebo volání API —
+     v Síti často jako *fetch* / *xhr*): metodu, stavový kód, cestu a typ,
+  4. přibližný **počet** všech požadavků po načtení stránky.
+
+  Když na stránce najdete požadavek na API (JSON), označte ho — není to povinné,
+  ne každý web ho v Síti ukáže.
+odevzdani: |
+  Do Moodle nahrajte **jedno z obou**:
+
+  - snímek obrazovky (PNG/JPG) záložky Síť, na kterém jdou poznat požadované údaje,
+  - nebo textový výpis (TXT/PDF) se stejnými body 1–4.

@@ -1,0 +1,11 @@
+id: 04-routy-a-pohledy
+rocnik: 3
+nazev: Routy, pohledové funkce a odpověď serveru
+modul: flask-zaklady
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [03-uvod-do-flasku]
+kompetence: [k4-formulare-skript]
+svp: [skriptovací jazyk]
+tagy: [flask, routy, pohled, html]
+migrovano_z: []

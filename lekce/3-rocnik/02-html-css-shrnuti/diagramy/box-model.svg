@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" role="img" aria-label="Box model: margin, border, padding, obsah">
+  <rect class="d-bg" width="560" height="220" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-stroke-muted" x="36" y="28" width="488" height="164" rx="6" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text class="d-muted" x="280" y="48" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#5c6370">margin (kolem boxu)</text>
+
+  <rect class="d-soft" x="72" y="56" width="416" height="120" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="3"/>
+  <text class="d-accent" x="280" y="76" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#2563eb">border</text>
+
+  <rect class="d-surface" x="108" y="84" width="344" height="76" rx="4" fill="#fff" stroke="#2563eb" stroke-width="1"/>
+  <text class="d-muted" x="280" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">padding</text>
+
+  <rect class="d-accent" x="168" y="112" width="224" height="36" rx="3" fill="#2563eb"/>
+  <text x="280" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#ffffff">obsah (width)</text>
+</svg>

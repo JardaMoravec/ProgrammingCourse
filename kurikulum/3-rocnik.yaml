@@ -1,19 +1,298 @@
+# Kurikulum 3. ročník — podle ŠVP
+# Zdroj kompetencí: kurikulum/kompetence.yaml (ŠVP Programování)
+# Skriptovací jazyk: Python + Flask (navazuje na 1. a 2. ročník)
+# HTML/CSS a SQL se zde neučí — žáci je znají z 2. ročníku (PRG + jiné předměty)
+# Znalostní báze = MD/YAML v lekce/, ne původní DOCX/PPTX
+
 rocnik: 3
+predmet: Programování (PRG)
+obor: Informační technologie – Cloud (I+Im-It)
+kod_oboru: 18-20-M/01
+jazyk: Python (Flask)
 nazev: Tvorba webových stránek
-hodiny_tydne: 2
-hodiny_celkem: 68
-modul: web
+
+hodiny:
+  tydne: 2
+  cvičeni: 2
+  celkem: 68
+  tydnu: 34
+
+predchozi_znalosti:
+  - Strukturované programování v Pythonu (1. ročník)
+  - Objektové programování (2. ročník)
+  - SQL a relační databáze (2. ročník, PRG)
+  - HTML a CSS (2. ročník, jiné předměty)
 
 kompetence:
-  - aplikuje zásady tvorby WWW stránek
-  - orientuje se ve struktuře HTML stránky
-  - vytvoří webové stránky včetně optimalizace a validace
-  - použije formuláře a skriptovací jazyk
+  - id: k1-www
+    text: aplikuje zásady tvorby WWW stránek
+  - id: k2-html
+    text: orientuje se ve struktuře HTML stránky
+  - id: k3-web-vytvoreni
+    text: vytvoří webové stránky včetně optimalizace a validace
+  - id: k4-formulare-skript
+    text: použije formuláře a skriptovací jazyk
 
-lekce: []
-# Příklad záznamu po migraci:
-# - id: "01-html-zaklady"
-#   soubor: lekce/3-rocnik/01-html-zaklady
-#   nazev: Úvod do HTML
-#   hodiny: 4
-#   prerekvizity: []
+moduly:
+  - id: uvod-a-shrnuti
+    nazev: Úvod a shrnutí podkladů
+    hodiny: 4
+    svp_temata:
+      - zásady tvorby WWW stránek
+      - struktura HTML stránky
+    bloky:
+      - id: http-html-css
+        nazev: HTTP, HTML a CSS — připomenutí
+        hodiny: 4
+        lekce:
+          - id: "01-jak-funguje-web"
+            soubor: lekce/3-rocnik/01-jak-funguje-web
+            nazev: Jak funguje web (klient, server, HTTP, URL)
+            hodiny: 2
+            svp: [zásady tvorby WWW stránek]
+            kompetence: [k1-www]
+            prerekvizity: []
+
+          - id: "02-html-css-shrnuti"
+            soubor: lekce/3-rocnik/02-html-css-shrnuti
+            nazev: HTML a CSS — shrnutí
+            hodiny: 2
+            svp: [struktura HTML stránky, kaskádové styly]
+            kompetence: [k1-www, k2-html]
+            prerekvizity: [01-jak-funguje-web]
+
+  - id: flask-zaklady
+    nazev: Úvod do skriptovacího jazyka
+    hodiny: 18
+    svp_temata:
+      - dynamické webové stránky
+      - skriptovací jazyk
+      - šablony
+    bloky:
+      - id: flask-a-sablony
+        nazev: Flask, routy a šablony Jinja2
+        hodiny: 18
+        lekce:
+          - id: "03-uvod-do-flasku"
+            soubor: lekce/3-rocnik/03-uvod-do-flasku
+            nazev: Úvod do Flasku — instalace a první aplikace
+            hodiny: 2
+            svp: [skriptovací jazyk, dynamické webové stránky]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [02-html-css-shrnuti]
+
+          - id: "04-routy-a-pohledy"
+            soubor: lekce/3-rocnik/04-routy-a-pohledy
+            nazev: Routy, pohledové funkce a odpověď serveru
+            hodiny: 2
+            svp: [skriptovací jazyk]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [03-uvod-do-flasku]
+
+          - id: "05-sablony-jinja"
+            soubor: lekce/3-rocnik/05-sablony-jinja
+            nazev: Šablony Jinja2
+            hodiny: 4
+            svp: [šablony, dynamické webové stránky]
+            kompetence: [k2-html, k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [04-routy-a-pohledy]
+
+          - id: "06-dedicnost-sablon"
+            soubor: lekce/3-rocnik/06-dedicnost-sablon
+            nazev: Dědičnost šablon
+            hodiny: 2
+            svp: [šablony]
+            kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [05-sablony-jinja]
+
+          - id: "07-staticke-soubory"
+            soubor: lekce/3-rocnik/07-staticke-soubory
+            nazev: Statické soubory (CSS, obrázky)
+            hodiny: 2
+            svp: [kaskádové styly, dynamické webové stránky]
+            kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [06-dedicnost-sablon]
+
+          - id: "08-dynamicke-url"
+            soubor: lekce/3-rocnik/08-dynamicke-url
+            nazev: Dynamické URL a url_for
+            hodiny: 2
+            svp: [skriptovací jazyk, dynamické webové stránky]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [07-staticke-soubory]
+
+          - id: "09-konfigurace-a-chyby"
+            soubor: lekce/3-rocnik/09-konfigurace-a-chyby
+            nazev: Konfigurace aplikace a chybové stránky
+            hodiny: 2
+            svp: [skriptovací jazyk]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [08-dynamicke-url]
+
+          - id: "10-flask-procviceni"
+            soubor: lekce/3-rocnik/10-flask-procviceni
+            nazev: Flask základy — souhrn a procvičení
+            hodiny: 2
+            svp: [skriptovací jazyk, šablony]
+            kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [09-konfigurace-a-chyby]
+
+  - id: formulare
+    nazev: Obsluha HTML formuláře
+    hodiny: 10
+    svp_temata:
+      - HTML formuláře
+      - zpracování dat skriptem
+    bloky:
+      - id: formulare-a-request
+        nazev: Formuláře, request a relace
+        hodiny: 10
+        lekce:
+          - id: "11-formulare-a-request"
+            soubor: lekce/3-rocnik/11-formulare-a-request
+            nazev: Formuláře a objekt request
+            hodiny: 2
+            svp: [HTML formuláře, zpracování dat skriptem]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [10-flask-procviceni]
+
+          - id: "12-validace-vstupu"
+            soubor: lekce/3-rocnik/12-validace-vstupu
+            nazev: Validace dat na serveru
+            hodiny: 2
+            svp: [zpracování dat skriptem, validace kódu]
+            kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [11-formulare-a-request]
+
+          - id: "13-presmerovani-a-flash"
+            soubor: lekce/3-rocnik/13-presmerovani-a-flash
+            nazev: Přesměrování a flash zprávy
+            hodiny: 2
+            svp: [skriptovací jazyk, zpracování dat skriptem]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [12-validace-vstupu]
+
+          - id: "14-relace"
+            soubor: lekce/3-rocnik/14-relace
+            nazev: Relace (session)
+            hodiny: 2
+            svp: [skriptovací jazyk]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [13-presmerovani-a-flash]
+
+          - id: "15-formulare-procviceni"
+            soubor: lekce/3-rocnik/15-formulare-procviceni
+            nazev: Formuláře — souhrn a procvičení
+            hodiny: 2
+            svp: [HTML formuláře, zpracování dat skriptem]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [14-relace]
+
+  - id: databaze
+    nazev: Propojení skriptu a databáze
+    hodiny: 10
+    svp_temata:
+      - propojení skriptu a databáze
+    bloky:
+      - id: flask-a-databaze
+        nazev: Napojení Flask aplikace na databázi
+        hodiny: 10
+        lekce:
+          - id: "16-pripojeni-databaze"
+            soubor: lekce/3-rocnik/16-pripojeni-databaze
+            nazev: Připojení aplikace k databázi
+            hodiny: 2
+            svp: [propojení skriptu a databáze]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [15-formulare-procviceni]
+
+          - id: "17-vypis-z-databaze"
+            soubor: lekce/3-rocnik/17-vypis-z-databaze
+            nazev: Výpis dat z databáze do šablony
+            hodiny: 2
+            svp: [propojení skriptu a databáze]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [16-pripojeni-databaze]
+
+          - id: "18-zapis-do-databaze"
+            soubor: lekce/3-rocnik/18-zapis-do-databaze
+            nazev: Zápis z formuláře do databáze
+            hodiny: 2
+            svp: [propojení skriptu a databáze, HTML formuláře]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [17-vypis-z-databaze]
+
+          - id: "19-crud-v-aplikaci"
+            soubor: lekce/3-rocnik/19-crud-v-aplikaci
+            nazev: Úprava a mazání záznamů v aplikaci
+            hodiny: 2
+            svp: [propojení skriptu a databáze]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [18-zapis-do-databaze]
+
+          - id: "20-bezpecnost-webu"
+            soubor: lekce/3-rocnik/20-bezpecnost-webu
+            nazev: Bezpečnost (XSS, SQL injection)
+            hodiny: 2
+            svp: [zásady tvorby WWW stránek, propojení skriptu a databáze]
+            kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [19-crud-v-aplikaci]
+
+  - id: zaverecny-projekt
+    nazev: Optimalizace, validace a závěrečný projekt
+    hodiny: 26
+    svp_temata:
+      - optimalizace kódu
+      - validace kódu
+      - dynamické webové stránky
+    bloky:
+      - id: projekt
+        nazev: Samostatný Flask projekt
+        hodiny: 26
+        lekce:
+          - id: "21-projekt-zadani"
+            soubor: lekce/3-rocnik/21-projekt-zadani
+            nazev: Závěrečný projekt — zadání, návrh a struktura
+            hodiny: 2
+            svp: [zásady tvorby WWW stránek, skriptovací jazyk]
+            kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [20-bezpecnost-webu]
+
+          - id: "22-projekt-implementace"
+            soubor: lekce/3-rocnik/22-projekt-implementace
+            nazev: Závěrečný projekt — implementace
+            hodiny: 20
+            svp:
+              - propojení skriptu a databáze
+              - šablony
+              - HTML formuláře
+              - skriptovací jazyk
+              - validace kódu
+              - optimalizace kódu
+            kompetence: [k1-www, k2-html, k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [21-projekt-zadani]
+
+          - id: "23-projekt-prezentace"
+            soubor: lekce/3-rocnik/23-projekt-prezentace
+            nazev: Závěrečný projekt — odevzdání a prezentace
+            hodiny: 4
+            svp: [zásady tvorby WWW stránek, validace kódu]
+            kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
+            prerekvizity: [22-projekt-implementace]
+
+hodnoceni:
+  - elektronické testy (Moodle VPL)
+  - samostatné úkoly (Moodle VPL)
+  - práce v hodině (cvičení)
+  - závěrečný projekt (Flask aplikace s formuláři a databází)
+  - aktivita
+
+literatura:
+  - elektronické texty v rámci školních informačních a vzdělávacích systémů
+  - dokumentace Flask (https://flask.palletsprojects.com/)
+  - MDN Web Docs — HTML a CSS (opakování)
+
+pomucky:
+  - základní počítačová sestava
+  - dataprojektor
+  - potřebné softwarové vybavení (Python 3, Flask, SQLite, IDE, webový prohlížeč)

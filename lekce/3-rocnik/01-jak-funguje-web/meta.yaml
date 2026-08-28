@@ -1,0 +1,11 @@
+id: 01-jak-funguje-web
+rocnik: 3
+nazev: Jak funguje web (klient, server, HTTP, URL)
+modul: uvod-a-shrnuti
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: []
+kompetence: [k1-www]
+svp: [zásady tvorby WWW stránek]
+tagy: [http, klient, server, url, api]
+migrovano_z: []

@@ -1,0 +1,11 @@
+id: 03-uvod-do-flasku
+rocnik: 3
+nazev: Úvod do Flasku — instalace a první aplikace
+modul: flask-zaklady
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [02-html-css-shrnuti]
+kompetence: [k4-formulare-skript]
+svp: [skriptovací jazyk, dynamické webové stránky]
+tagy: [flask, instalace, hello]
+migrovano_z: []

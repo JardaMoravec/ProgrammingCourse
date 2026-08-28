@@ -55,4 +55,14 @@ rocniky:
         text: vytvoří webové stránky včetně optimalizace a validace
       - id: k4-formulare-skript
         text: použije formuláře a skriptovací jazyk
-    modul: Tvorba statických a dynamických webových stránek
+    predchozi_znalosti:
+      - Strukturované programování v Pythonu (1. ročník)
+      - Objektové programování a SQL (2. ročník, PRG)
+      - HTML a CSS (2. ročník, jiné předměty)
+    jazyk: Python (Flask)
+    moduly:
+      - Úvod a shrnutí HTML/CSS (4h)
+      - Úvod do skriptovacího jazyka — Flask (18h)
+      - Obsluha HTML formuláře ve Flasku (10h)
+      - Propojení aplikace s databází (10h)
+      - Závěrečný projekt (26h)

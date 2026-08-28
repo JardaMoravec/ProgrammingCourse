@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="Prohlizec posila GET, Flask vraci text">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="200" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="32" y="44" width="176" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="120" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Prohl&#237;&#382;e&#269;</text>
+  <text class="d-muted" x="120" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">klient</text>
+
+  <rect class="d-soft" x="272" y="44" width="176" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Flask</text>
+  <text class="d-muted" x="360" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">va&#353;e funkce</text>
+
+  <rect class="d-surface" x="512" y="44" width="176" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="600" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Odpov&#283;&#271;</text>
+  <text class="d-muted" x="600" y="100" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">200 + text</text>
+
+  <line class="d-stroke-accent" x1="208" y1="72" x2="268" y2="72" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-accent" x="238" y="62" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#2563eb">GET /</text>
+
+  <line class="d-stroke-accent" x1="448" y1="104" x2="508" y2="104" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-muted" x="478" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">return</text>
+
+  <text class="d-muted" x="360" y="168" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">Flask je server z lekce 01 &#8212; b&#283;&#382;&#237; na 127.0.0.1:5000</text>
+</svg>

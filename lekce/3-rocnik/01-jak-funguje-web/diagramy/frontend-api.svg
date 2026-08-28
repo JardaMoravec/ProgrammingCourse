@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-label="Klasicky web jeden velky pozadavek, frontend posila na pozadi vic malych pozadavku na API">
+  <defs>
+    <marker id="arr-solid" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-dash" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-muted" d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="360" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <text class="d-text" x="24" y="28" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#1a1d26">Klasick&#253; web</text>
+  <text class="d-muted" x="130" y="28" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">jeden velk&#253; po&#382;&#225;davek, str&#225;nka se znovu na&#269;te</text>
+
+  <rect class="d-surface" x="24" y="40" width="168" height="64" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="108" y="68" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#2563eb">Prohl&#237;&#382;e&#269;</text>
+  <text class="d-muted" x="108" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">klient</text>
+
+  <rect class="d-soft" x="528" y="40" width="168" height="64" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="612" y="68" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#2563eb">Server</text>
+  <text class="d-muted" x="612" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">cel&#225; HTML str&#225;nka</text>
+
+  <line class="d-stroke-accent" x1="192" y1="62" x2="528" y2="62" stroke="#2563eb" stroke-width="3" marker-end="url(#arr-solid)"/>
+  <text class="d-accent" x="360" y="52" text-anchor="middle" font-family="Consolas, monospace" font-size="11" font-weight="600" fill="#2563eb">GET /</text>
+  <line class="d-stroke-accent" x1="528" y1="84" x2="192" y2="84" stroke="#2563eb" stroke-width="3" marker-end="url(#arr-solid)"/>
+  <text class="d-muted" x="360" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">HTML (v&#353;e najednou)</text>
+
+  <line class="d-stroke-border" x1="24" y1="122" x2="696" y2="122" stroke="#e5e7eb"/>
+
+  <text class="d-text" x="24" y="146" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#1a1d26">Frontend + API</text>
+  <text class="d-muted" x="148" y="146" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">nejd&#345;&#237;v obal str&#225;nky, pak mal&#233; po&#382;adavky na pozad&#237;</text>
+
+  <rect class="d-surface" x="24" y="168" width="168" height="168" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="108" y="198" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#2563eb">Prohl&#237;&#382;e&#269;</text>
+  <text class="d-text" x="108" y="216" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#1a1d26">frontend (JS)</text>
+  <text class="d-muted" x="108" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">str&#225;nka z&#367;stane</text>
+  <text class="d-muted" x="108" y="264" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">JavaScript vol&#225; API</text>
+  <text class="d-muted" x="108" y="300" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#64748b">bez obnoven&#237;</text>
+
+  <rect class="d-soft" x="528" y="168" width="168" height="168" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="612" y="198" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#2563eb">API</text>
+  <text class="d-text" x="612" y="216" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#1a1d26">server</text>
+  <text class="d-muted" x="612" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">vrac&#237; jen data</text>
+  <text class="d-muted" x="612" y="264" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#5c6370">JSON</text>
+
+  <line class="d-stroke-accent" x1="192" y1="188" x2="528" y2="188" stroke="#2563eb" stroke-width="2" marker-end="url(#arr-solid)"/>
+  <text class="d-accent" x="360" y="180" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#2563eb">GET /  &#8594;  HTML + JS</text>
+  <text class="d-muted" x="360" y="202" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#5c6370">jednou, n&#225;sledn&#283; b&#283;&#382;&#237; JS</text>
+
+  <text class="d-muted" x="360" y="226" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" font-weight="600" fill="#64748b">na pozad&#237; (fetch / xhr)</text>
+
+  <line class="d-stroke-muted" x1="192" y1="244" x2="528" y2="244" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-dash)"/>
+  <text class="d-muted" x="360" y="238" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#475569">GET /api/clanky  &#8594;  JSON</text>
+
+  <line class="d-stroke-muted" x1="192" y1="276" x2="528" y2="276" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-dash)"/>
+  <text class="d-muted" x="360" y="270" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#475569">GET /api/uzivatel  &#8594;  JSON</text>
+
+  <line class="d-stroke-muted" x1="192" y1="308" x2="528" y2="308" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr-dash)"/>
+  <text class="d-muted" x="360" y="302" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#475569">POST /api/komentar  &#8594;  JSON</text>
+</svg>

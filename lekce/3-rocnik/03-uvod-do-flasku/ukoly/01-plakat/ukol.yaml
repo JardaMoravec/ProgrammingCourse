@@ -1,0 +1,21 @@
+title: Plakát školní akce
+stars: 2
+moodle: PRG-3-03-01
+typ: soubor
+description: |
+  Napište Flask aplikaci v souboru `plakat.py`. Na adrese `/` vraťte **jednu**
+  stránku — krátké HTML (ne prostý text) s plakátem **školní akce**
+  (den otevřených dveří, turnaj, koncert, burza knih… vyberte si).
+
+  Na stránce musí být aspoň:
+
+  - `<h1>` s názvem akce,
+  - jeden `<p>` s datem a místem,
+  - jeden `<p>` s jednou větou, proč přijít.
+
+  Pořád jen cesta `/` (žádné `/info` ani další routy).
+
+  Spusťte aplikaci a v prohlížeči ověřte, že se značky vykreslily (nadpis
+  vypadá jako nadpis, ne jako `<h1>`).
+odevzdani: |
+  Do Moodle nahrajte soubor `plakat.py`.
