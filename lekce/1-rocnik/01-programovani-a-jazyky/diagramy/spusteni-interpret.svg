@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 192" role="img" aria-label="Interpret: zdrojovy kod a interpret behem behu">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="720" height="192" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect x="32" y="52" width="148" height="64" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="106" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">Zdrojový kód</text>
+  <text x="106" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">skript.php</text>
+
+  <rect x="268" y="44" width="168" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="352" y="68" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#2563eb">Interpret</text>
+  <text x="352" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#1a1d26">1. čte řádek</text>
+  <text x="352" y="102" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#1a1d26">2. přeloží</text>
+  <text x="352" y="118" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#1a1d26">3. hned provede</text>
+
+  <rect x="524" y="60" width="112" height="48" rx="8" fill="#fff" stroke="#2563eb"/>
+  <text x="580" y="90" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#1a1d26">Výstup</text>
+
+  <!-- sipky -->
+  <line x1="180" y1="84" x2="266" y2="84" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="436" y1="84" x2="522" y2="84" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- zpetna smycka pod boxy -->
+  <path d="M352 132 C352 152, 106 152, 106 118" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="352" y="168" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">cyklus během běhu</text>
+
+  <text x="360" y="184" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">PHP, Ruby — bez předchozí kompilace do exe</text>
+</svg>

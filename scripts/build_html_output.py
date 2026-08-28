@@ -380,6 +380,15 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
 
 .content p { margin: 0.75rem 0; }
 
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25rem auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
 .content ul, .content ol {
   margin: 0.75rem 0 0.75rem 1.5rem;
 }
@@ -1204,19 +1213,33 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
     cviceni_md = lesson_dir / "cviceni.md"
     ukoly_md = lesson_dir / "ukoly.md"
 
+    diagramy_src = lesson_dir / "diagramy"
+    if diagramy_src.is_dir():
+        diagramy_dst = ctx.vystup_dir / "diagramy" / lid
+        diagramy_dst.mkdir(parents=True, exist_ok=True)
+        for svg in diagramy_src.glob("*"):
+            if svg.is_file():
+                shutil.copy2(svg, diagramy_dst / svg.name)
+
+    def lesson_html(text: str) -> str:
+        html = postprocess_student_html(md_to_html(text))
+        if diagramy_src.is_dir():
+            html = html.replace('src="diagramy/', f'src="diagramy/{lid}/')
+        return html
+
     lekce_html = (
-        postprocess_student_html(md_to_html(lekce_md.read_text(encoding="utf-8")))
+        lesson_html(lekce_md.read_text(encoding="utf-8"))
         if lekce_md.exists()
         else "<p><em>Obsah lekce není k dispozici.</em></p>"
     )
     cviceni_html = (
-        postprocess_student_html(md_to_html(cviceni_md.read_text(encoding="utf-8")))
+        lesson_html(cviceni_md.read_text(encoding="utf-8"))
         if cviceni_md.exists()
         else "<p><em>Cvičení není k dispozici.</em></p>"
     )
     has_ukoly = ukoly_md.exists()
     ukoly_html = (
-        postprocess_student_html(md_to_html(ukoly_md.read_text(encoding="utf-8")))
+        lesson_html(ukoly_md.read_text(encoding="utf-8"))
         if has_ukoly
         else ""
     )

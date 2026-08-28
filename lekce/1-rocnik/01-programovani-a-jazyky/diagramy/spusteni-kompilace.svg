@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 158" role="img" aria-label="Kompilace: zdrojovy kod, kompilator, spustitelny soubor, procesor">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="720" height="158" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <!-- hlavni rada boxu: y=48, vyska 64, stred y=80 -->
+  <rect x="20" y="48" width="148" height="64" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="94" y="74" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">Zdrojový kód</text>
+  <text x="94" y="94" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">main.c</text>
+
+  <rect x="200" y="56" width="118" height="48" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="259" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#2563eb">Kompilátor</text>
+
+  <rect x="350" y="48" width="168" height="64" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text x="434" y="74" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">Strojový kód</text>
+  <text x="434" y="94" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">program.exe</text>
+
+  <rect x="560" y="56" width="88" height="48" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text x="604" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#2563eb">CPU</text>
+
+  <!-- sipky na stredu y=80 -->
+  <line x1="168" y1="80" x2="198" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="318" y1="80" x2="348" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="518" y1="80" x2="558" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- popisek nad sipkou, mimo boxy -->
+  <text x="333" y="38" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">před spuštěním</text>
+
+  <text x="360" y="138" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">C, C++, Rust — překlad najednou, pak spuštění bez zdrojáku</text>
+</svg>
