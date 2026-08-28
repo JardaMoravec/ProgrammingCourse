@@ -26,9 +26,9 @@ Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / inst
 | 01 | `01-programovani-a-jazyky` | Programování a jazyky | — |
 | 02 | `02-python-a-prostredi` | Python a IDE | — |
 | 03 | `03-bloky-kodu` | Bloky kódu | — |
-| 04 | `04-vstup-a-vystup` | Vstup a výstup (input, print) | 4 |
+| 04 | `04-promenne-a-pamet` | Proměnné, paměť a pojmenování | 4 |
 | 05 | `05-aritmeticke-operatory` | Aritmetické operátory | 5 |
-| 06 | `06-promenne-a-pamet` | Proměnné | 4 |
+| 06 | `06-vstup-a-vystup` | Vstup a výstup (input, print) | 4 |
 | 07 | `07-datove-typy` | Datové typy a přetypování | 4 |
 | 08 | `08-porovnaci-operatory` | Logické operátory | 4 |
 | 09 | `09-vetveni-podminek` | Větvení if/elif/else | 5 |

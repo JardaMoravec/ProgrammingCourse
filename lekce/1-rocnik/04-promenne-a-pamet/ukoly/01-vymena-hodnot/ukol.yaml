@@ -1,0 +1,17 @@
+title: Výměna hodnot
+stars: 2
+moodle: PRG-1-04-01
+description: |
+  Napište program, který:
+
+  1. nastaví `a = 5` a `b = 10`,
+  2. **vymění** jejich hodnoty (pomocí pomocné proměnné `temp`),
+  3. vypíše na jeden řádek hodnoty `a` a `b` oddělené mezerou.
+
+  Očekávaný výstup pro uvedené hodnoty: `10 5`
+io: |
+  **Vstup:** žádný (hodnoty jsou v kódu)
+  **Výstup:** `10 5`
+cases:
+  - name: vymena 5 a 10
+    output: "10 5"

@@ -74,12 +74,12 @@ moduly:
         nazev: Proměnné, datové typy a operátory
         hodiny: 18
         lekce:
-          - id: "04-vstup-a-vystup"
-            soubor: lekce/1-rocnik/04-vstup-a-vystup
-            nazev: Vstup a výstup (input, print)
+          - id: "04-promenne-a-pamet"
+            soubor: lekce/1-rocnik/04-promenne-a-pamet
+            nazev: Proměnné, paměť a pojmenování
             hodiny: 3
-            svp: [proměnné]
-            kompetence: [k3-strukturovane-programy]
+            svp: [proměnné, paměť a datové typy]
+            kompetence: [k1-datove-typy]
             prerekvizity: [03-bloky-kodu]
 
           - id: "05-aritmeticke-operatory"
@@ -88,14 +88,14 @@ moduly:
             hodiny: 3
             svp: [aritmetické, logické operátory]
             kompetence: [k1-datove-typy]
-            prerekvizity: [04-vstup-a-vystup]
+            prerekvizity: [04-promenne-a-pamet]
 
-          - id: "06-promenne-a-pamet"
-            soubor: lekce/1-rocnik/06-promenne-a-pamet
-            nazev: Proměnné, paměť a pojmenování
+          - id: "06-vstup-a-vystup"
+            soubor: lekce/1-rocnik/06-vstup-a-vystup
+            nazev: Vstup a výstup (input, print)
             hodiny: 3
-            svp: [proměnné, paměť a datové typy]
-            kompetence: [k1-datove-typy]
+            svp: [proměnné]
+            kompetence: [k3-strukturovane-programy]
             prerekvizity: [05-aritmeticke-operatory]
 
           - id: "07-datove-typy"
@@ -104,7 +104,7 @@ moduly:
             hodiny: 3
             svp: [paměť a datové typy]
             kompetence: [k1-datove-typy]
-            prerekvizity: [06-promenne-a-pamet]
+            prerekvizity: [06-vstup-a-vystup]
 
           - id: "08-porovnaci-operatory"
             soubor: lekce/1-rocnik/08-porovnaci-operatory
@@ -302,7 +302,7 @@ mapovani_zdroju:
   - soubor: zdroje/01 - Úvod do Pythonu.pptx
     lekce: [01-programovani-a-jazyky, 02-python-a-prostredi]
   - soubor: zdroje/02 - Proměnné, datové typy a operátory v Pythonu.pptx
-    lekce: [05-aritmeticke-operatory, 06-promenne-a-pamet, 07-datove-typy, 08-porovnaci-operatory]
+    lekce: [04-promenne-a-pamet, 05-aritmeticke-operatory, 07-datove-typy, 08-porovnaci-operatory]
   - soubor: zdroje/03 - Seznamy, Tuples, Slovníky a range v Pythonu.pptx
     lekce: [16-seznamy, 18-tuples-a-range, 19-slovniky]
   - slozka: zdroje/Úkoly 1/

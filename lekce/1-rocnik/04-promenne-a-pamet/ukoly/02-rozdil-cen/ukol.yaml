@@ -1,0 +1,14 @@
+title: Rozdíl cen
+stars: 1
+moodle: PRG-1-04-02
+description: |
+  Napište program s proměnnými `nakupni = 80` a `prodejni = 150` (Kč).
+  Spočítejte rozdíl (prodejní − nákupní) a vypište:
+
+  `Rozdíl: 70 Kč`
+io: |
+  **Vstup:** žádný
+  **Výstup:** `Rozdíl: X Kč`
+cases:
+  - name: zisk
+    output: "Rozdíl: 70 Kč"

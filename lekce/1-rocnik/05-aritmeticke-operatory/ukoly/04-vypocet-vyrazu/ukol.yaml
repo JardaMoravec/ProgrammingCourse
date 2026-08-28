@@ -1,24 +1,14 @@
 title: Výpočet výrazu
 stars: 2
+moodle: PRG-1-05-04
 description: |
-  Napište program, který načte celé číslo `x` a vypíše hodnotu výrazu:
+  Napište program s proměnnou `x = 8`.
+  Vypočítejte hodnotu výrazu `2 * x + 5` a vypište:
 
-  `2 * x + 5`
-
-  Formát výstupu: `Výsledek: ...`
-cases:
-- name: x=3
-  input: |
-    3
-  output: 'Výsledek: 11'
-- name: x=0
-  input: |
-    0
-  output: 'Výsledek: 5'
-- name: x=10
-  input: |
-    10
-  output: 'Výsledek: 25'
+  `Výsledek: 21`
 io: |
-  **Vstup:** celé číslo x
+  **Vstup:** žádný
   **Výstup:** `Výsledek: ...`
+cases:
+  - name: x=8
+    output: "Výsledek: 21"

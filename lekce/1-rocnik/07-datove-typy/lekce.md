@@ -4,7 +4,7 @@ rocnik: 1
 nazev: Základní datové typy (int, float, str, bool)
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [06-promenne-a-pamet]
+prerekvizity: [06-vstup-a-vystup]
 cile:
   - Rozlišíte int, float, str a bool
   - Použijete funkci type()

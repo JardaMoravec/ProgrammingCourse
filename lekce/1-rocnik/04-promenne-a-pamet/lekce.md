@@ -1,10 +1,10 @@
 ---
-id: 06-promenne-a-pamet
+id: 04-promenne-a-pamet
 rocnik: 1
 nazev: Proměnné, paměť a pojmenování
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [05-aritmeticke-operatory]
+prerekvizity: [03-bloky-kodu]
 cile:
   - Vytvoříte a použijete proměnné
   - Pochopíte dynamické typování
@@ -106,4 +106,4 @@ V Pythonu inicializace a definice proběhnou **v jednom kroku** pomocí `=`.
 
 ## Co dál
 
-→ [Lekce 07: Datové typy](../07-datove-typy/lekce.md)
+→ [Lekce 05: Aritmetické operátory](../05-aritmeticke-operatory/lekce.md)

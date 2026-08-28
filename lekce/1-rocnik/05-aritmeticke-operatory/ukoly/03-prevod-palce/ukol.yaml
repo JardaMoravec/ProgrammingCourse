@@ -1,0 +1,14 @@
+title: Převod palců na centimetry
+stars: 2
+moodle: PRG-1-05-03
+description: |
+  Napište program s proměnnou `palce = 12`.
+  Převeďte na centimetry (vzorec: cm = palce × 2,54) a vypište:
+
+  `12 in = 30.48 cm`
+io: |
+  **Vstup:** žádný
+  **Výstup:** jeden řádek `X in = Y cm`
+cases:
+  - name: 12 palcu
+    output: "12 in = 30.48 cm"

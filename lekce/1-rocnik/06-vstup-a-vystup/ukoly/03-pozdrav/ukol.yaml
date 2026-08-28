@@ -22,4 +22,4 @@ cases:
 io: |
   **Vstup:** jméno (text)
   **Výstup:** `Ahoj, JMÉNO!`
-moodle: PRG-1-04-03
+moodle: PRG-1-06-03

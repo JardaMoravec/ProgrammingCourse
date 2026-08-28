@@ -1,10 +1,10 @@
-id: 06-promenne-a-pamet
+id: 04-promenne-a-pamet
 rocnik: 1
 nazev: Proměnné, paměť a pojmenování
 modul: strukturovane-programovani
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [05-aritmeticke-operatory]
+prerekvizity: [03-bloky-kodu]
 kompetence: [k1-datove-typy]
 svp: [proměnné, paměť a datové typy]
 migrovano_z:

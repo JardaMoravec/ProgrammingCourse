@@ -4,7 +4,7 @@ nazev: Základní datové typy a přetypování
 modul: strukturovane-programovani
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [06-promenne-a-pamet]
+prerekvizity: [06-vstup-a-vystup]
 kompetence: [k1-datove-typy]
 svp: [paměť a datové typy]
 migrovano_z:

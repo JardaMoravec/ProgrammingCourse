@@ -1,0 +1,14 @@
+title: Součet dvou proměnných
+stars: 1
+moodle: PRG-1-04-03
+description: |
+  Napište program s proměnnými `a = 12` a `b = 8`.
+  Uložte součet do proměnné `soucet` a vypište:
+
+  `Součet: 20`
+io: |
+  **Vstup:** žádný
+  **Výstup:** `Součet: X`
+cases:
+  - name: 12 + 8
+    output: "Součet: 20"

@@ -105,4 +105,4 @@ Později u cyklů a podmínek to využijete často.
 
 ## Co dál
 
-→ [Lekce 04: Vstup a výstup](../04-vstup-a-vystup/lekce.md)
+→ [Lekce 04: Proměnné a paměť](../04-promenne-a-pamet/lekce.md)

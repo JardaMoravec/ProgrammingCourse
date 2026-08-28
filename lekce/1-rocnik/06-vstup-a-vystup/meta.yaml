@@ -1,10 +1,10 @@
-id: 04-vstup-a-vystup
+id: 06-vstup-a-vystup
 rocnik: 1
 nazev: Vstup a výstup (input, print)
 modul: strukturovane-programovani
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [03-bloky-kodu]
+prerekvizity: [05-aritmeticke-operatory]
 kompetence: [k3-strukturovane-programy]
 svp: [proměnné]
 migrovano_z:

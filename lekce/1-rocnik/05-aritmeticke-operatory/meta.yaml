@@ -4,7 +4,7 @@ nazev: Aritmetické operátory a konzole
 modul: strukturovane-programovani
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [04-vstup-a-vystup]
+prerekvizity: [04-promenne-a-pamet]
 kompetence: [k1-datove-typy]
 svp: [aritmetické, logické operátory]
 migrovano_z:

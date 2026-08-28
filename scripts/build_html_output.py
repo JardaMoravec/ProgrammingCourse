@@ -1004,6 +1004,36 @@ def lesson_dirs(lekce_dir: Path) -> list[Path]:
     return sorted(dirs, key=lambda p: p.name)
 
 
+def expected_lesson_html_names(lesson_dir: Path) -> set[str]:
+    """Soubory HTML, které build pro lekci vytváří."""
+    lid = lesson_dir.name
+    names = {f"{lid}.html", f"{lid}-cviceni.html"}
+    ukoly_root = lesson_dir / "ukoly"
+    if ukoly_root.is_dir() and any(
+        (p / "ukol.yaml").is_file() for p in ukoly_root.iterdir() if p.is_dir()
+    ):
+        names.add(f"{lid}-ukoly.html")
+    return names
+
+
+def cleanup_stale_lesson_html(ctx: RocnikContext) -> None:
+    """Odstraní HTML lekcí, které už v MD zdrojích neexistují (např. po přejmenování složky)."""
+    if not ctx.vystup_dir.is_dir():
+        return
+    expected: set[str] = {"index.html"}
+    for lesson_dir in ctx.lessons:
+        expected |= expected_lesson_html_names(lesson_dir)
+    for path in ctx.vystup_dir.glob("*.html"):
+        if path.name not in expected:
+            path.unlink()
+    diagramy_root = ctx.vystup_dir / "diagramy"
+    if diagramy_root.is_dir():
+        expected_diagram_dirs = {d.name for d in ctx.lessons}
+        for child in diagramy_root.iterdir():
+            if child.is_dir() and child.name not in expected_diagram_dirs:
+                shutil.rmtree(child, ignore_errors=True)
+
+
 def rocnik_label(num: int) -> str:
     return f"{num}. ročník"
 
@@ -1358,6 +1388,7 @@ def make_context(rocnik_slug: str) -> RocnikContext:
 
 
 def build_rocnik(ctx: RocnikContext) -> None:
+    cleanup_stale_lesson_html(ctx)
     build_rocnik_index(ctx)
     for d in ctx.lessons:
         build_lesson(ctx, d)

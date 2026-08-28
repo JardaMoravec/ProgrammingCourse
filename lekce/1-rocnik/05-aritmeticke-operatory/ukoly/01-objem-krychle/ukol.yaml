@@ -1,22 +1,16 @@
 title: Objem krychle
 stars: 1
+moodle: PRG-1-05-01
 description: |
-  Napište program `main.py`, který načte délku hrany krychle (celé číslo) a vypíše její objem.
+  Napište program `main.py` s proměnnou `a = 4` (délka hrany krychle).
+  Vypočítejte objem a vypište:
+
+  `Objem: 64`
 
   Vzorec: V = a³
-cases:
-- name: a=5
-  input: |
-    5
-  output: 'Objem: 125'
-- name: a=3
-  input: |
-    3
-  output: 'Objem: 27'
-- name: a=10
-  input: |
-    10
-  output: 'Objem: 1000'
 io: |
-  **Vstup:** jedno celé číslo a
-  **Výstup:** řádek `Objem: X`
+  **Vstup:** žádný
+  **Výstup:** `Objem: X`
+cases:
+  - name: a=4
+    output: "Objem: 64"

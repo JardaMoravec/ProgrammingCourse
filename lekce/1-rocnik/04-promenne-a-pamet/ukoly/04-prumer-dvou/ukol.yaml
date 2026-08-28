@@ -1,0 +1,15 @@
+title: Průměr dvou čísel
+stars: 2
+moodle: PRG-1-04-04
+description: |
+  Napište program s proměnnými `a = 14` a `b = 6`.
+  Vypočítejte aritmetický průměr a vypište:
+
+  `Průměr: 10.0`
+io: |
+  **Vstup:** žádný
+  **Výstup:** `Průměr: X.X`
+cases:
+  - name: 14 a 6
+    output: "Průměr: 10.0"
+    numeric: true

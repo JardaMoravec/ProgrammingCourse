@@ -1,32 +1,20 @@
 title: Plné krabice a zbytek
 stars: 2
-description: 'Napište program, který načte počet položek a kapacitu krabice (celá kladná čísla) a vypíše, kolik je plných krabic a kolik položek zbývá.
+moodle: PRG-1-05-02
+description: |
+  Napište program s proměnnými `polozky = 23` a `kapacita = 4`.
+  Vypočítejte počet plných krabic (`//`) a zbytek (`%`). Vypište dva řádky:
 
+  ```
+  Krabic: 5
+  Zbytek: 3
+  ```
 
-  Použijte `//` a `%`.'
+io: |
+  **Vstup:** žádný
+  **Výstup:** počet krabic a zbytek (dva řádky)
 cases:
-- name: 17/5
-  input: '17
-
-
-    5
-
-
-    '
-  output: 'Krabic: 3
-
-    Zbytek: 2'
-- name: 20/4
-  input: '20
-
-
-    4
-
-
-    '
-  output: 'Krabic: 5
-
-    Zbytek: 0'
-io: '**Vstup:** počet položek, kapacita
-
-  **Výstup:** počet krabic a zbytek'
+  - name: 23/4
+    output: |
+      Krabic: 5
+      Zbytek: 3

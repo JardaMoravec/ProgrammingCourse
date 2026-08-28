@@ -68,7 +68,7 @@ U **ruční správy** programátor sám alokuje a uvolňuje paměť — při chy
 
 > **Důležité:** to **nesouvisí** s tím, zda je jazyk kompilovaný nebo interpretovaný. Java se kompiluje do bytecode a přesto má garbage collector. C se kompiluje do exe a paměť je ruční. Python má GC kvůli **prostředí runtime (CPython)**, ne proto, že je „vyšší“ nebo „interpretovaný“.
 
-V **Pythonu** tedy paměť ručně neřešíte — stará se o ni garbage collector. **Proměnné a paměť** probereme podrobně v [lekci 06](../06-promenne-a-pamet/lekce.md).
+V **Pythonu** tedy paměť ručně neřešíte — stará se o ni garbage collector. **Proměnné a paměť** probereme podrobně v [lekci 04](../04-promenne-a-pamet/lekce.md).
 
 ## Kompilátor vs. interpret
 

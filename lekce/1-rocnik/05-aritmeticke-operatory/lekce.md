@@ -4,7 +4,7 @@ rocnik: 1
 nazev: Aritmetické operátory a konzole
 hodiny: 3
 obtiznost: zacatecnik
-prerekvizity: [04-vstup-a-vystup]
+prerekvizity: [04-promenne-a-pamet]
 cile:
   - Použijete aritmetické operátory v Pythonu
   - Rozlišíte dělení, celočíselné dělení a modulo
@@ -98,4 +98,4 @@ print(skore)  # 110
 
 ## Co dál
 
-→ [Lekce 06: Proměnné a paměť](../06-promenne-a-pamet/lekce.md)
+→ [Lekce 06: Vstup a výstup](../06-vstup-a-vystup/lekce.md)
