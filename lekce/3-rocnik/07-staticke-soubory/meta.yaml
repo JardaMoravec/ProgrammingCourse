@@ -1,0 +1,11 @@
+id: 07-staticke-soubory
+rocnik: 3
+nazev: Statické soubory (CSS, obrázky)
+modul: flask-zaklady
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [06-dedicnost-sablon]
+kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+svp: [kaskádové styly, dynamické webové stránky]
+tagy: [flask, static, css, obrazky]
+migrovano_z: []

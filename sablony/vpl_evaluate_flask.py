@@ -70,18 +70,24 @@ def load_app(path: Path):
             "V souboru není instance Flask — očekává se např. app = Flask(__name__)."
         )
     app = apps[0]
-    app.template_folder = str(path.resolve().parent / "templates")
+    root = path.resolve().parent
+    app.template_folder = str(root / "templates")
+    app.static_folder = str(root / "static")
     return app
 
 
-def find_template(root: Path, rel: str) -> Path | None:
-    nested = root / "templates" / rel
+def find_in_dir(root: Path, folder: str, rel: str) -> Path | None:
+    nested = root / folder / rel
     if nested.is_file():
         return nested
     flat = root / rel
     if flat.is_file():
         return flat
     return None
+
+
+def find_template(root: Path, rel: str) -> Path | None:
+    return find_in_dir(root, "templates", rel)
 
 
 def run_test(client, student: Path, test: dict) -> list[str]:
@@ -93,6 +99,13 @@ def run_test(client, student: Path, test: dict) -> list[str]:
             errors.append(
                 f"Chybí šablona templates/{rel} "
                 f"(nahrajte ji ve složce templates/ vedle {student.name})."
+            )
+
+    for rel in test.get("static") or []:
+        if find_in_dir(root, "static", rel) is None:
+            errors.append(
+                f"Chybí soubor static/{rel} "
+                f"(nahrajte ho ve složce static/ vedle {student.name})."
             )
 
     if test.get("source_contains"):
@@ -153,6 +166,10 @@ def run_test(client, student: Path, test: dict) -> list[str]:
             errors.append(
                 f"Na {path} chybí odkaz na {wanted} (atribut href)."
             )
+
+    for needle in test.get("contains") or []:
+        if needle not in html:
+            errors.append(f"Na {path} chybí `{needle}`.")
 
     for needle in test.get("not_contains") or []:
         if needle in html:

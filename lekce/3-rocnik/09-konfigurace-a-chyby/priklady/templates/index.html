@@ -1,0 +1,10 @@
+{% extends "zaklad.html" %}
+{% block title %}Nástěnka{% endblock %}
+{% block obsah %}
+  <h1>{{ config.NAZEV }}</h1>
+  <ul>
+    {% for cislo, text in clanky.items() %}
+      <li><a href="{{ url_for('clanek', cislo=cislo) }}">Článek {{ cislo }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

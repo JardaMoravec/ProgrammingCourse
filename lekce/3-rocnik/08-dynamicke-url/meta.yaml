@@ -1,0 +1,11 @@
+id: 08-dynamicke-url
+rocnik: 3
+nazev: Dynamické URL a url_for
+modul: flask-zaklady
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [07-staticke-soubory]
+kompetence: [k4-formulare-skript]
+svp: [skriptovací jazyk, dynamické webové stránky]
+tagy: [flask, url_for, dynamicke-url]
+migrovano_z: []

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Školní nástěnka{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Domů</a>
+  </nav>
+  {% block obsah %}{% endblock %}
+</body>
+</html>

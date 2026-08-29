@@ -1,0 +1,55 @@
+title: Katalog památek
+stars: 3
+moodle: PRG-3-09-01
+typ: flask
+soubor: pamatky.py
+description: |
+  Napište Flask aplikaci v souboru `pamatky.py` — krátký **katalog památek**.
+
+  Do `app.config["NAZEV"]` uložte název webu (vymyslete). V šablonách ho
+  vypište přes `{{ config.NAZEV }}` aspoň na hlavní stránce.
+
+  Dynamická cesta `/pamatka/<slug>`. Na `/` odkazy přes `url_for` na **tyto
+  tři** slugy: `karlstejn`, `trosky`, `lednice`.
+
+  | Adresa | Stav | Stránka |
+  |--------|------|---------|
+  | `/pamatka/karlstejn` (a další dva) | **200** | `<h1>` se slugem přesně, jeden `<p>` |
+  | `/pamatka/xyz` (není v katalogu) | **404** | vlastní šablona |
+  | `/neexistuje` | **404** | stejná šablona |
+
+  Neznámý slug řešte `abort(404)`, ne textem se stavem 200.
+  Handler 404: `return render_template("404.html"), 404`.
+  Na 404 stránce `<h1>Stránka neexistuje</h1>` a odkaz na `/` přes `url_for`.
+odevzdani: |
+  Do Moodle nahrajte `pamatky.py` a složku `templates/` (včetně `404.html`).
+  Spusťte **Evaluate**.
+evaluate:
+  - name: Config, abort a handler
+    templates: [index.html, 404.html]
+    source_contains: ["abort", "errorhandler", "NAZEV"]
+    template_contains:
+      index.html:
+        - "url_for"
+      404.html:
+        - "Stránka neexistuje"
+        - "url_for"
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    href: [/pamatka/karlstejn, /pamatka/trosky, /pamatka/lednice]
+  - name: Karlštejn
+    get: /pamatka/karlstejn
+    status: 200
+    tags: [h1]
+    contains: ["karlstejn"]
+  - name: Neznámá památka
+    get: /pamatka/xyz
+    status: 404
+    tags: [h1]
+    contains: ["Stránka neexistuje"]
+  - name: Neznámá cesta
+    get: /neexistuje
+    status: 404
+    tags: [h1]
+    contains: ["Stránka neexistuje"]

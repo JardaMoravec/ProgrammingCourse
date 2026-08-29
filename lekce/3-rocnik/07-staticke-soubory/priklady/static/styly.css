@@ -1,0 +1,13 @@
+h1 {
+  color: #2563eb;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+nav a {
+  margin-right: 0.75rem;
+}

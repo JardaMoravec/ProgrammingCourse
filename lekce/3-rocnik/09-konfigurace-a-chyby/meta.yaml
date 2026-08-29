@@ -1,0 +1,11 @@
+id: 09-konfigurace-a-chyby
+rocnik: 3
+nazev: Konfigurace aplikace a chybové stránky
+modul: flask-zaklady
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [08-dynamicke-url]
+kompetence: [k4-formulare-skript]
+svp: [skriptovací jazyk]
+tagy: [flask, config, 404, abort, errorhandler]
+migrovano_z: []

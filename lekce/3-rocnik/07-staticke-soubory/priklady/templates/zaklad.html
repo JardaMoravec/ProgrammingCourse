@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}SPŠ ukázka{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styly.css') }}">
+</head>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo školy" width="48" height="48">
+    <nav>
+      <a href="/">Domů</a>
+      <a href="/kontakt">Kontakt</a>
+    </nav>
+  </header>
+  {% block obsah %}{% endblock %}
+</body>
+</html>

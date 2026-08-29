@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Neznama cesta nebo abort vola errorhandler a vraci 404">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="220" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="40" width="190" height="112" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="119" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Po&#382;adavek</text>
+  <text class="d-muted" x="119" y="104" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">GET /clanek/9</text>
+  <text class="d-muted" x="119" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">nebo /neexistuje</text>
+
+  <rect class="d-soft" x="256" y="40" width="200" height="112" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="356" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">abort(404)</text>
+  <text class="d-muted" x="356" y="104" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">nebo &#382;&#225;dn&#225; routa</text>
+  <text class="d-muted" x="356" y="126" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">errorhandler(404)</text>
+
+  <rect class="d-surface" x="498" y="40" width="198" height="112" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="597" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">404.html</text>
+  <text class="d-muted" x="597" y="104" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">return &#8230;, 404</text>
+  <text class="d-muted" x="597" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">vlastn&#237; str&#225;nka</text>
+
+  <line class="d-stroke-accent" x1="214" y1="96" x2="252" y2="96" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <line class="d-stroke-accent" x1="456" y1="96" x2="494" y2="96" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+
+  <text class="d-muted" x="360" y="188" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">Stav 404 z&#367;stane &#8212; zm&#283;n&#237; se jen t&#283;lo odpov&#283;di</text>
+</svg>

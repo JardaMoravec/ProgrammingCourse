@@ -1,0 +1,58 @@
+title: Stránky pekárny
+stars: 3
+moodle: PRG-3-07-01
+typ: flask
+soubor: pekarna.py
+description: |
+  Napište Flask aplikaci v souboru `pekarna.py` pro **školní / vesnickou pekárnu**
+  (název si vymyslete).
+
+  Použijte dědičnost šablon a složku `static/`:
+
+  | Soubor | Účel |
+  |--------|------|
+  | `templates/zaklad.html` | kostra, menu, odkaz na CSS, logo `<img>` |
+  | `templates/index.html` | `/` — `<h1>` název, jeden `<p>` |
+  | `templates/nabidka.html` | `/nabidka` — `<h1>Nabídka</h1>`, jeden `<p>` |
+  | `static/styly.css` | aspoň jedno pravidlo (barva, písmo, mezera…) |
+  | `static/logo.svg` | jednoduché SVG logo (můžete ho napsat jako text) |
+
+  V základu odkazy na `/` a `/nabidka`. CSS i logo napojte přes `url_for('static', …)`
+  nebo cestu `/static/…`. Renderujte potomky, ne `zaklad.html`.
+
+  V prohlížeči ověřte Síť: `/static/styly.css` a `/static/logo.svg` mají stav **200**.
+odevzdani: |
+  Do Moodle nahrajte `pekarna.py`, složku `templates/` a složku `static/`
+  (`styly.css`, `logo.svg`). Spusťte **Evaluate**.
+evaluate:
+  - name: Soubory
+    templates: [zaklad.html, index.html, nabidka.html]
+    static: [styly.css, logo.svg]
+    source_contains: [render_template]
+    template_contains:
+      zaklad.html:
+        - "{% block"
+      index.html:
+        - "{% extends"
+      nabidka.html:
+        - "{% extends"
+  - name: CSS
+    get: /static/styly.css
+    status: 200
+    contains: ["{"]
+  - name: Logo
+    get: /static/logo.svg
+    status: 200
+    contains: ["<svg"]
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1, p, img]
+    href: [/, /nabidka, /static/styly.css]
+    contains: ["/static/logo.svg"]
+  - name: Nabídka
+    get: /nabidka
+    status: 200
+    tags: [h1, p, img]
+    href: [/, /nabidka]
+    contains: ["/static/logo.svg"]
