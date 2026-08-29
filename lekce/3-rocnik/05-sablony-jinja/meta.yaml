@@ -1,0 +1,11 @@
+id: 05-sablony-jinja
+rocnik: 3
+nazev: Šablony Jinja2
+modul: flask-zaklady
+hodiny: 4
+obtiznost: zacatecnik
+prerekvizity: [04-routy-a-pohledy]
+kompetence: [k2-html, k3-web-vytvoreni, k4-formulare-skript]
+svp: [šablony, dynamické webové stránky]
+tagy: [flask, jinja, sablony]
+migrovano_z: []

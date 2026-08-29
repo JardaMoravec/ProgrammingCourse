@@ -23,7 +23,7 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03** a **04** mají Flask úkoly s VPL hodnotitelem (routy a HTML). Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
+Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–06** mají Flask úkoly s VPL hodnotitelem. Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
 
 ## Přehled lekcí
 
@@ -33,8 +33,8 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 02 | `02-html-css-shrnuti` | HTML a CSS — shrnutí | — |
 | 03 | `03-uvod-do-flasku` | Úvod do Flasku | 1 |
 | 04 | `04-routy-a-pohledy` | Routy a pohledové funkce | 2 |
-| 05 | `05-sablony-jinja` | Šablony Jinja2 (4 h) | — |
-| 06 | `06-dedicnost-sablon` | Dědičnost šablon | — |
+| 05 | `05-sablony-jinja` | Šablony Jinja2 (4 h) | 2 |
+| 06 | `06-dedicnost-sablon` | Dědičnost šablon | 1 |
 | 07 | `07-staticke-soubory` | Statické soubory (CSS, obrázky) | — |
 | 08 | `08-dynamicke-url` | Dynamické URL a url_for | — |
 | 09 | `09-konfigurace-a-chyby` | Konfigurace a chybové stránky | — |
@@ -53,7 +53,7 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 22 | `22-projekt-implementace` | Projekt — implementace (20 h) | — |
 | 23 | `23-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
 
-**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 05–20; lekce 01 má úkol bez VPL, lekce 03–04 mají Flask VPL).
+**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 07–20; lekce 01 má úkol bez VPL, lekce 03–06 mají Flask VPL).
 
 ## Build
 

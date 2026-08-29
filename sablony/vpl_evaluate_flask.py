@@ -69,17 +69,61 @@ def load_app(path: Path):
         raise RuntimeError(
             "V souboru není instance Flask — očekává se např. app = Flask(__name__)."
         )
-    return apps[0]
+    app = apps[0]
+    app.template_folder = str(path.resolve().parent / "templates")
+    return app
 
 
-def run_test(client, test: dict) -> list[str]:
+def find_template(root: Path, rel: str) -> Path | None:
+    nested = root / "templates" / rel
+    if nested.is_file():
+        return nested
+    flat = root / rel
+    if flat.is_file():
+        return flat
+    return None
+
+
+def run_test(client, student: Path, test: dict) -> list[str]:
     errors: list[str] = []
+    root = student.parent
+
+    for rel in test.get("templates") or []:
+        if find_template(root, rel) is None:
+            errors.append(
+                f"Chybí šablona templates/{rel} "
+                f"(nahrajte ji ve složce templates/ vedle {student.name})."
+            )
+
+    if test.get("source_contains"):
+        src = student.read_text(encoding="utf-8", errors="replace")
+        for needle in test["source_contains"]:
+            if needle not in src:
+                errors.append(f"V {student.name} se nenašlo `{needle}`.")
+
+    for rel, needles in (test.get("template_contains") or {}).items():
+        found = find_template(root, rel)
+        if found is None:
+            continue
+        text = found.read_text(encoding="utf-8", errors="replace")
+        for needle in needles:
+            if needle not in text:
+                errors.append(f"V templates/{rel} se nenašlo `{needle}`.")
+
+    if "get" not in test:
+        return errors
+
+    if client is None:
+        errors.append("GET nelze spustit — aplikace se nenačetla.")
+        return errors
+
     path = test.get("get") or "/"
     expected_status = int(test.get("status", 200))
     try:
         response = client.get(path)
     except Exception as exc:
-        return [f"Požadavek GET {path} selhal: {exc}"]
+        errors.append(f"Požadavek GET {path} selhal: {exc}")
+        return errors
 
     if response.status_code != expected_status:
         errors.append(
@@ -110,6 +154,13 @@ def run_test(client, test: dict) -> list[str]:
                 f"Na {path} chybí odkaz na {wanted} (atribut href)."
             )
 
+    for needle in test.get("not_contains") or []:
+        if needle in html:
+            errors.append(
+                f"Na {path} se nesmí objevit `{needle}` "
+                f"(šablona se pravděpodobně nevykreslila)."
+            )
+
     return errors
 
 
@@ -133,6 +184,7 @@ def main() -> int:
         print(f"Grade :=>> {gmin}")
         return 0
 
+    client = None
     try:
         app = load_app(student)
         app.config["TESTING"] = True
@@ -143,15 +195,12 @@ def main() -> int:
         tb = traceback.format_exc().strip().splitlines()
         for line in tb[-8:]:
             comment(line)
-        gmin, _ = grade_limits()
-        print(f"Grade :=>> {gmin}")
-        return 0
 
     passed = 0
     total = len(TESTS)
     for test in TESTS:
         name = str(test.get("name") or test.get("get") or "test")
-        errors = run_test(client, test)
+        errors = run_test(client, student, test)
         ok = not errors
         section(ok, name)
         if ok:

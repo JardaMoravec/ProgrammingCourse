@@ -1,0 +1,11 @@
+id: 06-dedicnost-sablon
+rocnik: 3
+nazev: Dědičnost šablon
+modul: flask-zaklady
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [05-sablony-jinja]
+kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+svp: [šablony]
+tagy: [flask, jinja, dedicnost, block]
+migrovano_z: []

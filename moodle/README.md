@@ -86,6 +86,8 @@ Bez toho skript napíše, že Flask v jailu chybí, a dá 0 bodů.
 
 Skript hodnotí strukturu (stav 200, značky `h1`/`p`/`ul`, odkazy `href`). Vlastní text (název kroužku, jídlo, tituly knih) je v pořádku.
 
+U úkolů se **šablonami** (od lekce 05) nahrajte i složku `templates/` (`index.html`, …). V `ukol.yaml` to hodnotitel kontroluje. Když Moodle soubory zploští do jedné složky, hodnotitel hledá HTML i vedle `.py`.
+
 ## Generování / úpravy
 
 Po změně dat spusťte:

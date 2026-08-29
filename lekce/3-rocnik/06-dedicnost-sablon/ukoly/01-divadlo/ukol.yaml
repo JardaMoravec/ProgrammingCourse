@@ -1,0 +1,52 @@
+title: Školní divadlo
+stars: 3
+moodle: PRG-3-06-01
+typ: flask
+soubor: divadlo.py
+description: |
+  Napište Flask aplikaci v souboru `divadlo.py` pro **školní divadelní soubor**
+  (název si vymyslete).
+
+  Společná kostra je v `templates/zaklad.html` (menu jen tady).
+  Tři potomecké šablony s `{% extends "zaklad.html" %}` a blokem `obsah`:
+
+  | Cesta | Šablona | V bloku `obsah` |
+  |-------|---------|------------------|
+  | `/` | `index.html` | `<h1>` s názvem souboru, jeden `<p>` |
+  | `/hra` | `hra.html` | `<h1>` s názvem hry, jeden `<p>` |
+  | `/vstupenky` | `vstupenky.html` | `<h1>Vstupenky</h1>`, jeden `<p>` (cena nebo kde koupit) |
+
+  V základu odkazy na **všechny tři** cesty. Renderujte potomky, ne `zaklad.html`.
+  V prohlížeči ověřte, že menu je na každé stránce stejné.
+odevzdani: |
+  Do Moodle nahrajte `divadlo.py` a složku `templates/` (`zaklad.html`,
+  `index.html`, `hra.html`, `vstupenky.html`). Spusťte **Evaluate**.
+evaluate:
+  - name: Základ a extends
+    templates: [zaklad.html, index.html, hra.html, vstupenky.html]
+    source_contains: [render_template]
+    template_contains:
+      zaklad.html:
+        - "{% block"
+      index.html:
+        - "{% extends"
+      hra.html:
+        - "{% extends"
+      vstupenky.html:
+        - "{% extends"
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1, p]
+    href: [/, /hra, /vstupenky]
+    not_contains: ["{{"]
+  - name: Hra
+    get: /hra
+    status: 200
+    tags: [h1, p]
+    href: [/, /hra, /vstupenky]
+  - name: Vstupenky
+    get: /vstupenky
+    status: 200
+    tags: [h1, p]
+    href: [/, /hra, /vstupenky]

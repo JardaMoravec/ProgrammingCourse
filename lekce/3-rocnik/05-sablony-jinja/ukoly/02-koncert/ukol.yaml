@@ -1,0 +1,44 @@
+title: Program koncertu
+stars: 3
+moodle: PRG-3-05-02
+typ: flask
+soubor: koncert.py
+description: |
+  Napište Flask aplikaci v souboru `koncert.py` pro **školní koncert**
+  (název kapely / sboru si vymyslete).
+
+  Dvě cesty, **dvě šablony**, `render_template`. Skladby (nebo čísla programu)
+  držte v Pythonu jako seznam a v šabloně je vypište `{% for %}`.
+
+  | Cesta | Šablona | Obsah |
+  |-------|---------|--------|
+  | `/` | `index.html` | `<h1>` s názvem akce z Pythonu (`{{ … }}`), jeden `<p>`, odkaz na `/program` |
+  | `/program` | `program.html` | `<h1>Program</h1>`, seznam **alespoň tří** položek jako `<ul>` / `<li>` přes `{% for %}`, odkaz zpět na `/` |
+
+  V prohlížeči ověřte obě adresy i odkazy. HTML nevracejte řetězcem z Pythonu.
+odevzdani: |
+  Do Moodle nahrajte `koncert.py`, `templates/index.html` a
+  `templates/program.html`. Spusťte **Evaluate**.
+evaluate:
+  - name: Šablony a render_template
+    templates: [index.html, program.html]
+    source_contains: [render_template]
+  - name: Cyklus v programu
+    templates: [program.html]
+    template_contains:
+      program.html:
+        - "{% for"
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1, p]
+    href: [/program]
+    not_contains: ["{{"]
+  - name: Program
+    get: /program
+    status: 200
+    tags: [h1, ul, li]
+    min_tags:
+      li: 3
+    href: [/]
+    not_contains: ["{{"]

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ skola }}</title>
+</head>
+<body>
+  <h1>{{ skola }}</h1>
+  <p>Školní rozhlas — dnešní hlášení:</p>
+  <ul>
+    {% for text in hlaseni %}
+      <li>{{ text }}</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
