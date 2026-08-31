@@ -1,0 +1,11 @@
+id: 14-nahravani-souboru
+rocnik: 3
+nazev: Nahrávání souborů a obrázků
+modul: formulare
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [13-presmerovani-a-flash]
+kompetence: [k4-formulare-skript]
+svp: [HTML formuláře, zpracování dat skriptem]
+tagy: [flask, upload, request.files, static]
+migrovano_z: []

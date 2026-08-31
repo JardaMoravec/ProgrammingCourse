@@ -1,0 +1,11 @@
+id: 10-flask-procviceni
+rocnik: 3
+nazev: Flask základy — souhrn a procvičení
+modul: flask-zaklady
+hodiny: 2
+obtiznost: stredni
+prerekvizity: [09-konfigurace-a-chyby]
+kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+svp: [skriptovací jazyk, šablony]
+tagy: [flask, procviceni, sablony, url_for, 404]
+migrovano_z: []

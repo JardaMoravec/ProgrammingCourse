@@ -45,4 +45,38 @@ cases:
 #     min_tags:
 #       p: 2
 #     href: [/kontakt]
+#   - name: Přesměrování po POST
+#     post: /
+#     data:
+#       jmeno: Eva
+#     status: 302
+#     location: /
+#   - name: Flash po odeslání
+#     post: /
+#     data:
+#       jmeno: Eva
+#     follow_redirects: true
+#     status: 200
+#     contains: ["Uloženo"]
+#   - name: Nahrání souboru
+#     post: /
+#     upload:
+#       foto:
+#         filename: kvet.png
+#         content: dummy
+#     status: 302
+#     location: /
+#     saved: [static/uploads/foto.png]
+#   - name: Relace drží hodnotu
+#     post: /
+#     data:
+#       jmeno: Eva
+#     follow_redirects: true
+#     status: 200
+#     contains: ["Eva"]
+#     then:
+#       - get: /
+#         contains: ["Eva"]
+#     other_get: /
+#     other_not_contains: ["Eva"]
 

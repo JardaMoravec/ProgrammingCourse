@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Omluvenka</title>
+</head>
+<body>
+  <h1>Omluvenka</h1>
+  {% if jmeno %}
+    <p>Omluven: {{ jmeno }}</p>
+  {% endif %}
+  <form action="{{ url_for('index') }}" method="post">
+    <label>Jméno
+      <input name="jmeno">
+    </label>
+    <button type="submit">Odeslat</button>
+  </form>
+</body>
+</html>

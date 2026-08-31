@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="POST data: prazdne, int, nebo uspech">
+  <rect class="d-bg" width="720" height="220" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="54" width="150" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="99" y="96" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">POST</text>
+  <text class="d-muted" x="99" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">.strip()</text>
+
+  <rect class="d-soft" x="210" y="24" width="170" height="72" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="295" y="54" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#2563eb">pr&#225;zdn&#233;?</text>
+  <text class="d-muted" x="295" y="76" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">chyba v &#353;ablon&#283;</text>
+
+  <rect class="d-soft" x="210" y="112" width="170" height="72" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="295" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="600" fill="#2563eb">int(&#8230;)</text>
+  <text class="d-muted" x="295" y="164" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">ValueError &#8594; chyba</text>
+
+  <rect class="d-surface" x="416" y="54" width="280" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="556" y="96" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">stejn&#225; str&#225;nka, 200</text>
+  <text class="d-muted" x="556" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">{{ chyba }} nebo v&#253;sledek</text>
+</svg>

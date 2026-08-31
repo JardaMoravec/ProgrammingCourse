@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Kniha návštěv</title>
+</head>
+<body>
+  <h1>Kniha návštěv</h1>
+  {% for zprava in get_flashed_messages() %}
+    <p>{{ zprava }}</p>
+  {% endfor %}
+  {% if chyba %}
+    <p>{{ chyba }}</p>
+  {% endif %}
+  <form action="{{ url_for('index') }}" method="post">
+    <label>Jméno <input name="jmeno"></label>
+    <button type="submit">Zapsat</button>
+  </form>
+</body>
+</html>

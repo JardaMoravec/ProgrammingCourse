@@ -7,6 +7,7 @@ obtiznost: zacatecnik
 prerekvizity: [04-routy-a-pohledy]
 cile:
   - Oddělí HTML do souboru šablony a vykreslí ho přes render_template
+  - Zařadí šablonu a pohledovou funkci do MVC
   - Předá z pohledu do šablony proměnné přes {{ }}
   - Vypíše seznam v šabloně pomocí {% for %}
 ---
@@ -16,6 +17,7 @@ cile:
 ## Cíle lekce
 
 - Oddělíte **HTML** od Pythonu do souboru šablony
+- Zařadíte šablonu a pohledovou funkci do **MVC**
 - Předáte do stránky **proměnné** (`{{ }}`)
 - Vypíšete **seznam** v šabloně (`{% for %}`)
 
@@ -36,6 +38,20 @@ Dědičnost šablon (`{% extends %}`) je [lekce 06](../06-dedicnost-sablon/lekce
 Šablona **není** nový programovací jazyk. Je to HTML plus pár značek, které Flask před odesláním nahradí.
 
 ![Schéma: pohled předá data, Jinja vyplní šablonu, prohlížeč dostane HTML](diagramy/sablona-vyplneni.svg)
+
+## MVC — tři role
+
+Webové aplikace se často popisují zkratkou **MVC** (*Model–View–Controller*): data, vzhled a rozhodování zvlášť. Dnes to uvidíte poprvé — v [lekci 04](../04-routy-a-pohledy/lekce.md) byla funkce i HTML v jednom `return`.
+
+| Role | Význam | U vás teď |
+|------|--------|-----------|
+| **Model** | data | seznam, slovník (později databáze) |
+| **View** (pohled) | co uživatel **vidí** | šablona `.html` |
+| **Controller** (řadič) | rozhodne, *co* vrátit | pohledová funkce (`def index():`) |
+
+Ve Flasku je zmatek v názvech: funkci z lekce 04 říká **pohledová funkce** (*view function*), i když v MVC je to spíš **řadič**. Šablona je ten pohled, který uživatel vidí.
+
+Když v dalších lekcích napíšeme „do pohledu“, myslíme tu **pythonovskou funkci** — ne soubor šablony.
 
 ## Složka templates
 
@@ -138,7 +154,8 @@ Víc šablon = víc souborů v `templates/` (`index.html`, `kontakt.html`). Kaž
 
 | Pojem | Význam |
 |-------|--------|
-| šablona | HTML soubor ve `templates/` |
+| šablona | HTML soubor ve `templates/` (v MVC **view**) |
+| pohledová funkce | Python, který vybere šablonu a data (v MVC spíš **řadič**) |
 | `render_template` | Flask šablonu vyplní a vrátí jako odpověď |
 | `{{ promenna }}` | výpis hodnoty z pohledu |
 | `{% for %} … {% endfor %}` | cyklus v šabloně |

@@ -1,0 +1,11 @@
+id: 13-presmerovani-a-flash
+rocnik: 3
+nazev: Přesměrování a flash zprávy
+modul: formulare
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [12-validace-vstupu]
+kompetence: [k4-formulare-skript]
+svp: [skriptovací jazyk, zpracování dat skriptem]
+tagy: [flask, redirect, flash, PRG]
+migrovano_z: []

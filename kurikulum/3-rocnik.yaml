@@ -145,7 +145,7 @@ moduly:
       - zpracování dat skriptem
     bloky:
       - id: formulare-a-request
-        nazev: Formuláře, request a relace
+        nazev: Formuláře, soubory a relace
         hodiny: 10
         lekce:
           - id: "11-formulare-a-request"
@@ -172,21 +172,21 @@ moduly:
             kompetence: [k4-formulare-skript]
             prerekvizity: [12-validace-vstupu]
 
-          - id: "14-relace"
-            soubor: lekce/3-rocnik/14-relace
+          - id: "14-nahravani-souboru"
+            soubor: lekce/3-rocnik/14-nahravani-souboru
+            nazev: Nahrávání souborů a obrázků
+            hodiny: 2
+            svp: [HTML formuláře, zpracování dat skriptem]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [13-presmerovani-a-flash]
+
+          - id: "15-relace"
+            soubor: lekce/3-rocnik/15-relace
             nazev: Relace (session)
             hodiny: 2
             svp: [skriptovací jazyk]
             kompetence: [k4-formulare-skript]
-            prerekvizity: [13-presmerovani-a-flash]
-
-          - id: "15-formulare-procviceni"
-            soubor: lekce/3-rocnik/15-formulare-procviceni
-            nazev: Formuláře — souhrn a procvičení
-            hodiny: 2
-            svp: [HTML formuláře, zpracování dat skriptem]
-            kompetence: [k4-formulare-skript]
-            prerekvizity: [14-relace]
+            prerekvizity: [14-nahravani-souboru]
 
   - id: databaze
     nazev: Propojení skriptu a databáze
@@ -204,7 +204,7 @@ moduly:
             hodiny: 2
             svp: [propojení skriptu a databáze]
             kompetence: [k4-formulare-skript]
-            prerekvizity: [15-formulare-procviceni]
+            prerekvizity: [15-relace]
 
           - id: "17-vypis-z-databaze"
             soubor: lekce/3-rocnik/17-vypis-z-databaze

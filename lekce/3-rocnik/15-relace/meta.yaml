@@ -1,0 +1,11 @@
+id: 15-relace
+rocnik: 3
+nazev: Relace (session)
+modul: formulare
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [14-nahravani-souboru]
+kompetence: [k4-formulare-skript]
+svp: [skriptovací jazyk]
+tagy: [flask, session, cookie, secret_key]
+migrovano_z: []

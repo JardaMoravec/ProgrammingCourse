@@ -1,0 +1,93 @@
+title: Stanice hasičů
+stars: 3
+moodle: PRG-3-10-01
+typ: flask
+soubor: hasici.py
+description: |
+  Napište Flask aplikaci v souboru `hasici.py` — stránky **sboru dobrovolných
+  hasičů** (název si vymyslete).
+
+  Složte dohromady to z lekcí 03–09: dědičnost, `url_for`, dynamická cesta,
+  `abort(404)` a CSS ve `static/`.
+
+  Do `app.config["NAZEV"]` uložte název webu. Vypište ho přes `{{ config.NAZEV }}`
+  aspoň na hlavní stránce.
+
+  | Soubor | Účel |
+  |--------|------|
+  | `templates/zaklad.html` | kostra, menu, odkaz na CSS |
+  | `templates/index.html` | `/` — seznam techniky |
+  | `templates/kontakt.html` | `/kontakt` — `<h1>Kontakt</h1>`, jeden `<p>` |
+  | `templates/technika.html` | detail jedné cisterny / vozu |
+  | `templates/404.html` | vlastní 404 |
+  | `static/styly.css` | aspoň jedno pravidlo (barva, písmo, mezera…) |
+
+  Dynamická cesta `/technika/<slug>`. Na `/` odkazy přes `url_for` na **tyto tři**
+  slugy: `cisterna`, `zebrik`, `dopravni`.
+
+  | Adresa | Stav | Stránka |
+  |--------|------|---------|
+  | `/technika/cisterna` (a další dva) | **200** | `<h1>` se slugem přesně, jeden `<p>` |
+  | `/technika/xyz` | **404** | vlastní šablona |
+  | `/neexistuje` | **404** | stejná šablona |
+  | `/kontakt` | **200** | `<h1>Kontakt</h1>` |
+
+  Neznámý slug řešte `abort(404)`. Handler: `return render_template("404.html"), 404`.
+  Na 404 stránce `<h1>Stránka neexistuje</h1>` a odkaz na `/` přes `url_for`.
+
+  V základu odkazy na `/` a `/kontakt` přes `url_for`. CSS napojte
+  `url_for('static', filename='styly.css')` nebo cestou `/static/styly.css`.
+  Renderujte potomky, ne `zaklad.html`.
+odevzdani: |
+  Do Moodle nahrajte `hasici.py`, složku `templates/` a složku `static/`
+  (`styly.css`). Spusťte **Evaluate**.
+evaluate:
+  - name: Soubory, config a 404
+    templates: [zaklad.html, index.html, kontakt.html, technika.html, 404.html]
+    static: [styly.css]
+    source_contains: ["abort", "errorhandler", "NAZEV", "<slug>"]
+    template_contains:
+      zaklad.html:
+        - "{% block"
+        - "url_for"
+      index.html:
+        - "{% extends"
+        - "url_for"
+      kontakt.html:
+        - "{% extends"
+      technika.html:
+        - "{% extends"
+      404.html:
+        - "Stránka neexistuje"
+        - "url_for"
+  - name: CSS
+    get: /static/styly.css
+    status: 200
+    contains: ["{"]
+  - name: Hlavní stránka
+    get: /
+    status: 200
+    tags: [h1]
+    href: [/, /kontakt, /technika/cisterna, /technika/zebrik, /technika/dopravni]
+    not_contains: ["{{"]
+  - name: Kontakt
+    get: /kontakt
+    status: 200
+    tags: [h1, p]
+    href: [/, /kontakt]
+    contains: ["Kontakt"]
+  - name: Cisterna
+    get: /technika/cisterna
+    status: 200
+    tags: [h1]
+    contains: ["cisterna"]
+  - name: Neznámá technika
+    get: /technika/xyz
+    status: 404
+    tags: [h1]
+    contains: ["Stránka neexistuje"]
+  - name: Neznámá cesta
+    get: /neexistuje
+    status: 404
+    tags: [h1]
+    contains: ["Stránka neexistuje"]

@@ -23,7 +23,7 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–09** mají Flask úkoly s VPL hodnotitelem. Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
+Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–15** mají Flask úkoly s VPL hodnotitelem. Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
 
 ## Přehled lekcí
 
@@ -38,12 +38,12 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 07 | `07-staticke-soubory` | Statické soubory (CSS, obrázky) | 1 |
 | 08 | `08-dynamicke-url` | Dynamické URL a url_for | 1 |
 | 09 | `09-konfigurace-a-chyby` | Konfigurace a chybové stránky | 1 |
-| 10 | `10-flask-procviceni` | Flask základy — procvičení | — |
-| 11 | `11-formulare-a-request` | Formuláře a objekt request | — |
-| 12 | `12-validace-vstupu` | Validace dat na serveru | — |
-| 13 | `13-presmerovani-a-flash` | Přesměrování a flash zprávy | — |
-| 14 | `14-relace` | Relace (session) | — |
-| 15 | `15-formulare-procviceni` | Formuláře — procvičení | — |
+| 10 | `10-flask-procviceni` | Flask základy — procvičení | 1 |
+| 11 | `11-formulare-a-request` | Formuláře a objekt request | 1 |
+| 12 | `12-validace-vstupu` | Validace dat na serveru | 1 |
+| 13 | `13-presmerovani-a-flash` | Přesměrování a flash zprávy | 1 |
+| 14 | `14-nahravani-souboru` | Nahrávání souborů a obrázků | 1 |
+| 15 | `15-relace` | Relace (session) | 1 |
 | 16 | `16-pripojeni-databaze` | Připojení aplikace k databázi | — |
 | 17 | `17-vypis-z-databaze` | Výpis z databáze do šablony | — |
 | 18 | `18-zapis-do-databaze` | Zápis z formuláře do databáze | — |
@@ -53,7 +53,7 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 22 | `22-projekt-implementace` | Projekt — implementace (20 h) | — |
 | 23 | `23-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
 
-**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 10–20; lekce 01 má úkol bez VPL, lekce 03–09 mají Flask VPL).
+**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 16–20; lekce 01 má úkol bez VPL, lekce 03–15 mají Flask VPL).
 
 ## Build
 

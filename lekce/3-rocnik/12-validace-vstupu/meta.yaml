@@ -1,0 +1,11 @@
+id: 12-validace-vstupu
+rocnik: 3
+nazev: Validace dat na serveru
+modul: formulare
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [11-formulare-a-request]
+kompetence: [k3-web-vytvoreni, k4-formulare-skript]
+svp: [zpracování dat skriptem, validace kódu]
+tagy: [flask, validace, try, except, strip]
+migrovano_z: []

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" aria-label="Nahrani souboru: POST multipart, ulozeni, GET obrazku ze static">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="300" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="24" width="168" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="108" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Prohl&#237;&#382;e&#269;</text>
+  <text class="d-muted" x="108" y="80" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">v&#253;b&#283;r souboru</text>
+
+  <rect class="d-soft" x="276" y="24" width="200" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="376" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Flask</text>
+  <text class="d-muted" x="376" y="80" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">request.files</text>
+
+  <rect class="d-surface" x="528" y="24" width="168" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="612" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Disk</text>
+  <text class="d-muted" x="612" y="80" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">static/uploads/</text>
+
+  <line class="d-stroke-accent" x1="192" y1="68" x2="272" y2="68" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-accent" x="232" y="58" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#2563eb">1. POST</text>
+  <line class="d-stroke-accent" x1="476" y1="68" x2="524" y2="68" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-muted" x="500" y="58" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="10" fill="#5c6370">.save()</text>
+
+  <rect class="d-soft" x="276" y="168" width="200" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="376" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">HTML + img</text>
+  <text class="d-muted" x="376" y="224" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">302 &#8594; GET /</text>
+
+  <rect class="d-surface" x="24" y="168" width="168" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="108" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Prohl&#237;&#382;e&#269;</text>
+  <text class="d-muted" x="108" y="224" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">zobraz&#237; obr&#225;zek</text>
+
+  <path class="d-stroke-accent" d="M376,112 L376,164" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <line class="d-stroke-accent" x1="276" y1="212" x2="196" y2="212" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-accent" x="236" y="202" text-anchor="middle" font-family="Consolas, monospace" font-size="10" font-weight="600" fill="#2563eb">2. GET</text>
+
+  <path class="d-stroke-muted" d="M108,256 C108,280 612,280 612,116" fill="none" stroke="#5c6370" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-muted" x="360" y="292" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">3. GET /static/uploads/&#8230; &#183; stejn&#253; princip jako CSS v lekci 07</text>
+</svg>

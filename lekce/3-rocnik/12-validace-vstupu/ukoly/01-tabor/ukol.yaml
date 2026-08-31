@@ -1,0 +1,65 @@
+title: Počet míst na tábor
+stars: 3
+moodle: PRG-3-12-01
+typ: flask
+soubor: tabor.py
+description: |
+  Napište Flask aplikaci v souboru `tabor.py` — **přihlášku počtu míst na tábor**.
+
+  Na `/` formulář **POST** s polem `name="pocet"`. Routa: `methods=["GET", "POST"]`.
+  Hodnotu čtěte `request.form.get("pocet", "")` a ořežte `.strip()`.
+
+  | POST `pocet` | Stav | Na stránce |
+  |--------------|------|------------|
+  | prázdné nebo samé mezery | **200** | přesně `Zadejte počet` |
+  | není celé číslo (`abc`, `3.5`) | **200** | přesně `Zadejte celé číslo` |
+  | celé číslo (třeba `7`) | **200** | slovo **`Přijato`** a to číslo |
+
+  Prázdné pole řešte **dřív** než `int` — ať se u mezer neplete hláška.
+  `int` obalte `try` / `except ValueError`. Hlášku předejte do šablony jako
+  `chyba` (`{{ chyba }}`). Při chybě formulář nechte na stránce, stav 200 (ne 500).
+odevzdani: |
+  Do Moodle nahrajte `tabor.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář a validace
+    templates: [index.html]
+    source_contains: ["request.form", "strip", "except", "int("]
+    template_contains:
+      index.html:
+        - "<form"
+        - "method="
+        - 'name="pocet"'
+        - "{{ chyba }}"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="pocet"']
+    not_contains: ["{{"]
+  - name: Prázdný počet
+    post: /
+    data:
+      pocet: ""
+    status: 200
+    contains: ["Zadejte počet"]
+    not_contains: ["Zadejte celé číslo", "{{", "Přijato"]
+  - name: Jen mezery
+    post: /
+    data:
+      pocet: "   "
+    status: 200
+    contains: ["Zadejte počet"]
+  - name: Ne číslo
+    post: /
+    data:
+      pocet: abc
+    status: 200
+    contains: ["Zadejte celé číslo"]
+    not_contains: ["Zadejte počet", "Přijato"]
+  - name: Platný počet
+    post: /
+    data:
+      pocet: 7
+    status: 200
+    contains: ["Přijato", "7"]
+    not_contains: ["Zadejte počet", "Zadejte celé číslo", "{{"]

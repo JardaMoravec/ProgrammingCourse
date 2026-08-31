@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Objednávka sešitů</title>
+</head>
+<body>
+  <h1>Objednávka sešitů</h1>
+  {% if chyba %}
+    <p>{{ chyba }}</p>
+  {% endif %}
+  {% if zprava %}
+    <p>{{ zprava }}</p>
+  {% endif %}
+  <form action="{{ url_for('index') }}" method="post">
+    <label>Počet
+      <input name="pocet" value="{{ pocet }}">
+    </label>
+    <button type="submit">Objednat</button>
+  </form>
+</body>
+</html>

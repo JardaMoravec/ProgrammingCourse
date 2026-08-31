@@ -1,0 +1,51 @@
+title: Přihláška na lyžák
+stars: 3
+moodle: PRG-3-11-01
+typ: flask
+soubor: lyzak.py
+description: |
+  Napište Flask aplikaci v souboru `lyzak.py` — **přihlášku na lyžařský výcvik**.
+
+  Na `/` zobrazte formulář **POST** s polem `name="jmeno"` (jméno žáka).
+  Routa přijímá GET i POST: `methods=["GET", "POST"]`.
+
+  | Požadavek | Chování |
+  |-----------|---------|
+  | GET `/` | formulář, stav **200** |
+  | POST `/` s `jmeno` | stejná stránka, ve výstupu je odeslané jméno |
+
+  Hodnotu čtěte `request.form.get("jmeno", "")`. Vypište ji (třeba
+  `Přihlášen: Eva`) — větu si vymyslete, **jméno z formuláře** musí zůstat.
+
+  Šablona, `url_for` u `action` je vítaný. Prázdné jméno zatím neřešte
+  (to je lekce 12).
+odevzdani: |
+  Do Moodle nahrajte `lyzak.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář a POST
+    templates: [index.html]
+    source_contains: ["request.form", "methods"]
+    template_contains:
+      index.html:
+        - "<form"
+        - "method="
+        - 'name="jmeno"'
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="jmeno"']
+    not_contains: ["{{"]
+  - name: Přihlášení Evy
+    post: /
+    data:
+      jmeno: Eva
+    status: 200
+    contains: ["Eva"]
+    not_contains: ["{{"]
+  - name: Přihlášení Petra
+    post: /
+    data:
+      jmeno: Petr
+    status: 200
+    contains: ["Petr"]

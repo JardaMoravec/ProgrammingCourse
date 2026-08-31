@@ -38,7 +38,7 @@ V šabloně je slovník `config` k dispozici sám:
 <h1>{{ config.NAZEV }}</h1>
 ```
 
-Hodí se na titulek webu, e-mail správce, později řetězec k databázi. **Tajné údaje** (hesla, `SECRET_KEY` pro relace v lekci 14) do Gitu ani do Moodle materiálů nepatří.
+Hodí se na titulek webu, e-mail správce, později řetězec k databázi. **Tajné údaje** (hesla, `SECRET_KEY` pro relace v lekci 15) do Gitu ani do Moodle materiálů nepatří.
 
 `DEBUG` nechte na příkazu `flask run --debug`. Řádek `app.config["DEBUG"] = True` v souboru se snadno zapomene vypnout.
 

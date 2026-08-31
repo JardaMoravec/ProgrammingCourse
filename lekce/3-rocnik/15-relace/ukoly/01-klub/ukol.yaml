@@ -1,0 +1,95 @@
+title: Přezdívka do klubu
+stars: 3
+moodle: PRG-3-15-01
+typ: flask
+soubor: klub.py
+description: |
+  Napište Flask aplikaci v souboru `klub.py` — **přezdívku do školního programátorského klubu**.
+
+  Nastavte `app.secret_key`. Hodnotu čtěte `request.form.get("prezdivka", "")` a ořežte `.strip()`.
+  Uložte ji do `session` (třeba `session["prezdivka"]`), ne do globální proměnné a ne do `flash`.
+
+  | Cesta | Metody | Chování |
+  |-------|--------|---------|
+  | `/` | GET, POST | formulář s `name="prezdivka"` |
+  | `/profil` | GET | ukáže přezdívku z relace |
+  | `/odhlasit` | POST | `session.clear()` nebo `pop`, pak 302 na `/` |
+
+  | POST `/` `prezdivka` | Stav | Chování |
+  |----------------------|------|---------|
+  | prázdné nebo mezery | **200** | formulář zůstane, přesně `Zadejte přezdívku` |
+  | neprázdné (třeba Eva) | **302** na `/` | relace drží **Eva** |
+
+  Po přihlášení musí **Eva** zůstat na GET `/` i po dalším obnovení a také na GET `/profil`.
+  Na `/` odkaz na `/profil`. Odhlášení je **POST** (formulář, ne odkaz GET).
+  Chybu **neflashujte** — `{{ chyba }}`. Jiný prohlížeč Evu nevidí.
+odevzdani: |
+  Do Moodle nahrajte `klub.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář a relace
+    templates: [index.html, profil.html]
+    source_contains: ["session", "secret_key", "redirect", "strip"]
+    template_contains:
+      index.html:
+        - "<form"
+        - 'name="prezdivka"'
+        - "{{ chyba }}"
+      profil.html:
+        - "{{"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="prezdivka"']
+    href: [/profil]
+    not_contains: ["{{"]
+  - name: Prázdná přezdívka
+    post: /
+    data:
+      prezdivka: ""
+    status: 200
+    contains: ["Zadejte přezdívku"]
+    not_contains: ["{{"]
+  - name: Jen mezery
+    post: /
+    data:
+      prezdivka: "   "
+    status: 200
+    contains: ["Zadejte přezdívku"]
+  - name: Přesměrování
+    post: /
+    data:
+      prezdivka: Eva
+    status: 302
+    location: /
+  - name: Relace drží přezdívku
+    post: /
+    data:
+      prezdivka: Eva
+    follow_redirects: true
+    status: 200
+    contains: ["Eva"]
+    not_contains: ["Zadejte přezdívku", "{{"]
+    then:
+      - get: /
+        status: 200
+        contains: ["Eva"]
+      - get: /profil
+        status: 200
+        contains: ["Eva"]
+        not_contains: ["{{"]
+    other_get: /profil
+    other_not_contains: ["Eva"]
+  - name: Odhlášení
+    post: /
+    data:
+      prezdivka: Eva
+    follow_redirects: true
+    then:
+      - post: /odhlasit
+        status: 302
+        location: /
+      - get: /
+        status: 200
+        not_contains: ["Eva"]
+        tags: [form]

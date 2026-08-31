@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" aria-label="Prechody mezi stavy stranky formulare: prazdny, chyba, flash">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="340" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="248" y="20" width="224" height="72" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="48" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Formul&#225;&#345;</text>
+  <text class="d-muted" x="360" y="70" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">GET /</text>
+
+  <rect class="d-soft" x="32" y="196" width="280" height="112" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="172" y="228" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Formul&#225;&#345; + chyba</text>
+  <text class="d-muted" x="172" y="252" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">200 &#183; {{ chyba }}</text>
+  <text class="d-muted" x="172" y="274" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">st&#225;le tat&#225;&#382; str&#225;nka</text>
+  <text class="d-muted" x="172" y="294" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">F5 znovu po&#353;le POST</text>
+
+  <rect class="d-surface" x="408" y="196" width="280" height="112" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="548" y="228" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Formul&#225;&#345; + flash</text>
+  <text class="d-muted" x="548" y="252" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">302 &#8594; GET /</text>
+  <text class="d-muted" x="548" y="274" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">zpr&#225;va jednou</text>
+  <text class="d-muted" x="548" y="294" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">F5 u&#382; jen GET</text>
+
+  <path class="d-stroke-accent" d="M300,92 L172,188" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-accent" x="198" y="128" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#2563eb">POST neplatn&#233;</text>
+
+  <path class="d-stroke-accent" d="M420,92 L548,188" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-accent" x="470" y="128" font-family="Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#2563eb">POST platn&#233;</text>
+
+  <line class="d-stroke-accent" x1="312" y1="252" x2="400" y2="252" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-muted" x="356" y="242" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">oprava &#183; POST platn&#233;</text>
+
+  <path class="d-stroke-accent" d="M688,220 C710,140 520,40 472,56" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <text class="d-muted" x="640" y="88" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">F5 &#8594; GET</text>
+  <text class="d-muted" x="640" y="104" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">flash zmiz&#237;</text>
+</svg>

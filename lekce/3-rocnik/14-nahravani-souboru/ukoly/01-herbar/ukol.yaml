@@ -1,0 +1,73 @@
+title: Foto do herbáře
+stars: 3
+moodle: PRG-3-14-01
+typ: flask
+soubor: herbar.py
+description: |
+  Napište Flask aplikaci v souboru `herbar.py` — **nahrání fotografie rostliny do školního herbáře**.
+
+  Na `/` formulář **POST** s `enctype="multipart/form-data"` a polem `type="file"` `name="foto"`.
+  Routa: `methods=["GET", "POST"]`. Nastavte `app.secret_key` (libovolný krátký řetězec).
+  Soubor čtěte `request.files.get("foto")`. Název projděte `secure_filename`.
+
+  | POST `foto` | Stav | Chování |
+  |-------------|------|---------|
+  | nic nevybrané | **200** | formulář zůstane, přesně `Vyberte fotografii` |
+  | soubor vybraný | **302** na `/` | uložíte ho jako **`static/uploads/foto.png`** |
+
+  Úspěch: `flash("Uloženo")` a `return redirect(url_for("index"))`.
+  V šabloně `get_flashed_messages()`. Chybu **neflashujte** a **nepřesměrovávejte**
+  — použijte `{{ chyba }}`.
+
+  Složku `static/uploads` vytvořte v kódu (`os.makedirs`). Ukládejte **vždy** pod názvem
+  `foto.png` (původní název z počítače ignorujte, jen podle něj poznejte, že soubor přišel).
+  Když soubor na disku je, v šabloně ho ukažte `<img>` přes `url_for('static', …)`
+  nebo cestu `/static/uploads/foto.png`.
+odevzdani: |
+  Do Moodle nahrajte `herbar.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář a nahrávání
+    templates: [index.html]
+    source_contains: ["request.files", "secure_filename", "save(", "flash", "redirect", "makedirs"]
+    template_contains:
+      index.html:
+        - "<form"
+        - "multipart/form-data"
+        - 'type="file"'
+        - 'name="foto"'
+        - "get_flashed_messages"
+        - "{{ chyba }}"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="foto"', "multipart/form-data"]
+    not_contains: ["{{"]
+  - name: Nic nevybrané
+    post: /
+    status: 200
+    contains: ["Vyberte fotografii"]
+    not_contains: ["Uloženo", "{{"]
+  - name: Přesměrování po nahrání
+    post: /
+    upload:
+      foto:
+        filename: rostlina.png
+        content: dummy-png
+    status: 302
+    location: /
+    saved: [static/uploads/foto.png]
+  - name: Flash a obrázek
+    post: /
+    upload:
+      foto:
+        filename: rostlina.png
+        content: dummy-png
+    follow_redirects: true
+    status: 200
+    tags: [img]
+    contains: ["Uloženo", "/static/uploads/foto.png"]
+    not_contains: ["Vyberte fotografii", "{{"]
+  - name: Soubor ze static
+    get: /static/uploads/foto.png
+    status: 200

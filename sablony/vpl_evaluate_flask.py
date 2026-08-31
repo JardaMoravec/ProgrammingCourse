@@ -1,15 +1,19 @@
 # Používá generate_tasks.py — placeholdery nahradí generátor.
 from __future__ import annotations
 
+import json
+
 STUDENT_FILE = "__STUDENT_FILE__"
-TESTS = __TESTS__
+TESTS = json.loads(r"""__TESTS__""")
 
 import importlib.util
 import os
 import re
 import sys
 import traceback
+from io import BytesIO
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 def comment(text: str) -> None:
@@ -90,7 +94,137 @@ def find_template(root: Path, rel: str) -> Path | None:
     return find_in_dir(root, "templates", rel)
 
 
-def run_test(client, student: Path, test: dict) -> list[str]:
+def location_path(header: str) -> str:
+    h = (header or "").strip()
+    if not h:
+        return ""
+    parsed = urlparse(h)
+    path = parsed.path or "/"
+    return norm_path(path)
+
+
+def post_payload(spec: dict) -> dict:
+    raw = spec.get("data") or {}
+    data = {str(k): "" if v is None else str(v) for k, v in raw.items()}
+    for field, item in (spec.get("upload") or {}).items():
+        if item is None:
+            continue
+        if isinstance(item, str):
+            filename, content, ctype = item, b"x", None
+        else:
+            filename = str(item.get("filename") or "")
+            raw_content = item.get("content", "x")
+            if raw_content is None:
+                content = b""
+            elif isinstance(raw_content, str):
+                content = raw_content.encode("utf-8")
+            else:
+                content = bytes(raw_content)
+            ctype = item.get("content_type")
+        payload = BytesIO(content)
+        if ctype:
+            data[str(field)] = (payload, filename, str(ctype))
+        else:
+            data[str(field)] = (payload, filename)
+    return data
+
+
+def send_http(client, spec: dict):
+    follow = bool(spec.get("follow_redirects"))
+    if "post" in spec:
+        path = spec.get("post") or "/"
+        try:
+            response = client.post(
+                path, data=post_payload(spec), follow_redirects=follow
+            )
+        except Exception as exc:
+            return "POST", path, None, [f"Požadavek POST {path} selhal: {exc}"]
+        return "POST", path, response, []
+    path = spec.get("get") or "/"
+    try:
+        response = client.get(path, follow_redirects=follow)
+    except Exception as exc:
+        return "GET", path, None, [f"Požadavek GET {path} selhal: {exc}"]
+    return "GET", path, response, []
+
+
+def check_response(response, spec: dict, method: str, path: str, root: Path) -> list[str]:
+    errors: list[str] = []
+    expected_status = int(spec.get("status", 200))
+    if response.status_code != expected_status:
+        errors.append(
+            f"{method} {path}: stav {response.status_code}, očekáváno {expected_status}."
+        )
+        if response.status_code == 404:
+            errors.append("Routa v aplikaci chybí, nebo má jinou cestu.")
+        if response.status_code == 405:
+            errors.append(
+                f"Tato cesta metodu {method} nepřijímá "
+                "(u POST doplňte methods=['GET', 'POST'])."
+            )
+        if expected_status == 302 and response.status_code == 200:
+            errors.append("Očekáváno přesměrování — vraťte redirect(...), ne šablonu.")
+        return errors
+
+    if "location" in spec:
+        wanted = norm_path(str(spec.get("location") or "/"))
+        got = location_path(response.headers.get("Location") or "")
+        if got != wanted:
+            errors.append(
+                f"{method} {path}: Location {got or '(chybí)'}, očekáváno {wanted}."
+            )
+
+    html = response.get_data(as_text=True) or ""
+    where = f"{method} {path}"
+    for tag in spec.get("tags") or []:
+        if count_tag(html, tag) < 1:
+            errors.append(f"Na {where} chybí značka <{tag}>.")
+
+    min_tags = spec.get("min_tags") or {}
+    for tag, minimum in min_tags.items():
+        n = count_tag(html, tag)
+        if n < int(minimum):
+            errors.append(
+                f"Na {where} je <{tag}> {n}×, potřeba aspoň {minimum}×."
+            )
+
+    hrefs = find_hrefs(html)
+    for target in spec.get("href") or []:
+        wanted = norm_path(target)
+        if wanted not in hrefs:
+            errors.append(
+                f"Na {where} chybí odkaz na {wanted} (atribut href)."
+            )
+
+    for needle in spec.get("contains") or []:
+        if needle not in html:
+            errors.append(f"Na {where} chybí `{needle}`.")
+
+    for needle in spec.get("not_contains") or []:
+        if needle in html:
+            errors.append(
+                f"Na {where} se nesmí objevit `{needle}` "
+                f"(šablona se pravděpodobně nevykreslila)."
+            )
+
+    for rel in spec.get("saved") or []:
+        if not (root / str(rel)).is_file():
+            errors.append(
+                f"Po odeslání chybí soubor {rel} "
+                "(uložte nahrávku do static/uploads/)."
+            )
+
+    return errors
+
+
+def run_http(client, spec: dict, root: Path) -> list[str]:
+    method, path, response, errors = send_http(client, spec)
+    if errors or response is None:
+        return errors
+    return check_response(response, spec, method, path, root)
+
+
+def run_test(app, student: Path, test: dict) -> list[str]:
     errors: list[str] = []
     root = student.parent
 
@@ -123,60 +257,34 @@ def run_test(client, student: Path, test: dict) -> list[str]:
             if needle not in text:
                 errors.append(f"V templates/{rel} se nenašlo `{needle}`.")
 
-    if "get" not in test:
+    if "get" not in test and "post" not in test:
         return errors
 
-    if client is None:
-        errors.append("GET nelze spustit — aplikace se nenačetla.")
+    if app is None:
+        errors.append("Požadavek nelze spustit — aplikace se nenačetla.")
         return errors
 
-    path = test.get("get") or "/"
-    expected_status = int(test.get("status", 200))
-    try:
-        response = client.get(path)
-    except Exception as exc:
-        errors.append(f"Požadavek GET {path} selhal: {exc}")
-        return errors
+    client = app.test_client()
+    errors.extend(run_http(client, test, root))
+    for extra in test.get("then") or []:
+        if isinstance(extra, dict):
+            errors.extend(run_http(client, extra, root))
 
-    if response.status_code != expected_status:
-        errors.append(
-            f"GET {path}: stav {response.status_code}, očekáváno {expected_status}."
-        )
-        if response.status_code == 404:
-            errors.append("Routa v aplikaci chybí, nebo má jinou cestu.")
-        return errors
-
-    html = response.get_data(as_text=True) or ""
-    for tag in test.get("tags") or []:
-        if count_tag(html, tag) < 1:
-            errors.append(f"Na {path} chybí značka <{tag}>.")
-
-    min_tags = test.get("min_tags") or {}
-    for tag, minimum in min_tags.items():
-        n = count_tag(html, tag)
-        if n < int(minimum):
-            errors.append(
-                f"Na {path} je <{tag}> {n}×, potřeba aspoň {minimum}×."
-            )
-
-    hrefs = find_hrefs(html)
-    for target in test.get("href") or []:
-        wanted = norm_path(target)
-        if wanted not in hrefs:
-            errors.append(
-                f"Na {path} chybí odkaz na {wanted} (atribut href)."
-            )
-
-    for needle in test.get("contains") or []:
-        if needle not in html:
-            errors.append(f"Na {path} chybí `{needle}`.")
-
-    for needle in test.get("not_contains") or []:
-        if needle in html:
-            errors.append(
-                f"Na {path} se nesmí objevit `{needle}` "
-                f"(šablona se pravděpodobně nevykreslila)."
-            )
+    other_path = test.get("other_get")
+    if other_path is not None:
+        other = app.test_client()
+        try:
+            other_resp = other.get(other_path or "/")
+        except Exception as exc:
+            errors.append(f"Požadavek GET {other_path} (jiný klient) selhal: {exc}")
+            return errors
+        other_html = other_resp.get_data(as_text=True) or ""
+        for needle in test.get("other_not_contains") or []:
+            if needle in other_html:
+                errors.append(
+                    f"Jiný klient na GET {other_path} vidí `{needle}`. "
+                    "Použijte session, ne globální proměnnou."
+                )
 
     return errors
 
@@ -201,11 +309,10 @@ def main() -> int:
         print(f"Grade :=>> {gmin}")
         return 0
 
-    client = None
+    app = None
     try:
         app = load_app(student)
         app.config["TESTING"] = True
-        client = app.test_client()
     except Exception as exc:
         section(False, "Načtení aplikace")
         comment(str(exc))
@@ -216,8 +323,8 @@ def main() -> int:
     passed = 0
     total = len(TESTS)
     for test in TESTS:
-        name = str(test.get("name") or test.get("get") or "test")
-        errors = run_test(client, student, test)
+        name = str(test.get("name") or test.get("get") or test.get("post") or "test")
+        errors = run_test(app, student, test)
         ok = not errors
         section(ok, name)
         if ok:

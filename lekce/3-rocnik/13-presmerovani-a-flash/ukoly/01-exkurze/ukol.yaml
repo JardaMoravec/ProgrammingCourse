@@ -1,0 +1,65 @@
+title: Přihláška na exkurzi
+stars: 3
+moodle: PRG-3-13-01
+typ: flask
+soubor: exkurze.py
+description: |
+  Napište Flask aplikaci v souboru `exkurze.py` — **přihlášku na školní exkurzi**.
+
+  Na `/` formulář **POST** s polem `name="jmeno"`. Routa: `methods=["GET", "POST"]`.
+  Nastavte `app.secret_key` (libovolný krátký řetězec).
+  Hodnotu čtěte `request.form.get("jmeno", "")` a ořežte `.strip()`.
+
+  | POST `jmeno` | Stav | Chování |
+  |--------------|------|---------|
+  | prázdné nebo mezery | **200** | formulář zůstane, přesně `Zadejte jméno` |
+  | neprázdné (třeba Eva) | **302** na `/` | pak GET `/` ukáže **`Přihlášeno`** |
+
+  Úspěch: `flash("Přihlášeno")` a `return redirect(url_for("index"))`.
+  V šabloně `get_flashed_messages()`. Chybu **neflashujte** a **nepřesměrovávejte**
+  — použijte `{{ chyba }}` jako v lekci 12.
+odevzdani: |
+  Do Moodle nahrajte `exkurze.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář, redirect a flash
+    templates: [index.html]
+    source_contains: ["redirect", "flash", "secret_key", "url_for", "strip"]
+    template_contains:
+      index.html:
+        - "<form"
+        - 'name="jmeno"'
+        - "get_flashed_messages"
+        - "{{ chyba }}"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="jmeno"']
+    not_contains: ["{{"]
+  - name: Prázdné jméno
+    post: /
+    data:
+      jmeno: ""
+    status: 200
+    contains: ["Zadejte jméno"]
+    not_contains: ["Přihlášeno", "{{"]
+  - name: Jen mezery
+    post: /
+    data:
+      jmeno: "   "
+    status: 200
+    contains: ["Zadejte jméno"]
+  - name: Přesměrování
+    post: /
+    data:
+      jmeno: Eva
+    status: 302
+    location: /
+  - name: Flash po odeslání
+    post: /
+    data:
+      jmeno: Eva
+    follow_redirects: true
+    status: 200
+    contains: ["Přihlášeno"]
+    not_contains: ["Zadejte jméno", "{{"]

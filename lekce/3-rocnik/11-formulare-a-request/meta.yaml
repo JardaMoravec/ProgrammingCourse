@@ -1,0 +1,11 @@
+id: 11-formulare-a-request
+rocnik: 3
+nazev: Formuláře a objekt request
+modul: formulare
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [10-flask-procviceni]
+kompetence: [k4-formulare-skript]
+svp: [HTML formuláře, zpracování dat skriptem]
+tagy: [flask, formular, request, GET, POST]
+migrovano_z: []

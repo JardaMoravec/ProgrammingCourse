@@ -1,0 +1,10 @@
+{% extends "zaklad.html" %}
+{% block title %}Nabídka{% endblock %}
+{% block obsah %}
+  <h1>{{ config.NAZEV }}</h1>
+  <ul>
+    {% for slug in kola %}
+      <li><a href="{{ url_for('kolo', slug=slug) }}">{{ slug }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
