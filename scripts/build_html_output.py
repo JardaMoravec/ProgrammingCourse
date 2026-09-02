@@ -367,6 +367,16 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
   padding: 2rem 2.25rem;
 }
 
+.index-intro {
+  margin-bottom: 1.75rem;
+}
+
+.index-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+}
+
 .content h2 {
   font-size: 1.35rem;
   margin: 2rem 0 0.75rem;
@@ -1137,6 +1147,14 @@ def rocnik_jazyk(ctx: RocnikContext) -> str:
     return ctx.kurikulum.get("jazyk", "Python" if ctx.num <= 2 else "HTML/CSS")
 
 
+def rocnik_uvod_html(ctx: RocnikContext) -> str:
+    path = ctx.lekce_dir / "uvod.md"
+    if not path.is_file():
+        return ""
+    html = postprocess_student_html(md_to_html(path.read_text(encoding="utf-8")))
+    return f'<article class="content index-intro">{html}</article>'
+
+
 def total_hours(lessons: list[Path]) -> int:
     total = 0
     for d in lessons:
@@ -1268,54 +1286,51 @@ def page_shell(ctx: RocnikContext, title: str, body: str, active_id: str = "") -
 def build_rocnik_index(ctx: RocnikContext) -> None:
     tema = rocnik_tema(ctx)
     hodiny = total_hours(ctx.lessons)
-
     if not ctx.lessons:
-        body = f"""
-      <div class="hero">
-        <h1>{ctx.label} — {tema}</h1>
-        <div class="meta">
-          <span class="badge">{rocnik_jazyk(ctx)}</span>
-          <span class="badge">Připravuje se</span>
-        </div>
-      </div>
-      <div class="empty-state">
-        <p>Obsah tohoto ročníku zatím není migrován do Markdown lekcí.</p>
-        <p style="margin-top:0.75rem">Po dokončení migrace ze složky <code>zdroje/</code> spusťte znovu generátor HTML.</p>
-      </div>
-        """
-        ctx.vystup_dir.mkdir(parents=True, exist_ok=True)
-        (ctx.vystup_dir / "index.html").write_text(
-            page_shell(ctx, f"{ctx.label} — {tema}", body),
-            encoding="utf-8",
-        )
-        return
+        try:
+            hodiny = int(ctx.kurikulum.get("hodiny_celkem") or 0)
+        except ValueError:
+            hodiny = 0
+    uvod = rocnik_uvod_html(ctx)
 
-    cards = []
-    for d in ctx.lessons:
-        meta = parse_meta(d / "meta.yaml")
-        nazev = meta.get("nazev", d.name)
-        hod = format_lesson_hours(meta.get("hodiny", "?"), card=True)
-        cards.append(f"""
+    badges = [f'<span class="badge">{rocnik_jazyk(ctx)}</span>']
+    if hodiny:
+        badges.append(f'<span class="badge">{hodiny} hodin</span>')
+    if ctx.lessons:
+        badges.append(f'<span class="badge">{len(ctx.lessons)} lekcí</span>')
+    else:
+        badges.append('<span class="badge">Připravuje se</span>')
+
+    if ctx.lessons:
+        cards = []
+        for d in ctx.lessons:
+            meta = parse_meta(d / "meta.yaml")
+            nazev = meta.get("nazev", d.name)
+            hod = format_lesson_hours(meta.get("hodiny", "?"), card=True)
+            cards.append(f"""
         <a class="card" href="{d.name}.html">
           <div class="num">Lekce {d.name[:2]}</div>
           <h3>{nazev}</h3>
           <p>{hod} · {format_obtiznost(meta.get('obtiznost', ''))}</p>
         </a>""")
+        lekce_block = f"""
+      <h2 class="index-heading">Lekce</h2>
+      <div class="index-grid">{"".join(cards)}</div>"""
+    else:
+        lekce_block = """
+      <div class="empty-state">
+        <p>Karty lekcí se sem doplní, až bude obsah ročníku hotový. Úvod výše platí už teď.</p>
+      </div>"""
 
     body = f"""
       <div class="hero">
         <h1>{ctx.label} — {tema}</h1>
         <div class="meta">
-          <span class="badge">{rocnik_jazyk(ctx)}</span>
-          <span class="badge">{hodiny} hodin</span>
-          <span class="badge">{len(ctx.lessons)} lekcí</span>
+          {"".join(badges)}
         </div>
       </div>
-      <p style="color: var(--muted); max-width: 72ch;">
-        Studijní materiály k předmětu Programování — {ctx.label.lower()}, jazyk {rocnik_jazyk(ctx)}.
-        Vyberte lekci v menu nebo níže.
-      </p>
-      <div class="index-grid">{"".join(cards)}</div>
+      {uvod}
+      {lekce_block}
     """
     ctx.vystup_dir.mkdir(parents=True, exist_ok=True)
     (ctx.vystup_dir / "index.html").write_text(

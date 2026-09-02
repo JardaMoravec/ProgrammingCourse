@@ -4,6 +4,8 @@
 
 Kompletní osnova: [`kurikulum/1-rocnik.yaml`](../../kurikulum/1-rocnik.yaml)
 
+Úvod na rozcestníku (žáci): [`uvod.md`](uvod.md)
+
 ## Struktura každé lekce
 
 | Soubor | Účel | Pro koho |

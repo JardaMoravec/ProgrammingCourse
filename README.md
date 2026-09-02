@@ -50,7 +50,7 @@ Původní soubory ve `zdroje/` projekt nepotřebuje k běhu — po migraci je lz
 ## Ročníky
 
 - **1. ročník** — `lekce/1-rocnik/` — základy Pythonu
-- **2. ročník** — `lekce/2-rocnik/` — pokročilý Python (OOP, algoritmy)
+- **2. ročník** — `lekce/2-rocnik/` — OOP, SQL (SQLite), konzolové aplikace
 - **3. ročník** — `lekce/3-rocnik/` — tvorba webových stránek
 
 Detailní osnova: `kurikulum/`.

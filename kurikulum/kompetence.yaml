@@ -17,9 +17,11 @@ rocniky:
   2:
     predmet: Programování (PRG)
     hodiny: 170
+    tydne: 5
+    jazyk: Python
     predchozi_znalosti:
-      - Strukturované programování (102h)
-      - C#
+      - Strukturované programování v Pythonu (1. ročník)
+      # ŠVP: „Strukturované programování (102 h), C#“ — kurz je v Pythonu
     kompetence:
       - id: k1-datove-typy
         text: použije základní datové typy
@@ -35,13 +37,18 @@ rocniky:
         text: zná výhody použití jazyka SQL; použije základní příkazy jazyka SQL
       - id: k7-databaze
         text: schopen navrhovat, spravovat a aktualizovat relační databáze
-      - id: k8-aplikace
+      - id: k8-db-bezpecnost
+        text: rozumí zabezpečení databáze proti vnitřním a vnějším útokům
+      - id: k9-aplikace
         text: vytvoří jednoúčelové aplikace dle zadání; aplikuje objektový model ve svém kódu
+      - id: k10-framework
+        text: využívá třídy třetích stran (framework)
+        # 2. ročník bez Tkinteru — naplní se ve 3. ročníku (Flask)
     moduly:
-      - Algoritmizace (21h)
-      - Úvod do objektového programování (47h)
-      - Základy jazyka SQL (51h)
-      - Aplikované programování (51h)
+      - Algoritmizace (20h, ŠVP 21h — SŠ základ, dvě lekce po 10 h)
+      - Úvod do objektového programování (45h, ŠVP 47h)
+      - Základy jazyka SQL (70h, ŠVP 51h)
+      - Aplikované programování (35h, ŠVP 51h — bez Tkinteru; framework ve 3. ročníku)
 
   3:
     predmet: Programování (PRG)

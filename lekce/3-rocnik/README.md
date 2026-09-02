@@ -6,6 +6,8 @@ Kompletní osnova: `[kurikulum/3-rocnik.yaml](../../kurikulum/3-rocnik.yaml)`
 
 Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné předměty). Zde se SQL ani HTML/CSS neučí — HTML/CSS se jen shrne v lekci 02, databáze se řeší jako **napojení Flask aplikace**.
 
+Úvod na rozcestníku (žáci): [`uvod.md`](uvod.md)
+
 ## Struktura každé lekce
 
 
