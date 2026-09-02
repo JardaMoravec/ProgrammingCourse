@@ -1,0 +1,109 @@
+title: Výlety — zápis cíle
+stars: 3
+moodle: PRG-3-21-02
+typ: flask
+soubor: vylety.py
+description: |
+  Napište Flask aplikaci v souboru `vylety.py` — **přidání školního výletu**.
+  Použijte **ORM** (Flask-SQLAlchemy). Modul `sqlite3` a SQL řetězce
+  (`CREATE TABLE`, `SELECT`, `INSERT`) nepoužívejte.
+
+  Cesta k **`vylety.db`**: `app.config["SQLALCHEMY_DATABASE_URI"]` s předponou
+  `sqlite:///` a cestou vedle souboru (`os.path` + `__file__`).
+  Nastavte `app.secret_key` (libovolný krátký řetězec).
+  Model dědí z `db.Model`, tabulka **`vylety`** (`__tablename__`),
+  sloupce `id` (celé číslo, primární klíč) a `cil` (text).
+  Strukturu založte `db.create_all()` jednou při startu (`app_context`).
+
+  Na `/` (`methods=["GET", "POST"]`):
+
+  - GET: `query.all()` — seznam cílů v `<ul>` s `{% for %}`,
+  - POST: pole `name="cil"`, `.strip()`.
+
+  | POST | Stav | Chování |
+  |------|------|---------|
+  | prázdný `cil` (i mezery) | **200** | přesně `Vyplňte cíl.`, bez `add` |
+  | neprázdný text | **302** na `/` | `db.session.add`, `commit`, `flash("Uloženo")` |
+
+  Chybu **neflashujte**. V šabloně `get_flashed_messages()` a `{{ chyba }}`.
+  `query` na úpravu a mazání dnes ne.
+
+  Soubor `.db` do Moodle nahrávat nemusíte.
+odevzdani: |
+  Do Moodle nahrajte `vylety.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Model a formulář
+    templates: [index.html]
+    source_contains:
+      - "flask_sqlalchemy"
+      - "SQLALCHEMY_DATABASE_URI"
+      - "sqlite:///"
+      - "__file__"
+      - "db.Model"
+      - "__tablename__"
+      - "vylety"
+      - "create_all"
+      - "db.session.add"
+      - "commit"
+      - "redirect"
+      - "flash"
+      - "secret_key"
+      - "request.form"
+    source_not_contains:
+      - "sqlite3"
+      - "CREATE TABLE"
+      - "INSERT"
+      - "SELECT"
+    template_contains:
+      index.html:
+        - "<form"
+        - 'name="cil"'
+        - "get_flashed_messages"
+        - "{{ chyba }}"
+        - "{% for"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="cil"']
+    not_contains: ["{{"]
+    db: vylety.db
+    db_tables: [vylety]
+  - name: Prázdné pole
+    post: /
+    data:
+      cil: ""
+    status: 200
+    contains: ["Vyplňte cíl."]
+    not_contains: ["Uloženo", "{{"]
+  - name: Jen mezery
+    post: /
+    data:
+      cil: "   "
+    status: 200
+    contains: ["Vyplňte cíl."]
+  - name: Přesměrování a řádek
+    post: /
+    data:
+      cil: Karlštejn
+    status: 302
+    location: /
+    db: vylety.db
+    db_tables: [vylety]
+    db_min_rows:
+      vylety: 1
+    then:
+      - get: /
+        contains: ["Karlštejn"]
+        not_contains: ["{{"]
+  - name: Flash po zápisu
+    post: /
+    data:
+      cil: Křivoklát
+    follow_redirects: true
+    status: 200
+    contains: ["Uloženo", "Křivoklát"]
+    not_contains: ["Vyplňte cíl.", "{{"]
+    db: vylety.db
+    db_min_rows:
+      vylety: 2

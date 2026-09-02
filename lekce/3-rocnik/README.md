@@ -23,7 +23,7 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–21** mají Flask úkoly s VPL hodnotitelem. Lekce **22** má úkol k odevzdání aplikace (ne VPL, bez cvičení). Lekce **23** je jen prezentace (bez cvičení i bez úkolu). Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (zadání a práce), **23** trvá 4 hodiny (prezentace).
+Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–22** mají Flask úkoly s VPL hodnotitelem. Lekce **23** má úkol k odevzdání aplikace (ne VPL, bez cvičení). Lekce **24** je jen prezentace (bez cvičení i bez úkolu). Lekce **05** trvá 4 hodiny, **23** trvá 20 hodin (zadání a práce), **24** trvá 4 hodiny (prezentace). Lekce **21** je **bonus** mimo 68 hodin (ORM, bez časové dotace — jde přeskočit).
 
 ## Přehled lekcí
 
@@ -49,11 +49,12 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 18 | `18-zapis-do-databaze` | Zápis z formuláře do databáze | 1 |
 | 19 | `19-crud-v-aplikaci` | Úprava a mazání v aplikaci | 1 |
 | 20 | `20-databaze-procviceni` | Databáze — procvičení | 1 |
-| 21 | `21-bezpecnost-webu` | Bezpečnost (XSS, SQL injection) | 2 |
-| 22 | `22-projekt` | Projekt — zadání a práce (20 h) | 1 (soubor) |
-| 23 | `23-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
+| 21 | `21-orm` | ORM — bonus (0 h) | 2 |
+| 22 | `22-bezpecnost-webu` | Bezpečnost (XSS, SQL injection) | 2 |
+| 23 | `23-projekt` | Projekt — zadání a práce (20 h) | 1 (soubor) |
+| 24 | `24-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
 
-**Celkem: 23 lekcí** (lekce 01 a 22 mají úkol bez VPL, lekce 03–21 mají Flask VPL; lekce 23 je prezentace bez `ukoly.md`).
+**Celkem: 23 lekcí v 68 h + 1 bonus** (lekce 01 a 23 mají úkol bez VPL, lekce 03–22 mají Flask VPL; lekce 24 je prezentace bez `ukoly.md`).
 
 ## Build
 

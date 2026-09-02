@@ -1,5 +1,5 @@
 ---
-id: 21-bezpecnost-webu
+id: 22-bezpecnost-webu
 rocnik: 3
 nazev: Bezpečnost (XSS, SQL injection)
 hodiny: 2
@@ -87,4 +87,4 @@ Hledání přesným názvem stačí. Vzor `LIKE '%…%'` do SQL taky neskládejt
 
 ## Co dál
 
-→ [Lekce 22: Závěrečný projekt — zadání a práce](../22-projekt/lekce.md)
+→ [Lekce 23: Závěrečný projekt — zadání a práce](../23-projekt/lekce.md)

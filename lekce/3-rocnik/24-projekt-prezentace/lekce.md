@@ -1,24 +1,24 @@
 ---
-id: 23-projekt-prezentace
+id: 24-projekt-prezentace
 rocnik: 3
 nazev: Závěrečný projekt — odevzdání a prezentace
 hodiny: 4
 obtiznost: stredni
-prerekvizity: [22-projekt]
+prerekvizity: [23-projekt]
 cile:
-  - Předvede spuštěnou aplikaci a povinnou funkcionalitu z lekce 22
-  - Vysvětlí vlastní kód (JOIN, cizí klíč a postupy z lekcí 03–21)
+  - Předvede spuštěnou aplikaci a povinnou funkcionalitu z lekce 23
+  - Vysvětlí vlastní kód (JOIN, cizí klíč a postupy z lekcí 03–20 a 22)
 ---
 
 # Závěrečný projekt — odevzdání a prezentace
 
 ## Cíle lekce
 
-- V prohlížeči předvedete aplikaci z [lekce 22](../22-projekt/lekce.md) (ne slidy místo programu)
+- V prohlížeči předvedete aplikaci z [lekce 23](../23-projekt/lekce.md) (ne slidy místo programu)
 - Ukážete **dvě související tabulky** a ostatní povinné chování
 - Na otázku odpovíte z toho, co už umíte — **hlavní kritérium je znalost kódu**
 
-Nová syntaxe **nepřibývá**. Úkol do Moodle u této lekce **není** — odevzdání aplikace je úkol z lekce 22, tady ji spustíte a obhájíte.
+Nová syntaxe **nepřibývá**. Úkol do Moodle u této lekce **není** — odevzdání aplikace je úkol z lekce 23, tady ji spustíte a obhájíte.
 
 ## Příprava ke zkoušení
 
@@ -30,7 +30,7 @@ python -m flask --app app run --debug
 
 V prohlížeči `http://127.0.0.1:5000`. Soubor `.db` vznikne při startu. Prázdné seznamy na začátku jsou v pořádku — data si při ukázce přidáte.
 
-V archivu z lekce 22 mají být šablony, CSS ve `static/` a kód. Ne `venv`, ne `__pycache__`.
+V archivu z lekce 23 mají být šablony, CSS ve `static/` a kód. Ne `venv`, ne `__pycache__`.
 
 ## Povinná ukázka (6 minut)
 
@@ -59,7 +59,7 @@ Umět odpovědět bez čtení celého souboru:
 |--------|-----------------|
 | Proč `JOIN` na seznamu potomků? | v tabulce potomka je jen cizí klíč, jméno rodiče je v druhé tabulce (2. ročník, SQL) |
 | Proč nejde smazat rodiče s potomky? | odkazy by visely ve vzduchu |
-| Proč `?` a ne f-řetězec v SQL? | hodnota nesmí být součástí příkazu ([lekce 21](../21-bezpecnost-webu/lekce.md)) |
+| Proč `?` a ne f-řetězec v SQL? | hodnota nesmí být součástí příkazu ([lekce 22](../22-bezpecnost-webu/lekce.md)) |
 | Proč po INSERT `redirect`? | F5 by zápis zopakoval ([lekce 13](../13-presmerovani-a-flash/lekce.md)) |
 | Proč mazání POST, ne odkaz? | GET se smí přednačíst, 405 na GET ([lekce 19](../19-crud-v-aplikaci/lekce.md)) |
 | K čemu `abort(404)`? | chybějící id není stránka 200 ([lekce 09](../09-konfigurace-a-chyby/lekce.md)) |
@@ -75,7 +75,7 @@ Bez spuštěné aplikace je projekt **nehodnocený**.
 | Část | Co se počítá |
 |------|----------------|
 | Znalost kódu | vysvětlení vlastního kódu, odpovědi na otázky — **rozhoduje** |
-| Zadání | dvě tabulky 1:N a chování z lekce 22 (ne konkrétní názvy) |
+| Zadání | dvě tabulky 1:N a chování z lekce 23 (ne konkrétní názvy) |
 | Šablony a CSS | dědičnost, `url_for`, CSS ve `static/` |
 | Data | `g`, `init_db`, `JOIN`, `?`, `commit`, CRUD u obou entit |
 | Doplňky | nahrání fotky, session, 404, u vstupu žádný filtr safe |
@@ -85,4 +85,4 @@ Chybí-li povinná **funkce** (`JOIN`, mazání POST, 404…), úpravy navíc (t
 
 ## Shrnutí
 
-Aplikaci jste odevzdali v lekci 22. Tady ji spustíte, projdete deset bodů ukázky a **obhájíte kód**. Téma i názvy jsou vaše, chování je stejné u všech.
+Aplikaci jste odevzdali v lekci 23. Tady ji spustíte, projdete deset bodů ukázky a **obhájíte kód**. Téma i názvy jsou vaše, chování je stejné u všech.

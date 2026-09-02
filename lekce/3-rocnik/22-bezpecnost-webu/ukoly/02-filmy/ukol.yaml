@@ -1,6 +1,6 @@
 title: Hledání filmu
 stars: 3
-moodle: PRG-3-21-02
+moodle: PRG-3-22-02
 typ: flask
 soubor: filmy.py
 description: |

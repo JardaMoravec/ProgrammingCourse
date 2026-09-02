@@ -70,7 +70,13 @@ V automatickém hodnocení musí být nainstalovaný **Flask** (stejně jako ho 
 python3 -m pip install flask
 ```
 
-Bez toho skript napíše, že Flask v jailu chybí, a dá 0 bodů. **SQLite** (`sqlite3`) je v Pythonu — další balíček není potřeba.
+Bez toho skript napíše, že Flask v jailu chybí, a dá 0 bodů. **SQLite** (`sqlite3`) je v Pythonu — u lekcí 16–20 a 22 další balíček není potřeba.
+
+Bonusová **lekce 21 (ORM)** potřebuje v jailu navíc **Flask-SQLAlchemy**:
+
+```bash
+python3 -m pip install flask-sqlalchemy
+```
 
 ### Založení aktivity
 
@@ -84,7 +90,7 @@ Bez toho skript napíše, že Flask v jailu chybí, a dá 0 bodů. **SQLite** (`
 6. Označte je jako soubory **ke spuštění / hodnocení**, ne jako odevzdání žáka.
 7. Zkratka názvu: kód z `ukoly.md`, např. `PRG-3-04-01`.
 
-Skript hodnotí strukturu (stav 200, značky `h1`/`p`/`ul`, odkazy `href`). Od lekce **11** umí i **POST** (`post:` a `data:`). Od lekce **13** i přesměrování (`status: 302`, `location:`, `follow_redirects:`). Od lekce **14** i nahrání souboru (`upload:` a `saved:`). Od lekce **15** i relaci (`then:` na stejném klientovi, `other_get:` na čistém). Od lekce **16** i SQLite (`db:`, `db_tables:`, `db_min_rows:`). Vlastní text (název kroužku, jídlo, tituly knih) je v pořádku.
+Skript hodnotí strukturu (stav 200, značky `h1`/`p`/`ul`, odkazy `href`). Od lekce **11** umí i **POST** (`post:` a `data:`). Od lekce **13** i přesměrování (`status: 302`, `location:`, `follow_redirects:`). Od lekce **14** i nahrání souboru (`upload:` a `saved:`). Od lekce **15** i relaci (`then:` na stejném klientovi, `other_get:` na čistém). Od lekce **16** i SQLite (`db:`, `db_tables:`, `db_min_rows:`). Od lekce **21** i ORM (v kódu `flask_sqlalchemy`, ne `sqlite3`). Vlastní text (název kroužku, jídlo, tituly knih) je v pořádku.
 
 U úkolů se **šablonami** (od lekce 05) nahrajte i složku `templates/` (`index.html`, …). Od lekce **07** i složku `static/` (CSS, SVG). V `ukol.yaml` to hodnotitel kontroluje. Když Moodle soubory zploští do jedné složky, hodnotitel hledá soubory i vedle `.py`.
 

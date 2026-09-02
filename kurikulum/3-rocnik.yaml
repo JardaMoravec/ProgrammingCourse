@@ -16,6 +16,7 @@ hodiny:
   cvičeni: 2
   celkem: 68
   tydnu: 34
+  # lekce 21 (ORM) je bonus mimo tuto dotaci
 
 predchozi_znalosti:
   - Strukturované programování v Pythonu (1. ročník)
@@ -238,8 +239,16 @@ moduly:
             kompetence: [k4-formulare-skript]
             prerekvizity: [19-crud-v-aplikaci]
 
-          - id: "21-bezpecnost-webu"
-            soubor: lekce/3-rocnik/21-bezpecnost-webu
+          - id: "21-orm"
+            soubor: lekce/3-rocnik/21-orm
+            nazev: ORM (bonus)
+            hodiny: 0
+            svp: [propojení skriptu a databáze, skriptovací jazyk]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [20-databaze-procviceni]
+
+          - id: "22-bezpecnost-webu"
+            soubor: lekce/3-rocnik/22-bezpecnost-webu
             nazev: Bezpečnost (XSS, SQL injection)
             hodiny: 2
             svp: [zásady tvorby WWW stránek, propojení skriptu a databáze]
@@ -258,8 +267,8 @@ moduly:
         nazev: Samostatný Flask projekt
         hodiny: 24
         lekce:
-          - id: "22-projekt"
-            soubor: lekce/3-rocnik/22-projekt
+          - id: "23-projekt"
+            soubor: lekce/3-rocnik/23-projekt
             nazev: Závěrečný projekt — zadání a práce
             hodiny: 20
             svp:
@@ -271,15 +280,15 @@ moduly:
               - validace kódu
               - optimalizace kódu
             kompetence: [k1-www, k2-html, k3-web-vytvoreni, k4-formulare-skript]
-            prerekvizity: [21-bezpecnost-webu]
+            prerekvizity: [22-bezpecnost-webu]
 
-          - id: "23-projekt-prezentace"
-            soubor: lekce/3-rocnik/23-projekt-prezentace
+          - id: "24-projekt-prezentace"
+            soubor: lekce/3-rocnik/24-projekt-prezentace
             nazev: Závěrečný projekt — odevzdání a prezentace
             hodiny: 4
             svp: [zásady tvorby WWW stránek, validace kódu]
             kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
-            prerekvizity: [22-projekt]
+            prerekvizity: [23-projekt]
 
 hodnoceni:
   - elektronické testy (Moodle VPL)
@@ -291,9 +300,10 @@ hodnoceni:
 literatura:
   - elektronické texty v rámci školních informačních a vzdělávacích systémů
   - dokumentace Flask (https://flask.palletsprojects.com/)
+  - dokumentace Flask-SQLAlchemy (https://flask-sqlalchemy.readthedocs.io/) — bonusová lekce 21
   - MDN Web Docs — HTML a CSS (opakování)
 
 pomucky:
   - základní počítačová sestava
   - dataprojektor
-  - potřebné softwarové vybavení (Python 3, Flask, SQLite, IDE, webový prohlížeč)
+  - potřebné softwarové vybavení (Python 3, Flask, SQLite, IDE, webový prohlížeč; u bonusu Flask-SQLAlchemy)

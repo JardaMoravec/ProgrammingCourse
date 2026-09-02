@@ -1,0 +1,11 @@
+id: 21-orm
+rocnik: 3
+nazev: ORM (bonus)
+modul: bonus
+hodiny: 0
+obtiznost: stredni
+prerekvizity: [20-databaze-procviceni]
+kompetence: [k4-formulare-skript]
+svp: [propojení skriptu a databáze, skriptovací jazyk]
+tagy: [flask, orm, sqlalchemy, bonus]
+migrovano_z: []

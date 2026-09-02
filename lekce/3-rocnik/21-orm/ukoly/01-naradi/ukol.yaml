@@ -1,0 +1,70 @@
+title: Dílna — výpis nářadí
+stars: 2
+moodle: PRG-3-21-01
+typ: flask
+soubor: naradi.py
+description: |
+  Napište Flask aplikaci v souboru `naradi.py` — **výpis nářadí v dílně**.
+  Použijte **ORM** (Flask-SQLAlchemy). Modul `sqlite3` a SQL řetězce
+  (`CREATE TABLE`, `SELECT`, `INSERT`) nepoužívejte.
+  Data do tabulky **nevkládejte** v pohledu — Evaluate tabulku naplní.
+
+  Cesta k **`naradi.db`**: `app.config["SQLALCHEMY_DATABASE_URI"]` s předponou
+  `sqlite:///` a cestou vedle souboru (`os.path` + `__file__`).
+  Model dědí z `db.Model`, tabulka **`naradi`** (`__tablename__`),
+  sloupce `id` (celé číslo, primární klíč) a `nazev` (text).
+  Strukturu založte `db.create_all()` jednou při startu (`app_context`).
+
+  Na `/` jen GET: `query.all()` do šablony. Na stránce přesně **`Nářadí: 3`**
+  (počet záznamů) a názvy **Kladivo**, **Šroubovák**, **Pilka**.
+  Šablona: `<h1>`, `<ul>` s `{% for %}`. Formulář a POST dnes ne.
+
+  Soubor `.db` do Moodle nahrávat nemusíte.
+odevzdani: |
+  Do Moodle nahrajte `naradi.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Model a šablona
+    templates: [index.html]
+    source_contains:
+      - "flask_sqlalchemy"
+      - "SQLALCHEMY_DATABASE_URI"
+      - "sqlite:///"
+      - "__file__"
+      - "db.Model"
+      - "__tablename__"
+      - "naradi"
+      - "create_all"
+      - "query.all"
+      - "render_template("
+    source_not_contains:
+      - "sqlite3"
+      - "CREATE TABLE"
+      - "SELECT"
+      - "INSERT"
+    template_contains:
+      index.html:
+        - "<h1"
+        - "<ul"
+        - "{% for"
+        - "{% endfor"
+        - "Nářadí:"
+  - name: Výpis nářadí
+    get: /
+    status: 200
+    tags: [h1, ul, li]
+    min_tags:
+      li: 3
+    contains: ["Nářadí: 3", "Kladivo", "Šroubovák", "Pilka"]
+    not_contains: ["{{"]
+    db: naradi.db
+    db_tables: [naradi]
+    db_min_rows:
+      naradi: 3
+    db_seed:
+      db: naradi.db
+      table: naradi
+      columns: [nazev]
+      rows:
+        - [Kladivo]
+        - [Šroubovák]
+        - [Pilka]

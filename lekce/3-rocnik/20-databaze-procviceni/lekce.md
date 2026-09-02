@@ -19,7 +19,7 @@ cile:
 - Propojíte výpis, přidání, úpravu a smazání
 - Dnes **nepřibývá** nová syntaxe — jen skládáte lekce 16–19
 
-Bezpečnost (XSS, skládání SQL z formuláře) je [lekce 21](../21-bezpecnost-webu/lekce.md). Dnes držíte zvyk **`?`** a `{{ }}`.
+Bezpečnost (XSS, skládání SQL z formuláře) je [lekce 22](../22-bezpecnost-webu/lekce.md). Mezi tím je bonus [ORM](../21-orm/lekce.md) — mimo 68 hodin, jde přeskočit. Dnes držíte zvyk **`?`** a `{{ }}`.
 
 ## Mapa dosavadních lekcí
 
@@ -69,4 +69,6 @@ Souhrnná lekce. Cílem je samostatně složit mini-evidenci: tabulka, seznam, p
 
 ## Co dál
 
-→ [Lekce 21: Bezpečnost (XSS, SQL injection)](../21-bezpecnost-webu/lekce.md)
+→ [Lekce 21: ORM (bonus)](../21-orm/lekce.md) — mimo hodinovou dotaci
+
+→ [Lekce 22: Bezpečnost (XSS, SQL injection)](../22-bezpecnost-webu/lekce.md)

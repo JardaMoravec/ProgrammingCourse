@@ -1,12 +1,12 @@
 ---
-id: 22-projekt
+id: 23-projekt
 rocnik: 3
 nazev: Závěrečný projekt — zadání a práce
 hodiny: 20
 obtiznost: stredni
-prerekvizity: [21-bezpecnost-webu]
+prerekvizity: [22-bezpecnost-webu]
 cile:
-  - Složí jednu Flask aplikaci ze všech lekcí 03–21
+  - Složí jednu Flask aplikaci ze všech lekcí 03–20 a 22
   - Propojí dvě související tabulky (1:N) přes cizí klíč a JOIN
   - Splní povinnou funkcionalitu; názvy tabulek, sloupců a cest zvolí sám
   - Zvolí vlastní téma v mezích školního řádu
@@ -16,12 +16,12 @@ cile:
 
 ## Cíle lekce
 
-- Složíte **jednu** Flask aplikaci z lekcí 03–21
+- Složíte **jednu** Flask aplikaci z lekcí 03–20 a 22
 - Propojíte **dvě tabulky** relací 1:N (znáte z 2. ročníku) — cizí klíč, `JOIN`, výběr ve formuláři
 - Splníte **funkce** níže — chybějící chování znamená nesplněné zadání
 - Téma, názvy tabulek, sloupců, souborů šablon i URL zvolíte sami; učitel návrh schválí v prvním týdnu
 
-Nová syntaxe **nepřibývá**. Odevzdání a prezentace jsou [lekce 23](../23-projekt-prezentace/lekce.md).
+Nová syntaxe **nepřibývá**. Odevzdání a prezentace jsou [lekce 24](../24-projekt-prezentace/lekce.md). Bonus [ORM](../21-orm/lekce.md) do projektu nepatří — zůstáváte u `sqlite3`.
 
 ## Téma
 
@@ -165,7 +165,7 @@ Když něco přidáte, povinné **chování** výše **nesmí** zmizet.
 | 7 | úprava potomka (i změna rodiče) |
 | 8 | mazání potomka POST; mazání rodiče jen bez potomků |
 | 9 | `session`, jméno v základu, odhlášení |
-| 10 | kontrola funkcí, příprava ukázky k [lekci 23](../23-projekt-prezentace/lekce.md) |
+| 10 | kontrola funkcí, příprava ukázky k [lekci 24](../24-projekt-prezentace/lekce.md) |
 
 ## Kontrolní seznam
 
@@ -188,7 +188,7 @@ Když něco přidáte, povinné **chování** výše **nesmí** zmizet.
 
 ## Hodnocení
 
-Hlavní kritérium je **znalost kódu**: u zkoušení v [lekci 23](../23-projekt-prezentace/lekce.md) vysvětlíte, co který kus dělá, a odpovíte na otázky **bez čtení celého souboru**. Aplikace, kterou nespustíte nebo neobhájíte, nestačí.
+Hlavní kritérium je **znalost kódu**: u zkoušení v [lekci 24](../24-projekt-prezentace/lekce.md) vysvětlíte, co který kus dělá, a odpovíte na otázky **bez čtení celého souboru**. Aplikace, kterou nespustíte nebo neobhájíte, nestačí.
 
 ## Shrnutí
 
@@ -196,4 +196,4 @@ Dvě tabulky 1:N, fotka u potomka, `JOIN`, `session`, vlastní 404. Téma i náz
 
 ## Co dál
 
-→ [Lekce 23: Odevzdání a prezentace](../23-projekt-prezentace/lekce.md)
+→ [Lekce 24: Odevzdání a prezentace](../24-projekt-prezentace/lekce.md)

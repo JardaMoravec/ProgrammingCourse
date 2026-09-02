@@ -1,10 +1,10 @@
-id: 22-projekt
+id: 23-projekt
 rocnik: 3
 nazev: Závěrečný projekt — zadání a práce
 modul: zaverecny-projekt
 hodiny: 20
 obtiznost: stredni
-prerekvizity: [21-bezpecnost-webu]
+prerekvizity: [22-bezpecnost-webu]
 kompetence: [k1-www, k2-html, k3-web-vytvoreni, k4-formulare-skript]
 svp:
   - zásady tvorby WWW stránek

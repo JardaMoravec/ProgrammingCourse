@@ -63,7 +63,17 @@ def load_app(path: Path):
         raise RuntimeError(f"Soubor {path.name} nejde načíst.")
     mod = importlib.util.module_from_spec(spec)
     sys.modules["student_hw"] = mod
-    spec.loader.exec_module(mod)
+    try:
+        spec.loader.exec_module(mod)
+    except ModuleNotFoundError as exc:
+        missing = (getattr(exc, "name", None) or str(exc)).lower()
+        if "sqlalchemy" in missing or "flask_sqlalchemy" in missing:
+            comment(
+                "Ve výpočetním prostředí VPL chybí Flask-SQLAlchemy. "
+                "Učitel: nainstalujte balíček flask-sqlalchemy do jailu "
+                "(python3 -m pip install flask-sqlalchemy)."
+            )
+        raise
 
     apps = [
         getattr(mod, name)
@@ -228,7 +238,7 @@ def check_sqlite(root: Path, spec: dict) -> list[str]:
     if not path.is_file():
         errors.append(
             f"Chybí databáze {db_rel} "
-            "(při požadavku ji vytvořte přes sqlite3.connect)."
+            "(při startu ji založte vedle souboru — connect / create_all)."
         )
         return errors
     try:
@@ -277,8 +287,8 @@ def apply_db_seed(root: Path, spec: dict) -> list[str]:
     path = root / str(db_rel)
     if not path.is_file():
         return [
-            f"Chybí databáze {db_rel} — nejdřív ji založte v init_db "
-            "(CREATE TABLE)."
+            f"Chybí databáze {db_rel} — nejdřív ji založte při startu "
+            "(CREATE TABLE / create_all)."
         ]
     placeholders = ", ".join("?" for _ in columns)
     colsql = ", ".join(columns)

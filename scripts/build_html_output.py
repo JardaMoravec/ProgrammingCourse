@@ -1021,6 +1021,15 @@ def format_obtiznost(value: str) -> str:
     return OBTIZNOST_LABELS.get(key, value)
 
 
+def format_lesson_hours(hodiny: str, *, card: bool = False) -> str:
+    raw = (hodiny or "").strip()
+    if raw in ("0", "0h"):
+        return "bonus"
+    if not raw:
+        return "?"
+    return f"{raw} hod" if card else f"{raw} h"
+
+
 def parse_meta(meta_path: Path) -> dict[str, str]:
     data: dict[str, str] = {}
     if not meta_path.exists():
@@ -1285,12 +1294,12 @@ def build_rocnik_index(ctx: RocnikContext) -> None:
     for d in ctx.lessons:
         meta = parse_meta(d / "meta.yaml")
         nazev = meta.get("nazev", d.name)
-        hod = meta.get("hodiny", "?")
+        hod = format_lesson_hours(meta.get("hodiny", "?"), card=True)
         cards.append(f"""
         <a class="card" href="{d.name}.html">
           <div class="num">Lekce {d.name[:2]}</div>
           <h3>{nazev}</h3>
-          <p>{hod} hod · {format_obtiznost(meta.get('obtiznost', ''))}</p>
+          <p>{hod} · {format_obtiznost(meta.get('obtiznost', ''))}</p>
         </a>""")
 
     body = f"""
@@ -1387,7 +1396,7 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
       <div class="hero">
         <h1>{nazev}</h1>
         <div class="meta">
-          <span class="badge">{meta.get('hodiny', '?')} h</span>
+          <span class="badge">{format_lesson_hours(meta.get('hodiny', '?'))}</span>
           <span class="badge">{format_obtiznost(meta.get('obtiznost', ''))}</span>
           <span class="badge">{ctx.label}</span>
         </div>

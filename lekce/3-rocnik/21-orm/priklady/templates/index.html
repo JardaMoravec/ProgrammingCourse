@@ -1,0 +1,16 @@
+<h1>Knihy</h1>
+{% for zprava in get_flashed_messages() %}
+  <p>{{ zprava }}</p>
+{% endfor %}
+{% if chyba %}
+  <p>{{ chyba }}</p>
+{% endif %}
+<ul>
+  {% for kniha in knihy %}
+    <li>{{ kniha.nazev }}</li>
+  {% endfor %}
+</ul>
+<form action="{{ url_for('index') }}" method="post">
+  <label>Název <input name="nazev"></label>
+  <button type="submit">Přidat</button>
+</form>

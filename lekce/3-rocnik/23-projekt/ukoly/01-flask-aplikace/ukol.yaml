@@ -1,9 +1,9 @@
 title: Závěrečný projekt — Flask aplikace
 stars: 3
-moodle: PRG-3-22-01
+moodle: PRG-3-23-01
 typ: soubor
 description: |
-  Napište Flask aplikaci podle zadání v lekci 22 (záložka **Lekce**).
+  Napište Flask aplikaci podle zadání v lekci 23 (záložka **Lekce**).
   Téma je libovolné v mezích školního řádu. Názvy tabulek, sloupců, šablon
   i URL zvolíte sami — učitel je schválí v návrhu.
 
@@ -23,7 +23,7 @@ description: |
   - `g`, `init_db` při startu, text z formuláře jen **`{{ }}`**, SQL jen **`?`**.
 
   Evaluate se nespouští. **Hlavní kritérium je znalost kódu** — u prezentace
-  (lekce 23) kód vysvětlíte. Nestačí aplikace, kterou nespustíte nebo neobhájíte.
+  (lekce 24) kód vysvětlíte. Nestačí aplikace, kterou nespustíte nebo neobhájíte.
 odevzdani: |
   Do Moodle nahrajte archiv (zip) se spustitelnou aplikací: hlavní `.py`
   (doporučený název `app.py`), složku `templates/` a složku `static/`.
