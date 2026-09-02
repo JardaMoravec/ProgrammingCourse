@@ -1,6 +1,6 @@
 # Cvičení — Řídicí struktury (souhrn)
 
-## Úkol 1 — Kalkulačka s menu (★★☆)
+## Cvičení 1 — Kalkulačka s menu (★★☆)
 
 Napište program s menu: součet, rozdíl, součin, konec. Opakujte, dokud uživatel nezvolí konec.
 
@@ -10,7 +10,7 @@ Napište program s menu: součet, rozdíl, součin, konec. Opakujte, dokud uživ
 
 ---
 
-## Úkol 2 — FizzBuzz (★★☆)
+## Cvičení 2 — FizzBuzz (★★☆)
 
 Pro čísla 1–100 vypište `Fizz` (dělitelné 3), `Buzz` (dělitelné 5), `FizzBuzz` (obojí) nebo samotné číslo.
 
@@ -30,7 +30,7 @@ for n in range(1, 101):
 
 ---
 
-## Úkol 3 — Prvočíslo (★★★)
+## Cvičení 3 — Prvočíslo (★★★)
 
 Načtěte n a rozhodněte, zda je prvočíslo (n > 1, dělitelné jen 1 a sebou).
 
@@ -51,7 +51,7 @@ else:
 
 ---
 
-## Úkol 4 — Tabulka násobků (★★☆)
+## Cvičení 4 — Tabulka násobků (★★☆)
 
 Vypište matici 10×10 násobků (vnořené cykly for).
 

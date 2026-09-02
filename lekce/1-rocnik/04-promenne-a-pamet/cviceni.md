@@ -1,6 +1,6 @@
 # Cvičení — Proměnné
 
-## Úkol 1 — Výměna hodnot (★★☆)
+## Cvičení 1 — Výměna hodnot (★★☆)
 
 Máte `a = 5` a `b = 10`. Vyměňte jejich hodnoty **bez** třetí proměnné (nápověda: sčítání/odčítání) nebo **s** proměnnou `temp`.
 
@@ -27,7 +27,7 @@ print(a, b)  # 10 5
 
 ---
 
-## Úkol 2 — Pojmenování (★☆☆)
+## Cvičení 2 — Pojmenování (★☆☆)
 
 Které názvy jsou platné? Vysvětlete proč ne u špatných.
 
@@ -45,7 +45,7 @@ Které názvy jsou platné? Vysvětlete proč ne u špatných.
 
 ---
 
-## Úkol 3 — Výpočet zisku — příprava (★☆☆)
+## Cvičení 3 — Výpočet zisku — příprava (★☆☆)
 
 > Plná verze v lekci 09 s podmínkami.
 

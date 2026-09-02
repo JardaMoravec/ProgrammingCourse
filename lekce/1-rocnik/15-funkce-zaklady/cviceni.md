@@ -1,6 +1,6 @@
 # Cvičení — Funkce (základy)
 
-## Úkol 1 — Obsah a obvod (★★☆)
+## Cvičení 1 — Obsah a obvod (★★☆)
 
 Napište funkce `obsah(a, b)` a `obvod(a, b)` pro obdélník.
 
@@ -18,7 +18,7 @@ print(obsah(5, 3), obvod(5, 3))  # 15 16
 
 ---
 
-## Úkol 2 — Maximum ze tří (★★☆)
+## Cvičení 2 — Maximum ze tří (★★☆)
 
 Funkce `maximum(a, b, c)` vrátí největší ze tří čísel (bez vestavěého max).
 
@@ -36,7 +36,7 @@ def maximum(a, b, c):
 
 ---
 
-## Úkol 3 — Faktoriál (★★★)
+## Cvičení 3 — Faktoriál (★★★)
 
 Funkce `faktorial(n)` pro n ≥ 0.
 
@@ -52,7 +52,7 @@ def faktorial(n):
 
 ---
 
-## Úkol 4 — Je prvočíslo? (★★★)
+## Cvičení 4 — Je prvočíslo? (★★★)
 
 Funkce vrátí True/False; v hlavním programu načtěte číslo a vypište výsledek.
 

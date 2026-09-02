@@ -23,7 +23,7 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–19** mají Flask úkoly s VPL hodnotitelem. Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
+Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–21** mají Flask úkoly s VPL hodnotitelem. Lekce **22** má úkol k odevzdání aplikace (ne VPL, bez cvičení). Lekce **23** je jen prezentace (bez cvičení i bez úkolu). Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (zadání a práce), **23** trvá 4 hodiny (prezentace).
 
 ## Přehled lekcí
 
@@ -48,12 +48,12 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 17 | `17-vypis-z-databaze` | Výpis z databáze do šablony | 1 |
 | 18 | `18-zapis-do-databaze` | Zápis z formuláře do databáze | 1 |
 | 19 | `19-crud-v-aplikaci` | Úprava a mazání v aplikaci | 1 |
-| 20 | `20-bezpecnost-webu` | Bezpečnost (XSS, SQL injection) | — |
-| 21 | `21-projekt-zadani` | Projekt — zadání, návrh a struktura | — |
-| 22 | `22-projekt-implementace` | Projekt — implementace (20 h) | — |
+| 20 | `20-databaze-procviceni` | Databáze — procvičení | 1 |
+| 21 | `21-bezpecnost-webu` | Bezpečnost (XSS, SQL injection) | 2 |
+| 22 | `22-projekt` | Projekt — zadání a práce (20 h) | 1 (soubor) |
 | 23 | `23-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
 
-**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 20; lekce 01 má úkol bez VPL, lekce 03–19 mají Flask VPL).
+**Celkem: 23 lekcí** (lekce 01 a 22 mají úkol bez VPL, lekce 03–21 mají Flask VPL; lekce 23 je prezentace bez `ukoly.md`).
 
 ## Build
 

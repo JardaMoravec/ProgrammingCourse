@@ -11,7 +11,7 @@ Po spuštění vedle `.py` vznikne soubor `.db`.
 
 ---
 
-## Úkol 1 — Sklad učebnic (★☆☆)
+## Cvičení 1 — Sklad učebnic (★☆☆)
 
 Soubor `sklad.py`. Funkce `init_db()` otevře `sklad.db`, spustí
 
@@ -64,7 +64,7 @@ Spustění: `python -m flask --app sklad run --debug`
 
 ---
 
-## Úkol 2 — Evidence klíčů (★★☆)
+## Cvičení 2 — Evidence klíčů (★★☆)
 
 Soubor `klice.py`. Cestu k `klice.db` dejte do `app.config["DATABASE"]` přes `__file__` (vedle `.py`).
 
@@ -79,7 +79,7 @@ with app.app_context():
     init_db()
 ```
 
-`with` na chvíli kontext **otevře** (jako by zrovna běžel požadavek), `init_db()` může použít `g`, a na konci bloku kontext **zavře** — spustí se `teardown_appcontext` a spojení se uklidí. V úkolu 1 `g` nebylo, stačilo `init_db()` samo.
+`with` na chvíli kontext **otevře** (jako by zrovna běžel požadavek), `init_db()` může použít `g`, a na konci bloku kontext **zavře** — spustí se `teardown_appcontext` a spojení se uklidí. Ve cvičení 1 `g` nebylo, stačilo `init_db()` samo.
 
 Zavolejte to **jednou při načtení souboru**, ne z pohledu.
 Na `/` vypište přesně **`Evidence je připravená`**. Řádky do tabulky nevkládejte.

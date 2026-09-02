@@ -1,6 +1,6 @@
 # Cvičení — Datové typy
 
-## Úkol 1 — type() (★☆☆)
+## Cvičení 1 — type() (★☆☆)
 
 Pro každou hodnotu určete typ pomocí `type()`:
 
@@ -26,7 +26,7 @@ print(type(0))       # <class 'int'>  — nula je int, ne bool
 
 ---
 
-## Úkol 2 — Co spadne? (★★☆)
+## Cvičení 2 — Co spadne? (★★☆)
 
 Které výrazy projdou a které vyvolají chybu? Ověřte v Pythonu.
 
@@ -48,7 +48,7 @@ True + 1
 
 ---
 
-## Úkol 3 — Bool v praxi (★☆☆)
+## Cvičení 3 — Bool v praxi (★☆☆)
 
 Uložte do proměnných, zda je student plnoletý (věk ≥ 18) a zda má známku prospěl (True/False). Zatím natvrdo, bez `input`.
 

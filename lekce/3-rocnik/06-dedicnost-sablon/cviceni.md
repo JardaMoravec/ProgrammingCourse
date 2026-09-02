@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Základ a jedna stránka (★☆☆)
+## Cvičení 1 — Základ a jedna stránka (★☆☆)
 
 Soubor `klub.py`. Šablony `templates/zaklad.html` a `templates/index.html`.
 
@@ -60,7 +60,7 @@ Spustění: `python -m flask --app klub run --debug`
 
 ---
 
-## Úkol 2 — Společné menu (★★☆)
+## Cvičení 2 — Společné menu (★★☆)
 
 Soubor `muzeum.py`. Tři šablony: `zaklad.html`, `index.html`, `sbirka.html`.
 

@@ -1,6 +1,6 @@
 # Cvičení — Metody seznamů
 
-## Úkol 1 — Seřazení známek (★★☆)
+## Cvičení 1 — Seřazení známek (★★☆)
 
 Seznam známek seřaďte vzestupně a vypište nejhorší a nejlepší.
 
@@ -14,7 +14,7 @@ print("Nejhorší:", znamky[0], "Nejlepší:", znamky[-1])
 
 ---
 
-## Úkol 2 — Odstranění duplicit (★★★)
+## Cvičení 2 — Odstranění duplicit (★★★)
 
 Z `[1, 2, 2, 3, 3, 3, 4]` vytvořte seznam bez opakování (postupně procházejte a přidávejte jen nové).
 
@@ -31,7 +31,7 @@ print(bez_duplicit)
 
 ---
 
-## Úkol 3 — Druhé největší (★★★)
+## Cvičení 3 — Druhé největší (★★★)
 
 Najděte druhé největší číslo v seznamu (seřaďte nebo projděte dvakrát).
 
@@ -45,7 +45,7 @@ print(serazene[1] if len(serazene) >= 2 else "N/A")
 
 ---
 
-## Úkol 4 — Výřez (★★☆)
+## Cvičení 4 — Výřez (★★☆)
 
 Z seznamu 10 čísel vypište první polovinu a druhou polovinu.
 

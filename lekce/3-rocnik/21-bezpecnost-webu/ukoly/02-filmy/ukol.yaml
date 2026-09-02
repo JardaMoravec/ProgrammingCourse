@@ -1,0 +1,87 @@
+title: Hledání filmu
+stars: 3
+moodle: PRG-3-21-02
+typ: flask
+soubor: filmy.py
+description: |
+  Napište Flask aplikaci v souboru `filmy.py` — **hledání filmu podle názvu**.
+  Jde o to, aby text z formuláře **nezměnil SQL** (SQL injection).
+
+  Soubor **`filmy.db`** vedle `filmy.py` (`sqlite3.connect("filmy.db")`).
+  Při startu `CREATE TABLE IF NOT EXISTS filmy (id INTEGER PRIMARY KEY, nazev TEXT NOT NULL)`
+  a `commit`. Evaluate tabulku naplní.
+
+  Na `/` formulář **GET** s polem `name="q"`. Hodnotu čtěte
+  `request.args.get("q", "")` a ořežte `.strip()`.
+
+  - prázdné `q`: seznam **všech** názvů,
+  - neprázdné: `SELECT nazev FROM filmy WHERE nazev = ?` a **`fetchall()`** —
+    přesný název, hodnotu jen v tuple.
+
+  Na stránce názvy jako `<li>`. SQL neskládejte f-řetězcem. `g` nepotřebujete.
+odevzdani: |
+  Do Moodle nahrajte `filmy.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Dotaz a šablona
+    templates: [index.html]
+    source_contains:
+      - "sqlite3"
+      - "request.args"
+      - "nazev = ?"
+      - "fetchall"
+      - "CREATE TABLE"
+      - "commit"
+      - "render_template("
+    source_not_contains:
+      - 'f"SELECT'
+      - "f'SELECT"
+    template_contains:
+      index.html:
+        - "<form"
+        - 'name="q"'
+        - "{% for"
+        - "<li"
+  - name: Seznam bez filtru
+    get: /
+    status: 200
+    tags: [form, ul, li]
+    min_tags:
+      li: 2
+    contains: ["Pelíšky", "Kolja", 'name="q"']
+    not_contains: ["{{"]
+    db: filmy.db
+    db_tables: [filmy]
+    db_seed:
+      db: filmy.db
+      table: filmy
+      columns: [nazev]
+      rows:
+        - ["Pelíšky"]
+        - ["Kolja"]
+  - name: Přesný název
+    get: /?q=Kolja
+    status: 200
+    contains: ["Kolja"]
+    not_contains: ["Pelíšky", "{{"]
+    db: filmy.db
+    db_seed:
+      db: filmy.db
+      table: filmy
+      columns: [nazev]
+      rows:
+        - ["Pelíšky"]
+        - ["Kolja"]
+  - name: Dotaz není SQL
+    get: "/?q=%27%20OR%20%271%27%3D%271"
+    status: 200
+    not_contains: ["Pelíšky", "Kolja", "{{"]
+    db: filmy.db
+    db_min_rows:
+      filmy: 2
+    db_seed:
+      db: filmy.db
+      table: filmy
+      columns: [nazev]
+      rows:
+        - ["Pelíšky"]
+        - ["Kolja"]

@@ -1,6 +1,6 @@
 # Cvičení — Chyby a výjimky
 
-## Úkol 1 — Procvičení výjimek (★★★)
+## Cvičení 1 — Procvičení výjimek (★★★)
 
 > Zdroj: `úkol 12 - procvičení výjimek.docx`
 
@@ -26,7 +26,7 @@ Obdobně pro desetinné číslo (`float`), sudé číslo (`x % 2 != 0`), dělen�
 
 ---
 
-## Úkol 2 — Bezpečný input (★★☆)
+## Cvičení 2 — Bezpečný input (★★☆)
 
 Načtěte kladné celé číslo — dokud nedostane platný vstup.
 
@@ -47,7 +47,7 @@ print("Děkuji, zadali jste:", n)
 
 ---
 
-## Úkol 3 — Co spadne? (★★☆)
+## Cvičení 3 — Co spadne? (★★☆)
 
 Predikujte výjimku, pak ověřte.
 

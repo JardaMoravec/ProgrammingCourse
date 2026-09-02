@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — První šablona (★☆☆)
+## Cvičení 1 — První šablona (★☆☆)
 
 Soubor `vitani.py` a `templates/index.html`. Na `/` použijte `render_template` — **ne** HTML v `return` řetězci.
 
@@ -40,7 +40,7 @@ Spustění: `python -m flask --app vitani run --debug`
 
 ---
 
-## Úkol 2 — Vizitka z proměnných (★★☆)
+## Cvičení 2 — Vizitka z proměnných (★★☆)
 
 Soubor `vizitka.py` a `templates/index.html`. Do šablony předejte **jméno** a **obor** (klidně fiktivní).
 
@@ -80,7 +80,7 @@ Spustění: `python -m flask --app vizitka run --debug`
 
 ---
 
-## Úkol 3 — Jídelníček (★★★)
+## Cvičení 3 — Jídelníček (★★★)
 
 Soubor `jidelna.py` a dvě šablony. Dvě routy:
 

@@ -1,6 +1,6 @@
 # Cvičení — Název lekce
 
-## Úkol 1 — Název (★☆☆)
+## Cvičení 1 — Název (★☆☆)
 
 Zadání:
 
@@ -15,7 +15,7 @@ print("Ahoj")
 
 ---
 
-## Úkol 2 — Název (★★☆)
+## Cvičení 2 — Název (★★☆)
 
 Zadání:
 

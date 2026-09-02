@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Díky za přihlášku (★☆☆)
+## Cvičení 1 — Díky za přihlášku (★☆☆)
 
 Soubor `soutez.py`. Na `/` formulář POST s polem `name="jmeno"` (jméno stačí nekontrolovat).
 
@@ -63,7 +63,7 @@ Spustění: `python -m flask --app soutez run --debug`
 
 ---
 
-## Úkol 2 — Hlášení s flash (★★☆)
+## Cvičení 2 — Hlášení s flash (★★☆)
 
 Soubor `hlaseni.py`. Na `/` formulář POST, pole `name="jmeno"`.
 

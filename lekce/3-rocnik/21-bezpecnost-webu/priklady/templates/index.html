@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Sklad</title>
+</head>
+<body>
+  <h1>Sklad</h1>
+  <form action="{{ url_for('index') }}" method="get">
+    <label>Název <input name="q" value="{{ dotaz }}"></label>
+    <button type="submit">Hledat</button>
+  </form>
+  {% if dotaz %}
+    <p>Hledáte: {{ dotaz }}</p>
+  {% endif %}
+  {% if radky %}
+    <ul>
+      {% for radek in radky %}
+        <li>{{ radek.nazev }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nic nenalezeno.</p>
+  {% endif %}
+</body>
+</html>

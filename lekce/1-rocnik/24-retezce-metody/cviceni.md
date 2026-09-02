@@ -1,6 +1,6 @@
 # Cvičení — Metody řetězců
 
-## Úkol 1 — Počet slov (★★☆)
+## Cvičení 1 — Počet slov (★★☆)
 
 Načtěte větu a vypište počet slov.
 
@@ -14,7 +14,7 @@ print("Počet slov:", len(slova))
 
 ---
 
-## Úkol 2 — Email (★★☆)
+## Cvičení 2 — Email (★★☆)
 
 Ověřte, zda řetězec obsahuje @ a tečku (zjednodušená kontrola).
 
@@ -30,7 +30,7 @@ else:
 
 ---
 
-## Úkol 3 — Nahrazení (★★☆)
+## Cvičení 3 — Nahrazení (★★☆)
 
 V textu nahraďte všechny mezery podtržítkem.
 
@@ -43,7 +43,7 @@ print(text.replace(" ", "_"))
 
 ---
 
-## Úkol 4 — Obrácená věta (★★★)
+## Cvičení 4 — Obrácená věta (★★★)
 
 Rozdělte větu na slova a vypište slova v opačném pořadí.
 

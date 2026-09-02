@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Rezervace hřiště (★☆☆)
+## Cvičení 1 — Rezervace hřiště (★☆☆)
 
 Soubor `rezervace.py`. Formulář POST, pole `name="jmeno"`.
 
@@ -60,7 +60,7 @@ Spustění: `python -m flask --app rezervace run --debug`
 
 ---
 
-## Úkol 2 — Věk do dotazníku (★★☆)
+## Cvičení 2 — Věk do dotazníku (★★☆)
 
 Soubor `vek.py`. Formulář POST, pole `name="vek"`.
 
@@ -69,7 +69,7 @@ Po odeslání:
 - nejde převést na `int` (`abc`, prázdné, `3.5`) → **`Zadejte celé číslo`**,
 - celé číslo → vypište ho (třeba `Věk: 15`).
 
-Použijte `try` / `except ValueError`. Prázdné pole můžete nejdřív odchytit `.strip()` jako v úkolu 1, nebo nechat spadnout do `ValueError` — obojí je dnes v pořádku.
+Použijte `try` / `except ValueError`. Prázdné pole můžete nejdřív odchytit `.strip()` jako ve cvičení 1, nebo nechat spadnout do `ValueError` — obojí je dnes v pořádku.
 
 @reseni
 `vek.py`:

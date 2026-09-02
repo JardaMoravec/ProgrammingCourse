@@ -44,7 +44,7 @@ db.execute(
 )
 ```
 
-**Neskládejte** SQL f-řetězcem (`f"… {nazev} …"`). Hodnota z formuláře by se stala součástí příkazu. Proč je to nebezpečné, je [lekce 20](../20-bezpecnost-webu/lekce.md) — dnes stačí zvyk: **vždy `?`**.
+**Neskládejte** SQL f-řetězcem (`f"… {nazev} …"`). Hodnota z formuláře by se stala součástí příkazu. Proč je to nebezpečné, je [lekce 21](../21-bezpecnost-webu/lekce.md) — dnes stačí zvyk: **vždy `?`**.
 
 Bez `commit()` je vložení jen v paměti. Restart (nebo někdy i další požadavek) ho zahodí. Stejné `commit` jako po `CREATE TABLE`.
 

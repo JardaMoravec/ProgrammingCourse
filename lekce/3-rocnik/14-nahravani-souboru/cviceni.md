@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Odevzdání výkresu (★☆☆)
+## Cvičení 1 — Odevzdání výkresu (★☆☆)
 
 Soubor `vykres.py`. Na `/` formulář POST s `enctype="multipart/form-data"` a polem `type="file"` `name="soubor"`.
 
@@ -65,7 +65,7 @@ Spustění: `python -m flask --app vykres run --debug`
 
 ---
 
-## Úkol 2 — Nástěnka (★★☆)
+## Cvičení 2 — Nástěnka (★★☆)
 
 Soubor `nastenka.py`. Formulář POST, pole `name="foto"`.
 

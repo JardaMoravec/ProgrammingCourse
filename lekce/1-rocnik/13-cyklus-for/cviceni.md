@@ -1,6 +1,6 @@
 # Cvičení — Cyklus for a range
 
-## Úkol 1 — Sudá a lichá čísla (★★☆)
+## Cvičení 1 — Sudá a lichá čísla (★★☆)
 
 > Adaptace: `úkol 16 - sudá a lichá čísla.docx`
 
@@ -24,7 +24,7 @@ print("Součet lichých:", licha)
 
 ---
 
-## Úkol 2 — Násobilková tabulka (★★☆)
+## Cvičení 2 — Násobilková tabulka (★★☆)
 
 Načtěte n a vypište násobky 1–10.
 
@@ -38,7 +38,7 @@ for i in range(1, 11):
 
 ---
 
-## Úkol 3 — Dělitelné třemi (★★☆)
+## Cvičení 3 — Dělitelné třemi (★★☆)
 
 Vypište čísla 1–100 dělitelná 3.
 
@@ -52,7 +52,7 @@ for x in range(1, 101):
 
 ---
 
-## Úkol 4 — Pyramida hvězdiček (★★★)
+## Cvičení 4 — Pyramida hvězdiček (★★★)
 
 @reseni
 ```python
@@ -63,7 +63,7 @@ for i in range(1, 6):
 
 ---
 
-## Úkol 5 — Průměr N čísel (★★★)
+## Cvičení 5 — Průměr N čísel (★★★)
 
 Načtěte N, pak N× číslo a vypište průměr.
 

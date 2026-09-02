@@ -119,7 +119,12 @@ def strip_format_from_description(description: str) -> str:
 
 
 def build_ukoly_md(
-    lesson_id: str, lesson_name: str, tasks: list[dict], rocnik: str
+    lesson_id: str,
+    lesson_name: str,
+    tasks: list[dict],
+    rocnik: str,
+    *,
+    has_cviceni: bool = True,
 ) -> str:
     num = lesson_id[:2]
     types = {(t.get("typ") or "vpl") for t in tasks}
@@ -129,9 +134,14 @@ def build_ukoly_md(
         f"# Úkoly — {lesson_name}",
         "",
         "> **Samostatná práce** k odevzdání v Moodle.",
-        "> U cvičení v hodině máte k dispozici řešení — u těchto úkolů ne.",
-        "",
     ]
+    if has_cviceni:
+        parts += [
+            "> U cvičení v hodině máte k dispozici řešení — u těchto úkolů ne.",
+            "",
+        ]
+    else:
+        parts.append("")
     if has_vpl:
         parts += [
             "> V Moodle spusťte **Evaluate** — automatický test ověří výstup programu.",
@@ -170,7 +180,14 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
     nazev = meta.get("nazev", lesson_dir.name)
     rocnik = meta.get("rocnik", "1")
     (lesson_dir / "ukoly.md").write_text(
-        build_ukoly_md(lesson_dir.name, nazev, tasks, rocnik), encoding="utf-8"
+        build_ukoly_md(
+            lesson_dir.name,
+            nazev,
+            tasks,
+            rocnik,
+            has_cviceni=(lesson_dir / "cviceni.md").is_file(),
+        ),
+        encoding="utf-8",
     )
 
     ukoly_root = lesson_dir / "ukoly"

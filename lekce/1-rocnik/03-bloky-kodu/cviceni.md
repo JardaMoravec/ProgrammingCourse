@@ -1,6 +1,6 @@
 # Cvičení — Anatomie programu a bloky kódu
 
-## Úkol 1 — Oprava odsazení (★★☆)
+## Cvičení 1 — Oprava odsazení (★★☆)
 
 Opravte tento kód tak, aby běžel bez chyby:
 
@@ -24,7 +24,7 @@ print("Konec")
 
 ---
 
-## Úkol 2 — Vlastní struktura (★☆☆)
+## Cvičení 2 — Vlastní struktura (★☆☆)
 
 Napište program `struktura.py`, který vypíše alespoň 4 řádky s vnořeným blokem `if True:`.
 
@@ -43,9 +43,9 @@ print("Řádek 5 — zpět v hlavním bloku")
 
 ---
 
-## Úkol 3 — Komentáře (★☆☆)
+## Cvičení 3 — Komentáře (★☆☆)
 
-Do programu z úkolu 2 doplňte komentáře vysvětlující, co jednotlivé části dělají.
+Do programu ze cvičení 2 doplňte komentáře vysvětlující, co jednotlivé části dělají.
 
 @reseni
 ```python

@@ -1,6 +1,6 @@
 # Cvičení — HTML a CSS — shrnutí
 
-## Úkol 1 — Strom HTML (★☆☆)
+## Cvičení 1 — Strom HTML (★☆☆)
 
 Prohlížeč z tohoto úryvku postaví jiný strom, než autor čekal. Najděte **dvě** chyby a napište, co prohlížeč pravděpodobně udělá.
 
@@ -23,7 +23,7 @@ Prohlížeč z tohoto úryvku postaví jiný strom, než autor čekal. Najděte 
 
 ---
 
-## Úkol 2 — Která barva vyhraje? (★★☆)
+## Cvičení 2 — Která barva vyhraje? (★★☆)
 
 Jakou barvu bude mít text? Krátce zdůvodněte.
 
@@ -44,7 +44,7 @@ p.perex { color: orange; }
 
 ---
 
-## Úkol 3 — Šířka boxu (★★☆)
+## Cvičení 3 — Šířka boxu (★★☆)
 
 ```css
 .karta {
@@ -64,7 +64,7 @@ Jak široký je vykreslený box při výchozím `box-sizing: content-box`? Co se
 
 ---
 
-## Úkol 4 — Pořadí v prohlížeči (★☆☆)
+## Cvičení 4 — Pořadí v prohlížeči (★☆☆)
 
 Seřaďte kroky, jak prohlížeč složí stránku:
 

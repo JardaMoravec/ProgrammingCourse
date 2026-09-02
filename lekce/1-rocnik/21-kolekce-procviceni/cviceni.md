@@ -1,6 +1,6 @@
 # Cvičení — Kolekce (souhrn)
 
-## Úkol 1 — Evidence knih (★★☆)
+## Cvičení 1 — Evidence knih (★★☆)
 
 Seznam slovníků `{název, autor, rok}` — vypište knihy po roce 2000.
 
@@ -18,7 +18,7 @@ for k in knihy:
 
 ---
 
-## Úkol 2 — Histogram (★★★)
+## Cvičení 2 — Histogram (★★★)
 
 Seznam známek 1–5 — slovník kolikrát každá známka.
 
@@ -34,7 +34,7 @@ print(hist)
 
 ---
 
-## Úkol 3 — Seřazení studentů (★★★)
+## Cvičení 3 — Seřazení studentů (★★★)
 
 Seznam jmen seřaďte abecedně a vypište s pořadím.
 
@@ -49,7 +49,7 @@ for i, j in enumerate(jmena, 1):
 
 ---
 
-## Úkol 4 — Množina unikátních (★★☆)
+## Cvičení 4 — Množina unikátních (★★☆)
 
 Ze seznamu čísel vypište unikátní hodnoty (bez set — použijte slovník nebo cyklus).
 

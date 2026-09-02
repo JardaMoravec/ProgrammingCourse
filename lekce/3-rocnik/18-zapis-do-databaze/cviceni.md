@@ -14,7 +14,7 @@ Po úspěšném odeslání **přesměruje** — F5 pak nevloží řádek znovu.
 
 ---
 
-## Úkol 1 — Sklad učebnic (★☆☆)
+## Cvičení 1 — Sklad učebnic (★☆☆)
 
 Soubor `sklad.py` jako minule. V `sklad.db` už jsou **Čítanka** a **Matematika**.
 
@@ -94,7 +94,7 @@ Spustění: `python -m flask --app sklad run --debug`
 
 ---
 
-## Úkol 2 — Evidence klíčů (★★☆)
+## Cvičení 2 — Evidence klíčů (★★☆)
 
 Soubor `klice.py` z lekce 17 (`g`, `get_db`, `app_context`). V `klice.db` jsou **sborovna** a **telocvicna**.
 

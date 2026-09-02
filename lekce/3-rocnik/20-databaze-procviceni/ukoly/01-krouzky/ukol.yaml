@@ -1,0 +1,285 @@
+title: Školní kroužky
+stars: 3
+moodle: PRG-3-20-01
+typ: flask
+soubor: krouzky.py
+description: |
+  Napište Flask aplikaci v souboru `krouzky.py` — **evidenci školních kroužků**.
+  Složte dohromady lekce 16–19: `g`, `init_db`, výpis, přidání, úprava a smazání.
+
+  Cesta k **`krouzky.db`** v `app.config["DATABASE"]` vedle souboru (`os.path` + `__file__`).
+  `get_db()` přes `g`, zavření v `@app.teardown_appcontext`.
+  `init_db()` jednou při startu (`with app.app_context():`), jen `CREATE TABLE IF NOT EXISTS`.
+  Nastavte `app.secret_key` (libovolný krátký řetězec).
+
+  Tabulka **`krouzky`**: `id INTEGER PRIMARY KEY`, `nazev TEXT NOT NULL`,
+  `den TEXT NOT NULL`.
+
+  Na `/` (`methods=["GET", "POST"]`):
+
+  - GET: `SELECT id, nazev, den FROM krouzky` a **`fetchall()`**.
+    Každá položka přesně **`nazev (den)`** (třeba `Foto (pondělí)`) v `<ul>`.
+    Odkaz Upravit: `url_for('upravit', id=radek.id)`.
+    Formulář Smazat: POST na `url_for('smazat', id=radek.id)`.
+  - POST: pole `name="nazev"` a `name="den"`, obě `.strip()`.
+    Prázdné (i mezery): **200**, přesně `Vyplňte název i den`, bez `INSERT`.
+    Obě vyplněné: `INSERT INTO krouzky (nazev, den) VALUES (?, ?)`, `commit`,
+    `flash("Přidáno")`, **302** na `/`.
+
+  **`/upravit/<int:id>`** (`methods=["GET", "POST"]`), šablona `upravit.html`:
+
+  - `SELECT … WHERE id = ?` a **`fetchone()`**; `None` → `abort(404)`,
+  - pole `name="nazev"` a `name="den"`,
+  - prázdné (i mezery): **200**, přesně `Vyplňte název i den`, bez `UPDATE`,
+  - obě vyplněné: `UPDATE krouzky SET nazev = ?, den = ? WHERE id = ?`,
+    `commit`, `flash("Uloženo")`, **302** na `/`.
+
+  **`/smazat/<int:id>`** jen `methods=["POST"]`:
+  `DELETE FROM krouzky WHERE id = ?`, `commit`, `flash("Smazáno")`, **302** na `/`.
+  GET na tutéž cestu musí dát **405**.
+
+  V šabloně seznamu `get_flashed_messages()`. Na úpravě `{{ chyba }}`.
+  Evaluate tabulku naplní. Soubor `.db` do Moodle nahrávat nemusíte.
+odevzdani: |
+  Do Moodle nahrajte `krouzky.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Routy a šablony
+    templates: [index.html, upravit.html]
+    source_contains:
+      - "sqlite3"
+      - "INSERT"
+      - "UPDATE"
+      - "DELETE"
+      - "WHERE"
+      - "abort"
+      - "fetchone"
+      - "fetchall"
+      - "/upravit/"
+      - "/smazat/"
+      - "?, ?"
+      - "commit"
+      - "redirect"
+      - "flash"
+      - "init_db"
+      - "app_context"
+      - "teardown_appcontext"
+    template_contains:
+      index.html:
+        - "{% for"
+        - "url_for('upravit'"
+        - "url_for('smazat'"
+        - 'method="post"'
+        - 'name="nazev"'
+        - 'name="den"'
+        - "get_flashed_messages"
+        - "{{ chyba }}"
+      upravit.html:
+        - 'name="nazev"'
+        - 'name="den"'
+        - "{{ chyba }}"
+  - name: Seznam kroužků
+    get: /
+    status: 200
+    tags: [ul, form]
+    contains: ["Foto (pondělí)", "Robotika (středa)", "Divadlo (pátek)"]
+    href: [/upravit/1]
+    not_contains: ["{{"]
+    db: krouzky.db
+    db_tables: [krouzky]
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Prázdná pole
+    post: /
+    data:
+      nazev: ""
+      den: ""
+    status: 200
+    contains: ["Vyplňte název i den"]
+    not_contains: ["Přidáno", "{{"]
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Přesměrování a řádek
+    post: /
+    data:
+      nazev: Sbor
+      den: úterý
+    status: 302
+    location: /
+    db: krouzky.db
+    db_min_rows:
+      krouzky: 4
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+    then:
+      - get: /
+        contains: ["Sbor (úterý)"]
+        not_contains: ["{{"]
+  - name: Flash po zápisu
+    post: /
+    data:
+      nazev: Sbor
+      den: úterý
+    follow_redirects: true
+    status: 200
+    contains: ["Přidáno", "Sbor (úterý)"]
+    not_contains: ["Vyplňte název i den", "{{"]
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Formulář úpravy
+    get: /upravit/1
+    status: 200
+    tags: [form]
+    contains: ["Foto", "pondělí", 'name="nazev"', 'name="den"']
+    not_contains: ["{{"]
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Chybějící kroužek
+    get: /upravit/999
+    status: 404
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Prázdná úprava
+    post: /upravit/1
+    data:
+      nazev: ""
+      den: pondělí
+    status: 200
+    contains: ["Vyplňte název i den"]
+    not_contains: ["Uloženo", "{{"]
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Uložení kroužku
+    post: /upravit/1
+    data:
+      nazev: Foto
+      den: čtvrtek
+    status: 302
+    location: /
+    db: krouzky.db
+    db_min_rows:
+      krouzky: 3
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+    then:
+      - get: /
+        contains: ["Foto (čtvrtek)"]
+        not_contains: ["Foto (pondělí)", "{{"]
+  - name: Flash po úpravě
+    post: /upravit/1
+    data:
+      nazev: Foto
+      den: čtvrtek
+    follow_redirects: true
+    status: 200
+    contains: ["Uloženo", "Foto (čtvrtek)"]
+    not_contains: ["{{"]
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Mazání jen POST
+    get: /smazat/2
+    status: 405
+    db: krouzky.db
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+  - name: Smazání kroužku
+    post: /smazat/2
+    status: 302
+    location: /
+    db: krouzky.db
+    db_min_rows:
+      krouzky: 2
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]
+    then:
+      - get: /
+        contains: ["Foto (pondělí)", "Divadlo (pátek)"]
+        not_contains: ["Robotika (středa)", "{{"]
+  - name: Flash po smazání
+    post: /smazat/3
+    follow_redirects: true
+    status: 200
+    contains: ["Smazáno"]
+    not_contains: ["Divadlo (pátek)", "{{"]
+    db: krouzky.db
+    db_min_rows:
+      krouzky: 2
+    db_seed:
+      db: krouzky.db
+      table: krouzky
+      columns: [id, nazev, den]
+      rows:
+        - [1, Foto, pondělí]
+        - [2, Robotika, středa]
+        - [3, Divadlo, pátek]

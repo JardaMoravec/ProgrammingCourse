@@ -1,0 +1,11 @@
+id: 20-databaze-procviceni
+rocnik: 3
+nazev: Databáze — souhrn a procvičení
+modul: databaze
+hodiny: 2
+obtiznost: stredni
+prerekvizity: [19-crud-v-aplikaci]
+kompetence: [k4-formulare-skript]
+svp: [propojení skriptu a databáze]
+tagy: [flask, sqlite, procviceni, CRUD]
+migrovano_z: []

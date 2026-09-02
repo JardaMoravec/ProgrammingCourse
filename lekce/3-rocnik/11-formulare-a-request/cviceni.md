@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Hledání (★☆☆)
+## Cvičení 1 — Hledání (★☆☆)
 
 Soubor `hledani.py`. Na `/` formulář **GET** s polem `name="q"`.
 
@@ -49,7 +49,7 @@ Spustění: `python -m flask --app hledani run --debug`
 
 ---
 
-## Úkol 2 — Otázka třídnímu (★★☆)
+## Cvičení 2 — Otázka třídnímu (★★☆)
 
 Soubor `dotaz.py`. Na `/` formulář **POST** s polem `name="otazka"`.
 

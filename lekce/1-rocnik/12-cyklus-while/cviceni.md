@@ -1,6 +1,6 @@
 # Cvičení — Cyklus while
 
-## Úkol 1 — Hádání čísla (★★★)
+## Cvičení 1 — Hádání čísla (★★★)
 
 > Zdroj: `úkol 15 - hádání čísla.docx`
 
@@ -31,7 +31,7 @@ else:
 
 ---
 
-## Úkol 2 — Součet do N (★★☆)
+## Cvičení 2 — Součet do N (★★☆)
 
 Načtěte N a while cyklem sečtěte 1 + 2 + … + N.
 
@@ -49,7 +49,7 @@ print(f"Součet 1..{n} = {soucet}")
 
 ---
 
-## Úkol 3 — Menu (★★☆)
+## Cvičení 3 — Menu (★★☆)
 
 Jednoduché menu v `while True`.
 
@@ -72,7 +72,7 @@ while True:
 
 ---
 
-## Úkol 4 — Faktoriál (★★★)
+## Cvičení 4 — Faktoriál (★★★)
 
 Načtěte n ≥ 0. While cyklem vypočítejte n!
 

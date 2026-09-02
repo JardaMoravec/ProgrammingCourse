@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Barva nadpisu (★☆☆)
+## Cvičení 1 — Barva nadpisu (★☆☆)
 
 Soubor `oznameni.py`, šablona `templates/index.html` a `static/styly.css`.
 
@@ -60,7 +60,7 @@ Spustění: `python -m flask --app oznameni run --debug`
 
 ---
 
-## Úkol 2 — Logo v základu (★★☆)
+## Cvičení 2 — Logo v základu (★★☆)
 
 Soubor `atelier.py`. Dědičnost z lekce 06 + statické soubory:
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="Odevzdani, spusteni, ukazka, otazky">
+  <rect class="d-bg" width="720" height="200" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-soft" x="24" y="40" width="150" height="120" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="99" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">1. Odevzdat</text>
+  <text class="d-muted" x="99" y="118" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">app.py, sablony, static</text>
+
+  <rect class="d-surface" x="198" y="40" width="150" height="120" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="273" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">2. Spustit</text>
+  <text class="d-muted" x="273" y="118" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">flask --app app</text>
+
+  <rect class="d-soft" x="372" y="40" width="150" height="120" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="447" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">3. Ukazat</text>
+  <text class="d-muted" x="447" y="118" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">CRUD, foto, relace, 404</text>
+
+  <rect class="d-surface" x="546" y="40" width="150" height="120" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="621" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">4. Otazky</text>
+  <text class="d-muted" x="621" y="118" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">proc ?, POST, session</text>
+</svg>

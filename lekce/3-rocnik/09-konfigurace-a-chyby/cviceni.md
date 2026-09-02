@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Vlastní 404 (★☆☆)
+## Cvičení 1 — Vlastní 404 (★☆☆)
 
 Soubor `chyba.py`. Jedna routa `/` se šablonou (stačí `<h1>`).
 
@@ -53,7 +53,7 @@ Spustění: `python -m flask --app chyba run --debug`
 
 ---
 
-## Úkol 2 — Učebna, která není (★★☆)
+## Cvičení 2 — Učebna, která není (★★☆)
 
 Soubor `ucebny.py`. Slovník aspoň dvou učeben (klíče třeba `A12`, `B03`).
 
@@ -62,7 +62,7 @@ Soubor `ucebny.py`. Slovník aspoň dvou učeben (klíče třeba `A12`, `B03`).
 | `/` | seznam odkazů přes `url_for` |
 | `/ucebna/<kod>` | existuje → `<h1>` s kódem a `<p>` s popisem |
 | `/ucebna/<kod>` | není ve slovníku → `abort(404)` |
-| jakákoli jiná cesta | stejná `404.html` jako v úkolu 1 |
+| jakákoli jiná cesta | stejná `404.html` jako ve cvičení 1 |
 
 Ověřte `/ucebna/A12` (200) i `/ucebna/Z99` (404).
 

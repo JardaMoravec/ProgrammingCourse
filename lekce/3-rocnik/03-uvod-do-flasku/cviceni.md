@@ -10,7 +10,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Pozdrav (★☆☆)
+## Cvičení 1 — Pozdrav (★☆☆)
 
 Vytvořte soubor `pozdrav.py`. Na adrese `/` ať aplikace vrátí přesně:
 
@@ -35,7 +35,7 @@ Spustění: `python -m flask --app pozdrav run --debug`
 
 ---
 
-## Úkol 2 — Profil z proměnných (★★☆)
+## Cvičení 2 — Profil z proměnných (★★☆)
 
 Soubor `profil.py`. Do proměnných uložte **jméno** a **třídu** (klidně fiktivní).
 Na adrese `/` vraťte **jeden řádek** ve tvaru:

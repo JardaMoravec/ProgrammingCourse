@@ -190,13 +190,13 @@ moduly:
 
   - id: databaze
     nazev: Propojení skriptu a databáze
-    hodiny: 10
+    hodiny: 12
     svp_temata:
       - propojení skriptu a databáze
     bloky:
       - id: flask-a-databaze
         nazev: Napojení Flask aplikace na databázi
-        hodiny: 10
+        hodiny: 12
         lekce:
           - id: "16-pripojeni-databaze"
             soubor: lekce/3-rocnik/16-pripojeni-databaze
@@ -230,17 +230,25 @@ moduly:
             kompetence: [k4-formulare-skript]
             prerekvizity: [18-zapis-do-databaze]
 
-          - id: "20-bezpecnost-webu"
-            soubor: lekce/3-rocnik/20-bezpecnost-webu
+          - id: "20-databaze-procviceni"
+            soubor: lekce/3-rocnik/20-databaze-procviceni
+            nazev: Databáze — souhrn a procvičení
+            hodiny: 2
+            svp: [propojení skriptu a databáze]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [19-crud-v-aplikaci]
+
+          - id: "21-bezpecnost-webu"
+            soubor: lekce/3-rocnik/21-bezpecnost-webu
             nazev: Bezpečnost (XSS, SQL injection)
             hodiny: 2
             svp: [zásady tvorby WWW stránek, propojení skriptu a databáze]
             kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
-            prerekvizity: [19-crud-v-aplikaci]
+            prerekvizity: [20-databaze-procviceni]
 
   - id: zaverecny-projekt
     nazev: Optimalizace, validace a závěrečný projekt
-    hodiny: 26
+    hodiny: 24
     svp_temata:
       - optimalizace kódu
       - validace kódu
@@ -248,29 +256,22 @@ moduly:
     bloky:
       - id: projekt
         nazev: Samostatný Flask projekt
-        hodiny: 26
+        hodiny: 24
         lekce:
-          - id: "21-projekt-zadani"
-            soubor: lekce/3-rocnik/21-projekt-zadani
-            nazev: Závěrečný projekt — zadání, návrh a struktura
-            hodiny: 2
-            svp: [zásady tvorby WWW stránek, skriptovací jazyk]
-            kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
-            prerekvizity: [20-bezpecnost-webu]
-
-          - id: "22-projekt-implementace"
-            soubor: lekce/3-rocnik/22-projekt-implementace
-            nazev: Závěrečný projekt — implementace
+          - id: "22-projekt"
+            soubor: lekce/3-rocnik/22-projekt
+            nazev: Závěrečný projekt — zadání a práce
             hodiny: 20
             svp:
+              - zásady tvorby WWW stránek
+              - skriptovací jazyk
               - propojení skriptu a databáze
               - šablony
               - HTML formuláře
-              - skriptovací jazyk
               - validace kódu
               - optimalizace kódu
             kompetence: [k1-www, k2-html, k3-web-vytvoreni, k4-formulare-skript]
-            prerekvizity: [21-projekt-zadani]
+            prerekvizity: [21-bezpecnost-webu]
 
           - id: "23-projekt-prezentace"
             soubor: lekce/3-rocnik/23-projekt-prezentace
@@ -278,7 +279,7 @@ moduly:
             hodiny: 4
             svp: [zásady tvorby WWW stránek, validace kódu]
             kompetence: [k1-www, k3-web-vytvoreni, k4-formulare-skript]
-            prerekvizity: [22-projekt-implementace]
+            prerekvizity: [22-projekt]
 
 hodnoceni:
   - elektronické testy (Moodle VPL)

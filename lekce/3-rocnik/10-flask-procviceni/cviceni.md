@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Botanická zahrada (★★☆)
+## Cvičení 1 — Botanická zahrada (★★☆)
 
 Soubor `zahrada.py`. Slovník aspoň dvou rostlin (klíče třeba `dub`, `kapradina`).
 
@@ -93,9 +93,9 @@ Spustění: `python -m flask --app zahrada run --debug`
 
 ---
 
-## Úkol 2 — Planetárium (★★★)
+## Cvičení 2 — Planetárium (★★★)
 
-Soubor `planety.py`. Stejná kostra jako v úkolu 1 (dědičnost, `url_for`).
+Soubor `planety.py`. Stejná kostra jako ve cvičení 1 (dědičnost, `url_for`).
 
 Do `app.config["NAZEV"]` uložte název webu a vypište ho na hlavní stránce
 přes `{{ config.NAZEV }}`.

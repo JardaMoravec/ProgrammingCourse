@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Stanoviště (★☆☆)
+## Cvičení 1 — Stanoviště (★☆☆)
 
 Soubor `stanoviste.py`. Na `/` formulář POST s polem `name="jmeno"`. Nastavte `app.secret_key`.
 
@@ -54,7 +54,7 @@ Spustění: `python -m flask --app stanoviste run --debug`
 
 ---
 
-## Úkol 2 — Šatna (★★☆)
+## Cvičení 2 — Šatna (★★☆)
 
 Soubor `satna.py`. Pole `name="jmeno"`, `secret_key`, jméno do `session`.
 

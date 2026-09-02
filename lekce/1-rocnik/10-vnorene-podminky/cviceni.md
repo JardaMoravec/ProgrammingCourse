@@ -1,6 +1,6 @@
 # Cvičení — Vnořené podmínky
 
-## Úkol 1 — Refaktoring (★★☆)
+## Cvičení 1 — Refaktoring (★★☆)
 
 Přepište vnořený kód na `and` nebo řetězení porovnání — výstup zůstane stejný:
 
@@ -30,7 +30,7 @@ else:
 
 ---
 
-## Úkol 2 — Dopravné podle hmotnosti (★★★)
+## Cvičení 2 — Dopravné podle hmotnosti (★★★)
 
 Načtěte hmotnost zásilky v kg. Při **neplatné** hodnotě (≤ 0) vypište `Neplatná hmotnost.`
 Jinak určete cenu dopravy:
@@ -61,7 +61,7 @@ else:
 
 ---
 
-## Úkol 3 — Čtverec nebo obdélník (★★☆)
+## Cvičení 3 — Čtverec nebo obdélník (★★☆)
 
 Načtěte délky stran `a` a `b`. Pokud je některá **≤ 0**, vypište `Chyba: strany musí být kladné.`
 Jinak rozhodněte:
@@ -85,7 +85,7 @@ else:
 
 ---
 
-## Úkol 4 — Přihlášení (★★★)
+## Cvičení 4 — Přihlášení (★★★)
 
 Načtěte **jméno** a **heslo**. Platný účet je jen `admin` s heslem `tajne`.
 Vypište jednu zprávu:

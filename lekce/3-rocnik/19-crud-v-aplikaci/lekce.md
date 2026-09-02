@@ -122,4 +122,4 @@ V šabloně předvyplňte pole: `value="{{ radek.nazev }}"`. Pořadí v tuple je
 
 ## Co dál
 
-→ [Lekce 20: Bezpečnost (XSS, SQL injection)](../20-bezpecnost-webu/lekce.md)
+→ [Lekce 20: Databáze — souhrn a procvičení](../20-databaze-procviceni/lekce.md)

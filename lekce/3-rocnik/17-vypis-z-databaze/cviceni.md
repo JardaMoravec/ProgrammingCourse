@@ -14,7 +14,7 @@ Vedle `.py` zkopírujte připravenou databázi ze složky `data/` této lekce (`
 
 ---
 
-## Úkol 1 — Sklad učebnic (★☆☆)
+## Cvičení 1 — Sklad učebnic (★☆☆)
 
 Soubor `sklad.py` jako minule. Zkopírujte `data/sklad.db` vedle něj (uvnitř jsou učebnice **Čítanka** a **Matematika**).
 
@@ -71,7 +71,7 @@ Spustění: `python -m flask --app sklad run --debug`
 
 ---
 
-## Úkol 2 — Evidence klíčů (★★☆)
+## Cvičení 2 — Evidence klíčů (★★☆)
 
 Soubor `klice.py` z lekce 16 (`g`, `get_db`, `app_context`). Zkopírujte `data/klice.db` vedle něj (klíče **sborovna** a **telocvicna**).
 

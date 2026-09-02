@@ -10,7 +10,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Dvě adresy (★☆☆)
+## Cvičení 1 — Dvě adresy (★☆☆)
 
 Soubor `dve_stranky.py`. Dvě routy, **prostý text** (ne HTML):
 
@@ -43,7 +43,7 @@ Spustění: `python -m flask --app dve_stranky run --debug`
 
 ---
 
-## Úkol 2 — Bufet (★★☆)
+## Cvičení 2 — Bufet (★★☆)
 
 Soubor `bufet.py`. Dvě routy, odpověď je **krátké HTML** (ne prostý text):
 
@@ -84,7 +84,7 @@ Spustění: `python -m flask --app bufet run --debug`
 
 ---
 
-## Úkol 3 — Nástěnka třídy (★★★)
+## Cvičení 3 — Nástěnka třídy (★★★)
 
 Soubor `nastenka.py`. Tři routy, na každé **HTML** a odkazy na **obě ostatní** stránky:
 

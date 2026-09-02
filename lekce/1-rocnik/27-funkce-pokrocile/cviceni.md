@@ -1,6 +1,6 @@
 # Cvičení — Lokální a globální proměnné
 
-## Úkol 1 — Bez global (★★☆)
+## Cvičení 1 — Bez global (★★☆)
 
 Funkce `zvys(o)` vrátí hodnotu o 1 větší — bez global.
 
@@ -17,7 +17,7 @@ print(x)
 
 ---
 
-## Úkol 2 — Prohození (★★☆)
+## Cvičení 2 — Prohození (★★☆)
 
 Funkce vrátí tuple (b, a) — prohoďte dvě hodnoty bez globálu.
 
@@ -34,7 +34,7 @@ print(x, y)
 
 ---
 
-## Úkol 3 — Počítadlo volání (★★★)
+## Cvičení 3 — Počítadlo volání (★★★)
 
 Funkce s globálním počítadlem kolikrát byla volána (procvičení global).
 
@@ -54,7 +54,7 @@ print("Volání:", volani)
 
 ---
 
-## Úkol 4 — Akumulátor (★★★)
+## Cvičení 4 — Akumulátor (★★★)
 
 Funkce `pridej_do_seznamu(seznam, prvek)` mění seznam (mutace) — proč to funguje bez global?
 

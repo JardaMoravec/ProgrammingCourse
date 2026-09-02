@@ -1,6 +1,6 @@
 # Cvičení — Programování a programovací jazyky
 
-## Úkol 1 — Klasifikace jazyků (★☆☆)
+## Cvičení 1 — Klasifikace jazyků (★☆☆)
 
 Do tabulky zařaďte tyto jazyky:
 
@@ -22,7 +22,7 @@ Sloupce: *programovací / značkovací*, *kompilovaný / interpretovaný / VM*.
 
 ---
 
-## Úkol 2 — Výhody a nevýhody (★★☆)
+## Cvičení 2 — Výhody a nevýhody (★★☆)
 
 Vyberte si jeden kompilovaný a jeden interpretovaný jazyk. Napište 3 situace, kdy byste zvolili každý z nich.
 
@@ -34,7 +34,7 @@ Vyberte si jeden kompilovaný a jeden interpretovaný jazyk. Napište 3 situace,
 
 ---
 
-## Úkol 3 — Diskuze (★☆☆)
+## Cvičení 3 — Diskuze (★☆☆)
 
 Proč je pro výuku v 1. ročníku vhodný Python spíše než C++? Uveďte alespoň 3 argumenty.
 

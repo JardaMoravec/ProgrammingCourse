@@ -1,6 +1,6 @@
 # Cvičení — Porovnávací a logické operátory
 
-## Úkol 1 — Pravdivostní hodnoty (★☆☆)
+## Cvičení 1 — Pravdivostní hodnoty (★☆☆)
 
 Bez počítače odhadněte, pak ověřte:
 
@@ -22,7 +22,7 @@ print((7 >= 7) and (7 <= 6))     # False
 
 ---
 
-## Úkol 2 — Interval (★★☆)
+## Cvičení 2 — Interval (★★☆)
 
 Máte proměnnou `x`. Napište **jednu** podmínku (jako výraz), která je True právě když je x mezi 10 a 20 včetně.
 
@@ -36,7 +36,7 @@ print(x >= 10 and x <= 20)  # True — ekvivalent
 
 ---
 
-## Úkol 3 — Dělitelnost (★★☆)
+## Cvičení 3 — Dělitelnost (★★☆)
 
 Bez `if` (zatím jen výraz): napište podmínku, která zjistí, zda je číslo `n` dělitelné pěti.
 

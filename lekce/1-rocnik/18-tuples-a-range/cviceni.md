@@ -1,6 +1,6 @@
 # Cvičení — Tuples a range
 
-## Úkol 1 — Souřadnice (★☆☆)
+## Cvičení 1 — Souřadnice (★☆☆)
 
 Uložte bod (x, y) do tuple a vypište obě souřadnice.
 
@@ -14,7 +14,7 @@ print(f"Bod ({x}, {y})")
 
 ---
 
-## Úkol 2 — min_max (★★☆)
+## Cvičení 2 — min_max (★★☆)
 
 Funkce vrátí tuple (minimum, maximum) ze seznamu.
 
@@ -29,7 +29,7 @@ print(min_max([5, 2, 8, 1]))
 
 ---
 
-## Úkol 3 — Seznam z range (★★☆)
+## Cvičení 3 — Seznam z range (★★☆)
 
 Vytvořte seznam sudých čísel 0–20 pomocí range a list().
 
@@ -42,7 +42,7 @@ print(suda)
 
 ---
 
-## Úkol 4 — zip (★★☆)
+## Cvičení 4 — zip (★★☆)
 
 Dva seznamy — jména a známky — spojte a vypište „Jméno: známka“.
 

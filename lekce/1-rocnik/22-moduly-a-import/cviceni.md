@@ -1,6 +1,6 @@
 # Cvičení — Moduly a import
 
-## Úkol 1 — Hypoténa (★★☆)
+## Cvičení 1 — Hypoténa (★★☆)
 
 Délky odvěsen a, b — hypoténa pomocí math.sqrt.
 
@@ -17,7 +17,7 @@ print(f"Hypoténa: {c:.2f}")
 
 ---
 
-## Úkol 2 — Kruh (★★☆)
+## Cvičení 2 — Kruh (★★☆)
 
 Poloměr r — obvod a obsah (math.pi).
 
@@ -33,7 +33,7 @@ print("Obsah:", math.pi * r ** 2)
 
 ---
 
-## Úkol 3 — Vlastní modul (★★★)
+## Cvičení 3 — Vlastní modul (★★★)
 
 V souboru `geo.py` funkce obsah_kruhu(r); v hlavním souboru import a volání.
 
@@ -53,7 +53,7 @@ print(geo.obsah_kruhu(5))
 
 ---
 
-## Úkol 4 — Náhodné číslo (★★☆)
+## Cvičení 4 — Náhodné číslo (★★☆)
 
 Modul random — 5 náhodných celých 1–6 (kostka).
 

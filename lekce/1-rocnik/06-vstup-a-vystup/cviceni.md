@@ -1,6 +1,6 @@
 # Cvičení — Přetypování, vstup a výstup
 
-## Úkol 1 — Výpočet let do důchodu (★★☆)
+## Cvičení 1 — Výpočet let do důchodu (★★☆)
 
 > Zdroj: `zdroje/Úkoly 1/úkol 1 - výpočet let do důchodu.docx`
 
@@ -28,7 +28,7 @@ else:
 
 ---
 
-## Úkol 2 — Obvod trojúhelníku (★★☆)
+## Cvičení 2 — Obvod trojúhelníku (★★☆)
 
 Načtěte délky tří stran (float) a vypište obvod.
 
@@ -44,7 +44,7 @@ print(f"Obvod trojúhelníku: {obvod}")
 
 ---
 
-## Úkol 3 — Převod minut (★★☆)
+## Cvičení 3 — Převod minut (★★☆)
 
 Načtěte počet minut a vypište kolik to je hodin a minut (např. 135 → 2 h 15 min).
 

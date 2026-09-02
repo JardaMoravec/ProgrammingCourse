@@ -1,0 +1,32 @@
+title: Závěrečný projekt — Flask aplikace
+stars: 3
+moodle: PRG-3-22-01
+typ: soubor
+description: |
+  Napište Flask aplikaci podle zadání v lekci 22 (záložka **Lekce**).
+  Téma je libovolné v mezích školního řádu. Názvy tabulek, sloupců, šablon
+  i URL zvolíte sami — učitel je schválí v návrhu.
+
+  Aplikace **musí umět** (chybějící chování = nesplněné zadání):
+
+  - dvě tabulky v relaci **1:N** (cizí klíč, `FOREIGN KEY`, `PRAGMA foreign_keys = ON`),
+  - u **rodiče** i **potomka**: seznam, přidání, úprava, smazání,
+  - seznam a detail potomka přes **`JOIN`** (vidět jméno rodiče),
+  - u potomka **fotku** (`request.files`, uložení pod `static/`, `<img>`),
+  - u přidání potomka **`<select>`** rodiče,
+  - prázdný / neplatný vstup: stav **200**, bez zápisu, viditelná chyba,
+  - úspěšný zápis: `?`, `commit`, `flash`, **302**,
+  - mazání jen **POST** (GET → **405**); rodiče s potomky **nesmazat**,
+  - chybějící id → **`abort(404)`**, neznámá cesta → vlastní **404**,
+  - **`session`** (jméno vidět na všech stránkách, odhlášení),
+  - dědičnost šablon, CSS ve `static/`, odkazy **`url_for`**,
+  - `g`, `init_db` při startu, text z formuláře jen **`{{ }}`**, SQL jen **`?`**.
+
+  Evaluate se nespouští. **Hlavní kritérium je znalost kódu** — u prezentace
+  (lekce 23) kód vysvětlíte. Nestačí aplikace, kterou nespustíte nebo neobhájíte.
+odevzdani: |
+  Do Moodle nahrajte archiv (zip) se spustitelnou aplikací: hlavní `.py`
+  (doporučený název `app.py`), složku `templates/` a složku `static/`.
+
+  Nahrávejte **z kořene projektu** (soubor `.py` hned vedle `templates/`).
+  Neodevzdávejte soubor `.db`, `venv` / `.venv` ani `__pycache__`.

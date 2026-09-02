@@ -1,6 +1,6 @@
 # Cvičení — Zápis do souboru
 
-## Úkol 1 — Deník (★★☆)
+## Cvičení 1 — Deník (★★☆)
 
 Načtěte větu od uživatele a **doplňte** ji do souboru denik.txt.
 
@@ -14,7 +14,7 @@ with open("denik.txt", "a", encoding="utf-8") as f:
 
 ---
 
-## Úkol 2 — Seznam jmen (★★☆)
+## Cvičení 2 — Seznam jmen (★★☆)
 
 Uložte seznam 5 jmen do souboru (jedno jméno na řádek).
 
@@ -29,7 +29,7 @@ with open("jmena.txt", "w", encoding="utf-8") as f:
 
 ---
 
-## Úkol 3 — Kopie (★★☆)
+## Cvičení 3 — Kopie (★★☆)
 
 Zkopírujte obsah souboru a.txt do b.txt.
 
@@ -44,7 +44,7 @@ with open("b.txt", "w", encoding="utf-8") as dst:
 
 ---
 
-## Úkol 4 — Výsledky programu (★★★)
+## Cvičení 4 — Výsledky programu (★★★)
 
 Program spočítá součet 1–100 a výsledek uloží do souboru.
 

@@ -2,7 +2,7 @@
 
 > Původní úkoly: `zdroje/Úkoly 1/úkol 4a`, `4b`, `5` (geometrie — plná verze až s podmínkami v lekci 09)
 
-## Úkol 1 — Kalkulačka (★☆☆)
+## Cvičení 1 — Kalkulačka (★☆☆)
 
 V konzoli spočítejte objem krychle se stranou `a = 5`. Vzorec: V = a³.
 
@@ -16,7 +16,7 @@ print("Objem krychle:", objem)  # 125
 
 ---
 
-## Úkol 2 — Dělení se zbytkem (★★☆)
+## Cvičení 2 — Dělení se zbytkem (★★☆)
 
 Kolik je `17 // 5` a `17 % 5`? Vysvětlete, co každý výsledek znamená.
 
@@ -31,7 +31,7 @@ print(17 % 5)   # 2 — zbytek po dělení
 
 ---
 
-## Úkol 3 — Teplota (★★☆)
+## Cvičení 3 — Teplota (★★☆)
 
 Převeďte 25 °C na Fahrenheit: `F = C * 9/5 + 32`. Napište jako jeden výraz v Pythonu.
 
@@ -45,7 +45,7 @@ print(f"{c} °C = {f} °F")  # 77.0 °F
 
 ---
 
-## Úkol 4 — Zkrácené operátory (★★☆)
+## Cvičení 4 — Zkrácené operátory (★★☆)
 
 ```python
 x = 10

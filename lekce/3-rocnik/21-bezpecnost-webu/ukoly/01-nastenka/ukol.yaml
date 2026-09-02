@@ -1,0 +1,53 @@
+title: Nástěnka — výpis vzkazu
+stars: 2
+moodle: PRG-3-21-01
+typ: flask
+soubor: nastenka.py
+description: |
+  Napište Flask aplikaci v souboru `nastenka.py` — **nástěnku se vzkazem**.
+  **Bez databáze.** Jde jen o to, aby text z formuláře nespustil HTML (XSS).
+
+  Na `/` formulář **POST** s polem `name="vzkaz"`. Routa: `methods=["GET", "POST"]`.
+  Hodnotu čtěte `request.form.get("vzkaz", "")`.
+
+  Po odeslání na stránce přesně **`Vzkaz:`** a text přes `{{ vzkaz }}`.
+  Filtr `|safe` nepoužívejte. HTML v Pythonu neskládejte (`f"<p>…"`).
+odevzdani: |
+  Do Moodle nahrajte `nastenka.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář a šablona
+    templates: [index.html]
+    source_contains:
+      - "request.form"
+      - "render_template("
+      - "POST"
+    source_not_contains:
+      - "|safe"
+      - "sqlite3"
+    template_contains:
+      index.html:
+        - "<form"
+        - 'name="vzkaz"'
+        - "method="
+        - "{{ vzkaz }}"
+        - "Vzkaz:"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="vzkaz"']
+    not_contains: ["{{"]
+  - name: Obyčejný vzkaz
+    post: /
+    data:
+      vzkaz: Ahoj
+    status: 200
+    contains: ["Vzkaz:", "Ahoj"]
+    not_contains: ["{{"]
+  - name: Značky ve vzkazu
+    post: /
+    data:
+      vzkaz: "<i>x</i>"
+    status: 200
+    contains: ["Vzkaz:", "&lt;i&gt;"]
+    not_contains: ["<i>x</i>", "{{"]

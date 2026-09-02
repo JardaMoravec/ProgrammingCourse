@@ -14,7 +14,7 @@ Do `SELECT` přidejte **`id`**. Formulář na přidání z lekce 18 můžete nec
 
 ---
 
-## Úkol 1 — Sklad učebnic (★☆☆)
+## Cvičení 1 — Sklad učebnic (★☆☆)
 
 Soubor `sklad.py`. V `sklad.db` jsou **Čítanka** a **Matematika**.
 
@@ -85,7 +85,7 @@ Spustění: `python -m flask --app sklad run --debug`
 
 ---
 
-## Úkol 2 — Evidence klíčů (★★☆)
+## Cvičení 2 — Evidence klíčů (★★☆)
 
 Soubor `klice.py` z lekce 18 (`g`, `get_db`, `app_context`). V `klice.db` jsou **sborovna** a **telocvicna**.
 

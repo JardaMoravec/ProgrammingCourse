@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Hodnota z formulare: Jinja escapuje HTML, SQLite bere ? jako data">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="280" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="28" width="168" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="108" y="60" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">Formul&#225;&#345;</text>
+  <text class="d-muted" x="108" y="84" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">ciz&#237; text</text>
+
+  <rect class="d-soft" x="260" y="28" width="200" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">{{ dotaz }}</text>
+  <text class="d-muted" x="360" y="80" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">&amp;lt;b&amp;gt;</text>
+
+  <rect class="d-soft" x="528" y="28" width="168" height="88" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="612" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">SQL ?</text>
+  <text class="d-muted" x="612" y="80" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">tuple vedle</text>
+
+  <line class="d-stroke-accent" x1="192" y1="56" x2="256" y2="56" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+  <line class="d-stroke-accent" x1="192" y1="88" x2="524" y2="88" stroke="#2563eb" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect class="d-surface" x="24" y="164" width="672" height="84" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="198" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">&#352;patn&#283;</text>
+  <text class="d-muted" x="360" y="226" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">f-&#345;et&#283;zec HTML &#183; f-&#345;et&#283;zec SQL &#183; |safe u formul&#225;&#345;e</text>
+</svg>

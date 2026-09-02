@@ -1,6 +1,6 @@
 # Cvičení — Seznamy (základy)
 
-## Úkol 1 — První a poslední (★☆☆)
+## Cvičení 1 — První a poslední (★☆☆)
 
 Vytvořte seznam 5 jmen a vypište první, poslední a prostřední prvek.
 
@@ -13,7 +13,7 @@ print(jmena[0], jmena[-1], jmena[len(jmena) // 2])
 
 ---
 
-## Úkol 2 — Součet seznamu (★★☆)
+## Cvičení 2 — Součet seznamu (★★☆)
 
 Načtěte N čísel do seznamu a vypište součet a průměr.
 
@@ -30,7 +30,7 @@ if cisla:
 
 ---
 
-## Úkol 3 — Maximum v seznamu (★★☆)
+## Cvičení 3 — Maximum v seznamu (★★☆)
 
 Bez vestavěné funkce `max()` najděte největší prvek.
 
@@ -47,7 +47,7 @@ print(nejvetsi)
 
 ---
 
-## Úkol 4 — Sudá čísla (★★☆)
+## Cvičení 4 — Sudá čísla (★★☆)
 
 Z seznamu `[1..20]` vytvořte nový seznam jen se sudými čísly.
 

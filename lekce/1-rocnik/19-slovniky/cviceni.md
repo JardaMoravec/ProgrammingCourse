@@ -1,6 +1,6 @@
 # Cvičení — Slovníky
 
-## Úkol 1 — Telefonní seznam (★★☆)
+## Cvičení 1 — Telefonní seznam (★★☆)
 
 Slovník jméno → telefon; načtěte jméno a vypište číslo nebo „nenalezeno“.
 
@@ -14,7 +14,7 @@ print(kontakty.get(jmeno, "nenalezeno"))
 
 ---
 
-## Úkol 2 — Počítání slov (★★★)
+## Cvičení 2 — Počítání slov (★★★)
 
 Na vstupu věta — slovník kolikrát se každé slovo vyskytuje (malá písmena).
 
@@ -30,7 +30,7 @@ print(pocet)
 
 ---
 
-## Úkol 3 — Známky (★★☆)
+## Cvičení 3 — Známky (★★☆)
 
 Slovník předmět → známka; vypište průměr (1= nejlepší, 5= nejhorší).
 
@@ -44,7 +44,7 @@ print("Průměr:", soucet / len(znamky))
 
 ---
 
-## Úkol 4 — Sloučení (★★☆)
+## Cvičení 4 — Sloučení (★★☆)
 
 Dva slovníky sloučte do třetího (druhý přepíše shodné klíče).
 

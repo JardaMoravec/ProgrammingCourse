@@ -1,6 +1,6 @@
 # Cvičení — Řetězce (základy)
 
-## Úkol 1 — Iniciály (★☆☆)
+## Cvičení 1 — Iniciály (★☆☆)
 
 Jméno a příjmení — vypište iniciály (první písmena).
 
@@ -14,7 +14,7 @@ print(jmeno[0].upper() + "." + prijmeni[0].upper() + ".")
 
 ---
 
-## Úkol 2 — Palindrom (★★☆)
+## Cvičení 2 — Palindrom (★★☆)
 
 Zadejte slovo — je palindrom? (stejné zepředu i zezadu)
 
@@ -27,7 +27,7 @@ print("Ano" if slovo == slovo[::-1] else "Ne")
 
 ---
 
-## Úkol 3 — Věta z částí (★★☆)
+## Cvičení 3 — Věta z částí (★★☆)
 
 Spojte seznam slov do věty (mezery mezi slovy).
 
@@ -41,7 +41,7 @@ print(veta)
 
 ---
 
-## Úkol 4 — Rámeček (★★☆)
+## Cvičení 4 — Rámeček (★★☆)
 
 Vypište text uprostřed rámečku z hvězdiček.
 

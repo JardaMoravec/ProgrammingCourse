@@ -1,6 +1,6 @@
 # Cvičení — Větvení programu
 
-## Úkol 1 — Výpočet zisku (★★☆)
+## Cvičení 1 — Výpočet zisku (★★☆)
 
 > Zdroj: `úkol 3 - výpočet zisku.docx`
 
@@ -21,7 +21,7 @@ else:
 
 ---
 
-## Úkol 2 — Vlastnosti čísla (★★★)
+## Cvičení 2 — Vlastnosti čísla (★★★)
 
 > Zdroj: `úkol 6 - zjištění vlastností čísla.docx`
 
@@ -60,7 +60,7 @@ else:
 
 ---
 
-## Úkol 3 — BMI (★★★)
+## Cvičení 3 — BMI (★★★)
 
 > Zdroj: `úkol 9 - výpočet BMI indexu.docx`
 
@@ -90,7 +90,7 @@ else:
 
 ---
 
-## Úkol 4 — Krychle (★★☆)
+## Cvičení 4 — Krychle (★★☆)
 
 > Zdroj: `úkol 4a - výpočet objemu a povrchu krychle`
 

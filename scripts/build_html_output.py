@@ -1086,7 +1086,9 @@ def lesson_dirs(lekce_dir: Path) -> list[Path]:
 def expected_lesson_html_names(lesson_dir: Path) -> set[str]:
     """Soubory HTML, které build pro lekci vytváří."""
     lid = lesson_dir.name
-    names = {f"{lid}.html", f"{lid}-cviceni.html"}
+    names = {f"{lid}.html"}
+    if (lesson_dir / "cviceni.md").is_file():
+        names.add(f"{lid}-cviceni.html")
     ukoly_root = lesson_dir / "ukoly"
     if ukoly_root.is_dir() and any(
         (p / "ukol.yaml").is_file() for p in ukoly_root.iterdir() if p.is_dir()
@@ -1342,10 +1344,11 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
         if lekce_md.exists()
         else "<p><em>Obsah lekce není k dispozici.</em></p>"
     )
+    has_cviceni = cviceni_md.exists()
     cviceni_html = (
         lesson_html(cviceni_md.read_text(encoding="utf-8"))
-        if cviceni_md.exists()
-        else "<p><em>Cvičení není k dispozici.</em></p>"
+        if has_cviceni
+        else ""
     )
     has_ukoly = ukoly_md.exists()
     ukoly_html = (
@@ -1355,12 +1358,13 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
     )
 
     def tabs_html(active: str) -> str:
-        links = [
-            ("lekce", f"{lid}.html", "Lekce"),
-            ("cviceni", f"{lid}-cviceni.html", "Cvičení"),
-        ]
+        links = [("lekce", f"{lid}.html", "Lekce")]
+        if has_cviceni:
+            links.append(("cviceni", f"{lid}-cviceni.html", "Cvičení"))
         if has_ukoly:
             links.append(("ukoly", f"{lid}-ukoly.html", "Úkoly"))
+        if len(links) == 1:
+            return ""
         parts = ['<div class="tabs">']
         for key, href, label in links:
             cls = " active" if key == active else ""
@@ -1370,8 +1374,9 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
 
     pages: list[tuple[str, str, str]] = [
         ("lekce", "", lekce_html),
-        ("cviceni", " — Cvičení", cviceni_html),
     ]
+    if has_cviceni:
+        pages.append(("cviceni", " — Cvičení", cviceni_html))
     if has_ukoly:
         pages.append(("ukoly", " — Úkoly", ukoly_html))
 

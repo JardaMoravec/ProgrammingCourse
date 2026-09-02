@@ -8,7 +8,7 @@ python -m flask --app NAZEV run --debug
 
 ---
 
-## Úkol 1 — Jméno v adrese (★☆☆)
+## Cvičení 1 — Jméno v adrese (★☆☆)
 
 Soubor `profil.py`. Jedna dynamická routa:
 
@@ -16,7 +16,7 @@ Soubor `profil.py`. Jedna dynamická routa:
 
 Hodnotu z cesty předejte do šablony a vypište v `<h1>` (např. `Profil: Eva`).
 
-Ověřte **dopsáním do adresy** v prohlížeči: `/profil/Eva` a `/profil/Petr`. Odkazy `url_for` ještě nepište — to je úkol 2.
+Ověřte **dopsáním do adresy** v prohlížeči: `/profil/Eva` a `/profil/Petr`. Odkazy `url_for` ještě nepište — to je cvičení 2.
 
 @reseni
 `profil.py`:
@@ -43,7 +43,7 @@ Spustění: `python -m flask --app profil run --debug`
 
 ---
 
-## Úkol 2 — Pozdrav z URL (★★☆)
+## Cvičení 2 — Pozdrav z URL (★★☆)
 
 Soubor `pozdrav.py`. Routa `/ahoj/<jmeno>`: hodnotu z cesty vypište v `<h1>` (přes šablonu a `{{ jmeno }}`).
 

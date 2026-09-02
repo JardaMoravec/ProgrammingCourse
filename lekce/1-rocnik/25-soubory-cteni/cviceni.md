@@ -1,6 +1,6 @@
 # Cvičení — Čtení ze souboru
 
-## Úkol 1 — Počet řádků (★★☆)
+## Cvičení 1 — Počet řádků (★★☆)
 
 Přečtěte soubor a vypište počet řádků.
 
@@ -14,7 +14,7 @@ print("Řádků:", len(radky))
 
 ---
 
-## Úkol 2 — Součet ze souboru (★★☆)
+## Cvičení 2 — Součet ze souboru (★★☆)
 
 Soubor obsahuje jedno číslo na řádek — sečtěte je.
 
@@ -30,7 +30,7 @@ print("Součet:", soucet)
 
 ---
 
-## Úkol 3 — Nejdelší řádek (★★★)
+## Cvičení 3 — Nejdelší řádek (★★★)
 
 Najděte nejdelší řádek v souboru.
 
@@ -48,7 +48,7 @@ print(nej)
 
 ---
 
-## Úkol 4 — Výpis s čísly (★★☆)
+## Cvičení 4 — Výpis s čísly (★★☆)
 
 Vypište soubor s prefixem čísla řádku: `1: text`.
 

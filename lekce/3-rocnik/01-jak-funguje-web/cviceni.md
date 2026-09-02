@@ -1,6 +1,6 @@
 # Cvičení — Jak funguje web
 
-## Úkol 1 — Části URL (★☆☆)
+## Cvičení 1 — Části URL (★☆☆)
 
 Rozepište u každé adresy: schéma, hostitel, port (i když je výchozí), cesta, query.
 
@@ -20,7 +20,7 @@ U 3. adresy `#odpoledne` je **fragment** — na server se neposílá.
 
 ---
 
-## Úkol 2 — Klient, nebo server? (★☆☆)
+## Cvičení 2 — Klient, nebo server? (★☆☆)
 
 U každé situace napište, kdo je klient a kdo server.
 
@@ -36,7 +36,7 @@ U každé situace napište, kdo je klient a kdo server.
 
 ---
 
-## Úkol 3 — Stavové kódy (★★☆)
+## Cvičení 3 — Stavové kódy (★★☆)
 
 Jaký kód (nebo kategorii) čekáte?
 

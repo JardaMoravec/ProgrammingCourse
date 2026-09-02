@@ -30,7 +30,7 @@ def parse_cviceni(path: Path) -> list[dict]:
     text = strip_reseni(path.read_text(encoding="utf-8"))
     items: list[dict] = []
     pattern = re.compile(
-        r"^##\s+Úkol\s+\d+\s+—\s+(.+?)\s+\(([^)]+)\)\s*\n(.*?)(?=^##\s+Úkol|\Z)",
+        r"^##\s+Cvičení\s+\d+\s+—\s+(.+?)\s+\(([^)]+)\)\s*\n(.*?)(?=^##\s+Cvičení|\Z)",
         re.S | re.M,
     )
     for m in pattern.finditer(text):

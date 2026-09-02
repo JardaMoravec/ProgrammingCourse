@@ -1,6 +1,6 @@
 # Cvičení — Cykly nad kolekcemi
 
-## Úkol 1 — Filtr kladných (★★☆)
+## Cvičení 1 — Filtr kladných (★★☆)
 
 Ze seznamu čísel vytvořte seznam jen kladných.
 
@@ -14,7 +14,7 @@ print(kladne)
 
 ---
 
-## Úkol 2 — Nejprodávanější měsíc (★★☆)
+## Cvičení 2 — Nejprodávanější měsíc (★★☆)
 
 Ve slovníku prodejů najděte měsíc s nejvyšší hodnotou.
 
@@ -28,7 +28,7 @@ print(nejvic, prodeje[nejvic])
 
 ---
 
-## Úkol 3 — Délky slov (★★☆)
+## Cvičení 3 — Délky slov (★★☆)
 
 Seznam slov → seznam délek slov (comprehension).
 
@@ -42,7 +42,7 @@ print(delky)
 
 ---
 
-## Úkol 4 — Součet sloupce (★★★)
+## Cvičení 4 — Součet sloupce (★★★)
 
 Matice 3×3 — sečtěte každý sloupec do seznamu.
 

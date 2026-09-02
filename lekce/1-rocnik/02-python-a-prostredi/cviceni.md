@@ -1,6 +1,6 @@
 # Cvičení — Python a vývojové prostředí
 
-## Úkol 1 — Instalace (★☆☆)
+## Cvičení 1 — Instalace (★☆☆)
 
 Ověřte v terminálu:
 
@@ -24,7 +24,7 @@ Pokud příkaz nefunguje, zkuste `python3` nebo ověřte, že je Python v PATH.
 
 ---
 
-## Úkol 2 — První skript (★☆☆)
+## Cvičení 2 — První skript (★☆☆)
 
 Vytvořte soubor `jmeno.py`, který vypíše:
 
@@ -47,7 +47,7 @@ print(f"Ahoj, {jmeno}! Učím se Python.")
 
 ---
 
-## Úkol 3 — Konzole jako kalkulačka (★☆☆)
+## Cvičení 3 — Konzole jako kalkulačka (★☆☆)
 
 V konzoli Pythonu spočítejte bez kalkulačky:
 
@@ -68,7 +68,7 @@ V konzoli Pythonu spočítejte bez kalkulačky:
 
 ---
 
-## Úkol 4 — Zen of Python (★☆☆)
+## Cvičení 4 — Zen of Python (★☆☆)
 
 Spusťte `import this` a vyberte 2 věty, které vám dávají smysl. Vysvětlete vlastními slovy.
 

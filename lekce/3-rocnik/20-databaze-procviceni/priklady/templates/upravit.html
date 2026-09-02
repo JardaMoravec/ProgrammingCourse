@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Upravit</title>
+</head>
+<body>
+  <h1>Upravit</h1>
+  {% if chyba %}
+    <p>{{ chyba }}</p>
+  {% endif %}
+  <form action="{{ url_for('upravit', id=radek.id) }}" method="post">
+    <label>Název <input name="nazev" value="{{ radek.nazev }}"></label>
+    <button type="submit">Uložit</button>
+  </form>
+  <p><a href="{{ url_for('index') }}">Zpět</a></p>
+</body>
+</html>
