@@ -1,0 +1,48 @@
+title: Školní skříňky
+stars: 3
+moodle: PRG-3-16-01
+typ: flask
+soubor: skrinky.py
+description: |
+  Napište Flask aplikaci v souboru `skrinky.py` — **evidenci školních skříněk**
+  (zatím jen struktura, bez dat).
+
+  Cestu k souboru **`skrinky.db`** uložte do `app.config["DATABASE"]` tak, aby soubor
+  vznikl **vedle** `skrinky.py` (`os.path` + `__file__`).
+  Použijte `sqlite3`, `get_db()` přes `g` a zavření v `@app.teardown_appcontext`.
+
+  Tabulka **`skrinky`** sloupce `id INTEGER PRIMARY KEY`, `cislo INTEGER NOT NULL`
+  a `patro INTEGER NOT NULL`. Založte ji `CREATE TABLE IF NOT EXISTS` ve funkci
+  `init_db()`. Tu zavolejte **jednou při startu** (`with app.app_context():`),
+  **ne** z pohledové funkce.
+
+  Na `/` šablona s `<h1>` a přesně **`Připraveno`**. Žádné `SELECT` ani `INSERT`.
+
+  Soubor `.db` do Moodle nahrávat nemusíte — vznikne při Evaluate.
+odevzdani: |
+  Do Moodle nahrajte `skrinky.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Init a struktura
+    templates: [index.html]
+    source_contains:
+      - "sqlite3"
+      - "connect"
+      - "CREATE TABLE"
+      - "init_db"
+      - "app_context"
+      - "teardown_appcontext"
+      - "DATABASE"
+      - "__file__"
+    source_not_contains: ["SELECT", "INSERT"]
+    template_contains:
+      index.html:
+        - "<h1"
+        - "Připraveno"
+  - name: Stránka a tabulka
+    get: /
+    status: 200
+    tags: [h1]
+    contains: ["Připraveno"]
+    not_contains: ["{{"]
+    db: skrinky.db
+    db_tables: [skrinky]

@@ -23,7 +23,7 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–15** mají Flask úkoly s VPL hodnotitelem. Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
+Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–19** mají Flask úkoly s VPL hodnotitelem. Lekce **21–23** (závěrečný projekt) nebudou mít `ukoly.md` — jsou samostatná práce. Lekce **05** trvá 4 hodiny, **22** trvá 20 hodin (10 týdnů implementace), **23** trvá 4 hodiny (prezentace).
 
 ## Přehled lekcí
 
@@ -44,16 +44,16 @@ Obsah lekcí se teprve píše. Lekce **01** má úkol k odevzdání **snímku / 
 | 13 | `13-presmerovani-a-flash` | Přesměrování a flash zprávy | 1 |
 | 14 | `14-nahravani-souboru` | Nahrávání souborů a obrázků | 1 |
 | 15 | `15-relace` | Relace (session) | 1 |
-| 16 | `16-pripojeni-databaze` | Připojení aplikace k databázi | — |
-| 17 | `17-vypis-z-databaze` | Výpis z databáze do šablony | — |
-| 18 | `18-zapis-do-databaze` | Zápis z formuláře do databáze | — |
-| 19 | `19-crud-v-aplikaci` | Úprava a mazání v aplikaci | — |
+| 16 | `16-pripojeni-databaze` | Připojení aplikace k databázi | 1 |
+| 17 | `17-vypis-z-databaze` | Výpis z databáze do šablony | 1 |
+| 18 | `18-zapis-do-databaze` | Zápis z formuláře do databáze | 1 |
+| 19 | `19-crud-v-aplikaci` | Úprava a mazání v aplikaci | 1 |
 | 20 | `20-bezpecnost-webu` | Bezpečnost (XSS, SQL injection) | — |
 | 21 | `21-projekt-zadani` | Projekt — zadání, návrh a struktura | — |
 | 22 | `22-projekt-implementace` | Projekt — implementace (20 h) | — |
 | 23 | `23-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
 
-**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 16–20; lekce 01 má úkol bez VPL, lekce 03–15 mají Flask VPL).
+**Celkem: 23 lekcí** (úkoly VPL se doplní při psaní obsahu, lekce 20; lekce 01 má úkol bez VPL, lekce 03–19 mají Flask VPL).
 
 ## Build
 

@@ -1,0 +1,229 @@
+title: Školní skříňky — úprava a mazání
+stars: 3
+moodle: PRG-3-19-01
+typ: flask
+soubor: skrinky.py
+description: |
+  Rozšiřte aplikaci `skrinky.py` z lekce 18 — **úprava patra** a **smazání** skříňky.
+  Evaluate tabulku naplní. Formulář na přidání z lekce 18 může zůstat, testy ho nevyžadují.
+
+  Cesta k **`skrinky.db`** v `app.config["DATABASE"]` vedle souboru (`os.path` + `__file__`).
+  `get_db()` přes `g`, zavření v `@app.teardown_appcontext`.
+  `init_db()` jednou při startu (`with app.app_context():`), jen `CREATE TABLE IF NOT EXISTS`.
+  Nastavte `app.secret_key` (libovolný krátký řetězec).
+
+  Tabulka **`skrinky`**: `id INTEGER PRIMARY KEY`, `cislo INTEGER NOT NULL`,
+  `patro INTEGER NOT NULL`.
+
+  Na `/` seznam: `SELECT id, cislo, patro FROM skrinky` a **`fetchall()`**.
+  Každá položka přesně **`cislo/patro`** (třeba `101/1`) v `<ul>`.
+  Odkaz Upravit: `url_for('upravit', id=radek.id)`.
+  Formulář Smazat: POST na `url_for('smazat', id=radek.id)`.
+
+  **`/upravit/<int:id>`** (`methods=["GET", "POST"]`), šablona `upravit.html`:
+
+  - `SELECT … WHERE id = ?` a **`fetchone()`**; `None` → `abort(404)`,
+  - v `<h1>` číslo skříňky, pole jen `name="patro"` (číslo skříňky neměňte),
+  - prázdné patro (i mezery): **200**, přesně `Vyplňte patro`, bez `UPDATE`,
+  - není celé číslo (`abc`, `3.5`): **200**, přesně `Zadejte celé číslo`, bez `UPDATE`,
+  - celé číslo: `UPDATE skrinky SET patro = ? WHERE id = ?`, `commit`,
+    `flash("Uloženo")`, **302** na `/`.
+
+  **`/smazat/<int:id>`** jen `methods=["POST"]`:
+  `DELETE FROM skrinky WHERE id = ?`, `commit`, `flash("Smazáno")`, **302** na `/`.
+  GET na tutéž cestu musí dát **405**.
+
+  V šabloně seznamu `get_flashed_messages()`. Na úpravě `{{ chyba }}`.
+odevzdani: |
+  Do Moodle nahrajte `skrinky.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Routy a šablony
+    templates: [index.html, upravit.html]
+    source_contains:
+      - "sqlite3"
+      - "UPDATE"
+      - "DELETE"
+      - "WHERE"
+      - "abort"
+      - "fetchone"
+      - "fetchall"
+      - "/upravit/"
+      - "/smazat/"
+      - "commit"
+      - "redirect"
+      - "flash"
+      - "init_db"
+      - "app_context"
+      - "teardown_appcontext"
+    template_contains:
+      index.html:
+        - "{% for"
+        - "url_for('upravit'"
+        - "url_for('smazat'"
+        - 'method="post"'
+        - "get_flashed_messages"
+      upravit.html:
+        - 'name="patro"'
+        - "{{ chyba }}"
+  - name: Seznam skříněk
+    get: /
+    status: 200
+    tags: [ul, form]
+    contains: ["101/1", "202/2", "303/3"]
+    href: [/upravit/1]
+    not_contains: ["{{"]
+    db: skrinky.db
+    db_tables: [skrinky]
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Formulář úpravy
+    get: /upravit/1
+    status: 200
+    tags: [form]
+    contains: ["101", 'name="patro"']
+    not_contains: ["{{"]
+    db: skrinky.db
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Chybějící skříňka
+    get: /upravit/999
+    status: 404
+    db: skrinky.db
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Prázdné patro
+    post: /upravit/1
+    data:
+      patro: ""
+    status: 200
+    contains: ["Vyplňte patro"]
+    not_contains: ["Uloženo", "Zadejte celé číslo", "{{"]
+    db: skrinky.db
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Patro není číslo
+    post: /upravit/1
+    data:
+      patro: abc
+    status: 200
+    contains: ["Zadejte celé číslo"]
+    not_contains: ["Vyplňte patro", "Uloženo"]
+    db: skrinky.db
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Uložení patra
+    post: /upravit/1
+    data:
+      patro: "9"
+    status: 302
+    location: /
+    db: skrinky.db
+    db_min_rows:
+      skrinky: 3
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+    then:
+      - get: /
+        contains: ["101/9"]
+        not_contains: ["101/1", "{{"]
+  - name: Flash po úpravě
+    post: /upravit/1
+    data:
+      patro: "8"
+    follow_redirects: true
+    status: 200
+    contains: ["Uloženo", "101/8"]
+    not_contains: ["{{"]
+    db: skrinky.db
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Mazání jen POST
+    get: /smazat/2
+    status: 405
+    db: skrinky.db
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+  - name: Smazání skříňky
+    post: /smazat/2
+    status: 302
+    location: /
+    db: skrinky.db
+    db_min_rows:
+      skrinky: 2
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]
+    then:
+      - get: /
+        contains: ["101/1", "303/3"]
+        not_contains: ["202/2", "{{"]
+  - name: Flash po smazání
+    post: /smazat/3
+    follow_redirects: true
+    status: 200
+    contains: ["Smazáno"]
+    not_contains: ["303/3", "{{"]
+    db: skrinky.db
+    db_min_rows:
+      skrinky: 2
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [id, cislo, patro]
+      rows:
+        - [1, 101, 1]
+        - [2, 202, 2]
+        - [3, 303, 3]

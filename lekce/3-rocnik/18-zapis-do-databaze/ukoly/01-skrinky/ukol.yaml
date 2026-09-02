@@ -1,0 +1,117 @@
+title: Školní skříňky — zápis
+stars: 3
+moodle: PRG-3-18-01
+typ: flask
+soubor: skrinky.py
+description: |
+  Rozšiřte aplikaci `skrinky.py` z lekce 17 — **přidání školní skříňky** z formuláře.
+
+  Cesta k **`skrinky.db`** v `app.config["DATABASE"]` vedle souboru (`os.path` + `__file__`).
+  `get_db()` přes `g`, zavření v `@app.teardown_appcontext`.
+  `init_db()` jednou při startu (`with app.app_context():`), jen `CREATE TABLE IF NOT EXISTS`.
+  Nastavte `app.secret_key` (libovolný krátký řetězec).
+
+  Tabulka **`skrinky`**: `id INTEGER PRIMARY KEY`, `cislo INTEGER NOT NULL`,
+  `patro INTEGER NOT NULL`.
+
+  Na `/` (`methods=["GET", "POST"]`):
+
+  - GET: `SELECT cislo, patro FROM skrinky` a **`fetchall()`** — seznam v `<ul>` s `{% for %}`,
+  - POST: pole `name="cislo"` a `name="patro"`, `.strip()`, pak `int`.
+
+  | POST | Stav | Chování |
+  |------|------|---------|
+  | prázdné `cislo` nebo `patro` (i mezery) | **200** | přesně `Vyplňte číslo i patro`, bez `INSERT` |
+  | není celé číslo (`abc`, `3.5`) | **200** | přesně `Zadejte celá čísla`, bez `INSERT` |
+  | dvě celá čísla (třeba 404 a 4) | **302** na `/` | `INSERT … VALUES (?, ?)`, `commit`, `flash("Přidáno")` |
+
+  Prázdné pole řešte **dřív** než `int`. Chybu **neflashujte**.
+  V šabloně `get_flashed_messages()` a `{{ chyba }}`.
+  `UPDATE` a `DELETE` dnes ne.
+
+  Soubor `.db` do Moodle nahrávat nemusíte.
+odevzdani: |
+  Do Moodle nahrajte `skrinky.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Formulář a zápis
+    templates: [index.html]
+    source_contains:
+      - "sqlite3"
+      - "INSERT"
+      - "?, ?"
+      - "commit"
+      - "redirect"
+      - "flash"
+      - "secret_key"
+      - "request.form"
+      - "fetchall"
+      - "init_db"
+      - "app_context"
+      - "teardown_appcontext"
+    source_not_contains: ["UPDATE", "DELETE"]
+    template_contains:
+      index.html:
+        - "<form"
+        - 'name="cislo"'
+        - 'name="patro"'
+        - "get_flashed_messages"
+        - "{{ chyba }}"
+        - "{% for"
+  - name: Stránka s formulářem
+    get: /
+    status: 200
+    tags: [form]
+    contains: ['name="cislo"', 'name="patro"']
+    not_contains: ["{{"]
+    db: skrinky.db
+    db_tables: [skrinky]
+  - name: Prázdná pole
+    post: /
+    data:
+      cislo: ""
+      patro: ""
+    status: 200
+    contains: ["Vyplňte číslo i patro"]
+    not_contains: ["Přidáno", "Zadejte celá čísla", "{{"]
+  - name: Jen mezery
+    post: /
+    data:
+      cislo: "   "
+      patro: "1"
+    status: 200
+    contains: ["Vyplňte číslo i patro"]
+  - name: Ne číslo
+    post: /
+    data:
+      cislo: abc
+      patro: "2"
+    status: 200
+    contains: ["Zadejte celá čísla"]
+    not_contains: ["Vyplňte číslo i patro", "Přidáno"]
+  - name: Přesměrování a řádek
+    post: /
+    data:
+      cislo: "101"
+      patro: "1"
+    status: 302
+    location: /
+    db: skrinky.db
+    db_tables: [skrinky]
+    db_min_rows:
+      skrinky: 1
+    then:
+      - get: /
+        contains: ["101"]
+        not_contains: ["{{"]
+  - name: Flash po zápisu
+    post: /
+    data:
+      cislo: "202"
+      patro: "2"
+    follow_redirects: true
+    status: 200
+    contains: ["Přidáno", "202"]
+    not_contains: ["Vyplňte číslo i patro", "{{"]
+    db: skrinky.db
+    db_min_rows:
+      skrinky: 2

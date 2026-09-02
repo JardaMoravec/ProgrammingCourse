@@ -79,4 +79,17 @@ cases:
 #         contains: ["Eva"]
 #     other_get: /
 #     other_not_contains: ["Eva"]
+#   - name: Databáze SQLite
+#     get: /
+#     status: 200
+#     contains: ["Připraveno"]
+#     db: skrinky.db
+#     db_tables: [skrinky]
+#     db_seed:
+#       db: skrinky.db
+#       table: skrinky
+#       columns: [cislo, patro]
+#       rows:
+#         - [101, 1]
+#         - [202, 2]
 

@@ -1,0 +1,11 @@
+id: 18-zapis-do-databaze
+rocnik: 3
+nazev: Zápis z formuláře do databáze
+modul: databaze
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [17-vypis-z-databaze]
+kompetence: [k4-formulare-skript]
+svp: [propojení skriptu a databáze, HTML formuláře]
+tagy: [flask, sqlite, INSERT, commit, placeholder, POST]
+migrovano_z: []

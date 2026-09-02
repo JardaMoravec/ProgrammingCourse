@@ -1,0 +1,67 @@
+title: Školní skříňky — výpis
+stars: 3
+moodle: PRG-3-17-01
+typ: flask
+soubor: skrinky.py
+description: |
+  Rozšiřte aplikaci `skrinky.py` z lekce 16 — **výpis školních skříněk**.
+  Data do tabulky **nevkládejte** (`INSERT` je lekce 18). Evaluate tabulku naplní.
+
+  Cesta k **`skrinky.db`** v `app.config["DATABASE"]` vedle souboru (`os.path` + `__file__`).
+  `get_db()` přes `g`, zavření v `@app.teardown_appcontext`.
+  `init_db()` jednou při startu (`with app.app_context():`), jen `CREATE TABLE IF NOT EXISTS`.
+
+  Tabulka **`skrinky`**: `id INTEGER PRIMARY KEY`, `cislo INTEGER NOT NULL`,
+  `patro INTEGER NOT NULL`.
+
+  Na `/` v pohledu:
+
+  - `SELECT cislo, patro FROM skrinky` a **`fetchall()`** — seznam do šablony,
+  - `SELECT COUNT(*) FROM skrinky` a **`fetchone()`** — na stránce přesně **`Skříněk: 3`**.
+
+  Šablona: `<h1>`, `<ul>` s `{% for %}`. Na stránce **101**, **202** a **303**.
+  Formulář a POST dnes ne.
+
+  Soubor `.db` do Moodle nahrávat nemusíte.
+odevzdani: |
+  Do Moodle nahrajte `skrinky.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Čtení a šablona
+    templates: [index.html]
+    source_contains:
+      - "sqlite3"
+      - "SELECT"
+      - "fetchall"
+      - "fetchone"
+      - "render_template("
+      - "init_db"
+      - "app_context"
+      - "teardown_appcontext"
+    source_not_contains: ["INSERT"]
+    template_contains:
+      index.html:
+        - "<h1"
+        - "<ul"
+        - "{% for"
+        - "{% endfor"
+        - "Skříněk:"
+  - name: Výpis skříněk
+    get: /
+    status: 200
+    tags: [h1, ul, li]
+    min_tags:
+      li: 3
+    contains: ["Skříněk: 3", "101", "202", "303"]
+    not_contains: ["{{"]
+    db: skrinky.db
+    db_tables: [skrinky]
+    db_min_rows:
+      skrinky: 3
+    db_seed:
+      db: skrinky.db
+      table: skrinky
+      columns: [cislo, patro]
+      rows:
+        - [101, 1]
+        - [202, 2]
+        - [303, 3]

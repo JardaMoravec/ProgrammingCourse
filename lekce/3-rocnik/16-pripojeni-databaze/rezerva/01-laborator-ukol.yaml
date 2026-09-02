@@ -1,0 +1,51 @@
+# Rezerva z dřívějšího návrhu lekce 16.
+# Lekce 17 rozšiřuje skrinky.py (výpis). Tento úkol (COUNT) se může hodit jinde.
+title: Inventář laboratoře
+stars: 3
+moodle: PRG-3-17-01
+typ: flask
+soubor: laborator.py
+description: |
+  Napište Flask aplikaci v souboru `laborator.py` — **inventář školní laboratoře**.
+
+  Cestu k souboru **`laborator.db`** uložte do `app.config["DATABASE"]` tak, aby soubor
+  vznikl **vedle** `laborator.py` (`os.path` + `__file__`).
+  Použijte `sqlite3`, `get_db()` přes `g` a zavření v `@app.teardown_appcontext`.
+
+  Tabulka **`pomucky`** sloupce `id INTEGER PRIMARY KEY` a `nazev TEXT NOT NULL`.
+  Založte ji `CREATE TABLE IF NOT EXISTS`. Když je prázdná, vložte **tři** pomůcky
+  přes `INSERT` a `?` (ne f-řetězec) — názvy libovolné.
+
+  Na `/` šablona s `<h1>` a přesně **`Pomůcek: `** následované počtem z
+  `SELECT COUNT(*)` (tedy při třech řádcích `Pomůcek: 3`). Do šablony předejte
+  `pocet` (`{{ pocet }}`). Seznam názvů nevypisujte.
+
+  Soubor `.db` do Moodle nahrávat nemusíte — vznikne při Evaluate.
+odevzdani: |
+  Do Moodle nahrajte `laborator.py` a složku `templates/`. Spusťte **Evaluate**.
+evaluate:
+  - name: Připojení a SQL
+    templates: [index.html]
+    source_contains:
+      - "sqlite3"
+      - "connect"
+      - "CREATE TABLE"
+      - "teardown_appcontext"
+      - "DATABASE"
+      - "__file__"
+      - "?"
+    template_contains:
+      index.html:
+        - "<h1"
+        - "Pomůcek:"
+        - "{{ pocet }}"
+  - name: Stránka s počtem
+    get: /
+    status: 200
+    tags: [h1]
+    contains: ["Pomůcek: 3"]
+    not_contains: ["{{"]
+    db: laborator.db
+    db_tables: [pomucky]
+    db_min_rows:
+      pomucky: 3

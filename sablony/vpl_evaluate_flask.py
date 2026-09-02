@@ -9,6 +9,7 @@ TESTS = json.loads(r"""__TESTS__""")
 import importlib.util
 import os
 import re
+import sqlite3
 import sys
 import traceback
 from io import BytesIO
@@ -214,7 +215,88 @@ def check_response(response, spec: dict, method: str, path: str, root: Path) -> 
                 "(uložte nahrávku do static/uploads/)."
             )
 
+    errors.extend(check_sqlite(root, spec))
     return errors
+
+
+def check_sqlite(root: Path, spec: dict) -> list[str]:
+    db_rel = spec.get("db")
+    if not db_rel:
+        return []
+    errors: list[str] = []
+    path = root / str(db_rel)
+    if not path.is_file():
+        errors.append(
+            f"Chybí databáze {db_rel} "
+            "(při požadavku ji vytvořte přes sqlite3.connect)."
+        )
+        return errors
+    try:
+        conn = sqlite3.connect(path)
+    except Exception as exc:
+        errors.append(f"Soubor {db_rel} nejde otevřít jako SQLite: {exc}")
+        return errors
+    try:
+        tables = {
+            row[0]
+            for row in conn.execute(
+                "SELECT name FROM sqlite_master WHERE type='table'"
+            )
+        }
+        for name in spec.get("db_tables") or []:
+            if name not in tables:
+                errors.append(f"V {db_rel} chybí tabulka `{name}`.")
+        for name, minimum in (spec.get("db_min_rows") or {}).items():
+            if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", str(name)):
+                continue
+            if name not in tables:
+                continue
+            n = conn.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0]
+            if n < int(minimum):
+                errors.append(
+                    f"Tabulka `{name}` má {n} řádků, potřeba aspoň {minimum}."
+                )
+    finally:
+        conn.close()
+    return errors
+
+
+def apply_db_seed(root: Path, spec: dict) -> list[str]:
+    seed = spec.get("db_seed")
+    if not seed:
+        return []
+    db_rel = seed.get("db") or spec.get("db")
+    table = str(seed.get("table") or "")
+    columns = [str(c) for c in (seed.get("columns") or [])]
+    rows = seed.get("rows") or []
+    ident = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+    if not db_rel or not ident.fullmatch(table) or not columns:
+        return ["db_seed: chybí db, table nebo columns."]
+    if any(not ident.fullmatch(c) for c in columns):
+        return ["db_seed: neplatný název sloupce."]
+    path = root / str(db_rel)
+    if not path.is_file():
+        return [
+            f"Chybí databáze {db_rel} — nejdřív ji založte v init_db "
+            "(CREATE TABLE)."
+        ]
+    placeholders = ", ".join("?" for _ in columns)
+    colsql = ", ".join(columns)
+    conn = None
+    try:
+        conn = sqlite3.connect(path)
+        conn.execute(f"DELETE FROM {table}")
+        conn.executemany(
+            f"INSERT INTO {table} ({colsql}) VALUES ({placeholders})",
+            [tuple(row) for row in rows],
+        )
+        conn.commit()
+    except Exception as exc:
+        return [f"Nelze naplnit tabulku `{table}` v {db_rel}: {exc}"]
+    finally:
+        if conn is not None:
+            conn.close()
+    return []
 
 
 def run_http(client, spec: dict, root: Path) -> list[str]:
@@ -242,11 +324,15 @@ def run_test(app, student: Path, test: dict) -> list[str]:
                 f"(nahrajte ho ve složce static/ vedle {student.name})."
             )
 
-    if test.get("source_contains"):
+    src = None
+    if test.get("source_contains") or test.get("source_not_contains"):
         src = student.read_text(encoding="utf-8", errors="replace")
-        for needle in test["source_contains"]:
-            if needle not in src:
-                errors.append(f"V {student.name} se nenašlo `{needle}`.")
+    for needle in test.get("source_contains") or []:
+        if needle not in src:
+            errors.append(f"V {student.name} se nenašlo `{needle}`.")
+    for needle in test.get("source_not_contains") or []:
+        if needle in src:
+            errors.append(f"V {student.name} se nesmí objevit `{needle}`.")
 
     for rel, needles in (test.get("template_contains") or {}).items():
         found = find_template(root, rel)
@@ -265,6 +351,7 @@ def run_test(app, student: Path, test: dict) -> list[str]:
         return errors
 
     client = app.test_client()
+    errors.extend(apply_db_seed(root, test))
     errors.extend(run_http(client, test, root))
     for extra in test.get("then") or []:
         if isinstance(extra, dict):

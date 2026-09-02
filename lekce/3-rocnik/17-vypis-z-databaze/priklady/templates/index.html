@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Sklad</title>
+</head>
+<body>
+  <h1>Sklad</h1>
+  <p>Položek: {{ pocet }}</p>
+  {% if radky %}
+    <ul>
+      {% for radek in radky %}
+        <li>{{ radek.nazev }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Zatím nic.</p>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+id: 19-crud-v-aplikaci
+rocnik: 3
+nazev: Úprava a mazání záznamů v aplikaci
+modul: databaze
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [18-zapis-do-databaze]
+kompetence: [k4-formulare-skript]
+svp: [propojení skriptu a databáze]
+tagy: [flask, sqlite, UPDATE, DELETE, fetchone, POST]
+migrovano_z: []

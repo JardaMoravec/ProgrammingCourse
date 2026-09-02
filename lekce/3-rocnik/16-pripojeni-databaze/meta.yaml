@@ -1,0 +1,11 @@
+id: 16-pripojeni-databaze
+rocnik: 3
+nazev: Připojení aplikace k databázi
+modul: databaze
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [15-relace]
+kompetence: [k4-formulare-skript]
+svp: [propojení skriptu a databáze]
+tagy: [flask, sqlite, sqlite3, g, init_db]
+migrovano_z: []

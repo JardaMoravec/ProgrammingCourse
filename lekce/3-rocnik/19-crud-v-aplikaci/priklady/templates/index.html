@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Sklad</title>
+</head>
+<body>
+  <h1>Sklad</h1>
+  {% for zprava in get_flashed_messages() %}
+    <p>{{ zprava }}</p>
+  {% endfor %}
+  {% if chyba %}
+    <p>{{ chyba }}</p>
+  {% endif %}
+  <p>Položek: {{ pocet }}</p>
+  {% if radky %}
+    <ul>
+      {% for radek in radky %}
+        <li>
+          {{ radek.nazev }}
+          <a href="{{ url_for('upravit', id=radek.id) }}">Upravit</a>
+          <form action="{{ url_for('smazat', id=radek.id) }}" method="post">
+            <button type="submit">Smazat</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Zatím nic.</p>
+  {% endif %}
+  <form action="{{ url_for('index') }}" method="post">
+    <label>Název <input name="nazev"></label>
+    <button type="submit">Přidat</button>
+  </form>
+</body>
+</html>

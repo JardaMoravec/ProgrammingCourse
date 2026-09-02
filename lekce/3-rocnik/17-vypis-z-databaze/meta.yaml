@@ -1,0 +1,11 @@
+id: 17-vypis-z-databaze
+rocnik: 3
+nazev: Výpis dat z databáze do šablony
+modul: databaze
+hodiny: 2
+obtiznost: zacatecnik
+prerekvizity: [16-pripojeni-databaze]
+kompetence: [k4-formulare-skript]
+svp: [propojení skriptu a databáze]
+tagy: [flask, sqlite, SELECT, fetchall, fetchone, jinja]
+migrovano_z: []
