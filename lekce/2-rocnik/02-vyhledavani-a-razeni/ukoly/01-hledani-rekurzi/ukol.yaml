@@ -1,0 +1,39 @@
+title: Hledání rekurzí
+stars: 2
+moodle: PRG-2-02-01
+description: |
+  Načtěte jeden řádek celých čísel oddělených mezerou a na druhém řádku
+  hledané číslo.
+
+  Zjistěte **rekurzí**, zda se číslo v seznamu vyskytuje. Cykly `for` /
+  `while` ani operátor `in` nejsou přípustné.
+
+  Pozice počítejte **od jedné**. Když se hodnota opakuje, uveďte **první**
+  výskyt.
+
+  Výstup přesně jedna z těchto vět:
+
+  `Hledané číslo v seznamu je na 22 pozici.`
+  `Hledané číslo v seznamu není.`
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: nalezeno-10
+    input: |
+      2 435 3 4 68 9 65 4 3 11 89 45 9 5 77 34 21 16 19 49 50 10 333 6
+      10
+    output: "Hledané číslo v seznamu je na 22 pozici."
+  - name: nalezeno-prvni-ctyrka
+    input: |
+      2 435 3 4 68 9 65 4 3 11 89 45 9 5 77 34 21 16 19 49 50 10 333 6
+      4
+    output: "Hledané číslo v seznamu je na 4 pozici."
+  - name: neni
+    input: |
+      2 435 3 4 68 9 65 4 3 11 89 45 9 5 77 34 21 16 19 49 50 10 333 6
+      7
+    output: "Hledané číslo v seznamu není."
+io: |
+  **Vstup:** řádek čísel, pak hledané číslo
+  **Výstup:** jedna věta (pozice od 1, nebo není)

@@ -1,0 +1,14 @@
+id: 02-vyhledavani-a-razeni
+rocnik: 2
+nazev: Vyhledávání a řazení — základ
+modul: algoritmizace
+hodiny: 10
+obtiznost: stredni
+prerekvizity: [01-rekurze]
+kompetence: [k1-datove-typy, k2-ridici-struktury, k3-strukturovane-programy]
+svp: [vyhledávací algoritmy, třídící algoritmy]
+tagy: [hledani, razeni, rekurze, seznam]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Vyhledávací algoritmy)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 3, 6"

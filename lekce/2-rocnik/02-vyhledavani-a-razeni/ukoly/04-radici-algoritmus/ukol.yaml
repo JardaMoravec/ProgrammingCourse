@@ -1,0 +1,33 @@
+title: Řadící algoritmus
+stars: 3
+moodle: PRG-2-02-04
+description: |
+  **Známkovaný úkol.**
+
+  Načtěte jeden řádek celých čísel oddělených mezerou a seřaďte je
+  **vzestupně** vlastním algoritmem (bublinkové řazení, řazení výběrem,
+  rekurze — je to na vás).
+
+  Použití `sort()`, `sorted()` nebo jiných vestavěných řadících funkcí
+  je **nepřípustné** a hodnotí se nedostatečně.
+
+  Seřazený seznam vypište jedním `print` (zápis jako v Pythonu).
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: kratky
+    input: |
+      5 1 4 2 3
+    output: "[1, 2, 3, 4, 5]"
+  - name: s-duplicitami
+    input: |
+      2 435 3 4 68 9 65 4 3 11
+    output: "[2, 3, 3, 4, 4, 9, 11, 65, 68, 435]"
+  - name: uz-serazeny
+    input: |
+      1 2 3
+    output: "[1, 2, 3]"
+io: |
+  **Vstup:** jeden řádek celých čísel
+  **Výstup:** seřazený seznam, zápis jako `print` v Pythonu

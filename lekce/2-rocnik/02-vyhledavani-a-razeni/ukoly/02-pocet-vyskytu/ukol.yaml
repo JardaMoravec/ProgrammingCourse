@@ -1,0 +1,33 @@
+title: Počet výskytů
+stars: 2
+moodle: PRG-2-02-02
+description: |
+  Načtěte jeden řádek celých čísel a na druhém řádku číslo, jehož výskyty
+  počítáte.
+
+  Napište **rekurzivní** funkci, která vrátí, **kolikrát** se číslo v seznamu
+  vyskytuje. Cykly ani `list.count` nejsou přípustné.
+
+  Vypište jen celé číslo (počet).
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: ctyrka-dvakrat
+    input: |
+      2 435 3 4 68 9 65 4 3 11
+      4
+    output: "2"
+  - name: jednou
+    input: |
+      2 435 3 4 68 9 65 4 3 11
+      435
+    output: "1"
+  - name: nula
+    input: |
+      2 435 3 4 68 9 65 4 3 11
+      7
+    output: "0"
+io: |
+  **Vstup:** řádek čísel, pak hledané číslo
+  **Výstup:** počet výskytů (jedno číslo)

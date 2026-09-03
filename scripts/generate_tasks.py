@@ -133,7 +133,7 @@ def build_ukoly_md(
     parts = [
         f"# Úkoly — {lesson_name}",
         "",
-        "> **Samostatná práce** k odevzdání v Moodle.",
+        "> **Samostatná práce** k odevzdání v AMOS.",
     ]
     if has_cviceni:
         parts += [
@@ -144,14 +144,14 @@ def build_ukoly_md(
         parts.append("")
     if has_vpl:
         parts += [
-            "> V Moodle spusťte **Evaluate** — automatický test ověří výstup programu.",
+            "> V AMOS spusťte **Evaluate** — automatický test ověří výstup programu.",
             "",
             "**Odevzdání:** soubor `main.py` (nebo název / způsob uvedený u úkolu).",
             "",
         ]
     elif has_flask:
         parts += [
-            "> V Moodle spusťte **Evaluate** — test ověří routy a HTML značky",
+            "> V AMOS spusťte **Evaluate** — test ověří routy a HTML značky",
             "> (text na stránce může být vlastní).",
             "",
         ]
@@ -163,7 +163,7 @@ def build_ukoly_md(
             "",
             f"## Úkol {t['id']} — {t['title']} ({stars(t['stars'])})",
             "",
-            f"**Moodle:** `{moodle}`",
+            f"**AMOS:** `{moodle}`",
             "",
             description,
             "",

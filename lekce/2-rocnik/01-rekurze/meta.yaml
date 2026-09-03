@@ -1,0 +1,14 @@
+id: 01-rekurze
+rocnik: 2
+nazev: Rekurze — základ
+modul: algoritmizace
+hodiny: 10
+obtiznost: stredni
+prerekvizity: []
+kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
+svp: [rekurze, využití rekurze]
+tagy: [rekurze, funkce, return]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Rekurze)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 1, 2, 4a, 4b, 5"

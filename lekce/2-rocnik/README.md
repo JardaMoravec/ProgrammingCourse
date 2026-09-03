@@ -50,6 +50,10 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 
 **Celkem: 29 lekcí v 170 h.** Lekce 01 a 02 po 10 h (dva týdny), 03–27 po 5 h, lekce 28 trvá 4 týdny, lekce 29 jeden týden.
 
+Lekce **01** má 5 úkolů do AMOS (`PRG-2-01-01` až `05`); úkoly 03 a 04 jsou známkované.
+
+Lekce **02** má 4 úkoly (`PRG-2-02-01` až `04`); úkol 04 (řazení) je známkovaný.
+
 ## Moduly (ŠVP)
 
 | Modul | ŠVP | Osnova | Lekce |

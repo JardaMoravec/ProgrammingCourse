@@ -1,0 +1,39 @@
+title: Minimum a maximum
+stars: 3
+moodle: PRG-2-01-05
+description: |
+  Načtěte jeden řádek celých čísel oddělených mezerou a uložte je do seznamu.
+
+  Napište **dvě funkce** (parametrem je seznam, ne globální proměnná):
+
+  - jedna najde **maximum** a jeho pozici,
+  - druhá najde **minimum** a jeho pozici.
+
+  Jednu funkci napište **rekurzí**, druhou **cyklem**. Pozice jsou **od jedné**
+  (první prvek má pozici 1). Pokud se hodnota opakuje, uveďte **první** výskyt.
+
+  Výstup přesně:
+
+  `Maximum je číslo 435 na pozici 2.`
+  `Minimum je číslo 2 na pozici 1.`
+
+  (Nejdřív maximum, pak minimum, každé na vlastním řádku.)
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: puvodni-seznam
+    input: |
+      2 435 3 4 68 9 65 4 3 11 89 45 9 5 77 34 21 16 19 49 50 10 333 6
+    output: |-
+      Maximum je číslo 435 na pozici 2.
+      Minimum je číslo 2 na pozici 1.
+  - name: kratky
+    input: |
+      5 1 9 3
+    output: |-
+      Maximum je číslo 9 na pozici 3.
+      Minimum je číslo 1 na pozici 2.
+io: |
+  **Vstup:** jeden řádek celých čísel oddělených mezerou
+  **Výstup:** dva řádky (maximum, minimum) s hodnotou a pozicí od 1

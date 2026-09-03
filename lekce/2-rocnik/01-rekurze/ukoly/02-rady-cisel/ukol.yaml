@@ -1,0 +1,34 @@
+title: Řady čísel
+stars: 3
+moodle: PRG-2-01-02
+description: |
+  Napište **rekurzivní** program, který z celého čísla n (n ≥ 0) sestaví
+  dvourozměrný seznam:
+
+  - první vnitřní seznam je `0, 1, …, n`,
+  - každý další má o jedno číslo méně (chybí to největší),
+  - poslední seznam je `[0]`.
+
+  V jednotlivých krocích rekurze smíte použít `range` na jeden řádek.
+  Cyklus, který by sestavil celou matici najednou, není přípustný.
+
+  Hotovou strukturu vypište jedním `print`.
+
+  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
+
+cases:
+  - name: n-0
+    input: |
+      0
+    output: "[[0]]"
+  - name: n-2
+    input: |
+      2
+    output: "[[0, 1, 2], [0, 1], [0]]"
+  - name: n-3
+    input: |
+      3
+    output: "[[0, 1, 2, 3], [0, 1, 2], [0, 1], [0]]"
+io: |
+  **Vstup:** n (celé číslo ≥ 0)
+  **Výstup:** vnořený seznam, zápis jako `print` v Pythonu

@@ -1,0 +1,43 @@
+title: Binární hledání
+stars: 2
+moodle: PRG-2-02-03
+description: |
+  Načtěte jeden řádek **vzestupně seřazených** celých čísel a na druhém řádku
+  hledané číslo.
+
+  Najděte číslo **binárním hledáním** (půlení úseku). Lineární průchod celým
+  seznamem není přípustný.
+
+  Pozice počítejte **od jedné**.
+
+  Výstup přesně jedna z těchto vět:
+
+  `Nalezeno na pozici: 4`
+  `Nenalezeno`
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: ctyricet-pet
+    input: |
+      4 8 10 45 48 49 51 100
+      45
+    output: "Nalezeno na pozici: 4"
+  - name: prvni
+    input: |
+      4 8 10 45 48 49 51 100
+      4
+    output: "Nalezeno na pozici: 1"
+  - name: posledni
+    input: |
+      4 8 10 45 48 49 51 100
+      100
+    output: "Nalezeno na pozici: 8"
+  - name: neni
+    input: |
+      4 8 10 45 48 49 51 100
+      7
+    output: "Nenalezeno"
+io: |
+  **Vstup:** seřazená čísla na jednom řádku, pak hledané číslo
+  **Výstup:** pozice od 1, nebo Nenalezeno

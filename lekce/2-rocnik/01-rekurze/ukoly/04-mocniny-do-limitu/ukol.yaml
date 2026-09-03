@@ -1,0 +1,30 @@
+title: Mocniny do 10 000
+stars: 2
+moodle: PRG-2-01-04
+description: |
+  **Známkovaný úkol.**
+
+  Napište **rekurzivní** program: načtěte celé číslo větší než 1 a vypište
+  jeho mocniny (základ¹, základ², …), dokud je hodnota **menší nebo rovna
+  10 000**. Další mocninu, která by mez překročila, už nevypisujte.
+
+  Formát výstupu (bez čárky na konci):
+
+  `Mocniny čísla 8 jsou: 8, 64, 512, 4096`
+
+  Cykly `for` / `while` nejsou přípustné.
+
+  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
+
+cases:
+  - name: osm
+    input: |
+      8
+    output: "Mocniny čísla 8 jsou: 8, 64, 512, 4096"
+  - name: dva
+    input: |
+      2
+    output: "Mocniny čísla 2 jsou: 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192"
+io: |
+  **Vstup:** základ (celé číslo > 1)
+  **Výstup:** jedna věta s mocninami ≤ 10 000

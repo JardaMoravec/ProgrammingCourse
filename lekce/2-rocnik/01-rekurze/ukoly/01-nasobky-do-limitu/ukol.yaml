@@ -1,0 +1,30 @@
+title: Násobky do 500
+stars: 2
+moodle: PRG-2-01-01
+description: |
+  Napište **rekurzivní** funkci, která najde všechny kladné násobky zadaného
+  celého čísla, které jsou menší nebo rovny **500**. Číslo načtěte z konzole.
+
+  Výsledek uložte do seznamu a na konci program seznam vypište (`print`).
+
+  Cykly `for` / `while` nejsou přípustné. `range` nepoužívejte k vygenerování
+  celého seznamu — seznam stavte rekurzí.
+
+  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
+
+cases:
+  - name: nasobky-7
+    input: |
+      7
+    output: "[7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98, 105, 112, 119, 126, 133, 140, 147, 154, 161, 168, 175, 182, 189, 196, 203, 210, 217, 224, 231, 238, 245, 252, 259, 266, 273, 280, 287, 294, 301, 308, 315, 322, 329, 336, 343, 350, 357, 364, 371, 378, 385, 392, 399, 406, 413, 420, 427, 434, 441, 448, 455, 462, 469, 476, 483, 490, 497]"
+  - name: nasobky-10
+    input: |
+      10
+    output: "[10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500]"
+  - name: nasobky-500
+    input: |
+      500
+    output: "[500]"
+io: |
+  **Vstup:** jedno kladné celé číslo (násobek; bude ≤ 500)
+  **Výstup:** seznam násobků, zápis jako `print` v Pythonu

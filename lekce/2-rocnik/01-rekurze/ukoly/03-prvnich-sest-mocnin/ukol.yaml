@@ -1,0 +1,30 @@
+title: Prvních šest mocnin
+stars: 2
+moodle: PRG-2-01-03
+description: |
+  **Známkovaný úkol.**
+
+  Napište **rekurzivní** program: načtěte celé číslo větší než 1 a spočítejte
+  **prvních šest mocnin** tohoto čísla (základ¹ až základ⁶).
+
+  Výsledky dejte do seznamu a vypište **přesně** v tomto tvaru (bez mezery
+  navíc, bez čárky na konci):
+
+  `Mocniny čísla 2 jsou: 2, 4, 8, 16, 32, 64`
+
+  Cykly `for` / `while` nejsou přípustné.
+
+  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
+
+cases:
+  - name: dvojka
+    input: |
+      2
+    output: "Mocniny čísla 2 jsou: 2, 4, 8, 16, 32, 64"
+  - name: trojka
+    input: |
+      3
+    output: "Mocniny čísla 3 jsou: 3, 9, 27, 81, 243, 729"
+io: |
+  **Vstup:** základ (celé číslo > 1)
+  **Výstup:** jedna věta se šesti mocninami

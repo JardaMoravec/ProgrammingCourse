@@ -85,6 +85,8 @@ moduly:
             prerekvizity: [01-rekurze]
             ukoly_zdroje:
               - "úkol 3 - hledání pomocí rekurze"
+              - "počet výskytů rekurzí"
+              - "binární hledání"
               - "úkol 6 - řadící algoritmus - na známky"
 
   - id: oop
