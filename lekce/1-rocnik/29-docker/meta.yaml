@@ -1,0 +1,11 @@
+id: 29-docker
+rocnik: 1
+nazev: Docker (bonus)
+modul: bonus
+hodiny: 0
+obtiznost: zacatecnik
+prerekvizity: [28-git-a-github]
+kompetence: [k3-strukturovane-programy]
+svp: [vývojové prostředí]
+tagy: [docker, kontejnery, ide, bonus]
+migrovano_z: []

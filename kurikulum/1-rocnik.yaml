@@ -14,6 +14,7 @@ hodiny:
   cvičeni: 3
   celkem: 81
   tydnu: 27
+  # lekce 28 (Git) a 29 (Docker) jsou bonus mimo tuto dotaci
 
 predchozi_znalosti: []
 
@@ -279,6 +280,26 @@ moduly:
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [26-soubory-zapis]
 
+      - id: nastroje-vyvoje
+        nazev: Nástroje vývoje (bonus)
+        hodiny: 0
+        lekce:
+          - id: "28-git-a-github"
+            soubor: lekce/1-rocnik/28-git-a-github
+            nazev: Git a GitHub (bonus)
+            hodiny: 0
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [27-funkce-pokrocile]
+
+          - id: "29-docker"
+            soubor: lekce/1-rocnik/29-docker
+            nazev: Docker (bonus)
+            hodiny: 0
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [28-git-a-github]
+
 hodnoceni:
   - elektronické testy (Moodle VPL)
   - samostatné úkoly (Moodle VPL)
@@ -287,11 +308,15 @@ hodnoceni:
 
 literatura:
   - elektronické texty v rámci školních informačních a vzdělávacích systémů
+  - dokumentace Git (https://git-scm.com/doc) — bonusová lekce 28, práce přes IDE
+  - GitHub Docs (https://docs.github.com/) — bonusová lekce 28
+  - dokumentace Docker (https://docs.docker.com/) — bonusová lekce 29, práce přes Desktop a IDE
 
 pomucky:
   - základní počítačová sestava
   - dataprojektor
   - potřebné softwarové vybavení (Python 3, IDE)
+  - u bonusu: Git v IDE; volitelně účet GitHub a Docker Desktop
 
 mapovani_zdroju:
   - soubor: zdroje/_Osnovy 1 roč.docx

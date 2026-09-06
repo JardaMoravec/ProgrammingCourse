@@ -14,6 +14,8 @@ Předmět má **81 hodin** (27 týdnů × 3 h). Navazuje na něj 2. ročník (ob
 | Pole a kolekce | seznamy, n-tice, slovníky, cykly nad daty, moduly |
 | Řetězce a soubory | text, čtení a zápis souborů, lokální a globální proměnné |
 
+Lekce **28 (Git a GitHub)** a **29 (Docker)** jsou **bonus** — nejsou v 81 hodinách, lze je přeskočit. Jsou to nástroje okolo kódu (historie projektu a stejné prostředí na jiném počítači), ne nová syntaxe Pythonu.
+
 Lekce jdou za sebou. Než začnete další, měli byste umět tu předchozí — alespoň s pomocí cvičení.
 
 ## Požadavky na žáky
@@ -39,7 +41,7 @@ Každá lekce má až tři záložky:
 
 Řešení u cvičení slouží ke kontrole **po** vlastním pokusu, ne jako první krok. Úkoly jsou hodnocené — opisování cvičení do úkolu nestačí, zadání se liší.
 
-Lekce **01–03** úkoly nemají (úvod a instalace). Od lekce **04** je úkolů víc; u každého je v AMOS vidět, co nahrát.
+Lekce **01–03** úkoly nemají (úvod a instalace). Od lekce **04** je úkolů víc; u každého je v AMOS vidět, co nahrát. Bonusové lekce **28–29** mají jen cvičení v hodině, bez úkolu v AMOS.
 
 ## Odevzdávání do AMOS
 

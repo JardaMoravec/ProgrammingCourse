@@ -1,0 +1,19 @@
+# Zkopírujte tento soubor do kořene projektu a přejmenujte ho na .gitignore
+
+# Interpret Pythonu
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtuální prostředí
+.venv/
+venv/
+env/
+
+# Nastavení editorů (zůstává u vás na počítači)
+.idea/
+.vs/
+.vscode/
+
+# Tajemství — hesla sem nepatří
+.env

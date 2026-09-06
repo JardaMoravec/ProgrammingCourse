@@ -16,7 +16,7 @@ lekce/1-rocnik/NN-nazev/
       data.txt             ← volitelně (úkoly se soubory)
 ```
 
-Lekce **01–03** jsou teoretické — úkoly nemají.
+Lekce **01–03** jsou teoretické — úkoly nemají. Bonus **28–29** (Git, Docker) také úkoly v AMOS nemají.
 
 ### Založení aktivity
 

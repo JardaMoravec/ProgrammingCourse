@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-label="Virtualni stroj nese cely OS, kontejner sdili jadro hostitele">
+  <rect class="d-bg" width="720" height="240" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="24" width="328" height="188" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="188" y="48" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">Virtuální stroj</text>
+  <rect class="d-soft" x="44" y="60" width="288" height="40" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text class="d-accent" x="188" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#2563eb">Aplikace</text>
+  <rect class="d-soft" x="44" y="110" width="288" height="40" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text class="d-accent" x="188" y="136" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#2563eb">Celý hostovaný OS</text>
+  <rect class="d-surface" x="44" y="160" width="288" height="36" rx="6" fill="#fff" stroke="#2563eb"/>
+  <text class="d-muted" x="188" y="183" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">Hypervisor · váš počítač</text>
+
+  <rect class="d-surface" x="368" y="24" width="328" height="188" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="532" y="48" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">Kontejner</text>
+  <rect class="d-soft" x="388" y="60" width="288" height="40" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text class="d-accent" x="532" y="86" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#2563eb">Aplikace + závislosti</text>
+  <rect class="d-soft" x="388" y="110" width="288" height="40" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+  <text class="d-accent" x="532" y="136" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600" fill="#2563eb">Kontejnerová vrstva</text>
+  <rect class="d-surface" x="388" y="160" width="288" height="36" rx="6" fill="#fff" stroke="#2563eb"/>
+  <text class="d-muted" x="532" y="183" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">Sdílené jádro hostitele</text>
+</svg>

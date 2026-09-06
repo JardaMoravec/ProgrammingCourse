@@ -13,6 +13,9 @@ rocniky:
       - id: k3-strukturovane-programy
         text: vytvoří jednoduché strukturované programy
     modul: Strukturované programování
+    moduly:
+      - Strukturované programování (81 h)
+      - Bonus — Git, GitHub a Docker (mimo 81 h)
 
   2:
     predmet: Programování (PRG)

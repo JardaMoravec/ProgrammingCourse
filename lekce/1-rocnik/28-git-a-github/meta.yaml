@@ -1,0 +1,11 @@
+id: 28-git-a-github
+rocnik: 1
+nazev: Git a GitHub (bonus)
+modul: bonus
+hodiny: 0
+obtiznost: zacatecnik
+prerekvizity: [27-funkce-pokrocile]
+kompetence: [k3-strukturovane-programy]
+svp: [vývojové prostředí]
+tagy: [git, github, ide, bonus]
+migrovano_z: []
