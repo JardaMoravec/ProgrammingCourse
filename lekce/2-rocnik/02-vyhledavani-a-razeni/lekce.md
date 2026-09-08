@@ -186,4 +186,4 @@ Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, ž
 
 ## Co dál
 
-Další lekce: **Třídy, objekty a atributy** — začátek objektového programování.
+→ [Lekce 03: Třídy, objekty a atributy](../03-tridy-a-objekty/lekce.md)

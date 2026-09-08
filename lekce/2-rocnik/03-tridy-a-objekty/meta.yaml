@@ -1,0 +1,14 @@
+id: 03-tridy-a-objekty
+rocnik: 2
+nazev: Třídy, objekty a atributy
+modul: oop
+hodiny: 5
+obtiznost: zacatecnik
+prerekvizity: [02-vyhledavani-a-razeni]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [třídy a členy, vlastnosti tříd, objekty]
+tagy: [oop, trida, objekt, atribut]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Třídy a třídní proměnné)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 7a"

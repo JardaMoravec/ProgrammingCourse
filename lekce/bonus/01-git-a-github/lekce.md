@@ -1,7 +1,7 @@
 ---
-id: 28-git-a-github
-rocnik: 1
-nazev: Git a GitHub (bonus)
+id: 01-git-a-github
+rocnik: bonus
+nazev: Git a GitHub
 hodiny: 0
 obtiznost: zacatecnik
 prerekvizity: [27-funkce-pokrocile]
@@ -12,7 +12,7 @@ cile:
   - Uloží změnu a prohlédne historii v IDE, ne v konzoli
 ---
 
-# Git a GitHub (bonus)
+# Git a GitHub
 
 ## Cíle lekce
 
@@ -21,7 +21,7 @@ cile:
 - Budete vědět, co je **repozitář**, **commit** a **vzdálená kopie**
 - Změnu uložíte a historii prohlédnete **v editoru** (PyCharm, VS Code, Cursor)
 
-Tahle lekce **není v 81 hodinách**. Je **bonus** na konci 1. ročníku — smíte ji přeskočit. Python z lekcí 01–27 se nemění. Tady jde o **nástroj okolo kódu**: jak si práci nenechat zničit a jak ji později poslat dál.
+Tahle lekce **není v 81 hodinách** 1. ročníku. Je **bonus** — smíte ji přeskočit. Python z lekcí 01–27 se nemění. Tady jde o **nástroj okolo kódu**: jak si práci nenechat zničit a jak ji později poslat dál.
 
 Příkazy do konzole (`git add`, `git commit`) **nepotřebujete**. Stejné úkony umí tlačítka v IDE. Konzole existuje, ale v 1. ročníku stačí panel **Source Control** / **Git**.
 
@@ -149,7 +149,7 @@ Na GitHubu uvidíte záložky jako **Code** (soubory), **Commits** (historie) a 
 
 ## Práce v IDE
 
-V [lekci 02](../02-python-a-prostredi/lekce.md) jste zvolili editor. Git je ve všech třech na stejném místě: **boční panel historie**, ne terminál.
+V [lekci 02](../../1-rocnik/02-python-a-prostredi/lekce.md) jste zvolili editor. Git je ve všech třech na stejném místě: **boční panel historie**, ne terminál.
 
 ### VS Code a Cursor
 
@@ -206,4 +206,4 @@ Když IDE hlásí, že Git **není nainstalovaný**, doinstalujte Git pro Window
 
 ## Co dál
 
-→ [Lekce 29: Docker (bonus)](../29-docker/lekce.md) — jak spustit program ve stejném „balíčku“ na jiném počítači
+→ [Lekce 02: Docker](../02-docker/lekce.md) — jak spustit program ve stejném „balíčku“ na jiném počítači

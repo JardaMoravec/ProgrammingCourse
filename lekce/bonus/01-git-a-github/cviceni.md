@@ -1,4 +1,4 @@
-# Cvičení — Git a GitHub (bonus)
+# Cvičení — Git a GitHub
 
 Cvičení jsou **v editoru a na papíře / v dokumentu**, ne v konzoli. Příkazy `git …` nepište. Pokud Git v IDE chybí, nainstalujte ho a editor restartujte — dál používejte jen panel Source Control / Git.
 

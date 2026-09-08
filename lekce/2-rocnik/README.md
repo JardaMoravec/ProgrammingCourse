@@ -54,6 +54,8 @@ Lekce **01** má 5 úkolů do AMOS (`PRG-2-01-01` až `05`); úkoly 03 a 04 jsou
 
 Lekce **02** má 4 úkoly (`PRG-2-02-01` až `04`); úkol 04 (řazení) je známkovaný.
 
+Lekce **03** má 3 úkoly (`PRG-2-03-01` až `03`); úkol 03 je knihovna (Autor a Kniha).
+
 ## Moduly (ŠVP)
 
 | Modul | ŠVP | Osnova | Lekce |

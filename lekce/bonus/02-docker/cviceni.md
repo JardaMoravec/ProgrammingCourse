@@ -1,4 +1,4 @@
-# Cvičení — Docker (bonus)
+# Cvičení — Docker
 
 Cvičení jsou **pojmová** a případně **prohlídka v Docker Desktop / IDE**. Příkazy `docker …` nepište. Pokud Desktop ve škole není, stačí cvičení 1–3.
 

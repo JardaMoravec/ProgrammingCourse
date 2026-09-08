@@ -1,10 +1,10 @@
 ---
-id: 29-docker
-rocnik: 1
-nazev: Docker (bonus)
+id: 02-docker
+rocnik: bonus
+nazev: Docker
 hodiny: 0
 obtiznost: zacatecnik
-prerekvizity: [28-git-a-github]
+prerekvizity: [01-git-a-github]
 cile:
   - Vysvětlí problém „u mě to funguje“ a k čemu je kontejner
   - Rozliší obraz (image) a kontejner
@@ -12,7 +12,7 @@ cile:
   - Orientuje se v Dockeru přes IDE a Docker Desktop, ne přes konzoli
 ---
 
-# Docker (bonus)
+# Docker
 
 ## Cíle lekce
 
@@ -21,7 +21,7 @@ cile:
 - Uvidíte rozdíl mezi kontejnerem a **virtuálním strojem**
 - V IDE / Docker Desktop **poznáte**, co běží — bez zapamatování příkazů
 
-Tahle lekce **není v 81 hodinách**. Je **bonus** po Gitu. Python z 1. ročníku se nemění. Obor je **Informační technologie – Cloud**: Docker je jeden z nástrojů, na kterých cloudové služby stojí. Teď stačí **představa**, ne správa serveru.
+Tahle lekce **není v 81 hodinách** 1. ročníku. Je **bonus** po Gitu. Python z 1. ročníku se nemění. Obor je **Informační technologie – Cloud**: Docker je jeden z nástrojů, na kterých cloudové služby stojí. Teď stačí **představa**, ne správa serveru.
 
 Příkazy `docker run` a `docker build` **nejsou cíl hodiny**. Stejné akce umí tlačítka ve **Docker Desktop** a v panelu Docker v editoru.
 
@@ -118,7 +118,7 @@ Když v Desktopu nebo v IDE „stáhnete image“ `python`, nestahujete nahodil�
 | Obraz od učitele / školy | víte, odkud je |
 | Neznámý obraz s 12 staženími | cizí program s právy ve vašem počítači — **nedůvěřujte** |
 
-To je stejná opatrnost jako u PIP v [lekci 02](../02-python-a-prostredi/lekce.md): instalujete **cizí prostředí**, ne jen jeden řádek kódu.
+To je stejná opatrnost jako u PIP v [lekci 02](../../1-rocnik/02-python-a-prostredi/lekce.md): instalujete **cizí prostředí**, ne jen jeden řádek kódu.
 
 ## Docker Desktop a práce v IDE
 
@@ -202,4 +202,4 @@ V 1. ročníku **nemusíte** nic do cloudu posílat. Stačí vědět, že kontej
 
 ## Co dál
 
-Bonus 1. ročníku končí. V **2. ročníku** navážete objekty a SQL — pořád v Pythonu na vašem počítači. Git a Docker zůstanou jako nástroje okolo kódu; v cloudu se k nim později vrátíte.
+Bonusové lekce Git a Docker končí. V **2. ročníku** navážete objekty a SQL — pořád v Pythonu na vašem počítači. Git a Docker zůstanou jako nástroje okolo kódu; v cloudu se k nim později vrátíte.

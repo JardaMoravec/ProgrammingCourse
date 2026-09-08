@@ -52,6 +52,7 @@ Původní soubory ve `zdroje/` projekt nepotřebuje k běhu — po migraci je lz
 - **1. ročník** — `lekce/1-rocnik/` — základy Pythonu
 - **2. ročník** — `lekce/2-rocnik/` — OOP, SQL (SQLite), konzolové aplikace
 - **3. ročník** — `lekce/3-rocnik/` — tvorba webových stránek
+- **Bonus** — `lekce/bonus/` — volitelné lekce mimo hodinovou dotaci
 
 Detailní osnova: `kurikulum/`.
 
@@ -72,6 +73,6 @@ Návod: [`PUBLIKACE.md`](PUBLIKACE.md). Po pushi do `main` GitHub Actions web se
 ## Jak přidat novou lekci
 
 1. Zkopíruj šablony ze složky `sablony/`
-2. Vytvoř složku `lekce/X-rocnik/NN-nazev-lekce/`
-3. Doplň záznam do `kurikulum/X-rocnik.yaml`
+2. Vytvoř složku `lekce/X-rocnik/NN-nazev-lekce/` (nebo `lekce/bonus/NN-nazev-lekce/`)
+3. Doplň záznam do `kurikulum/X-rocnik.yaml` (nebo `kurikulum/bonus.yaml`)
 4. Spusť generátory (viz Build)

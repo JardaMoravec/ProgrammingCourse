@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-label="Trida Osoba jako sablona a dva objekty s vlastnimi atributy">
+  <defs>
+    <marker id="arrow-cls" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="260" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-soft" x="28" y="40" width="200" height="160" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="128" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#2563eb">class Osoba</text>
+  <text class="d-muted" x="128" y="108" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">&#353;ablona</text>
+  <text class="d-muted" x="128" y="140" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">jmeno</text>
+  <text class="d-muted" x="128" y="164" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">prijmeni</text>
+
+  <line class="d-stroke-accent" x1="228" y1="90" x2="300" y2="70" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-cls)"/>
+  <line class="d-stroke-accent" x1="228" y1="150" x2="300" y2="170" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-cls)"/>
+
+  <rect class="d-surface" x="308" y="28" width="180" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="398" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">o = Osoba()</text>
+  <text class="d-accent" x="398" y="84" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#2563eb">jmeno = Karel</text>
+  <text class="d-muted" x="398" y="108" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">prijmeni = Om&#225;&#269;ka</text>
+
+  <rect class="d-surface" x="308" y="144" width="180" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="398" y="172" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">p = Osoba()</text>
+  <text class="d-accent" x="398" y="200" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#2563eb">jmeno = Eva</text>
+  <text class="d-muted" x="398" y="224" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">pohlavi = &#382;ena</text>
+
+  <text class="d-text" x="600" y="120" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">stejn&#225; t&#345;&#237;da</text>
+  <text class="d-muted" x="600" y="148" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">r&#367;zn&#225; data</text>
+  <text class="d-muted" x="600" y="176" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">ka&#382;d&#253; objekt zvl&#225;&#353;&#357;</text>
+</svg>

@@ -1,0 +1,31 @@
+title: Zvíře
+stars: 1
+moodle: PRG-2-03-01
+description: |
+  Načtěte tři řádky: druh, jméno a věk (věk je celé číslo).
+
+  Vytvořte třídu `Zvire` a jeden objekt. Atributy `druh`, `jmeno` a `vek`
+  nastavte tečkou (zatím bez konstruktoru a bez vlastních metod).
+
+  Vypište přesně jednu větu:
+
+  `Azor je pes, vek 5`
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: pes-azor
+    input: |
+      pes
+      Azor
+      5
+    output: "Azor je pes, vek 5"
+  - name: kocka-micka
+    input: |
+      kocka
+      Micka
+      3
+    output: "Micka je kocka, vek 3"
+io: |
+  **Vstup:** druh, jméno, věk (každé na vlastním řádku)
+  **Výstup:** jedna věta `JMENO je DRUH, vek VEK`

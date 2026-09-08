@@ -16,7 +16,6 @@ hodiny:
   cvičeni: 2
   celkem: 68
   tydnu: 34
-  # lekce 21 (ORM) je bonus mimo tuto dotaci
 
 predchozi_znalosti:
   - Strukturované programování v Pythonu (1. ročník)
@@ -239,14 +238,6 @@ moduly:
             kompetence: [k4-formulare-skript]
             prerekvizity: [19-crud-v-aplikaci]
 
-          - id: "21-orm"
-            soubor: lekce/3-rocnik/21-orm
-            nazev: ORM (bonus)
-            hodiny: 0
-            svp: [propojení skriptu a databáze, skriptovací jazyk]
-            kompetence: [k4-formulare-skript]
-            prerekvizity: [20-databaze-procviceni]
-
           - id: "22-bezpecnost-webu"
             soubor: lekce/3-rocnik/22-bezpecnost-webu
             nazev: Bezpečnost (XSS, SQL injection)
@@ -300,10 +291,9 @@ hodnoceni:
 literatura:
   - elektronické texty v rámci školních informačních a vzdělávacích systémů
   - dokumentace Flask (https://flask.palletsprojects.com/)
-  - dokumentace Flask-SQLAlchemy (https://flask-sqlalchemy.readthedocs.io/) — bonusová lekce 21
   - MDN Web Docs — HTML a CSS (opakování)
 
 pomucky:
   - základní počítačová sestava
   - dataprojektor
-  - potřebné softwarové vybavení (Python 3, Flask, SQLite, IDE, webový prohlížeč; u bonusu Flask-SQLAlchemy)
+  - potřebné softwarové vybavení (Python 3, Flask, SQLite, IDE, webový prohlížeč)

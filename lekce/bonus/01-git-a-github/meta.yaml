@@ -1,7 +1,7 @@
-id: 28-git-a-github
-rocnik: 1
-nazev: Git a GitHub (bonus)
-modul: bonus
+id: 01-git-a-github
+rocnik: bonus
+nazev: Git a GitHub
+modul: nastroje-vyvoje
 hodiny: 0
 obtiznost: zacatecnik
 prerekvizity: [27-funkce-pokrocile]

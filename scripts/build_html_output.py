@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generuje HTML grafický výstup z Markdown lekcí do graficky-vystup/<rocnik>/."""
+"""Generuje HTML grafický výstup z Markdown lekcí do graficky-vystup/<skupina>/."""
 
 from __future__ import annotations
 
@@ -23,7 +23,13 @@ KURIKULUM_DIR = ROOT / "kurikulum"
 VYSTUP_DIR = ROOT / "graficky-vystup"
 FAVICON_SRC = ROOT / "assets" / "favicon.svg"
 
-ROCNIKY = ("1-rocnik", "2-rocnik", "3-rocnik")
+GROUPS = ("1-rocnik", "2-rocnik", "3-rocnik", "bonus")
+GROUP_LABELS = {
+    "1-rocnik": "1. ročník",
+    "2-rocnik": "2. ročník",
+    "3-rocnik": "3. ročník",
+    "bonus": "Bonus",
+}
 AUTHOR = "Ing. Jaroslav Moravec"
 
 CSS = """
@@ -982,7 +988,7 @@ def postprocess_student_html(html: str) -> str:
     """Odstraní učitelské odkazy (.md, zdroje) — výstup pro žáky."""
 
     html = re.sub(
-        r'href="\.\./\.\./(\d-rocnik)/(\d{2}-[a-z0-9-]+)/lekce\.md"',
+        r'href="\.\./\.\./((?:\d-rocnik)|bonus)/(\d{2}-[a-z0-9-]+)/lekce\.md"',
         r'href="../\1/\2.html"',
         html,
     )
@@ -1134,8 +1140,8 @@ def cleanup_stale_lesson_html(ctx: RocnikContext) -> None:
                 shutil.rmtree(child, ignore_errors=True)
 
 
-def rocnik_label(num: int) -> str:
-    return f"{num}. ročník"
+def group_label(slug: str) -> str:
+    return GROUP_LABELS.get(slug, slug)
 
 
 def rocnik_tema(ctx: RocnikContext) -> str:
@@ -1240,24 +1246,24 @@ def document_shell(
 
 def rocnik_switch_html(ctx: RocnikContext) -> str:
     links = []
-    for slug in ROCNIKY:
-        num = int(slug[0])
-        label = rocnik_label(num)
+    for slug in GROUPS:
+        label = group_label(slug)
         if slug == ctx.slug:
             links.append(f"<strong>{label}</strong>")
         else:
             links.append(f'<a href="../{slug}/index.html">{label}</a>')
     return (
         '<div class="rocnik-switch">'
-        "<div>Ročníky</div>"
+        "<div>Skupiny</div>"
         + "".join(f"<div>{link}</div>" for link in links)
-        + '<div style="margin-top:0.75rem"><a href="../index.html">← Všechny ročníky</a></div>'
+        + '<div style="margin-top:0.75rem"><a href="../index.html">← Přehled</a></div>'
         "</div>"
     )
 
 
 def sidebar_html(ctx: RocnikContext, active_id: str = "") -> str:
-    links = [f'<a href="index.html"><strong>Přehled ročníku</strong></a>']
+    prehled = "Přehled" if ctx.slug == "bonus" else "Přehled ročníku"
+    links = [f'<a href="index.html"><strong>{prehled}</strong></a>']
     for d in ctx.lessons:
         lid = d.name
         meta = parse_meta(d / "meta.yaml")
@@ -1438,7 +1444,10 @@ def build_root_index(contexts: list[RocnikContext]) -> None:
             except ValueError:
                 pass
         if count:
-            meta_line = f"{hodiny} hodin · {count} lekcí"
+            if hodiny:
+                meta_line = f"{hodiny} hodin · {count} lekcí"
+            else:
+                meta_line = f"{count} lekcí · mimo hodinovou dotaci"
             card_class = "card"
         else:
             meta_line = "Obsah se připravuje"
@@ -1461,14 +1470,14 @@ def build_root_index(contexts: list[RocnikContext]) -> None:
         </div>
       </div>
       <p style="color: var(--muted); max-width: 72ch;">
-        Studijní materiály rozdělené podle ročníků. Vyberte ročník — každý má vlastní přehled a navigaci lekcí.
+        Studijní materiály rozdělené podle ročníků. Bonusové lekce jsou mimo hodinovou dotaci — lze je přeskočit.
       </p>
       <div class="index-grid">{"".join(cards)}</div>
     """
 
-    sidebar_inner = f"""{sidebar_header_html("Přehled ročníků")}
+    sidebar_inner = f"""{sidebar_header_html("Přehled skupin")}
       <nav>
-        <a href="index.html" class="active"><strong>Všechny ročníky</strong></a>
+        <a href="index.html" class="active"><strong>Přehled</strong></a>
         {"".join(f'<a href="{ctx.slug}/index.html">{ctx.label}</a>' for ctx in contexts)}
       </nav>"""
     shell = document_shell("Přehled", sidebar_inner, body, page_title="Kurz programování")
@@ -1482,16 +1491,16 @@ def cleanup_legacy_root_html() -> None:
             path.unlink()
 
 
-def make_context(rocnik_slug: str) -> RocnikContext:
-    num = int(rocnik_slug[0])
-    lekce_dir = LEKCE_ROOT / rocnik_slug
+def make_context(slug: str) -> RocnikContext:
+    num = int(slug[0]) if slug[:1].isdigit() else 0
+    lekce_dir = LEKCE_ROOT / slug
     return RocnikContext(
-        slug=rocnik_slug,
+        slug=slug,
         num=num,
-        label=rocnik_label(num),
+        label=group_label(slug),
         lekce_dir=lekce_dir,
-        vystup_dir=VYSTUP_DIR / rocnik_slug,
-        kurikulum=parse_kurikulum(rocnik_slug),
+        vystup_dir=VYSTUP_DIR / slug,
+        kurikulum=parse_kurikulum(slug),
         lessons=lesson_dirs(lekce_dir),
     )
 
@@ -1512,7 +1521,7 @@ def main() -> None:
         shutil.copy2(FAVICON_SRC, VYSTUP_DIR / "favicon.svg")
     cleanup_legacy_root_html()
 
-    contexts = [make_context(slug) for slug in ROCNIKY]
+    contexts = [make_context(slug) for slug in GROUPS]
     build_root_index(contexts)
 
     for ctx in contexts:

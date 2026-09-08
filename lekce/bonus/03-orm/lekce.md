@@ -1,7 +1,7 @@
 ---
-id: 21-orm
-rocnik: 3
-nazev: ORM (bonus)
+id: 03-orm
+rocnik: bonus
+nazev: ORM
 hodiny: 0
 obtiznost: stredni
 prerekvizity: [20-databaze-procviceni]
@@ -11,7 +11,7 @@ cile:
   - Vypíše a vloží záznam bez SQL řetězce
 ---
 
-# ORM (bonus)
+# ORM
 
 ## Cíle lekce
 
@@ -19,7 +19,7 @@ cile:
 - Tabulku založíte **modelem** a `create_all`, ne řetězcem `CREATE TABLE`
 - Řádky **přečtete a vložíte** přes objekty — SQL napíše knihovna
 
-Tahle lekce **není v 68 hodinách**. Je **bonus** po procvičení databáze — smíte ji přeskočit. [Projekt](../23-projekt/lekce.md) později zůstává u `sqlite3` a SQL z lekcí 16–20. Tady je **jiný způsob** stejné práce s SQLite.
+Tahle lekce **není v 68 hodinách** 3. ročníku. Je **bonus** po procvičení databáze — smíte ji přeskočit. [Projekt](../../3-rocnik/23-projekt/lekce.md) později zůstává u `sqlite3` a SQL z lekcí 16–20. Tady je **jiný způsob** stejné práce s SQLite.
 
 Třídu a objekt znáte z 2. ročníku. SQL taky. Nové je jen to, že mezi nimi stojí knihovna.
 
@@ -39,7 +39,7 @@ Soubor na disku je pořád **SQLite**. Mění se jen to, **kdo** SQL sestaví.
 
 ![Schéma: třída odpovídá tabulce, objekt řádku](diagramy/trida-tabulka.svg)
 
-Dokud používáte model (`query`, `add`), hodnota z formuláře **není** součástí příkazu — podobná ochrana jako `?` v [lekci 18](../18-zapis-do-databaze/lekce.md). Do šablony dál `{{ }}` bez `|safe`. Proč je skládání SQL nebezpečné, je [lekce 22](../22-bezpecnost-webu/lekce.md).
+Dokud používáte model (`query`, `add`), hodnota z formuláře **není** součástí příkazu — podobná ochrana jako `?` v [lekci 18](../../3-rocnik/18-zapis-do-databaze/lekce.md). Do šablony dál `{{ }}` bez `|safe`. Proč je skládání SQL nebezpečné, je [lekce 22](../../3-rocnik/22-bezpecnost-webu/lekce.md).
 
 ## Instalace
 
@@ -53,7 +53,7 @@ Ověření: v Pythonu `from flask_sqlalchemy import SQLAlchemy` nesmí spadnout.
 
 ## Model místo CREATE TABLE
 
-Cesta k `.db` zase vedle souboru (`__file__`), jako v [lekci 16](../16-pripojeni-databaze/lekce.md). Před cestu patří `sqlite:///`, jinak by Flask-SQLAlchemy soubor dalo jinam.
+Cesta k `.db` zase vedle souboru (`__file__`), jako v [lekci 16](../../3-rocnik/16-pripojeni-databaze/lekce.md). Před cestu patří `sqlite:///`, jinak by Flask-SQLAlchemy soubor dalo jinam.
 
 ```python
 import os
@@ -101,7 +101,7 @@ knihy = Kniha.query.all()
 return render_template("index.html", knihy=knihy)
 ```
 
-Vložení z POST: objekt, `add`, `commit`. Po úspěchu **přesměrování**, jako v [lekci 18](../18-zapis-do-databaze/lekce.md).
+Vložení z POST: objekt, `add`, `commit`. Po úspěchu **přesměrování**, jako v [lekci 18](../../3-rocnik/18-zapis-do-databaze/lekce.md).
 
 ```python
 db.session.add(Kniha(nazev=nazev))
@@ -145,4 +145,4 @@ SQL řetězce (`CREATE TABLE`, `SELECT`, `INSERT`) do aplikace **nepatří**. Pa
 
 ## Co dál
 
-→ [Lekce 22: Bezpečnost (XSS, SQL injection)](../22-bezpecnost-webu/lekce.md)
+→ [Lekce 22: Bezpečnost (XSS, SQL injection)](../../3-rocnik/22-bezpecnost-webu/lekce.md) — zpět do 3. ročníku

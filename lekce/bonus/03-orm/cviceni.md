@@ -1,4 +1,4 @@
-# Cvičení — ORM (bonus)
+# Cvičení — ORM
 
 Nejdřív `python -m pip install flask-sqlalchemy`. Soubory spouštějte ze složky se `.py` a `templates/`:
 

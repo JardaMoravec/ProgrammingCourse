@@ -1,0 +1,40 @@
+title: Knihovna
+stars: 3
+moodle: PRG-2-03-03
+description: |
+  Vytvořte třídy `Kniha` a `Autor` (zatím bez konstruktoru a bez vlastních
+  metod). Atributy nastavte tečkou.
+
+  **Kniha:** `nazev`, `vazba`, `pocet_stran`, `isbn`, `rok_vydani`, `popis`,
+  `zanr`, `cena`.
+
+  **Autor:** `jmeno`, `prijmeni`, `vek`, `knihy` (seznam objektů `Kniha`).
+  Knihu do seznamu přidejte přes `append`.
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - autor Karel Čapek, věk 45
+  - kniha Válka s Mloky — vazba vázaná, 280 stran, ISBN 978-80-123,
+    rok 1936, popis satira, žánr román, cena 299
+  - kniha R.U.R. — vazba brožovaná, 120 stran, ISBN 978-80-456,
+    rok 1920, popis hra, žánr drama, cena 199
+
+  Obě knihy patří tomuto autorovi. Vypište **přesně** čtyři řádky:
+
+  `Karel Čapek, věk 45`
+  `Počet knih: 2`
+  `Válka s Mloky, román, 280 stran`
+  `R.U.R., drama, 120 stran`
+
+  Pořadí knih ve výpisu je pořadí v seznamu.
+
+cases:
+  - name: capek-dve-knihy
+    output: |-
+      Karel Čapek, věk 45
+      Počet knih: 2
+      Válka s Mloky, román, 280 stran
+      R.U.R., drama, 120 stran
+io: |
+  **Vstup:** žádný
+  **Výstup:** čtyři řádky podle zadaných testovacích dat

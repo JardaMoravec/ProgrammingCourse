@@ -112,7 +112,10 @@ moduly:
             svp: [třídy a členy, vlastnosti tříd, objekty]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [02-vyhledavani-a-razeni]
-            ukoly_zdroje: ["úkol 7a - oop - knihovna"]
+            ukoly_zdroje:
+              - "úkol 7a - oop - knihovna"
+              - "zvíře — třída a atributy"
+              - "dva účty — nezávislé objekty"
 
           - id: "04-konstruktor"
             soubor: lekce/2-rocnik/04-konstruktor

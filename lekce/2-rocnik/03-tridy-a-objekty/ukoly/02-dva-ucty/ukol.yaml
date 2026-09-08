@@ -1,0 +1,37 @@
+title: Dva účty
+stars: 2
+moodle: PRG-2-03-02
+description: |
+  Načtěte dvě celá čísla: počáteční zůstatek účtu A a účtu B.
+
+  Vytvořte třídu `Ucet` a **dva** objekty. Atribut `zustatek` nastavte tečkou.
+
+  Z účtu A odečtěte **20**. Účet B se nesmí změnit.
+
+  Výstup přesně dva řádky:
+
+  `ucet A: 80`
+  `ucet B: 50`
+
+  (Čísla závisí na vstupu. Po odečtení 20 od A.)
+
+  Pro automatický test použijte `int(input())` **bez textu**.
+
+cases:
+  - name: sto-a-padesat
+    input: |
+      100
+      50
+    output: |-
+      ucet A: 80
+      ucet B: 50
+  - name: nula-a-dvacet
+    input: |
+      20
+      20
+    output: |-
+      ucet A: 0
+      ucet B: 20
+io: |
+  **Vstup:** zůstatek A, zůstatek B (celá čísla, každé na řádku)
+  **Výstup:** dva řádky po odečtení 20 od účtu A

@@ -19,7 +19,7 @@ Kompletní osnova: [`kurikulum/1-rocnik.yaml`](../../kurikulum/1-rocnik.yaml)
 | `meta.yaml` | Metadata lekce | systém |
 | `priklady/` | Ukázkový kód k teorii | žáci |
 
-Lekce **01–03** (úvod) a bonus **28–29** nemají `ukoly.md` — jsou čistě teoretické / instalace / nástroje v IDE.
+Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / instalace.
 
 ## Přehled lekcí
 
@@ -52,10 +52,8 @@ Lekce **01–03** (úvod) a bonus **28–29** nemají `ukoly.md` — jsou čist�
 | 25 | `25-soubory-cteni` | Čtení ze souboru | 4 |
 | 26 | `26-soubory-zapis` | Zápis do souboru | 4 |
 | 27 | `27-funkce-pokrocile` | Funkce — lokální/globální | 4 |
-| 28 | `28-git-a-github` | Git a GitHub — bonus (0 h) | — |
-| 29 | `29-docker` | Docker — bonus (0 h) | — |
 
-**Celkem: 97 úkolů** s VPL testy (lekce 04–27) a **2 bonusové lekce** mimo 81 h (jen cvičení, bez AMOS).
+**Celkem: 97 úkolů** s VPL testy (lekce 04–27). Volitelně [bonus Git a Docker](../bonus/README.md) mimo 81 h.
 
 ## Build
 

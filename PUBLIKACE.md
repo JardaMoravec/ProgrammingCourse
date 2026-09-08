@@ -45,8 +45,9 @@ Typická URL projektového webu:
 
 | Účel | URL |
 |------|-----|
-| Přehled ročníků | `https://<ucet>.github.io/kurz-programovani/` |
+| Přehled | `https://<ucet>.github.io/kurz-programovani/` |
 | 1. ročník | `https://<ucet>.github.io/kurz-programovani/1-rocnik/` |
+| Bonus | `https://<ucet>.github.io/kurz-programovani/bonus/` |
 
 Úkoly pro Moodle (VPL) zůstávají v LMS — viz [`moodle/README.md`](../moodle/README.md).
 

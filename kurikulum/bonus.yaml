@@ -1,0 +1,78 @@
+# Bonusové lekce — mimo hodinovou dotaci ročníků
+# Volitelné; lze přeskočit. Nejsou v ŠVP hodinách 1.–3. ročníku.
+
+skupina: bonus
+predmet: Programování (PRG)
+obor: Informační technologie – Cloud (I+Im-It)
+kod_oboru: 18-20-M/01
+jazyk: volitelné
+nazev: Volitelné lekce
+
+hodiny:
+  celkem: 0
+
+predchozi_znalosti:
+  - Git a Docker: strukturované programování v Pythonu (1. ročník)
+  - ORM: Flask a sqlite3 (3. ročník, lekce 16–20)
+
+moduly:
+  - id: nastroje-vyvoje
+    nazev: Nástroje vývoje
+    hodiny: 0
+    svp_temata:
+      - vývojové prostředí
+    bloky:
+      - id: git-docker
+        nazev: Git, GitHub a Docker
+        hodiny: 0
+        lekce:
+          - id: "01-git-a-github"
+            soubor: lekce/bonus/01-git-a-github
+            nazev: Git a GitHub
+            hodiny: 0
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [27-funkce-pokrocile]
+
+          - id: "02-docker"
+            soubor: lekce/bonus/02-docker
+            nazev: Docker
+            hodiny: 0
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [01-git-a-github]
+
+  - id: orm
+    nazev: ORM
+    hodiny: 0
+    svp_temata:
+      - propojení skriptu a databáze
+      - skriptovací jazyk
+    bloky:
+      - id: flask-orm
+        nazev: Flask-SQLAlchemy
+        hodiny: 0
+        lekce:
+          - id: "03-orm"
+            soubor: lekce/bonus/03-orm
+            nazev: ORM
+            hodiny: 0
+            svp: [propojení skriptu a databáze, skriptovací jazyk]
+            kompetence: [k4-formulare-skript]
+            prerekvizity: [20-databaze-procviceni]
+
+hodnoceni:
+  - práce v hodině (cvičení)
+  - u ORM samostatné úkoly (Moodle VPL)
+
+literatura:
+  - dokumentace Git (https://git-scm.com/doc) — práce přes IDE
+  - GitHub Docs (https://docs.github.com/)
+  - dokumentace Docker (https://docs.docker.com/) — Desktop a IDE
+  - dokumentace Flask-SQLAlchemy (https://flask-sqlalchemy.readthedocs.io/)
+
+pomucky:
+  - základní počítačová sestava
+  - dataprojektor
+  - Git v IDE; volitelně účet GitHub a Docker Desktop
+  - u ORM: Python 3, Flask, Flask-SQLAlchemy, IDE, webový prohlížeč

@@ -1,7 +1,7 @@
-id: 21-orm
-rocnik: 3
-nazev: ORM (bonus)
-modul: bonus
+id: 03-orm
+rocnik: bonus
+nazev: ORM
+modul: orm
 hodiny: 0
 obtiznost: stredni
 prerekvizity: [20-databaze-procviceni]

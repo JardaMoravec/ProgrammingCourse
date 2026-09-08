@@ -21,7 +21,7 @@ cile:
 - Splníte **funkce** níže — chybějící chování znamená nesplněné zadání
 - Téma, názvy tabulek, sloupců, souborů šablon i URL zvolíte sami; učitel návrh schválí v prvním týdnu
 
-Nová syntaxe **nepřibývá**. Odevzdání a prezentace jsou [lekce 24](../24-projekt-prezentace/lekce.md). Bonus [ORM](../21-orm/lekce.md) do projektu nepatří — zůstáváte u `sqlite3`.
+Nová syntaxe **nepřibývá**. Odevzdání a prezentace jsou [lekce 24](../24-projekt-prezentace/lekce.md). Bonus [ORM](../../bonus/03-orm/lekce.md) do projektu nepatří — zůstáváte u `sqlite3`.
 
 ## Téma
 

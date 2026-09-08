@@ -15,7 +15,6 @@ rocniky:
     modul: Strukturované programování
     moduly:
       - Strukturované programování (81 h)
-      - Bonus — Git, GitHub a Docker (mimo 81 h)
 
   2:
     predmet: Programování (PRG)
@@ -75,5 +74,12 @@ rocniky:
       - Úvod do skriptovacího jazyka — Flask (18h)
       - Obsluha HTML formuláře ve Flasku (10h)
       - Propojení aplikace s databází (12h)
-      - Bonus — ORM (mimo 68 h)
       - Závěrečný projekt (24h)
+
+bonus:
+  nazev: Bonusové lekce
+  hodiny: 0
+  lekce:
+    - Git a GitHub (po 1. ročníku)
+    - Docker (po Gitu)
+    - ORM (po databázi ve 3. ročníku)

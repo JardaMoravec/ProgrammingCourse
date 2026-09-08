@@ -18,6 +18,16 @@ SABLONY = ROOT / "sablony"
 TASK_DIR_RE = re.compile(r"^(\d{2})-([a-z0-9-]+)$")
 
 
+def is_lesson_group(name: str) -> bool:
+    return name.endswith("-rocnik") or name == "bonus"
+
+
+def moodle_rocnik_code(rocnik: str) -> str:
+    if rocnik == "bonus":
+        return "B"
+    return rocnik
+
+
 def stars(n: int) -> str:
     return "★" * int(n) + "☆" * (3 - int(n))
 
@@ -156,7 +166,7 @@ def build_ukoly_md(
             "",
         ]
     for t in tasks:
-        moodle = t.get("moodle", f"PRG-{rocnik}-{num}-{t['id']}")
+        moodle = t.get("moodle", f"PRG-{moodle_rocnik_code(rocnik)}-{num}-{t['id']}")
         description = strip_format_from_description(t["description"])
         parts += [
             "---",
@@ -245,12 +255,12 @@ def lesson_dirs() -> list[Path]:
     dirs: list[Path] = []
     if not LEKCE_ROOT.is_dir():
         return dirs
-    for rocnik_dir in sorted(LEKCE_ROOT.iterdir()):
-        if not rocnik_dir.is_dir() or not rocnik_dir.name.endswith("-rocnik"):
+    for group_dir in sorted(LEKCE_ROOT.iterdir()):
+        if not group_dir.is_dir() or not is_lesson_group(group_dir.name):
             continue
         dirs.extend(
             d
-            for d in rocnik_dir.iterdir()
+            for d in group_dir.iterdir()
             if d.is_dir() and re.match(r"\d{2}-", d.name)
         )
     return dirs
