@@ -1,0 +1,42 @@
+title: Knihovna
+stars: 2
+moodle: PRG-2-04-02
+description: |
+  Navazuje na knihovnu z lekce 03 — tentokrát **s konstruktorem**.
+
+  Třída `Kniha`: `__init__(self, nazev, vazba, pocet_stran, isbn, rok_vydani,
+  popis, zanr, cena)`.
+
+  Třída `Autor`: `__init__(self, jmeno, prijmeni, vek)` a atribut `knihy`
+  založte v konstruktoru jako prázdný seznam. Knihy přidejte `append`
+  (vlastní metodu `pridej_knihu` nepište).
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - autor Karel Čapek, věk 45
+  - kniha Válka s Mloky — vazba vázaná, 280 stran, ISBN 978-80-123,
+    rok 1936, popis satira, žánr román, cena 299
+  - kniha R.U.R. — vazba brožovaná, 120 stran, ISBN 978-80-456,
+    rok 1920, popis hra, žánr drama, cena 199
+
+  Vypište **přesně** pět řádků:
+
+  `Karel Čapek, věk 45`
+  `Počet knih: 2`
+  `prvni ISBN: 978-80-123`
+  `Válka s Mloky, 1936`
+  `R.U.R., 1920`
+
+  První ISBN berte z `autor.knihy[0].isbn`.
+
+cases:
+  - name: capek-konstruktor
+    output: |-
+      Karel Čapek, věk 45
+      Počet knih: 2
+      prvni ISBN: 978-80-123
+      Válka s Mloky, 1936
+      R.U.R., 1920
+io: |
+  **Vstup:** žádný
+  **Výstup:** pět řádků podle zadaných testovacích dat

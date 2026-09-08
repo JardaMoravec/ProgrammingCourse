@@ -15,5 +15,7 @@ def pozdrav(jmeno="světe"):
 
 if __name__ == "__main__":
     print("Součet 3 + 7 =", soucet(3, 7))
+    print("Součet pojmenovaně =", soucet(a=3, b=7))
     print("10 je sudé:", je_sude(10))
     pozdrav("Python")
+    pozdrav(jmeno="Anna")

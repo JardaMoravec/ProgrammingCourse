@@ -1,0 +1,40 @@
+title: Autoservis
+stars: 3
+moodle: PRG-2-04-03
+description: |
+  Vytvořte třídy `Motor`, `Kolo` a `Auto`. Atributy nastavte **konstruktorem**.
+  Vlastní metody (kromě `__init__`) nepište.
+
+  **Motor:** `typ`, `obsah`, `palivo`.
+
+  **Kolo:** `aktualni_tlak`, `maximalni_tlak`, `vyrobce`, `typ_pneu`.
+
+  **Auto:** `spz`, `vin`, `stk_do`, `znacka`, `typ`, `barva`, `karoserie`,
+  `motor` (objekt `Motor`), `leve_predni`, `prave_predni`, `leve_zadni`,
+  `prave_zadni` (objekty `Kolo`).
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - SPZ `1A2 3456`, VIN `TMB123`, STK `2027-06-30`
+  - značka Skoda, typ Octavia, barva seda, karoserie combi
+  - motor TSI, obsah 1500, palivo benzin
+  - všechna kola: max. tlak 2.5, výrobce Michelin, typ letni
+  - aktuální tlak: LP 2.2, PP 2.2, LZ 2.1, PZ 2.2
+
+  Vypište **přesně** tři řádky:
+
+  `1A2 3456, Skoda Octavia, seda`
+  `motor: TSI 1500 benzin`
+  `pneu: 2.2 2.2 2.1 2.2`
+
+  Pořadí tlaků: levé přední, pravé přední, levé zadní, pravé zadní.
+
+cases:
+  - name: octavia
+    output: |-
+      1A2 3456, Skoda Octavia, seda
+      motor: TSI 1500 benzin
+      pneu: 2.2 2.2 2.1 2.2
+io: |
+  **Vstup:** žádný
+  **Výstup:** tři řádky podle zadaných testovacích dat

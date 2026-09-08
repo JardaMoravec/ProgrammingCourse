@@ -1,0 +1,14 @@
+id: 04-konstruktor
+rocnik: 2
+nazev: Konstruktor
+modul: oop
+hodiny: 5
+obtiznost: zacatecnik
+prerekvizity: [03-tridy-a-objekty]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [třídy a členy, vlastnosti tříd, objekty]
+tagy: [oop, konstruktor, init, self]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Konstruktor)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 7b, 8"

@@ -56,6 +56,8 @@ Lekce **02** má 4 úkoly (`PRG-2-02-01` až `04`); úkol 04 (řazení) je znám
 
 Lekce **03** má 3 úkoly (`PRG-2-03-01` až `03`); úkol 03 je knihovna (Autor a Kniha).
 
+Lekce **04** má 3 úkoly (`PRG-2-04-01` až `03`); úkol 03 je autoservis (Auto, Motor, Kolo).
+
 ## Moduly (ŠVP)
 
 | Modul | ŠVP | Osnova | Lekce |

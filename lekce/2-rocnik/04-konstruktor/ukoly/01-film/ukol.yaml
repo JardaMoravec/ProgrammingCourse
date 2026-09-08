@@ -1,0 +1,29 @@
+title: Film
+stars: 1
+moodle: PRG-2-04-01
+description: |
+  Načtěte dva řádky: název filmu a rok (rok je celé číslo).
+
+  Vytvořte třídu `Film` s konstruktorem `__init__(self, nazev, rok)`.
+  Atributy nastavte **v konstruktoru**, ne až po `Film(...)`.
+
+  Vypište přesně jednu větu:
+
+  `Matrix (1999)`
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: matrix
+    input: |
+      Matrix
+      1999
+    output: "Matrix (1999)"
+  - name: kolja
+    input: |
+      Kolja
+      1996
+    output: "Kolja (1996)"
+io: |
+  **Vstup:** název, rok (každé na vlastním řádku)
+  **Výstup:** jedna věta `NAZEV (ROK)`

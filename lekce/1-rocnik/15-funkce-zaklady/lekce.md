@@ -8,6 +8,7 @@ prerekvizity: [14-ridici-struktury-procviceni]
 cile:
   - Definujete vlastní funkci pomocí def
   - Předáte parametry a vrátíte hodnotu return
+  - Zavoláte funkci pozicně i pojmenovanými argumenty
   - Rozdělíte program na menší, znovupoužitelné části
 migrovano_z:
   - kurikulum/1-rocnik.yaml
@@ -19,7 +20,7 @@ migrovano_z:
 
 - Pochopíte, proč funkce zjednodušují kód
 - Naučíte se `def`, parametry a `return`
-- Zavoláte funkci a použijete její výsledek
+- Zavoláte funkci **pozicně** i **pojmenovanými argumenty**
 
 ## Proč funkce?
 
@@ -74,6 +75,33 @@ print(mocnina(5))      # 25
 print(mocnina(2, 10))  # 1024
 ```
 
+## Pojmenované argumenty
+
+Při volání můžete u hodnoty uvést **jméno parametru**. Říká se tomu **pojmenovaný argument**.
+
+```python
+def obsah(a, b):
+    return a * b
+
+
+print(obsah(5, 3))        # podle pořadí
+print(obsah(a=5, b=3))    # podle jména
+print(obsah(b=3, a=5))    # pořadí u jmen nehraje roli
+```
+
+Hodí se, když má funkce víc parametrů a z `f(5, 3)` není hned jasné, co je co. Funguje to i s výchozí hodnotou: `mocnina(zaklad=2, exponent=10)`.
+
+Pozicní argumenty (jen hodnota) musí být **před** pojmenovanými:
+
+```python
+obsah(5, b=3)    # ano
+obsah(a=5, 3)    # ne — SyntaxError
+```
+
+Jméno musí sedět s parametrem v `def`. `obsah(sirka=5, b=3)` spadne na `TypeError`.
+
+→ viz `priklady/funkce_zaklady.py`
+
 ## Docstring
 
 ```python
@@ -98,8 +126,10 @@ Krátký popis pod `def` — dokumentace pro čtenáře kódu.
 |-------|--------|
 | `def f(x):` | definice funkce |
 | `return` | vrátí hodnotu a skončí |
-| parametr | vstup funkce |
-| volání `f(5)` | spustí funkci s argumentem |
+| parametr | vstup funkce (v `def`) |
+| argument | hodnota při volání |
+| `f(5, 3)` | pozicní argumenty — rozhoduje pořadí |
+| `f(a=5, b=3)` | pojmenované argumenty — rozhoduje jméno |
 
 ## Co dál
 

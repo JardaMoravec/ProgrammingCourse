@@ -183,4 +183,4 @@ Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, ž
 
 ## Co dál
 
-Další lekce: **Konstruktor** — `__init__` a `self`.
+→ [Lekce 04: Konstruktor](../04-konstruktor/lekce.md)

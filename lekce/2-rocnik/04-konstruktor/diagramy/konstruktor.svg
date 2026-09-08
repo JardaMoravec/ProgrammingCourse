@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-label="Volani Osoba spusti konstruktor a nastavi atributy">
+  <defs>
+    <marker id="arrow-init" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="240" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="28" y="72" width="200" height="96" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="128" y="112" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#1a1d26">Osoba(</text>
+  <text class="d-accent" x="128" y="138" text-anchor="middle" font-family="Consolas, monospace" font-size="12" font-weight="600" fill="#2563eb">Karel, Om&#225;&#269;ka</text>
+  <text class="d-text" x="128" y="154" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#1a1d26">)</text>
+
+  <line class="d-stroke-accent" x1="228" y1="120" x2="292" y2="120" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-init)"/>
+
+  <rect class="d-soft" x="300" y="56" width="180" height="128" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="390" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#2563eb">__init__</text>
+  <text class="d-muted" x="390" y="118" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">self.jmeno = ...</text>
+  <text class="d-muted" x="390" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">self.prijmeni = ...</text>
+  <text class="d-muted" x="390" y="166" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">spust&#237; se samo</text>
+
+  <line class="d-stroke-accent" x1="480" y1="120" x2="544" y2="120" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-init)"/>
+
+  <rect class="d-surface" x="552" y="56" width="140" height="128" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="622" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">objekt o</text>
+  <text class="d-accent" x="622" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#2563eb">Karel</text>
+  <text class="d-muted" x="622" y="148" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">Om&#225;&#269;ka</text>
+
+  <text class="d-muted" x="360" y="214" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">z&#225;vorky u Osoba(...) jsou argumenty konstruktoru</text>
+</svg>

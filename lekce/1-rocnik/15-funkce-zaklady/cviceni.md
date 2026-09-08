@@ -70,3 +70,22 @@ n = int(input("Číslo: "))
 print("Prvočíslo" if je_prvocislo(n) else "Není prvočíslo")
 ```
 @end
+
+---
+
+## Cvičení 5 — Pojmenované argumenty (★☆☆)
+
+Funkce `rozdil(levy, pravy)` vrátí `levy - pravy`. Zavolejte ji **pojmenovanými argumenty** tak, aby výsledek byl `7` (ne `-7`).
+
+Ověření: výpis je `7`.
+
+@reseni
+```python
+def rozdil(levy, pravy):
+    return levy - pravy
+
+
+print(rozdil(levy=10, pravy=3))   # 7
+print(rozdil(pravy=3, levy=10))   # 7 — pořadí u jmen nehraje roli
+```
+@end

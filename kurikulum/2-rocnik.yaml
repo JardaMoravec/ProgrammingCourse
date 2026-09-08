@@ -124,7 +124,10 @@ moduly:
             svp: [třídy a členy, vlastnosti tříd, objekty]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [03-tridy-a-objekty]
-            ukoly_zdroje: ["úkol 7b - oop - knihovna", "úkol 8 - oop - autoservis"]
+            ukoly_zdroje:
+              - "úkol 7b - oop - knihovna (konstruktor)"
+              - "úkol 8 - oop - autoservis"
+              - "film — konstruktor ze vstupu"
 
           - id: "05-metody"
             soubor: lekce/2-rocnik/05-metody
