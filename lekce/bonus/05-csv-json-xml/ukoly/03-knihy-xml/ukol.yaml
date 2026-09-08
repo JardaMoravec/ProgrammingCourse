@@ -1,0 +1,22 @@
+title: Počet knih v XML
+stars: 2
+moodle: PRG-B-05-03
+description: |
+  Napište program, který přečte soubor `knihy.xml`. Kořen je `<knihy>`,
+  uvnitř značky `<kniha>`. Vypište počet značek `kniha`.
+
+  Použijte `xml.etree.ElementTree`. Soubor je ve složce s programem.
+io: |
+  **Vstup:** soubor `knihy.xml`
+  **Výstup:** `Knih: N`
+cases:
+  - name: tri knihy
+    input: ""
+    output: "Knih: 3"
+files:
+  knihy.xml: |
+    <knihy>
+      <kniha><nazev>Robot</nazev></kniha>
+      <kniha><nazev>Les</nazev></kniha>
+      <kniha><nazev>Most</nazev></kniha>
+    </knihy>

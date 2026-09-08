@@ -1,0 +1,11 @@
+id: 06-api-rest-graphql
+rocnik: bonus
+nazev: API — REST a GraphQL
+modul: api
+hodiny: 0
+obtiznost: stredni
+prerekvizity: [01-jak-funguje-web]
+kompetence: [k1-www, k4-formulare-skript]
+svp: [zásady tvorby WWW stránek, skriptovací jazyk]
+tagy: [api, rest, graphql, http, json, bonus]
+migrovano_z: []

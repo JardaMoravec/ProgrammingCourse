@@ -1,0 +1,21 @@
+title: Žáci ze CSV
+stars: 2
+moodle: PRG-B-05-01
+description: |
+  Napište program, který přečte soubor `zaci.csv` (hlavička `jmeno,vek`)
+  a vypíše počet žáků — tedy počet řádků **pod** hlavičkou.
+
+  Použijte modul `csv`. Soubor je ve složce s programem.
+io: |
+  **Vstup:** soubor `zaci.csv`
+  **Výstup:** `Žáků: N`
+cases:
+  - name: tri zaci
+    input: ""
+    output: "Žáků: 3"
+files:
+  zaci.csv: |
+    jmeno,vek
+    Anna,16
+    Petr,17
+    Eva,15

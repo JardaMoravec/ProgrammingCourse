@@ -53,7 +53,7 @@ Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / inst
 | 26 | `26-soubory-zapis` | Zápis do souboru | 4 |
 | 27 | `27-funkce-pokrocile` | Funkce — lokální/globální | 4 |
 
-**Celkem: 97 úkolů** s VPL testy (lekce 04–27). Volitelně [bonus Git a Docker](../bonus/README.md) mimo 81 h.
+**Celkem: 97 úkolů** s VPL testy (lekce 04–27). Volitelně [bonus](../bonus/README.md) mimo 81 h (konzole, Git, Docker, CSV/JSON/XML).
 
 ## Build
 

@@ -75,3 +75,5 @@ with open("zdroj.txt", "r", encoding="utf-8") as src:
 ## Co dál
 
 → [Lekce 27: Funkce — lokální a globální proměnné](../27-funkce-pokrocile/lekce.md)
+
+Volitelně: [CSV, JSON a XML (bonus)](../../bonus/05-csv-json-xml/lekce.md) — strukturované soubory, mimo 81 hodin.

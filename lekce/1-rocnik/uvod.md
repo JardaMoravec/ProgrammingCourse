@@ -14,7 +14,7 @@ Předmět má **81 hodin** (27 týdnů × 3 h). Navazuje na něj 2. ročník (ob
 | Pole a kolekce | seznamy, n-tice, slovníky, cykly nad daty, moduly |
 | Řetězce a soubory | text, čtení a zápis souborů, lokální a globální proměnné |
 
-Volitelně: [Git a GitHub](../../bonus/01-git-a-github/lekce.md) a [Docker](../../bonus/02-docker/lekce.md) — **bonus**, nejsou v 81 hodinách, lze je přeskočit. Jsou to nástroje okolo kódu (historie projektu a stejné prostředí na jiném počítači), ne nová syntaxe Pythonu.
+Volitelně: [Konzole — Windows a Linux](../../bonus/01-konzole/lekce.md) (po lekci 02), [Git a GitHub](../../bonus/02-git-a-github/lekce.md), [Docker](../../bonus/03-docker/lekce.md) a [CSV, JSON a XML](../../bonus/05-csv-json-xml/lekce.md) — **bonus**, nejsou v 81 hodinách, lze je přeskočit. Konzole je totéž okno jako `python --version`; Git a Docker jsou nástroje okolo kódu; CSV/JSON/XML jsou formáty dat v souboru.
 
 Lekce jdou za sebou. Než začnete další, měli byste umět tu předchozí — alespoň s pomocí cvičení.
 

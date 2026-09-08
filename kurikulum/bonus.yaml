@@ -12,7 +12,10 @@ hodiny:
   celkem: 0
 
 predchozi_znalosti:
+  - Konzole: Python a prostředí (1. ročník, lekce 02)
   - Git a Docker: strukturované programování v Pythonu (1. ročník)
+  - CSV, JSON a XML: soubory a slovníky (1. ročník)
+  - API REST/GraphQL: HTTP z 3. ročníku (lekce 01)
   - ORM: Flask a sqlite3 (3. ročník, lekce 16–20)
 
 moduly:
@@ -22,25 +25,71 @@ moduly:
     svp_temata:
       - vývojové prostředí
     bloky:
-      - id: git-docker
-        nazev: Git, GitHub a Docker
+      - id: konzole-git-docker
+        nazev: Konzole, Git a Docker
         hodiny: 0
         lekce:
-          - id: "01-git-a-github"
-            soubor: lekce/bonus/01-git-a-github
+          - id: "01-konzole"
+            soubor: lekce/bonus/01-konzole
+            nazev: Konzole — Windows a Linux
+            hodiny: 0
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [02-python-a-prostredi]
+
+          - id: "02-git-a-github"
+            soubor: lekce/bonus/02-git-a-github
             nazev: Git a GitHub
             hodiny: 0
             svp: [vývojové prostředí]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [27-funkce-pokrocile]
 
-          - id: "02-docker"
-            soubor: lekce/bonus/02-docker
+          - id: "03-docker"
+            soubor: lekce/bonus/03-docker
             nazev: Docker
             hodiny: 0
             svp: [vývojové prostředí]
             kompetence: [k3-strukturovane-programy]
-            prerekvizity: [01-git-a-github]
+            prerekvizity: [02-git-a-github]
+
+  - id: formaty-dat
+    nazev: Formáty dat
+    hodiny: 0
+    svp_temata:
+      - IO operace (čtení a zápis dat do souboru)
+      - pole
+    bloky:
+      - id: csv-json-xml
+        nazev: CSV, JSON a XML
+        hodiny: 0
+        lekce:
+          - id: "05-csv-json-xml"
+            soubor: lekce/bonus/05-csv-json-xml
+            nazev: CSV, JSON a XML
+            hodiny: 0
+            svp: [IO operace (čtení a zápis dat do souboru), pole]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [26-soubory-zapis]
+
+  - id: api
+    nazev: API
+    hodiny: 0
+    svp_temata:
+      - zásady tvorby WWW stránek
+      - skriptovací jazyk
+    bloky:
+      - id: rest-graphql
+        nazev: REST a GraphQL
+        hodiny: 0
+        lekce:
+          - id: "06-api-rest-graphql"
+            soubor: lekce/bonus/06-api-rest-graphql
+            nazev: API — REST a GraphQL
+            hodiny: 0
+            svp: [zásady tvorby WWW stránek, skriptovací jazyk]
+            kompetence: [k1-www, k4-formulare-skript]
+            prerekvizity: [01-jak-funguje-web]
 
   - id: orm
     nazev: ORM
@@ -53,8 +102,8 @@ moduly:
         nazev: Flask-SQLAlchemy
         hodiny: 0
         lekce:
-          - id: "03-orm"
-            soubor: lekce/bonus/03-orm
+          - id: "04-orm"
+            soubor: lekce/bonus/04-orm
             nazev: ORM
             hodiny: 0
             svp: [propojení skriptu a databáze, skriptovací jazyk]
@@ -63,16 +112,21 @@ moduly:
 
 hodnoceni:
   - práce v hodině (cvičení)
-  - u ORM samostatné úkoly (Moodle VPL)
+  - u CSV/JSON/XML a ORM samostatné úkoly (Moodle VPL)
 
 literatura:
   - dokumentace Git (https://git-scm.com/doc) — práce přes IDE
   - GitHub Docs (https://docs.github.com/)
   - dokumentace Docker (https://docs.docker.com/) — Desktop a IDE
+  - dokumentace csv (https://docs.python.org/3/library/csv.html)
+  - dokumentace json (https://docs.python.org/3/library/json.html)
+  - dokumentace ElementTree (https://docs.python.org/3/library/xml.etree.elementtree.html)
+  - GraphQL (https://graphql.org/learn/) — orientace, ne náhrada učebního textu
   - dokumentace Flask-SQLAlchemy (https://flask-sqlalchemy.readthedocs.io/)
 
 pomucky:
   - základní počítačová sestava
   - dataprojektor
+  - terminál v IDE (Windows: PowerShell; Linux: bash)
   - Git v IDE; volitelně účet GitHub a Docker Desktop
   - u ORM: Python 3, Flask, Flask-SQLAlchemy, IDE, webový prohlížeč

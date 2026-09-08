@@ -9,6 +9,7 @@ cile:
   - Nainstalujete Python a ověříte funkčnost
   - Rozlišíte konzoli, skript a IDE
   - Pochopíte rozdíl mezi knihovnou a balíčkem
+  - Vysvětlíte, k čemu je soubor requirements.txt
   - Spustíte první program
 migrovano_z:
   - "zdroje/Programování 1.docx"
@@ -22,6 +23,7 @@ migrovano_z:
 - Pochopíte vlastnosti Pythonu
 - Nainstalujete a spustíte Python
 - Víte, co jsou knihovny a balíčky a k čemu slouží PIP
+- Víte, k čemu je soubor `requirements.txt`
 - Víte, jakým nástrojem psát větší programy
 
 ## Python v kostce
@@ -96,24 +98,54 @@ Standardní knihovna pokrývá základy (matematika, soubory, datum, sítě…).
 **PIP** (*Pip Installs Packages*) stahuje balíčky z online repozitáře [PyPI](https://pypi.org/) (Python Package Index) a nainstaluje je do vašeho Pythonu:
 
 ```bash
-pip install requests
+python -m pip install requests
 ```
+
+`python -m pip` spustí PIP **u stejného Pythonu**, který máte v `python --version`. Na Windows je to jistější než holé `pip` (můžete mít víc instalací).
 
 Ověření, že balíček je nainstalovaný:
 
 ```bash
-pip show requests
+python -m pip show requests
 ```
 
 Seznam nainstalovaných balíčků:
 
 ```bash
-pip list
+python -m pip list
 ```
 
 Na Linuxu může být potřeba nejdřív nainstalovat PIP: `sudo apt install python3-pip`
 
 > **Poznámka:** syntaxi `import` a různé způsoby importu probereme podrobně v [lekci 22](../22-moduly-a-import/lekce.md). Teď stačí vědět, že knihovnu **načtete** příkazem `import` a pak voláte její funkce.
+
+### requirements.txt — seznam balíčků projektu
+
+PIP nainstaluje balíček **k vám**. Spolužák na jiném počítači ho nemá. Soubor **`requirements.txt`** je seznam, **které** balíčky tenhle projekt potřebuje — ne celý váš počítač.
+
+Příklad (jeden balíček na řádek, verze za `==`):
+
+```text
+requests==2.32.3
+```
+
+→ viz `priklady/requirements.txt`
+
+Spolužák (nebo vy na jiném PC) nainstaluje **přesně to, co je v souboru**:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Soubor **napište ručně** — jen balíčky, které program opravdu importuje. Příkaz `pip freeze` vypíše *všechno*, co máte nainstalované; do školního projektu toho bývá zbytečně moc.
+
+| Bez `requirements.txt` | S `requirements.txt` |
+|------------------------|----------------------|
+| „U mě to běží“ — u spolužáka chybí balíček | stejný seznam u všech |
+| Nevíte, kterou verzi jste nainstalovali | verze je v souboru (`==`) |
+| Nový počítač = hádání z paměti | `install -r` a jedete dál |
+
+Ve 3. ročníku budete takhle instalovat Flask. Stejný soubor později patří i do Gitu (bonus) — kód i seznam balíčků jedou spolu.
 
 ### Výhody knihoven a balíčků
 
@@ -131,7 +163,7 @@ Na Linuxu může být potřeba nejdřív nainstalovat PIP: `sudo apt install pyt
 |-------------------|------------|
 | **Závislost na cizím kódu** | Když autor balíčku přestane udržovat projekt, může přestat fungovat s novým Pythonem |
 | **Bezpečnost** | Instalujete cizí kód — vybírejte známé balíčky s mnoha staženími na PyPI |
-| **Konflikt verzí** | Dva projekty mohou chtít různé verze stejného balíčku (řeší se virtualenv — až později) |
+| **Konflikt verzí** | Dva projekty mohou chtít různé verze stejného balíčku — proto má *každý* projekt vlastní `requirements.txt` |
 | **Přehlcení** | Příliš mnoho balíčků = těžší orientace, co kód vlastně dělá |
 | **„Černá skříňka“** | Používáte funkci, ale nechápete, jak funguje uvnitř — u učení občas lepší napsat si jednoduchou věc sami |
 
@@ -210,8 +242,11 @@ Ukáže principy, na kterých Python stojí — např. *„Čitelnost se počít
 | REPL | Konzole Pythonu — Read-Eval-Print Loop |
 | Skript | Soubor `.py` s kódem |
 | IDE | Integrated Development Environment |
-| PIP | Instalátor balíčků |
+| PIP | Instalátor balíčků (`python -m pip`) |
+| `requirements.txt` | Seznam balíčků projektu (instalace: `-r`) |
 
 ## Co dál
 
 → [Lekce 03: Anatomie programu a bloky kódu](../03-bloky-kodu/lekce.md)
+
+Volitelně: [Konzole — Windows a Linux (bonus)](../../bonus/01-konzole/lekce.md) — mimo 81 hodin. Stejné okno jako `python --version`: k čemu je příkazový řádek, základy Windows a Linuxu, v čem se liší.

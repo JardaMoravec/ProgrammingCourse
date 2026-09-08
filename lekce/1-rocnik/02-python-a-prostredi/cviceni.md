@@ -6,7 +6,7 @@ Ověřte v terminálu:
 
 ```bash
 python --version
-pip --version
+python -m pip --version
 ```
 
 Výstup zkopírujte do `odpovedi.txt`.
@@ -18,6 +18,9 @@ Příklad výstupu (verze se liší):
 Python 3.12.4
 pip 24.0 from ...
 ```
+
+Stačí i `pip --version`, pokud ukáže stejnou řadu jako `python --version`.
+
 
 Pokud příkaz nefunguje, zkuste `python3` nebo ověřte, že je Python v PATH.
 @end
@@ -79,4 +82,28 @@ Příklad:
 - *„Readability counts.“* — Kód čte člověk častěji, než ho počítač spouští.
 
 V konzoli: `import this`
+@end
+
+---
+
+## Cvičení 5 — requirements.txt (★☆☆)
+
+1. Vytvořte v složce projektu soubor `requirements.txt` se dvěma řádky:
+
+```text
+requests==2.32.3
+flask==3.0.3
+```
+
+2. Napište příkaz, kterým spolužák oba balíčky nainstaluje **ze souboru** (ne `pip install requests` a pak zvlášť Flask).
+3. Vysvětlete jednou větou, proč do souboru nedáte výstup celého `pip freeze` z učebny.
+
+@reseni
+Příkaz:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+`pip freeze` vypíše všechny balíčky na *tomto* počítači (i ty, které projekt nepoužívá). Spolužák by instaloval zbytečnosti a u vás by se seznam lišil podle toho, co kdo kdy zkoušel.
 @end

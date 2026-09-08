@@ -25,7 +25,7 @@ Předpoklady z 2. ročníku: **SQL a databáze** (PRG), **HTML a CSS** (jiné p�
 | `priklady/`                  | Ukázkový kód k teorii                               | žáci               |
 
 
-Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–20** a **22** mají Flask úkoly s VPL hodnotitelem. Lekce **23** má úkol k odevzdání aplikace (ne VPL, bez cvičení). Lekce **24** je jen prezentace (bez cvičení i bez úkolu). Lekce **05** trvá 4 hodiny, **23** trvá 20 hodin (zadání a práce), **24** trvá 4 hodiny (prezentace). Volitelně [ORM](../bonus/03-orm/lekce.md) mimo 68 hodin (bonusová skupina).
+Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02** má jen cvičení. Lekce **03–20** a **22** mají Flask úkoly s VPL hodnotitelem. Lekce **23** má úkol k odevzdání aplikace (ne VPL, bez cvičení). Lekce **24** je jen prezentace (bez cvičení i bez úkolu). Lekce **05** trvá 4 hodiny, **23** trvá 20 hodin (zadání a práce), **24** trvá 4 hodiny (prezentace). Volitelně [ORM](../bonus/04-orm/lekce.md) a [API — REST a GraphQL](../bonus/06-api-rest-graphql/lekce.md) mimo 68 hodin (bonusová skupina).
 
 ## Přehled lekcí
 

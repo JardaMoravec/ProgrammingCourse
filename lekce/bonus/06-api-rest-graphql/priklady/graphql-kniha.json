@@ -1,0 +1,8 @@
+{
+  "data": {
+    "kniha": {
+      "nazev": "Robot",
+      "autor": { "jmeno": "Novák" }
+    }
+  }
+}

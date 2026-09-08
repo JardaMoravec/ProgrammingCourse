@@ -18,6 +18,8 @@ lekce/1-rocnik/NN-nazev/
 
 Lekce **01–03** jsou teoretické — úkoly nemají.
 
+Bonus **CSV, JSON a XML** (`lekce/bonus/05-csv-json-xml`) používá stejný typ VPL (`vpl_evaluate.cases`) jako 1. ročník. Testovací soubor nemusí být `data.txt` — název je v zadání (`zaci.csv`, `knihy.json`, `knihy.xml`).
+
 ### Založení aktivity
 
 1. Přidejte aktivitu **Virtual programming lab**.
@@ -72,7 +74,7 @@ python3 -m pip install flask
 
 Bez toho skript napíše, že Flask v jailu chybí, a dá 0 bodů. **SQLite** (`sqlite3`) je v Pythonu — u lekcí 16–20 a 22 další balíček není potřeba.
 
-Bonusová lekce **ORM** (`lekce/bonus/03-orm`) potřebuje v jailu navíc **Flask-SQLAlchemy**:
+Bonusová lekce **ORM** (`lekce/bonus/04-orm`) potřebuje v jailu navíc **Flask-SQLAlchemy**:
 
 ```bash
 python3 -m pip install flask-sqlalchemy

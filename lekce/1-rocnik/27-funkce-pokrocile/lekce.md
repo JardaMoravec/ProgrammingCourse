@@ -85,4 +85,4 @@ Preferujte **parametry a return** před `global`. Globální proměnné jen výj
 
 Závěr povinné výuky 1. ročníku — doplňte **úkoly v Moodle** (VPL), které vám chybí. V 2. ročníku navážete objektovým programováním.
 
-Volitelně: [lekce Git a GitHub (bonus)](../../bonus/01-git-a-github/lekce.md), pak [Docker (bonus)](../../bonus/02-docker/lekce.md). Nejsou v 81 hodinách, lze je přeskočit.
+Volitelně: [Konzole](../../bonus/01-konzole/lekce.md), [Git a GitHub](../../bonus/02-git-a-github/lekce.md), [Docker](../../bonus/03-docker/lekce.md). Po souborech také [CSV, JSON a XML](../../bonus/05-csv-json-xml/lekce.md). Nejsou v 81 hodinách, lze je přeskočit.

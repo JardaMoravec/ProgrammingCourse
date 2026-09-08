@@ -1,0 +1,11 @@
+id: 05-csv-json-xml
+rocnik: bonus
+nazev: CSV, JSON a XML
+modul: formaty-dat
+hodiny: 0
+obtiznost: zacatecnik
+prerekvizity: [26-soubory-zapis]
+kompetence: [k3-strukturovane-programy]
+svp: [IO operace (čtení a zápis dat do souboru), pole]
+tagy: [csv, json, xml, soubory, bonus]
+migrovano_z: []

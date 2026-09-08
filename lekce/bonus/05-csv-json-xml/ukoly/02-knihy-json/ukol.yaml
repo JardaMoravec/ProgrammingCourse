@@ -1,0 +1,22 @@
+title: Název knihy z JSON
+stars: 2
+moodle: PRG-B-05-02
+description: |
+  Napište program, který přečte soubor `knihy.json` — seznam objektů
+  s klíči `nazev` a `rok`. Vypište **názvy** knih, každý na vlastní řádek,
+  v pořadí ze souboru.
+
+  Použijte modul `json`. Soubor je ve složce s programem.
+io: |
+  **Vstup:** soubor `knihy.json`
+  **Výstup:** názvy knih, každý na řádku
+cases:
+  - name: dve knihy
+    input: ""
+    output: "Robot\nLes"
+files:
+  knihy.json: |
+    [
+      {"nazev": "Robot", "rok": 2020},
+      {"nazev": "Les", "rok": 2018}
+    ]

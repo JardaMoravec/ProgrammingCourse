@@ -1,0 +1,2 @@
+# Ukázka — jen balíčky tohoto projektu, ne celý počítač
+requests==2.32.3

@@ -17,3 +17,6 @@ env/
 
 # Tajemství — hesla sem nepatří
 .env
+
+# requirements.txt sem NEPATŘÍ — ten soubor Git má hlídat
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Stejna data jako CSV, JSON a XML">
+  <rect class="d-bg" width="720" height="220" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+  <rect class="d-soft" x="20" y="36" width="216" height="148" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="128" y="64" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">CSV</text>
+  <text class="d-text" x="128" y="96" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">jmeno,vek</text>
+  <text class="d-text" x="128" y="118" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">Anna,16</text>
+  <text class="d-muted" x="128" y="154" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">tabulka</text>
+  <rect class="d-surface" x="252" y="36" width="216" height="148" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="64" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">JSON</text>
+  <text class="d-text" x="360" y="96" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">[{jmeno: Anna,</text>
+  <text class="d-text" x="360" y="118" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">vek: 16}]</text>
+  <text class="d-muted" x="360" y="154" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">slovnik / seznam</text>
+  <rect class="d-surface" x="484" y="36" width="216" height="148" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="592" y="64" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#2563eb">XML</text>
+  <text class="d-text" x="592" y="96" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">&lt;jmeno&gt;Anna&lt;/jmeno&gt;</text>
+  <text class="d-text" x="592" y="118" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">&lt;vek&gt;16&lt;/vek&gt;</text>
+  <text class="d-muted" x="592" y="154" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">znacky</text>
+  <text class="d-muted" x="360" y="204" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">Stejni zaci - tri zapisy</text>
+</svg>

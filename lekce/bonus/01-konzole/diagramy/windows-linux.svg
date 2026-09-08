@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 230" role="img" aria-label="Stejne ukony ve Windows a v Linuxu">
+  <rect class="d-bg" width="720" height="230" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="36" width="320" height="150" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="184" y="68" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">Windows</text>
+  <text class="d-muted" x="184" y="96" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">C:\Users\jmeno\projekt</text>
+  <text class="d-muted" x="184" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">dir   cd   cls</text>
+  <text class="d-accent" x="184" y="154" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="600" fill="#2563eb">python hello.py</text>
+
+  <rect class="d-soft" x="376" y="36" width="320" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="536" y="68" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">Linux</text>
+  <text class="d-muted" x="536" y="96" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">/home/jmeno/projekt</text>
+  <text class="d-muted" x="536" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">ls   cd   clear</text>
+  <text class="d-accent" x="536" y="154" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="600" fill="#2563eb">python3 hello.py</text>
+
+  <text class="d-muted" x="360" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">Stejný úkol, jiné jméno příkazu a jiná cesta</text>
+</svg>

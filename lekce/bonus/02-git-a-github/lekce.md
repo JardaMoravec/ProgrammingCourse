@@ -1,5 +1,5 @@
 ---
-id: 01-git-a-github
+id: 02-git-a-github
 rocnik: bonus
 nazev: Git a GitHub
 hodiny: 0
@@ -23,7 +23,7 @@ cile:
 
 Tahle lekce **není v 81 hodinách** 1. ročníku. Je **bonus** — smíte ji přeskočit. Python z lekcí 01–27 se nemění. Tady jde o **nástroj okolo kódu**: jak si práci nenechat zničit a jak ji později poslat dál.
 
-Příkazy do konzole (`git add`, `git commit`) **nepotřebujete**. Stejné úkony umí tlačítka v IDE. Konzole existuje, ale v 1. ročníku stačí panel **Source Control** / **Git**.
+Příkazy do konzole (`git add`, `git commit`) **nepotřebujete**. Stejné úkony umí tlačítka v IDE. Základy konzole jsou v [lekci 01](../01-konzole/lekce.md) — u Gitu stačí panel **Source Control**.
 
 ## Proč nestačí „záloha do složky“
 
@@ -119,6 +119,8 @@ Typicky ignorujte:
 
 → vzor souboru: `priklady/gitignore-python.txt` (v projektu ho uložte jako `.gitignore`)
 
+Soubor **`requirements.txt`** z [lekce 02](../../1-rocnik/02-python-a-prostredi/lekce.md) do Gitu **patří** — je to seznam balíčků, který píšete vy. Složka `.venv/` ne.
+
 > **Pravidlo:** kdyby se repozitář omylem zveřejnil, nesmí v něm být heslo k e-mailu, k AMOS ani k databázi. Tajemství patří mimo Git.
 
 ## Větev — paralela, ne nutnost
@@ -206,4 +208,4 @@ Když IDE hlásí, že Git **není nainstalovaný**, doinstalujte Git pro Window
 
 ## Co dál
 
-→ [Lekce 02: Docker](../02-docker/lekce.md) — jak spustit program ve stejném „balíčku“ na jiném počítači
+→ [Lekce 03: Docker](../03-docker/lekce.md) — jak spustit program ve stejném „balíčku“ na jiném počítači

@@ -1,10 +1,10 @@
 ---
-id: 02-docker
+id: 03-docker
 rocnik: bonus
 nazev: Docker
 hodiny: 0
 obtiznost: zacatecnik
-prerekvizity: [01-git-a-github]
+prerekvizity: [02-git-a-github]
 cile:
   - Vysvětlí problém „u mě to funguje“ a k čemu je kontejner
   - Rozliší obraz (image) a kontejner
@@ -184,7 +184,7 @@ V 1. ročníku **nemusíte** nic do cloudu posílat. Stačí vědět, že kontej
 
 - **„Smazal jsem kontejner a ztratil jsem kód.“** — kód má zůstat **ve složce projektu** (a v Gitu). Kontejner je jen běh. Pokud jste soubor psali *jen uvnitř* kontejneru a nezkopírovali ho ven, ano, může zmizet. Pište v IDE u sebe.
 - **„Image a kontejner je totéž.“** — image = šablona, kontejner = exemplář.
-- **„Musím umět Linux.“** — na začátku ne. Desktop a IDE stačí k pohledu na seznamy a logy.
+- **„Musím umět Linux.“** — na začátku ne. Desktop a IDE stačí k pohledu na seznamy a logy. Základy příkazového řádku (Windows vs Linux) jsou v [lekci 01](../01-konzole/lekce.md).
 - **„Dockerfile je program.“** — je to **recept pro stavbu obrazu**, ne algoritmus jako Python.
 
 ## Shrnutí
@@ -202,4 +202,4 @@ V 1. ročníku **nemusíte** nic do cloudu posílat. Stačí vědět, že kontej
 
 ## Co dál
 
-Bonusové lekce Git a Docker končí. V **2. ročníku** navážete objekty a SQL — pořád v Pythonu na vašem počítači. Git a Docker zůstanou jako nástroje okolo kódu; v cloudu se k nim později vrátíte.
+Bonusové lekce ke konzoli, Gitu a Dockeru tady končí. V **2. ročníku** navážete objekty a SQL — pořád v Pythonu na vašem počítači. Git a Docker zůstanou jako nástroje okolo kódu; v cloudu se k nim později vrátíte.

@@ -174,7 +174,7 @@ Typický postup u frontendu a API:
 3. API odpoví **JSON**, např. `[{"nazev": "Rozvrh", "den": "pondeli"}]`.
 4. Frontend z dat **vykreslí** seznam — bez znovunačtení celé stránky.
 
-HTTP je stejné (`GET` / `POST`, stavové kódy, URL). Liší se **tělo odpovědi**: HTML vs. JSON. JSON znáte z 1. ročníku jako datový formát.
+HTTP je stejné (`GET` / `POST`, stavové kódy, URL). Liší se **tělo odpovědi**: HTML vs. JSON. JSON jako soubor je volitelně v [bonusu CSV, JSON a XML](../../bonus/05-csv-json-xml/lekce.md). REST a GraphQL (dvě dohody nad HTTP) jsou v [bonusu API](../../bonus/06-api-rest-graphql/lekce.md).
 
 V záložce Síť uvidíte u API často typ **fetch** nebo **xhr** — to je právě JavaScript volající server.
 
@@ -203,3 +203,5 @@ U učebního Flasku na `http://127.0.0.1:5000` šifrování neřešíte — prov
 ## Co dál
 
 → [Lekce 02: HTML a CSS — shrnutí](../02-html-css-shrnuti/lekce.md)
+
+Volitelně: [API — REST a GraphQL (bonus)](../../bonus/06-api-rest-graphql/lekce.md) — mimo 68 hodin.

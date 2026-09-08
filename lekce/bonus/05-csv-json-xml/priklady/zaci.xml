@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zaci>
+  <zak>
+    <jmeno>Anna</jmeno>
+    <vek>16</vek>
+  </zak>
+  <zak>
+    <jmeno>Petr</jmeno>
+    <vek>17</vek>
+  </zak>
+</zaci>

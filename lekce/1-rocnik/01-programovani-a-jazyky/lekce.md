@@ -159,6 +159,8 @@ Také neobsahují algoritmus — popisují **strukturu dat** (hodnoty, seznamy, 
 
 > **Poznámka:** JSON se proto **nepočítá** mezi značkovací jazyky — je to datový formát. XML může sloužit obojím účelům (značky i výměna dat); u prvního ročníku stačí vědět, že jde o příbuzné, ale odlišné kategorie.
 
+Čtení a zápis CSV, JSON a XML v Pythonu je volitelně v [bonusu CSV, JSON a XML](../../bonus/05-csv-json-xml/lekce.md) — až po souborech, mimo 81 hodin.
+
 | Typ | Otázka | Spouští se? |
 |-----|--------|-------------|
 | Programovací jazyk | *Co* má počítač **udělat**? | ano |
@@ -193,3 +195,5 @@ Detailněji v další lekci: [02-python-a-prostredi](../02-python-a-prostredi/le
 ## Co dál
 
 → [Lekce 02: Python a vývojové prostředí](../02-python-a-prostredi/lekce.md)
+
+Volitelně později: [CSV, JSON a XML (bonus)](../../bonus/05-csv-json-xml/lekce.md) — mimo 81 hodin, po práci se soubory.

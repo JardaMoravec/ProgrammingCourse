@@ -6,11 +6,14 @@ Tady jsou **volitelné** lekce mimo hodinovou dotaci ročníků. Python z povinn
 
 | Lekce | Kdy dává smysl | Co to je |
 |-------|----------------|----------|
-| 01 Git a GitHub | po 1. ročníku | historie projektu v editoru, ne v konzoli |
-| 02 Docker | po Gitu | stejné prostředí na jiném počítači (představa, ne správa serveru) |
-| 03 ORM | po databázi ve 3. ročníku | objekty místo SQL řetězců ve Flasku |
+| 01 Konzole — Windows a Linux | po prostředí v 1. ročníku | příkazový řádek: k čemu je, základy, rozdíly systémů |
+| 02 Git a GitHub | po 1. ročníku | historie projektu v editoru, ne v konzoli |
+| 03 Docker | po Gitu | stejné prostředí na jiném počítači (představa, ne správa serveru) |
+| 05 CSV, JSON a XML | po souborech v 1. ročníku | tři textové formáty dat (tabulka, slovník, značky) |
+| 06 API — REST a GraphQL | po „jak funguje web“ ve 3. ročníku | dvě dohody, jak klient bere data ze serveru |
+| 04 ORM | po databázi ve 3. ročníku | objekty místo SQL řetězců ve Flasku |
 
-Git a Docker jsou **nástroje okolo kódu**, ne nová syntaxe Pythonu. ORM je **jiný způsob** stejné práce s SQLite — závěrečný projekt ve 3. ročníku zůstává u `sqlite3`.
+Konzole, Git a Docker jsou **nástroje okolo kódu**. CSV/JSON/XML rozšiřují **soubory**. REST a GraphQL rozšiřují **HTTP**. ORM je **jiný způsob** stejné práce s SQLite — závěrečný projekt ve 3. ročníku zůstává u `sqlite3`.
 
 ## Jak číst tento materiál
 
@@ -20,6 +23,6 @@ Stejné záložky jako v ročnících:
 |---------|-----|----------|
 | **Lekce** | teorie v hodině i doma | čtěte, zkoušejte příklady u sebe |
 | **Cvičení** | v hodině | procvičení s řešením (tlačítko *Zobrazit řešení*) |
-| **Úkoly** | samostatně (jen ORM) | odevzdáváte; řešení v materiálu **není** |
+| **Úkoly** | samostatně (CSV/JSON/XML a ORM) | odevzdáváte; řešení v materiálu **není** |
 
-Lekce **01–02** úkoly v AMOS nemají. Lekce **03** má Flask úkoly s Evaluate.
+Lekce **01–03** a **06** úkoly v AMOS nemají. Lekce **05** má stdin/soubor VPL, lekce **04** Flask Evaluate.

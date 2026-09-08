@@ -14,7 +14,7 @@ Předmět má **68 hodin** (34 týdnů × 2 h). SQL ani HTML/CSS se tu znovu neu
 | Databáze ve Flasku | 12 h | `sqlite3`, výpis, zápis, úprava a mazání |
 | Projekt | 24 h | vlastní aplikace a prezentace |
 
-Volitelně: [ORM](../../bonus/03-orm/lekce.md) — **bonus**, není v 68 hodinách, lze ji přeskočit. Bezpečnost webu (XSS, SQL injection) je v povinné výuce.
+Volitelně: [ORM](../../bonus/04-orm/lekce.md) a [API — REST a GraphQL](../../bonus/06-api-rest-graphql/lekce.md) — **bonus**, nejsou v 68 hodinách, lze je přeskočit. Bezpečnost webu (XSS, SQL injection) je v povinné výuce.
 
 ## Požadavky na žáky
 

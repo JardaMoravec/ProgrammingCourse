@@ -80,6 +80,9 @@ bonus:
   nazev: Bonusové lekce
   hodiny: 0
   lekce:
+    - Konzole — Windows a Linux (po prostředí v 1. ročníku)
     - Git a GitHub (po 1. ročníku)
     - Docker (po Gitu)
+    - CSV, JSON a XML (po souborech v 1. ročníku)
+    - API — REST a GraphQL (po HTTP ve 3. ročníku)
     - ORM (po databázi ve 3. ročníku)

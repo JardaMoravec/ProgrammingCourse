@@ -12,11 +12,14 @@ Nejsou v 81 h (1. ročník) ani v 68 h (3. ročník). Lze je přeskočit.
 
 | # | ID | Téma | Úkoly VPL | Doporučeno po |
 |---|-----|------|-----------|----------------|
-| 01 | `01-git-a-github` | Git a GitHub | — | 1. ročník, lekce 27 |
-| 02 | `02-docker` | Docker | — | bonus 01 |
-| 03 | `03-orm` | ORM (Flask-SQLAlchemy) | 2 | 3. ročník, lekce 20 |
+| 01 | `01-konzole` | Konzole — Windows a Linux | — | 1. ročník, lekce 02 |
+| 02 | `02-git-a-github` | Git a GitHub | — | 1. ročník, lekce 27 |
+| 03 | `03-docker` | Docker | — | bonus 02 |
+| 04 | `04-orm` | ORM (Flask-SQLAlchemy) | 2 | 3. ročník, lekce 20 |
+| 05 | `05-csv-json-xml` | CSV, JSON a XML | 3 | 1. ročník, lekce 26 |
+| 06 | `06-api-rest-graphql` | API — REST a GraphQL | — | 3. ročník, lekce 01 |
 
-Git a Docker mají jen cvičení v hodině, bez úkolu v AMOS. ORM má Flask úkoly s VPL hodnotitelem.
+Konzole, Git, Docker a REST/GraphQL mají jen cvičení v hodině. CSV/JSON/XML a ORM mají úkoly v AMOS.
 
 ## Build
 
