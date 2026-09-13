@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generuje ukoly.md a VPL testy (cases / Flask hodnotitel) z lekce/**/ukoly/*/ukol.yaml."""
+"""Generuje ukoly.md a VPL testy (cases / sloučený 2. ročník / Flask) z lekce/**/ukoly/*/ukol.yaml."""
 
 from __future__ import annotations
 
@@ -36,6 +36,9 @@ def format_vpl_cases(cases: list[dict]) -> str:
     lines: list[str] = []
     for c in cases:
         lines.append(f"Case = {c['name']}")
+        if c.get("program"):
+            lines.append("Program to run = python3")
+            lines.append(f"Program arguments = {c['program']}")
         if c.get("input") is not None:
             lines.append(f"Input = {str(c['input']).rstrip()}")
         out = c.get("output")
@@ -46,6 +49,52 @@ def format_vpl_cases(cases: list[dict]) -> str:
                 lines.append(f'Output = "{out}"')
         lines.append("")
     return "\n".join(lines).rstrip() + "\n"
+
+
+def task_soubor(task: dict) -> str:
+    if task.get("soubor"):
+        return str(task["soubor"])
+    return f"ukol{int(task['id'])}.py"
+
+
+def is_bundled_lesson(rocnik: str, tasks: list[dict]) -> bool:
+    """2. ročník: jeden VPL na lekci, soubory ukol1.py, ukol2.py, …"""
+    if str(rocnik) != "2":
+        return False
+    return any(
+        (t.get("typ") or "vpl") == "vpl" and t.get("cases") for t in tasks
+    )
+
+
+def lesson_moodle_code(rocnik: str, lesson_id: str, tasks: list[dict]) -> str:
+    for t in tasks:
+        match = re.match(r"^(PRG-.+-\d{2})-\d{2}$", str(t.get("moodle") or ""))
+        if match:
+            return match.group(1)
+    return f"PRG-{moodle_rocnik_code(rocnik)}-{lesson_id[:2]}"
+
+
+def bundled_soubory(tasks: list[dict]) -> list[str]:
+    return [
+        task_soubor(t)
+        for t in tasks
+        if (t.get("typ") or "vpl") == "vpl" and t.get("cases")
+    ]
+
+
+def collect_bundled_cases(tasks: list[dict]) -> list[dict]:
+    combined: list[dict] = []
+    for t in tasks:
+        if (t.get("typ") or "vpl") != "vpl" or not t.get("cases"):
+            continue
+        soubor = task_soubor(t)
+        num = int(t["id"])
+        for case in t["cases"]:
+            item = dict(case)
+            item["name"] = f"ukol{num} {case['name']}"
+            item["program"] = soubor
+            combined.append(item)
+    return combined
 
 
 def task_dir_name(task: dict) -> str:
@@ -152,7 +201,18 @@ def build_ukoly_md(
         ]
     else:
         parts.append("")
-    if has_vpl:
+    bundled = is_bundled_lesson(rocnik, tasks)
+    if bundled:
+        files = ", ".join(f"`{name}`" for name in bundled_soubory(tasks))
+        parts += [
+            "> V AMOS je **jeden** úkol na celou lekci. Evaluate ověří každý soubor zvlášť.",
+            "",
+            f"**AMOS:** `{lesson_moodle_code(rocnik, lesson_id, tasks)}`",
+            "",
+            f"**Odevzdání:** {files} — jeden soubor = jeden úkol.",
+            "",
+        ]
+    elif has_vpl:
         parts += [
             "> V AMOS spusťte **Evaluate** — automatický test ověří výstup programu.",
             "",
@@ -173,8 +233,12 @@ def build_ukoly_md(
             "",
             f"## Úkol {t['id']} — {t['title']} ({stars(t['stars'])})",
             "",
-            f"**AMOS:** `{moodle}`",
-            "",
+        ]
+        if bundled:
+            parts += [f"**Soubor:** `{task_soubor(t)}`", ""]
+        else:
+            parts += [f"**AMOS:** `{moodle}`", ""]
+        parts += [
             description,
             "",
         ]
@@ -204,11 +268,21 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
     ukoly_root.mkdir(parents=True, exist_ok=True)
     cleanup_stale_ukoly(ukoly_root, tasks)
 
+    bundled = is_bundled_lesson(rocnik, tasks)
+    bundled_path = ukoly_root / "vpl_evaluate.cases"
+    if bundled:
+        bundled_path.write_text(
+            format_vpl_cases(collect_bundled_cases(tasks)),
+            encoding="utf-8",
+        )
+    elif bundled_path.exists():
+        bundled_path.unlink()
+
     for t in tasks:
         task_dir = ukoly_root / task_dir_name(t)
         task_dir.mkdir(parents=True, exist_ok=True)
         cases_path = task_dir / "vpl_evaluate.cases"
-        if t["cases"]:
+        if t["cases"] and not bundled:
             cases_path.write_text(format_vpl_cases(t["cases"]), encoding="utf-8")
         elif cases_path.exists():
             cases_path.unlink()

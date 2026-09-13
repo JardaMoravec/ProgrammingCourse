@@ -51,6 +51,28 @@ Output = "Součet: 30"
 
 Dokumentace: [VPL BIOTES](https://vpl.dis.ulpgc.es/documentation/vpl-4.4.2/biotes.html)
 
+## 2. ročník — jeden VPL na lekci (`ukol1.py`, `ukol2.py`, …)
+
+Úkoly jedné lekce jsou **jedna** aktivita VPL. Žák odevzdá soubory `ukol1.py`, `ukol2.py`, … (číslo = pořadí úkolu v zadání). Testy jsou v **jednom** souboru:
+
+```
+lekce/2-rocnik/NN-nazev/ukoly/vpl_evaluate.cases
+```
+
+Každý případ v souboru spouští konkrétní soubor (`Program to run = python3`, `Program arguments = ukol1.py`).
+
+### Založení aktivity
+
+1. Přidejte aktivitu **Virtual programming lab**.
+2. Jazyk: **Python 3**.
+3. **Requested files:** `ukol1.py`, `ukol2.py`, … podle počtu úkolů v lekci.
+4. Maximum number of files = počet těchto souborů.
+5. Zapněte **Automatic evaluation**.
+6. Do **Test cases** / Execution files vložte obsah `ukoly/vpl_evaluate.cases`.
+7. Zkratka názvu: kód lekce z `ukoly.md`, např. `PRG-2-01`.
+
+Chybějící soubor = neúspěšné testy daného úkolu. Ostatní soubory se hodnotí dál.
+
 ## 3. ročník — Flask (`vpl_evaluate.py` + `vpl_evaluate.sh`)
 
 Úkoly ve Flasku nečtou stdin. Generátor z `ukol.yaml` (`typ: flask`) vytvoří **validační skripty**, které aplikaci načtou a přes testovací klient ověří routy a HTML značky (ne přesný text na stránce).
@@ -124,4 +146,4 @@ python scripts/build_html_output.py
 ## Hodnocení
 
 - **Cvičení** v hodině — s řešením v materiálech (záložka Cvičení).
-- **Úkoly** — samostatná práce, odevzdání a bodování přes VPL v Moodle (1. ročník stdin, 3. ročník Flask), nebo soubor u úkolů bez automatického testu.
+- **Úkoly** — samostatná práce, odevzdání a bodování přes VPL v Moodle (1. ročník stdin po úkolech, 2. ročník jeden VPL na lekci, 3. ročník Flask), nebo soubor u úkolů bez automatického testu.

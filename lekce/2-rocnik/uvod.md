@@ -43,10 +43,10 @@ Karty lekcí jsou dole na této stránce a v menu vlevo. Jděte postupně — SQ
 
 ## Odevzdávání do AMOS
 
-1. Úkol najdete v **AMOS** u příslušné lekce.
-2. Nahrajte soubor nebo soubory, které zadání uvádí (Python, později i práce s databází).
+1. Úkol najdete v **AMOS** u příslušné lekce — u algoritmizace a OOP je to **jeden** úkol na celou lekci.
+2. Nahrajte soubory ze zadání: `ukol1.py`, `ukol2.py`, … (jeden soubor = jeden podúkol). Později i práci s databází.
 3. Kde je zapnuté automatické hodnocení, spusťte **Evaluate** a opravujte podle výsledku testu.
-4. Závěrečný projekt se odevzdává podle zadání v lekci projektu (ne jako jeden `main.py` z raných lekcí).
+4. Závěrečný projekt se odevzdává podle zadání v lekci projektu.
 
 Cvičení z hodiny do AMOS nepatří.
 

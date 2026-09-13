@@ -179,7 +179,7 @@ Tiskněte **atributy**, nebo je složte do věty. Úhledný `print(o)` zařídí
 
 Příště konstruktor: atributy nastavíte **při** vytvoření, ne až potom řádek po řádku.
 
-Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že v kódu opravdu jsou třídy a atributy (ne jen `print` hotové věty).
+Automatický test v AMOS je **jeden** na lekci a kontroluje **výstup** souborů `ukol1.py`–`ukol3.py`. Učitel může zkontrolovat, že v kódu opravdu jsou třídy a atributy (ne jen `print` hotové věty).
 
 ## Co dál
 
