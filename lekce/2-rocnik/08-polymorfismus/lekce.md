@@ -2,7 +2,7 @@
 id: 08-polymorfismus
 rocnik: 2
 nazev: Polymorfismus
-hodiny: 5
+hodiny: 3
 obtiznost: stredni
 prerekvizity: [07-dedicnost]
 cile:
@@ -16,7 +16,7 @@ migrovano_z:
 
 # Polymorfismus
 
-Lekce má **5 hodin** (jeden týden). Navazuje na [dědičnost](../07-dedicnost/lekce.md).
+Lekce má **3 hodiny**. Navazuje na [dědičnost](../07-dedicnost/lekce.md). Další čas z týdne patří [pololetnímu projektu](../11-oop-navrh-a-procviceni/lekce.md).
 
 Minule pes **je** zvíře a společné věci patří rodiči. Tady mají potomci **stejnou** metodu, ale **jiné** tělo. Zavoláte `ozvi_se()` — pes řekne `Haf!`, kočka `Mnou!`. ŠVP tomu říká *mnohotvárnost*.
 
@@ -140,4 +140,4 @@ Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, ž
 
 ## Co dál
 
-Další lekce: **Statické metody a proměnné**.
+→ [Lekce 09: Statické metody a proměnné](../09-staticke-cleny/lekce.md)

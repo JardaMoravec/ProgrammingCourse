@@ -1,0 +1,13 @@
+id: 11-oop-navrh-a-procviceni
+rocnik: 2
+nazev: OOP — návrh a pololetní projekt
+modul: oop
+hodiny: 9
+obtiznost: stredni
+prerekvizity: [10-vyjimky-a-iterace]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty, k9-aplikace]
+svp: [objektově orientovaná analýza a návrh, struktury, dědičnost, mnohotvárnost]
+tagy: [oop, navrh, projekt, dedicnost, polymorfismus]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Objektově orientovaná analýza a návrh)"
+  - "zdroje/Úkoly 2/úkol 14, 15, 18"

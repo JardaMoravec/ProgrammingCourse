@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-label="Navrhovy vzor je pojmenovany postup od problemu ke tridam">
+  <defs>
+    <marker id="arrow-vzory" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="240" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="56" width="168" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="108" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">probl&#233;m</text>
+  <text class="d-muted" x="108" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">opakuje se</text>
+
+  <line class="d-stroke-accent" x1="192" y1="106" x2="246" y2="106" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-vzory)"/>
+
+  <rect class="d-soft" x="254" y="40" width="212" height="132" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#2563eb">vzor</text>
+  <text class="d-muted" x="360" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">jm&#233;no + postup</text>
+  <text class="d-muted" x="360" y="136" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">iter&#225;tor, strategie&#8230;</text>
+
+  <line class="d-stroke-accent" x1="466" y1="106" x2="520" y2="106" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-vzory)"/>
+
+  <rect class="d-surface" x="528" y="56" width="168" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="612" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">t&#345;&#237;dy</text>
+  <text class="d-muted" x="612" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">stejn&#253; n&#225;pad, jin&#233; t&#233;ma</text>
+
+  <text class="d-muted" x="360" y="210" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">nen&#237; to knihovna ani nov&#225; syntaxe &#8212; je to pojmenovan&#253; n&#225;vrh</text>
+</svg>

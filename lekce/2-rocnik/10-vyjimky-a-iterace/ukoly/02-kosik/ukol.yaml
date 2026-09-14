@@ -1,0 +1,34 @@
+title: Košík
+stars: 2
+moodle: PRG-2-10-02
+description: |
+  Košík jde procházet cyklem, protože má `__iter__`.
+
+  Třída `Kosik` drží seznam `polozky`. Metoda `pridej(self, nazev)`
+  položku přidá. `__iter__` vrátí `iter(self.polozky)`.
+
+  Načtěte celé číslo n a pak n řádků s názvy. Každý název přidejte
+  do košíku. Cyklem `for polozka in kosik` vypište názvy (jeden
+  na řádek). Nepoužívejte `for polozka in kosik.polozky`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: tri
+    input: |
+      3
+      mleko
+      chleb
+      maslo
+    output: |-
+      mleko
+      chleb
+      maslo
+  - name: jedna
+    input: |
+      1
+      jablko
+    output: "jablko"
+io: |
+  **Vstup:** počet n, pak n názvů (každý na řádku)
+  **Výstup:** názvy z cyklu přes košík

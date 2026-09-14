@@ -1,0 +1,27 @@
+title: Škola a město
+stars: 1
+moodle: PRG-2-09-01
+description: |
+  Město platí **pro všechny** školy stejné — patří třídě.
+
+  Třída `Skola` má u třídy `mesto = "Brno"`. Konstruktor
+  `__init__(self, nazev)` uloží název k objektu. `__str__` vrátí
+  `nazev, Brno` — město berte z `Skola.mesto`, nepište ho do řetězce
+  natvrdo.
+
+  Načtěte jeden řádek (název školy) a vypište `print` objektu `Skola`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: gml
+    input: |
+      GML
+    output: "GML, Brno"
+  - name: delta
+    input: |
+      Delta
+    output: "Delta, Brno"
+io: |
+  **Vstup:** název školy
+  **Výstup:** jeden řádek z `print` školy

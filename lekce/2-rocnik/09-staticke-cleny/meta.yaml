@@ -1,0 +1,14 @@
+id: 09-staticke-cleny
+rocnik: 2
+nazev: Statické metody a proměnné
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [08-polymorfismus]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [třídy a členy]
+tagy: [oop, staticke, tridni-promenna, staticmethod]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Statické členy)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Programování 2.docx (kap. Třídy a třídní proměnné)"

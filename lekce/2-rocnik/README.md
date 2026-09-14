@@ -25,10 +25,10 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 | 05 | `05-metody` | Metody a self | 5 |
 | 06 | `06-specialni-metody` | Speciální metody a vlastnosti | 5 |
 | 07 | `07-dedicnost` | Dědičnost | 5 |
-| 08 | `08-polymorfismus` | Polymorfismus | 5 |
+| 08 | `08-polymorfismus` | Polymorfismus | 3 |
 | 09 | `09-staticke-cleny` | Statické metody a proměnné | 5 |
-| 10 | `10-vyjimky-a-iterace` | Vlastní výjimky a iterace | 5 |
-| 11 | `11-oop-navrh-a-procviceni` | OOP — analýza, návrh a procvičení | 5 |
+| 10 | `10-vyjimky-a-iterace` | Vlastní výjimky a iterace | 3 |
+| 11 | `11-oop-navrh-a-procviceni` | OOP — návrh a pololetní projekt | 9 |
 | 12 | `12-relacni-databaze` | Principy relační databáze | 5 |
 | 13 | `13-sql-a-sqlite` | Koncepce jazyka SQL a SQLite | 5 |
 | 14 | `14-create-table` | Definování tabulek (CREATE TABLE) | 5 |
@@ -48,7 +48,7 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 | 28 | `28-projekt` | Projekt — zadání a práce | 20 |
 | 29 | `29-projekt-prezentace` | Projekt — odevzdání a prezentace | 5 |
 
-**Celkem: 29 lekcí v 170 h.** Lekce 01 a 02 po 10 h (dva týdny), 03–27 po 5 h, lekce 28 trvá 4 týdny, lekce 29 jeden týden.
+**Celkem: 29 lekcí v 170 h.** Lekce 01 a 02 po 10 h (dva týdny). Lekce 08 a 10 po 3 h — uvolněné 4 h jdou do lekce **11** (9 h, pololetní projekt). Ostatní 03–07, 09 a 12–27 po 5 h. Lekce 28 trvá 4 týdny, lekce 29 jeden týden.
 
 Lekce **01** má 5 úkolů do AMOS (`PRG-2-01-01` až `05`).
 
@@ -65,6 +65,12 @@ Lekce **06** má 2 úkoly (`PRG-2-06-01` a `02`). Lekce končí známkovaným ú
 Lekce **07** má 3 úkoly (`PRG-2-07-01` až `03`): pizza, oblečení, mobil a notebook.
 
 Lekce **08** má 3 úkoly (`PRG-2-08-01` až `03`): VIP lístek, tarify, spořicí účet.
+
+Lekce **09** má 3 úkoly (`PRG-2-09-01` až `03`): škola a město, účastníci, kilogramy na gramy.
+
+Lekce **10** má 3 úkoly (`PRG-2-10-01` až `03`): záporné číslo, košík, filmotéka.
+
+Lekce **11** je pololetní projekt (`PRG-2-11-01`, 9 h). Téma schválí učitel; hodnotí učitel, ne automatický test. Volitelně [návrhové vzory](../bonus/07-navrhove-vzory/lekce.md).
 
 ## Moduly (ŠVP)
 

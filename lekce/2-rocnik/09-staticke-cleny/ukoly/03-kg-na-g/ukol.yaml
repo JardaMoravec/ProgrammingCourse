@@ -1,0 +1,27 @@
+title: Kilogramy na gramy
+stars: 2
+moodle: PRG-2-09-03
+description: |
+  Převod jednotek objekt nepotřebuje — je to **statická** metoda.
+
+  Třída `Hmotnost` se statickou metodou `kg_na_g(kg)`, která vrátí
+  `kg * 1000`. Nad metodou musí být `@staticmethod`. Objekt
+  `Hmotnost()` nevytvářejte.
+
+  Načtěte jedno celé číslo (kilogramy) a vypište výsledek
+  `Hmotnost.kg_na_g(...)`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: dva
+    input: |
+      2
+    output: "2000"
+  - name: nula
+    input: |
+      0
+    output: "0"
+io: |
+  **Vstup:** jedno celé číslo (kg)
+  **Výstup:** hmotnost v gramech

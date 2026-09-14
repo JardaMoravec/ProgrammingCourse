@@ -1,0 +1,41 @@
+title: Pololetní projekt
+stars: 3
+moodle: PRG-2-11-01
+description: |
+  **Známkovaný pololetní projekt** (9 hodin v rozvrhu). Nová syntaxe
+  nepřibývá — složíte to, co umíte z lekcí 03–10.
+
+  Téma schválí učitel **v první hodině**. Nesmí to být kopie z hodin
+  (knihovna, autoservis, mailer, oblečení, pizza, elektronika,
+  filmotéka, škola, košík, tarify, VIP lístek, osoba s adresou).
+
+  Program musí splnit **vše**:
+
+  - aspoň **tři** třídy; aspoň jeden vztah **má** (objekt v atributu)
+  - každá třída má konstruktor a `__str__`
+  - vztah **je**: rodič a aspoň jeden potomek, v konstruktoru `super()`
+  - přepis stejné metody u potomka (polymorfismus) a cyklus přes
+    seznam smíšených objektů **bez** `if` podle typu
+  - aspoň jedna proměnná třídy **nebo** `@staticmethod`
+  - vlastní výjimka (`class ...Error(Exception)`), `raise` v metodě,
+    odchycení v hlavním programu
+  - aspoň jedna kolekce, kterou jde procházet `for x in objekt`
+    (má `__iter__`)
+  - konzolový výpis, ať je vidět, že to běží (`print` objektů)
+
+  Aplikaci nevymýšlejte zbytečně složitě. Součástí hodnocení je:
+
+  - schválené téma a návrh tříd **před** kódem
+  - logická stavba (je vs má)
+  - přesné dodržení seznamu výše
+  - že kód umíte učiteli vysvětlit
+
+  Automatický test výstup nekontroluje — hodnotí **učitel**.
+
+odevzdani: |
+  Do AMOS nahrajte `main.py` (případně víc souborů, když to dává
+  smysl). Evaluate nemusí projít — známku určuje učitel podle kódu
+  a ukázky v hodině.
+io: |
+  **Vstup:** vlastní (může být bez `input`)
+  **Výstup:** čitelný výpis objektů přes `__str__` a cyklus

@@ -95,7 +95,7 @@ print(o.jmeno)  # Petr
 print(p.jmeno)  # Eva
 ```
 
-Kdyby měly všechny osoby sdílet jednu hodnotu, šlo by o **statickou** proměnnou — to je až lekce 09.
+Kdyby měly všechny osoby sdílet jednu hodnotu, šlo by o **statickou** proměnnou — to je [lekce 09](../09-staticke-cleny/lekce.md).
 
 → viz `priklady/dva_objekty.py`
 

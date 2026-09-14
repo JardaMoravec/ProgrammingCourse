@@ -1,0 +1,37 @@
+title: Filmotéka
+stars: 2
+moodle: PRG-2-10-03
+description: |
+  Filmotéka drží filmy. Prázdný název je **výjimka**, výpis jde
+  cyklem přes objekt.
+
+  Třída `PrazdnyNazev(Exception)`. Třída `Film` s konstruktorem
+  `__init__(self, nazev)` a `__str__`, které vrátí název.
+
+  Třída `Filmoteka` má seznam `filmy`. Metoda `pridej(self, film)`
+  film přidá; když je `film.nazev` prázdný řetězec, vyvolá
+  `PrazdnyNazev`. `__iter__` vrátí `iter(self.filmy)`.
+
+  Žádný `input`. Přesně v tomto pořadí:
+
+  - přidejte `Film("Matrix")`
+  - zkuste `Film("")` v `try` / `except PrazdnyNazev` a vypište
+    `prazdny`
+  - přidejte `Film("Up")`
+  - cyklem `for film in filmoteka` vypište každý film (`print(film)`)
+
+  Přesně tři řádky:
+
+  `prazdny`
+  `Matrix`
+  `Up`
+
+cases:
+  - name: dva-filmy
+    output: |-
+      prazdny
+      Matrix
+      Up
+io: |
+  **Vstup:** žádný
+  **Výstup:** hláška z except a dva názvy z cyklu

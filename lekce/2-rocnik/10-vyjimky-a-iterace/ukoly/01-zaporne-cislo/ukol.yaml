@@ -1,0 +1,28 @@
+title: Záporné číslo
+stars: 1
+moodle: PRG-2-10-01
+description: |
+  Vlastní výjimka je třída — potomek `Exception`.
+
+  Třída `ZaporneCislo(Exception)` (tělo `pass`). Načtěte jedno celé
+  číslo. Když je **menší než 0**, vyvolejte `ZaporneCislo` a v
+  `except` vypište `zaporne`. Jinak číslo vypište.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: zaporne
+    input: |
+      -3
+    output: "zaporne"
+  - name: kladne
+    input: |
+      5
+    output: "5"
+  - name: nula
+    input: |
+      0
+    output: "0"
+io: |
+  **Vstup:** jedno celé číslo
+  **Výstup:** `zaporne`, nebo to číslo

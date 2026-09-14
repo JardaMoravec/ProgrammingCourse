@@ -173,7 +173,7 @@ moduly:
           - id: "08-polymorfismus"
             soubor: lekce/2-rocnik/08-polymorfismus
             nazev: Polymorfismus
-            hodiny: 5
+            hodiny: 3
             svp: [struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [07-dedicnost]
@@ -189,24 +189,35 @@ moduly:
             svp: [třídy a členy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [08-polymorfismus]
+            ukoly_zdroje:
+              - "škola a město — proměnná třídy"
+              - "účastníci — počítadlo instancí"
+              - "kilogramy na gramy — @staticmethod"
 
           - id: "10-vyjimky-a-iterace"
             soubor: lekce/2-rocnik/10-vyjimky-a-iterace
             nazev: Vlastní výjimky a iterace
-            hodiny: 5
+            hodiny: 3
             svp: [implementace metod třídy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [09-staticke-cleny]
-            ukoly_zdroje: ["úkol 17 - oop - filmotéka"]
+            ukoly_zdroje:
+              - "záporné číslo — vlastní výjimka"
+              - "košík — __iter__"
+              - "úkol 17 - oop - filmotéka"
 
           - id: "11-oop-navrh-a-procviceni"
             soubor: lekce/2-rocnik/11-oop-navrh-a-procviceni
-            nazev: OOP — analýza, návrh a procvičení
-            hodiny: 5
+            nazev: OOP — návrh a pololetní projekt
+            hodiny: 9
             svp: [objektově orientovaná analýza a návrh, struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty, k9-aplikace]
             prerekvizity: [10-vyjimky-a-iterace]
-            ukoly_zdroje: ["úkol 14 - oop - herní strategie", "úkol 15 - oop - herní strategie -2", "úkol 18 - oop - šachovnice"]
+            ukoly_zdroje:
+              - "pololetní projekt (9 h; 2 h z lekce 08 a 2 h z lekce 10)"
+              - "úkol 14 - oop - herní strategie"
+              - "úkol 15 - oop - herní strategie -2"
+              - "úkol 18 - oop - šachovnice"
 
   - id: sql
     nazev: Základy jazyka SQL
@@ -416,6 +427,7 @@ hodnoceni:
   - elektronické testy (Moodle VPL)
   - samostatné úkoly (Moodle VPL)
   - práce v hodině (cvičení)
+  - pololetní projekt (OOP, lekce 11)
   - závěrečný projekt (konzolová aplikace s databází)
   - aktivita
 

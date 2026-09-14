@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-label="Cyklus for vola iter a pak next dokud neprijde StopIteration">
+  <defs>
+    <marker id="arrow-iter" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="250" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="48" width="150" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="99" y="88" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#1a1d26">for x in skupina</text>
+  <text class="d-muted" x="99" y="112" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">chce prvky</text>
+
+  <line class="d-stroke-accent" x1="174" y1="92" x2="228" y2="92" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-iter)"/>
+
+  <rect class="d-soft" x="236" y="36" width="168" height="112" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="320" y="72" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#2563eb">__iter__()</text>
+  <text class="d-muted" x="320" y="98" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">vr&#225;t&#237; iter&#225;tor</text>
+  <text class="d-muted" x="320" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">iter(self.jmena)</text>
+
+  <line class="d-stroke-accent" x1="404" y1="92" x2="458" y2="92" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-iter)"/>
+
+  <rect class="d-surface" x="466" y="28" width="230" height="128" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="581" y="58" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#2563eb">__next__()</text>
+  <text class="d-text" x="581" y="86" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">Eva &#160; Karel</text>
+  <text class="d-muted" x="581" y="114" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">StopIteration</text>
+  <text class="d-muted" x="581" y="136" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">cyklus skon&#269;&#237;</text>
+
+  <text class="d-muted" x="360" y="200" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#5c6370">for x in skupina: print(x)</text>
+  <text class="d-muted" x="360" y="224" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">bez __iter__ cyklus na objektu spadne (TypeError)</text>
+</svg>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-label="Od zadani ke tridam: je dedi, ma je slozeni">
+  <defs>
+    <marker id="arrow-navrh" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="250" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="24" y="56" width="168" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="108" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">zad&#225;n&#237;</text>
+  <text class="d-muted" x="108" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">v&#283;ty ze &#382;ivota</text>
+
+  <line class="d-stroke-accent" x1="192" y1="106" x2="246" y2="106" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-navrh)"/>
+
+  <rect class="d-soft" x="254" y="40" width="200" height="132" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="354" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#2563eb">n&#225;vrh</text>
+  <text class="d-muted" x="354" y="106" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">JE &#8594; d&#283;di&#269;nost</text>
+  <text class="d-muted" x="354" y="130" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">M&#193; &#8594; slo&#382;en&#237;</text>
+  <text class="d-muted" x="354" y="154" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">spole&#269;n&#233; k rodi&#269;i</text>
+
+  <line class="d-stroke-accent" x1="454" y1="106" x2="508" y2="106" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-navrh)"/>
+
+  <rect class="d-surface" x="516" y="56" width="180" height="100" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="606" y="100" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">t&#345;&#237;dy</text>
+  <text class="d-muted" x="606" y="126" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">pak teprve k&#243;d</text>
+
+  <text class="d-muted" x="360" y="214" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">neza&#269;&#237;nejte ps&#225;t class, dokud nem&#225;te seznam t&#345;&#237;d a vztah&#367;</text>
+</svg>

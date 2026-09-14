@@ -17,6 +17,7 @@ predchozi_znalosti:
   - CSV, JSON a XML: soubory a slovníky (1. ročník)
   - API REST/GraphQL: HTTP z 3. ročníku (lekce 01)
   - ORM: Flask a sqlite3 (3. ročník, lekce 16–20)
+  - Návrhové vzory: OOP návrh (2. ročník, lekce 11)
 
 moduly:
   - id: nastroje-vyvoje
@@ -109,6 +110,24 @@ moduly:
             svp: [propojení skriptu a databáze, skriptovací jazyk]
             kompetence: [k4-formulare-skript]
             prerekvizity: [20-databaze-procviceni]
+
+  - id: navrhove-vzory
+    nazev: Návrhové vzory
+    hodiny: 0
+    svp_temata:
+      - objektově orientovaná analýza a návrh
+    bloky:
+      - id: vzory-zaklad
+        nazev: Návrhové vzory — základ
+        hodiny: 0
+        lekce:
+          - id: "07-navrhove-vzory"
+            soubor: lekce/bonus/07-navrhove-vzory
+            nazev: Návrhové vzory — základ
+            hodiny: 0
+            svp: [objektově orientovaná analýza a návrh]
+            kompetence: [k4-trida-objekt, k5-jednoduche-objekty, k9-aplikace]
+            prerekvizity: [11-oop-navrh-a-procviceni]
 
 hodnoceni:
   - práce v hodině (cvičení)

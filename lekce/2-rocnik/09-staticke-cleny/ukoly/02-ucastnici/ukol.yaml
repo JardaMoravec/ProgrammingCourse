@@ -1,0 +1,31 @@
+title: Účastníci
+stars: 2
+moodle: PRG-2-09-02
+description: |
+  Kolik účastníků už vzniklo, patří **třídě**, ne jednomu člověku.
+
+  Třída `Ucastnik` má u třídy `pocet = 0`. Konstruktor
+  `__init__(self, jmeno)` uloží jméno a přičte jedničku k
+  `Ucastnik.pocet` (ne k `self.pocet`).
+
+  Načtěte celé číslo n a pak n řádků se jmény. Pro každé jméno
+  vytvořte `Ucastnik`. Nakonec vypište `Ucastnik.pocet`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: tri
+    input: |
+      3
+      Eva
+      Karel
+      Adam
+    output: "3"
+  - name: jeden
+    input: |
+      1
+      Eva
+    output: "1"
+io: |
+  **Vstup:** počet n, pak n jmen (každé na řádku)
+  **Výstup:** jedno číslo — `Ucastnik.pocet`

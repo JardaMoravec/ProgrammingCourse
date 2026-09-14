@@ -2,7 +2,7 @@ id: 08-polymorfismus
 rocnik: 2
 nazev: Polymorfismus
 modul: oop
-hodiny: 5
+hodiny: 3
 obtiznost: stredni
 prerekvizity: [07-dedicnost]
 kompetence: [k4-trida-objekt, k5-jednoduche-objekty]

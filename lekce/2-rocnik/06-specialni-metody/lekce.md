@@ -20,7 +20,7 @@ Lekce má **5 hodin** (jeden týden). Navazuje na [metody](../05-metody/lekce.md
 
 Minule jste psali `print(o.cele_jmeno())`. Když vypíšete **celý objekt**, Python ukáže jen typ a adresu v paměti. **`__str__`** to změní: `print(o)` vypíše čitelný text.
 
-Dědičnost je až lekce 07. Iterace (`__iter__`) až lekce 10.
+Dědičnost je až lekce 07. Iterace (`__iter__`) je [lekce 10](../10-vyjimky-a-iterace/lekce.md).
 
 ## Cíle lekce
 

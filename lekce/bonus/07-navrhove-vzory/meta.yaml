@@ -1,0 +1,11 @@
+id: 07-navrhove-vzory
+rocnik: bonus
+nazev: Návrhové vzory — základ
+modul: navrhove-vzory
+hodiny: 0
+obtiznost: stredni
+prerekvizity: [11-oop-navrh-a-procviceni]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty, k9-aplikace]
+svp: [objektově orientovaná analýza a návrh]
+tagy: [oop, navrh, vzory, iterator, strategie, tovarna, bonus]
+migrovano_z: []

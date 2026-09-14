@@ -1,0 +1,14 @@
+id: 10-vyjimky-a-iterace
+rocnik: 2
+nazev: Vlastní výjimky a iterace
+modul: oop
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [09-staticke-cleny]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [implementace metod třídy]
+tagy: [oop, vyjimky, raise, iter, next]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Vlastní výjimky, Iterace)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 17"
