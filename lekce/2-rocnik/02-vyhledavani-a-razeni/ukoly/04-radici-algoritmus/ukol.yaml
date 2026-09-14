@@ -2,8 +2,6 @@ title: Řadící algoritmus
 stars: 3
 moodle: PRG-2-02-04
 description: |
-  **Známkovaný úkol.**
-
   Načtěte jeden řádek celých čísel oddělených mezerou a seřaďte je
   **vzestupně** vlastním algoritmem (bublinkové řazení, řazení výběrem,
   rekurze — je to na vás).

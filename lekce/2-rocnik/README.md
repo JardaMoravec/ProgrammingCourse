@@ -50,15 +50,13 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 
 **Celkem: 29 lekcí v 170 h.** Lekce 01 a 02 po 10 h (dva týdny), 03–27 po 5 h, lekce 28 trvá 4 týdny, lekce 29 jeden týden.
 
-VPL ve 2. ročníku je **jeden úkol na lekci**: žáci odevzdají `ukol1.py`, `ukol2.py`, … Testy jsou v `ukoly/vpl_evaluate.cases`.
+Lekce **01** má 5 úkolů do AMOS (`PRG-2-01-01` až `05`).
 
-Lekce **01** — AMOS `PRG-2-01`, soubory `ukol1.py`–`ukol5.py`; úkoly 03 a 04 jsou známkované.
+Lekce **02** má 4 úkoly (`PRG-2-02-01` až `04`).
 
-Lekce **02** — AMOS `PRG-2-02`, soubory `ukol1.py`–`ukol4.py`; úkol 04 (řazení) je známkovaný.
+Lekce **03** má 3 úkoly (`PRG-2-03-01` až `03`); úkol 03 je knihovna (Autor a Kniha).
 
-Lekce **03** — AMOS `PRG-2-03`, soubory `ukol1.py`–`ukol3.py`; úkol 03 je knihovna (Autor a Kniha).
-
-Lekce **04** — AMOS `PRG-2-04`, soubory `ukol1.py`–`ukol3.py`; úkol 03 je autoservis (Auto, Motor, Kolo).
+Lekce **04** má 3 úkoly (`PRG-2-04-01` až `03`); úkol 03 je autoservis (Auto, Motor, Kolo).
 
 ## Moduly (ŠVP)
 

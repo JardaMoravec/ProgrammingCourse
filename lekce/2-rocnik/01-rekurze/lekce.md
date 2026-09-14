@@ -151,7 +151,7 @@ def faktorial_spatne(n):
 
 V úkolech této lekce **cyklus použít nesmíte** (kromě toho, co zadání výslovně dovolí, např. `range` na jeden řádek). Cílem je nacvičit rekurzi, ne hledat nejkratší zápis.
 
-Automatický test v AMOS je **jeden** na lekci a kontroluje **výstup** souborů `ukol1.py`–`ukol5.py`. Učitel může zkontrolovat, že v kódu opravdu je rekurze.
+Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že v kódu opravdu je rekurze.
 
 ## Shrnutí
 

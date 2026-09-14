@@ -152,7 +152,7 @@ a, b = b, a
 
 → viz `priklady/bublinkove_razeni.py`
 
-Jiný řadící algoritmus (třeba výběrem minima) je taky v pořádku — v známkovaném úkolu stačí **libovolný vlastní**.
+Jiný řadící algoritmus (třeba výběrem minima) je taky v pořádku — v úkolu stačí **libovolný vlastní**.
 
 ## Načtení seznamu z konzole
 
@@ -182,7 +182,7 @@ x = int(input())
 | binární hledání | seznam je seřazený | půlení úseku |
 | bublinkové řazení | — | prohazovat sousedy |
 
-Automatický test v AMOS je **jeden** na lekci a kontroluje **výstup** souborů `ukol1.py`–`ukol4.py`. Učitel může zkontrolovat, že v kódu opravdu je rekurze, binární půlení, nebo vlastní řazení (ne `sort`).
+Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že v kódu opravdu je rekurze, binární půlení, nebo vlastní řazení (ne `sort`).
 
 ## Co dál
 

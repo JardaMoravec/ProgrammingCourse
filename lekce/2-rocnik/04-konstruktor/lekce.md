@@ -201,7 +201,7 @@ V úkolu autoservisu bude auto mít motor a čtyři kola — stejný postup, jen
 
 Příště metody: objekt umí i **něco udělat**, nejen data držet.
 
-Automatický test v AMOS je **jeden** na lekci a kontroluje **výstup** souborů `ukol1.py`–`ukol3.py`. Učitel může zkontrolovat, že atributy nastavuje konstruktor (ne jen tečka po `Osoba()`).
+Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že atributy nastavuje konstruktor (ne jen tečka po `Osoba()`).
 
 ## Co dál
 

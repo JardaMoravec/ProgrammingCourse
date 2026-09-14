@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import markdown
+from markdown.extensions.attr_list import AttrListExtension
 from markdown.extensions.fenced_code import FencedCodeExtension
 from markdown.extensions.tables import TableExtension
 from pygments import highlight
@@ -388,9 +389,15 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
   margin: 2rem 0 0.75rem;
   padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--border);
+  scroll-margin-top: 1rem;
 }
 
 .content h2:first-child { margin-top: 0; }
+
+.content h2:target {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
 
 .content h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
 
@@ -654,6 +661,10 @@ html[data-theme="dark"] .content svg.diagram:not(.themed) {
 @media (max-width: 900px) {
   .mobile-bar { display: flex; }
 
+  .content h2[id] {
+    scroll-margin-top: 4.25rem;
+  }
+
   .layout {
     display: block;
     min-height: auto;
@@ -871,7 +882,7 @@ class RocnikContext:
 def _render_md_fragment(text: str) -> str:
     return markdown.markdown(
         text,
-        extensions=[TableExtension(), FencedCodeExtension()],
+        extensions=[TableExtension(), FencedCodeExtension(), AttrListExtension()],
     )
 
 

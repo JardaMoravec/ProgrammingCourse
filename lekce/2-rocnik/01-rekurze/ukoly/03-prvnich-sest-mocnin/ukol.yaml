@@ -2,8 +2,6 @@ title: Prvních šest mocnin
 stars: 2
 moodle: PRG-2-01-03
 description: |
-  **Známkovaný úkol.**
-
   Napište **rekurzivní** program: načtěte celé číslo větší než 1 a spočítejte
   **prvních šest mocnin** tohoto čísla (základ¹ až základ⁶).
 
