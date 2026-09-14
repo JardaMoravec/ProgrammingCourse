@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-label="Pes a kocka dedi ze zvirete">
+  <defs>
+    <marker id="arrow-ded" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="260" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-soft" x="250" y="24" width="220" height="80" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#2563eb">class Zvire</text>
+  <text class="d-muted" x="360" y="80" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">jmeno, vek, predstavit()</text>
+
+  <line class="d-stroke-accent" x1="300" y1="104" x2="180" y2="148" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-ded)"/>
+  <line class="d-stroke-accent" x1="420" y1="104" x2="540" y2="148" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-ded)"/>
+
+  <rect class="d-surface" x="60" y="156" width="200" height="72" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="160" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">class Pes(Zvire)</text>
+  <text class="d-muted" x="160" y="208" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">stekej() &#8212; Haf!</text>
+
+  <rect class="d-surface" x="460" y="156" width="200" height="72" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="560" y="186" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">class Kocka(Zvire)</text>
+  <text class="d-muted" x="560" y="208" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">zamnoukej() &#8212; Mnou!</text>
+
+  <text class="d-muted" x="360" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">pes JE zv&#237;&#345;e &#8212; proto d&#283;d&#237;, kop&#237;rovat predstavit() nemus&#237;</text>
+</svg>

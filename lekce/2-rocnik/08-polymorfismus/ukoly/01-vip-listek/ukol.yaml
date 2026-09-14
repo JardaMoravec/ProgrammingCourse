@@ -1,0 +1,29 @@
+title: VIP lístek
+stars: 1
+moodle: PRG-2-08-01
+description: |
+  Lístek do kina **je** lístek — VIP jen jinak popíše sedadlo.
+
+  Třída `Listek` s konstruktorem `__init__(self, sedadlo)` a metodou
+  `popis(self)`, která vrátí sedadlo (text).
+
+  Třída `VipListek(Listek)` metodu `popis` **přepíše**: vrátí
+  `VIP ` a sedadlo (mezera za VIP).
+
+  Načtěte jeden řádek (označení sedadla) a vypište `popis()`
+  u objektu `VipListek`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: rada-a
+    input: |
+      A12
+    output: "VIP A12"
+  - name: rada-c
+    input: |
+      C1
+    output: "VIP C1"
+io: |
+  **Vstup:** jedno označení sedadla
+  **Výstup:** jeden řádek z `popis()`

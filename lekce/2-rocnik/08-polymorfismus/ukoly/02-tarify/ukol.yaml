@@ -1,0 +1,31 @@
+title: Tarify
+stars: 2
+moodle: PRG-2-08-02
+description: |
+  Různé tarify **jsou** tarif — stejná metoda `cena()`, jiné číslo.
+
+  Třída `Tarif` s metodou `cena(self)`, která vrátí `100`.
+  `StudentTarif(Tarif)` přepíše `cena` na `50`.
+  `SeniorTarif(Tarif)` přepíše `cena` na `70`.
+
+  Vytvořte **přesně** tyto tři objekty (žádný `input`) a dejte je
+  do seznamu v pořadí: obyčejný tarif, studentský, seniorský.
+  Cyklem vypište `cena()` u každého.
+
+  V cyklu **nepoužívejte** `if` podle typu. Jeden `print` na řádek.
+
+  Přesně tři řádky:
+
+  `100`
+  `50`
+  `70`
+
+cases:
+  - name: tri-tarify
+    output: |-
+      100
+      50
+      70
+io: |
+  **Vstup:** žádný
+  **Výstup:** tři řádky cen z jednoho cyklu

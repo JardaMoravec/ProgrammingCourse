@@ -1,0 +1,39 @@
+title: Pizza
+stars: 1
+moodle: PRG-2-07-01
+description: |
+  Pizza **je** jídlo — společné věci patří rodiči.
+
+  Třída `Jidlo` s konstruktorem `__init__(self, nazev, cena)` (cena je
+  celé číslo). Metoda `s_dph(self)` vrátí cenu zvýšenou o 21 % jako
+  celé číslo: `cena + cena * 21 // 100`.
+
+  Třída `Pizza(Jidlo)` má v konstruktoru navíc `prumer` (celé číslo,
+  centimetry). Použijte `super()`. `__str__` vrátí
+  `nazev, prumer cm`.
+
+  Načtěte tři řádky: název, cenu, průměr.
+  Vypište `print(pizza)` a na dalším řádku výsledek `s_dph()`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: quattro
+    input: |
+      Quattro
+      189
+      32
+    output: |-
+      Quattro, 32 cm
+      228
+  - name: margherita
+    input: |
+      Margherita
+      100
+      28
+    output: |-
+      Margherita, 28 cm
+      121
+io: |
+  **Vstup:** název, cena, průměr (každé na řádku)
+  **Výstup:** dva řádky — `print(pizza)` a cena s DPH

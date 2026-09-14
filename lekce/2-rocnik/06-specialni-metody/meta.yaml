@@ -1,0 +1,15 @@
+id: 06-specialni-metody
+rocnik: 2
+nazev: Speciální metody a vlastnosti
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [05-metody]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [implementace metod třídy, implementace řádkových metod]
+tagy: [oop, str, vlastnosti, zapouzdreni]
+znamkovany_tajny: true
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Speciální metoda __str__)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 10"

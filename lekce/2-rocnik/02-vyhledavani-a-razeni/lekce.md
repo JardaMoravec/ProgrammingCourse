@@ -182,7 +182,9 @@ x = int(input())
 | binární hledání | seznam je seřazený | půlení úseku |
 | bublinkové řazení | — | prohazovat sousedy |
 
-Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že v kódu opravdu je rekurze, binární půlení, nebo vlastní řazení (ne `sort`).
+Automatický test v AMOS u cvičných úkolů kontroluje **výstup**. Učitel může zkontrolovat, že v kódu opravdu je rekurze, binární půlení, nebo vlastní řazení (ne `sort`).
+
+Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele.
 
 ## Co dál
 

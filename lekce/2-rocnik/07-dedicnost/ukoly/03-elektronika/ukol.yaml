@@ -1,0 +1,39 @@
+title: Mobil a notebook
+stars: 2
+moodle: PRG-2-07-03
+description: |
+  Oba přístroje **jsou** elektronika (displej, váha, cena).
+
+  Třída `Elektronika`: `displej`, `vaha`, `cena`.
+  Metoda `zvys_cenu(self, procenta)` zvýší cenu o zadaná procenta
+  (10 znamená +10 %). Cenu držte jako **celé číslo**, např.
+  `self.cena = self.cena + self.cena * procenta // 100`.
+  `__str__` vrátí jen to číslo (bez desetinné tečky).
+
+  `Mobil(Elektronika)` má navíc `pocet_sim` a `typ_sim`.
+  `Notebook(Elektronika)` má navíc `velikost_hdd` a `lan` (`True`/`False`).
+
+  Společné atributy a `zvys_cenu` pište **jen** u rodiče. `super()`
+  v konstruktorech potomků.
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - mobil: displej 6.1, váha 180, cena 10000, 2 SIM, typ nano
+  - notebook: displej 15.6, váha 1800, cena 20000, HDD 512, LAN True
+
+  U notebooku zavolejte `zvys_cenu(10)`. Vypište `print(mobil)`
+  a `print(notebook)`.
+
+  Přesně dva řádky:
+
+  `10000`
+  `22000`
+
+cases:
+  - name: ceny
+    output: |-
+      10000
+      22000
+io: |
+  **Vstup:** žádný
+  **Výstup:** dvě ceny (mobil, notebook po zdražení)

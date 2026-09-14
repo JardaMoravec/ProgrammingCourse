@@ -1,0 +1,30 @@
+title: Kniha a __str__
+stars: 1
+moodle: PRG-2-06-01
+description: |
+  Načtěte dva řádky: název knihy a rok vydání (rok je celé číslo).
+
+  Třída `Kniha` s konstruktorem `__init__(self, nazev, rok)` a metodou
+  `__str__`. V hlavním programu objekt **vypište** přes `print(kniha)`
+  (ne skládejte větu ručně v `print`).
+
+  Výstup přesně:
+
+  `Válka s Mloky (1936)`
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: mloci
+    input: |
+      Válka s Mloky
+      1936
+    output: "Válka s Mloky (1936)"
+  - name: rur
+    input: |
+      R.U.R.
+      1920
+    output: "R.U.R. (1920)"
+io: |
+  **Vstup:** název, rok (každé na vlastním řádku)
+  **Výstup:** jedna věta z `print(kniha)` — `NAZEV (ROK)`

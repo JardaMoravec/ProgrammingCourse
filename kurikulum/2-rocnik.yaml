@@ -87,7 +87,8 @@ moduly:
               - "úkol 3 - hledání pomocí rekurze"
               - "počet výskytů rekurzí"
               - "binární hledání"
-              - "úkol 6 - řadící algoritmus - na známky"
+              - "úkol 6 - řadící algoritmus"
+              - "známkovaný úkol (tajné zadání)"
 
   - id: oop
     nazev: Úvod do objektového programování
@@ -136,7 +137,10 @@ moduly:
             svp: [implementace metod třídy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [04-konstruktor]
-            ukoly_zdroje: ["úkol 8b - oop - autoservis", "úkol 9 - oop - email", "úkol 13 - oop - oblečení"]
+            ukoly_zdroje:
+              - "úkol 9 - oop - email (bez __str__)"
+              - "úkol 13 - oop - oblečení (jen Triko, bez dědičnosti)"
+              - "úkol 8b - oop - autoservis"
 
           - id: "06-specialni-metody"
             soubor: lekce/2-rocnik/06-specialni-metody
@@ -145,7 +149,10 @@ moduly:
             svp: [implementace metod třídy, implementace řádkových metod]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [05-metody]
-            ukoly_zdroje: ["úkol 10 - oop- test"]
+            ukoly_zdroje:
+              - "kniha — __str__ ze vstupu"
+              - "osoba a adresa — složení a vlastnosti"
+              - "známkovaný úkol (tajné zadání)"
 
       - id: dedicnost-a-navrh
         nazev: Dědičnost, polymorfismus a návrh
@@ -158,7 +165,10 @@ moduly:
             svp: [struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [06-specialni-metody]
-            ukoly_zdroje: ["úkol 11 - oop - elektro", "úkol 12 - oop - elektro 2"]
+            ukoly_zdroje:
+              - "pizza — jídlo (dědičnost ze života)"
+              - "úkol 13 - oop - oblečení (s rodičem)"
+              - "úkol 11 - oop - elektro (mobil a notebook)"
 
           - id: "08-polymorfismus"
             soubor: lekce/2-rocnik/08-polymorfismus
@@ -167,7 +177,10 @@ moduly:
             svp: [struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [07-dedicnost]
-            ukoly_zdroje: ["úkol 16a - oop - na známky", "úkol 16b - oop - na známky"]
+            ukoly_zdroje:
+              - "VIP lístek — přepis popis()"
+              - "tarify — seznam a stejné volání"
+              - "spořicí účet — super a __str__"
 
           - id: "09-staticke-cleny"
             soubor: lekce/2-rocnik/09-staticke-cleny

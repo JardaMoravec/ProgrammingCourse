@@ -1,0 +1,42 @@
+title: Osoba a adresa
+stars: 2
+moodle: PRG-2-06-02
+description: |
+  Třídy `Adresa` a `Osoba`. Instance adresy je atributem osoby.
+  Obě třídy mají konstruktor, `__str__`, jednu metodu **vracející**
+  hodnotu a jednu metodu **nastavující** atribut.
+
+  **Adresa:** `ulice`, `mesto`.
+  Metoda `mesto_adresy(self)` vrátí město.
+  Metoda `nastav_mesto(self, mesto)` nastaví město.
+  `__str__` vrátí `ulice, mesto`.
+
+  **Osoba:** `jmeno`, `adresa` (objekt `Adresa`).
+  Metoda `jmeno_osoby(self)` vrátí jméno.
+  Metoda `nastav_jmeno(self, jmeno)` nastaví jméno.
+  `__str__` vrátí `jmeno, ` a text adresy (`str(self.adresa)`).
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - adresa Komenskeho 12, Brno
+  - osoba Karel, tato adresa
+
+  Pak zavolejte `nastav_jmeno("Eva")` a `nastav_mesto("Ostrava")`.
+  Vypište `print(osoba)`, na dalším řádku `jmeno_osoby()`, na dalším
+  `mesto_adresy()`.
+
+  Přesně tři řádky:
+
+  `Eva, Komenskeho 12, Ostrava`
+  `Eva`
+  `Ostrava`
+
+cases:
+  - name: stahovani
+    output: |-
+      Eva, Komenskeho 12, Ostrava
+      Eva
+      Ostrava
+io: |
+  **Vstup:** žádný
+  **Výstup:** tři řádky — `print(osoba)`, jméno, město

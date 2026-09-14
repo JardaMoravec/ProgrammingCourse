@@ -205,4 +205,4 @@ Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, ž
 
 ## Co dál
 
-Další lekce: **Metody a self** — funkce, které patří objektu.
+→ [Lekce 05: Metody a self](../05-metody/lekce.md)

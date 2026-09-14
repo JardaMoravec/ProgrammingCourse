@@ -1,0 +1,43 @@
+title: Mailer
+stars: 2
+moodle: PRG-2-05-01
+description: |
+  Vytvořte třídy `Osoba` a `Email` s konstruktorem a **metodami**.
+  Speciální metodu `__str__` nepište.
+
+  **Osoba:** `jmeno`, `prijmeni`, `email`, `email_server`.
+  Metoda `cele_jmeno(self)` vrátí jméno a příjmení oddělené mezerou.
+
+  **Email:** `predmet`, `obsah`, `datum_odeslani`, `potvrzeno_prijeti`
+  (bool), `odesilatel` a `prijemce` (objekty `Osoba`).
+  Metody:
+
+  - `odeslat_email(self)` — prázdné tělo (`pass`), nic nevypisuje
+  - `info_odesilatel(self)` — vrátí `jmeno prijmeni, email`
+  - `info_prijemce(self)` — stejný tvar pro příjemce
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - odesílatel Karel Novak, karel@firma.cz, server smtp.firma.cz
+  - příjemce Eva Svobodova, eva@skola.cz, server mail.skola.cz
+  - e-mail předmět Schuzka, obsah Ahoj, datum 2026-09-14,
+    potvrzeno_prijeti False
+
+  Vypište **přesně** čtyři řádky (cele_jmeno odesílatele, cele_jmeno
+  příjemce, info_odesilatel, info_prijemce):
+
+  `Karel Novak`
+  `Eva Svobodova`
+  `Karel Novak, karel@firma.cz`
+  `Eva Svobodova, eva@skola.cz`
+
+cases:
+  - name: schuzka
+    output: |-
+      Karel Novak
+      Eva Svobodova
+      Karel Novak, karel@firma.cz
+      Eva Svobodova, eva@skola.cz
+io: |
+  **Vstup:** žádný
+  **Výstup:** čtyři řádky z metod cele_jmeno a info_*

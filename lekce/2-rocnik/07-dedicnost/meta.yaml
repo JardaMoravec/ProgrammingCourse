@@ -1,0 +1,14 @@
+id: 07-dedicnost
+rocnik: 2
+nazev: Dědičnost
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [06-specialni-metody]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [struktury, dědičnost, mnohotvárnost]
+tagy: [oop, dedicnost, rodic, potomek, super]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Dědičnost)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 11, 13"

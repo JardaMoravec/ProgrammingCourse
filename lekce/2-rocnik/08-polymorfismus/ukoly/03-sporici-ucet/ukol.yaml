@@ -1,0 +1,32 @@
+title: Spořicí účet
+stars: 2
+moodle: PRG-2-08-03
+description: |
+  Spořicí účet **je** účet — výpis rodiče doplníte, nekopírujete.
+
+  Třída `Ucet` s konstruktorem `__init__(self, zustatek)` (celé číslo).
+  `__str__` vrátí `zustatek Kc` (mezera před `Kc`).
+
+  Třída `SporiciUcet(Ucet)` má v konstruktoru navíc `urok` (celé číslo,
+  procenta). Použijte `super()`. `__str__` vrátí výsledek
+  `super().__str__()` a připojí `, urok X %` (X je číslo úroku).
+
+  Načtěte dva řádky: zůstatek, úrok.
+  Vypište `print` objektu `SporiciUcet`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+
+cases:
+  - name: pet-tisic
+    input: |
+      5000
+      2
+    output: "5000 Kc, urok 2 %"
+  - name: nula
+    input: |
+      0
+      1
+    output: "0 Kc, urok 1 %"
+io: |
+  **Vstup:** zůstatek, úrok (každé na řádku)
+  **Výstup:** jeden řádek z `print` spořicího účtu

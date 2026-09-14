@@ -127,6 +127,10 @@ def strip_format_from_description(description: str) -> str:
     return "\n".join(kept).strip()
 
 
+def is_truthy_meta(value: str) -> bool:
+    return value.strip().lower() in ("true", "ano", "1", "yes")
+
+
 def build_ukoly_md(
     lesson_id: str,
     lesson_name: str,
@@ -134,6 +138,7 @@ def build_ukoly_md(
     rocnik: str,
     *,
     has_cviceni: bool = True,
+    tajny_znamkovany: bool = False,
 ) -> str:
     num = lesson_id[:2]
     types = {(t.get("typ") or "vpl") for t in tasks}
@@ -181,6 +186,16 @@ def build_ukoly_md(
             parts += ["**Formát:**", "", str(t["io"]).strip(), ""]
         if t.get("odevzdani"):
             parts += ["**Odevzdání:**", "", str(t["odevzdani"]).strip(), ""]
+    if tajny_znamkovany:
+        parts += [
+            "---",
+            "",
+            "## Známkovaný úkol {#ukol-znamkovany}",
+            "",
+            "Lekce končí **známkovaným úkolem**. Zadání je **tajné** — dostanete ho",
+            "od učitele. V těchto materiálech ani v AMOS předem není.",
+            "",
+        ]
     return "\n".join(parts)
 
 
@@ -195,6 +210,7 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
             tasks,
             rocnik,
             has_cviceni=(lesson_dir / "cviceni.md").is_file(),
+            tajny_znamkovany=is_truthy_meta(meta.get("znamkovany_tajny", "")),
         ),
         encoding="utf-8",
     )

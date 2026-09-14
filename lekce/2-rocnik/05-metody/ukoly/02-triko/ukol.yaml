@@ -1,0 +1,39 @@
+title: Sklad triček
+stars: 2
+moodle: PRG-2-05-02
+description: |
+  Třída `Triko` s konstruktorem
+  `__init__(self, pocet_kusu, velikost, barva, znacka, s_lemecek, s_vreckem)`
+  (`s_lemecek` a `s_vreckem` jsou `True` / `False`).
+
+  Metody:
+
+  - `naskladnit(self, pocet)` — zvýší `pocet_kusu` o `pocet`
+  - `prodat(self, pocet)` — sníží `pocet_kusu` o `pocet`
+
+  Speciální metodu `__str__` nepište. Společného rodiče s kalhotami
+  a botami zatím nedělejte — to je lekce 07 (dědičnost).
+
+  Načtěte tři celá čísla: počáteční počet, kolik naskladnit, kolik
+  prodat. Vytvořte triko velikost `L`, barva `modra`, značka `Nike`,
+  s lemečkem `True`, s kapsou `False`. Zavolejte obě metody.
+  Vypište jen výsledný počet kusů.
+
+  Pro automatický test použijte `int(input())` **bez textu**.
+
+cases:
+  - name: deset-plus-pet-minus-tri
+    input: |
+      10
+      5
+      3
+    output: "12"
+  - name: nula
+    input: |
+      0
+      2
+      1
+    output: "1"
+io: |
+  **Vstup:** počáteční počet, naskladnit, prodat (celá čísla, každé na řádku)
+  **Výstup:** výsledný počet kusů (jedno číslo)

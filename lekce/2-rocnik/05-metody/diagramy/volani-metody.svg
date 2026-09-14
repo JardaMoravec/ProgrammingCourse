@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-label="Volani o.cele_jmeno predava objekt jako self">
+  <defs>
+    <marker id="arrow-met" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path class="d-accent" d="M0,0 L8,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect class="d-bg" width="720" height="240" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="28" y="56" width="160" height="120" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="108" y="92" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#1a1d26">objekt o</text>
+  <text class="d-accent" x="108" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#2563eb">jmeno = Karel</text>
+  <text class="d-muted" x="108" y="148" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#5c6370">prijmeni = Om&#225;&#269;ka</text>
+
+  <line class="d-stroke-accent" x1="188" y1="116" x2="252" y2="116" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-met)"/>
+
+  <rect class="d-soft" x="260" y="56" width="200" height="120" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="92" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#2563eb">o.cele_jmeno()</text>
+  <text class="d-muted" x="360" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">self je o</text>
+  <text class="d-muted" x="360" y="148" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">self do z&#225;vorek nep&#237;&#353;ete</text>
+
+  <line class="d-stroke-accent" x1="460" y1="116" x2="524" y2="116" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-met)"/>
+
+  <rect class="d-surface" x="532" y="72" width="160" height="88" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="612" y="108" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">n&#225;vrat</text>
+  <text class="d-accent" x="612" y="136" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="600" fill="#2563eb">Karel Om&#225;&#269;ka</text>
+
+  <text class="d-muted" x="360" y="214" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">metoda &#269;te atributy p&#345;es self</text>
+</svg>

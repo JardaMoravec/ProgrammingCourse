@@ -9,7 +9,7 @@ Předmět má **170 hodin** (34 týdnů × 5 h). Ve 3. ročníku se SQL znovu ne
 | Blok | Hodiny | Co se naučíte |
 |------|--------|----------------|
 | Algoritmizace | 20 h | rekurze, vyhledávání a řazení — základ |
-| Objektové programování | 45 h | třída, objekt, konstruktor, metody, dědičnost |
+| Objektové programování | 45 h | třída, objekt, konstruktor, metody, dědičnost, polymorfismus |
 | SQL | 70 h | tabulky, `SELECT`, `JOIN`, úpravy dat, `sqlite3` v Pythonu |
 | Aplikované programování | 35 h | konzolová aplikace s databází a závěrečný projekt |
 

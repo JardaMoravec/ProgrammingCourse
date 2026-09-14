@@ -1,0 +1,49 @@
+title: Autoservis — metody
+stars: 3
+moodle: PRG-2-05-03
+description: |
+  Navazuje na autoservis z lekce 04 — tentokrát **s metodami**.
+  Třídy `Motor`, `Kolo` a `Auto` s konstruktorem. `__str__` nepište.
+
+  **Kolo:** metoda `kontrola_tlaku_pneu(self)` vrátí `True`, když
+  `aktualni_tlak` **není větší** než `maximalni_tlak`, jinak `False`.
+
+  **Auto:**
+
+  - `vypis_info(self)` vypíše `znacka typ, spz`
+  - `prodlouzit_stk(self, nove_datum)` nastaví `stk_do`
+  - `info_o_motoru(self)` vypíše `typ obsah palivo`
+  - `kontrola_tlaku_pneu(self)` vrátí `True`, jen když **všechna čtyři**
+    kola projdou `kontrola_tlaku_pneu`; metodu kola **zavolejte**
+    (nekopírujte vzorec do auta)
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - SPZ `1A2 3456`, VIN `TMB123`, STK `2027-06-30`
+  - značka Skoda, typ Octavia, barva seda, karoserie combi
+  - motor TSI, obsah 1500, palivo benzin
+  - všechna kola: max. tlak 2.5, výrobce Michelin, typ letni
+  - aktuální tlak: LP 2.2, PP 2.2, LZ 2.6, PZ 2.2
+    (levé zadní je nad maximem)
+
+  V hlavním programu: `vypis_info()`, `info_o_motoru()`,
+  `prodlouzit_stk("2028-06-30")`, vypište `stk_do`, vypište výsledek
+  `kontrola_tlaku_pneu()`.
+
+  Přesně čtyři řádky:
+
+  `Skoda Octavia, 1A2 3456`
+  `TSI 1500 benzin`
+  `2028-06-30`
+  `False`
+
+cases:
+  - name: octavia-tlak
+    output: |-
+      Skoda Octavia, 1A2 3456
+      TSI 1500 benzin
+      2028-06-30
+      False
+io: |
+  **Vstup:** žádný
+  **Výstup:** čtyři řádky (info, motor, nové STK, kontrola tlaku)

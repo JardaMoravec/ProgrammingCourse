@@ -1,0 +1,38 @@
+title: Sklad oblečení
+stars: 2
+moodle: PRG-2-07-02
+description: |
+  Navazuje na tričko z lekce 05 — tentokrát s **rodičem**.
+
+  Třída `Obleceni`: `pocet_kusu`, `velikost`, `barva`, `znacka`.
+  Metody `naskladnit(self, pocet)` a `prodat(self, pocet)`.
+  `__str__` vrátí `znacka velikost, kusu N`.
+
+  `Triko(Obleceni)` má navíc `s_lemecek` a `s_vreckem` (`True`/`False`).
+  `Kalhoty(Obleceni)` mají navíc `typ` a `material`.
+
+  Společné věci pište **jen** u `Obleceni`. V konstruktorech potomků
+  použijte `super()`.
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - triko 10 kusů, L, modra, Nike, lemeček True, kapsa False;
+    naskladněte 5, prodejte 3
+  - kalhoty 4 kusy, 32, cerna, Levi, typ rifle, material riflovina;
+    naskladněte 1
+
+  Vypište `print(triko)` a `print(kalhoty)`.
+
+  Přesně dva řádky:
+
+  `Nike L, kusu 12`
+  `Levi 32, kusu 5`
+
+cases:
+  - name: sklad
+    output: |-
+      Nike L, kusu 12
+      Levi 32, kusu 5
+io: |
+  **Vstup:** žádný
+  **Výstup:** dva řádky z `print` trička a kalhot

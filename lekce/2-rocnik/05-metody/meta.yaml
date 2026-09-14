@@ -1,0 +1,14 @@
+id: 05-metody
+rocnik: 2
+nazev: Metody a self
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [04-konstruktor]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [implementace metod třídy]
+tagy: [oop, metoda, self]
+migrovano_z:
+  - "zdroje/Programování 2.docx (kap. Metody)"
+  - "zdroje/Programování 2 – Python manuál.docx"
+  - "zdroje/Úkoly 2/úkol 8b, 9, 13"
