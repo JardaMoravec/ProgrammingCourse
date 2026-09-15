@@ -7,4 +7,5 @@ obtiznost: pokrocily
 prerekvizity: [26-soubory-zapis]
 kompetence: [k3-strukturovane-programy]
 svp: [funkce]
+znamkovany_tajny: true
 migrovano_z: ["kurikulum/1-rocnik.yaml"]

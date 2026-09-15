@@ -7,4 +7,5 @@ obtiznost: stredni
 prerekvizity: [20-cykly-nad-kolekcemi]
 kompetence: [k3-strukturovane-programy]
 svp: [pole]
+znamkovany_tajny: true
 migrovano_z: ["kurikulum/1-rocnik.yaml"]

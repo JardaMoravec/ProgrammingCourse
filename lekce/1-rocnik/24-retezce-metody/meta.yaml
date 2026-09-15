@@ -7,4 +7,5 @@ obtiznost: stredni
 prerekvizity: [23-retezce-zaklady]
 kompetence: [k3-strukturovane-programy]
 svp: [znaky, řetězce]
+znamkovany_tajny: true
 migrovano_z: ["kurikulum/1-rocnik.yaml"]

@@ -106,6 +106,8 @@ moduly:
             svp: [paměť a datové typy]
             kompetence: [k1-datove-typy]
             prerekvizity: [06-vstup-a-vystup]
+            ukoly_zdroje:
+              - "známkovaný úkol (tajné zadání)"
 
           - id: "08-porovnaci-operatory"
             soubor: lekce/1-rocnik/08-porovnaci-operatory
@@ -122,6 +124,8 @@ moduly:
             svp: [řídicí struktury]
             kompetence: [k2-ridici-struktury]
             prerekvizity: [08-porovnaci-operatory]
+            ukoly_zdroje:
+              - "známkovaný úkol (tajné zadání)"
 
       - id: ridici-struktury
         nazev: Řídicí struktury a cykly
@@ -174,6 +178,8 @@ moduly:
             svp: [cykly, funkce]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [14-ridici-struktury-procviceni]
+            ukoly_zdroje:
+              - "známkovaný úkol (tajné zadání)"
 
       - id: pole-a-kolekce
         nazev: Pole a datové struktury
@@ -226,6 +232,8 @@ moduly:
             svp: [pole]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [20-cykly-nad-kolekcemi]
+            ukoly_zdroje:
+              - "známkovaný úkol (tajné zadání)"
 
           - id: "22-moduly-a-import"
             soubor: lekce/1-rocnik/22-moduly-a-import
@@ -254,6 +262,8 @@ moduly:
             svp: [znaky, řetězce]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [23-retezce-zaklady]
+            ukoly_zdroje:
+              - "známkovaný úkol (tajné zadání)"
 
           - id: "25-soubory-cteni"
             soubor: lekce/1-rocnik/25-soubory-cteni
@@ -278,10 +288,13 @@ moduly:
             svp: [funkce]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [26-soubory-zapis]
+            ukoly_zdroje:
+              - "známkovaný úkol (tajné zadání)"
 
 hodnoceni:
   - elektronické testy (Moodle VPL)
   - samostatné úkoly (Moodle VPL)
+  - známkované úkoly s tajným zadáním (lekce 07, 09, 15, 21, 24, 27)
   - práce v hodině (cvičení)
   - aktivita
 

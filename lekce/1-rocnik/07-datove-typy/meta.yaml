@@ -7,6 +7,7 @@ obtiznost: zacatecnik
 prerekvizity: [06-vstup-a-vystup]
 kompetence: [k1-datove-typy]
 svp: [paměť a datové typy]
+znamkovany_tajny: true
 migrovano_z:
   - "zdroje/Programování 1.docx (kap. Základní datové typy)"
   - "zdroje/02 - Proměnné, datové typy a operátory v Pythonu.pptx"

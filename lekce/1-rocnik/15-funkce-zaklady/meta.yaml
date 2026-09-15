@@ -7,4 +7,5 @@ obtiznost: stredni
 prerekvizity: [14-ridici-struktury-procviceni]
 kompetence: [k3-strukturovane-programy]
 svp: [cykly, funkce]
+znamkovany_tajny: true
 migrovano_z: ["kurikulum/1-rocnik.yaml"]

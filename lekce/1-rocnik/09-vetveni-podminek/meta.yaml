@@ -7,6 +7,7 @@ obtiznost: zacatecnik
 prerekvizity: [08-porovnaci-operatory]
 kompetence: [k2-ridici-struktury]
 svp: [řídicí struktury]
+znamkovany_tajny: true
 migrovano_z:
   - "zdroje/Programování 1.docx (kap. Logické operátory — Příklady kódu)"
   - "zdroje/Úkoly 1/úkol 3, 6, 9"

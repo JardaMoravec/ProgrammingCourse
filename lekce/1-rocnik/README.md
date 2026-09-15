@@ -55,6 +55,8 @@ Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / inst
 
 **Celkem: 97 úkolů** s VPL testy (lekce 04–27). Volitelně [bonus](../bonus/README.md) mimo 81 h (konzole, Git, Docker, CSV/JSON/XML).
 
+Známkované úkoly s tajným zadáním (nejsou v materiálu, hodnotí učitel) na konci lekcí **07**, **09**, **15**, **21**, **24** a **27**.
+
 ## Build
 
 ```bash
