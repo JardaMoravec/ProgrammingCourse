@@ -1,9 +1,11 @@
 title: Validace celého čísla
-stars: 3
+stars: 2
 description: |
-  Napište program, který opakovaně načítá vstup, dokud uživatel nezadá **celé číslo v rozsahu −100 až 100**.
+  Napište program, který načte **jeden** vstup a ověří, zda je to **celé číslo
+  v rozsahu −100 až 100**. Cyklus `while` nepoužívejte.
 
-  Při chybě vypište: `Chyba: zadejte celé číslo v rozsahu -100 až 100.`
+  Při chybě (text, desetinné číslo, hodnota mimo rozsah) vypište:
+  `Chyba: zadejte celé číslo v rozsahu -100 až 100.`
 
   Po úspěchu vypište: `Číslo je X.` (kde X je zadané číslo) a program skončí.
 cases:
@@ -11,17 +13,23 @@ cases:
   input: |
     50
   output: Číslo je 50.
-- name: chyba-pak-ok
+- name: dolni-mez
+  input: |
+    -100
+  output: Číslo je -100.
+- name: horni-mez
+  input: |
+    100
+  output: Číslo je 100.
+- name: mimo
+  input: |
+    200
+  output: 'Chyba: zadejte celé číslo v rozsahu -100 až 100.'
+- name: text
   input: |
     abc
-    200
-    -5
-  output: 'Chyba: zadejte celé číslo v rozsahu -100 až 100.
-
-    Chyba: zadejte celé číslo v rozsahu -100 až 100.
-
-    Číslo je -5.'
+  output: 'Chyba: zadejte celé číslo v rozsahu -100 až 100.'
 io: |
-  **Vstup:** jedno nebo více pokusů
-  **Výstup:** chybové hlášky a finální potvrzení
+  **Vstup:** jeden pokus
+  **Výstup:** potvrzení, nebo chybová hláška
 moodle: PRG-1-11-01

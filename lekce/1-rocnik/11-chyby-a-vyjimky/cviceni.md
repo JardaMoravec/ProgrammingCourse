@@ -4,44 +4,78 @@
 
 > Zdroj: `úkol 12 - procvičení výjimek.docx`
 
-Postupně ověřte vstup uživatele s konkrétní chybovou hláškou.
+Postupně ověřte vstup uživatele s konkrétní chybovou hláškou. Každý program má **jeden pokus** — při chybě vypište hlášku a skončete. Cyklus `while` ještě nepoužívejte.
+
+1. celé číslo v rozsahu −100 až 100
+2. desetinné číslo (`float`)
+3. sudé číslo (`x % 2 != 0` je chyba)
+4. dělení `10 / x` (`ZeroDivisionError`)
 
 @reseni
-Ukázka pro celé číslo v intervalu (bod 3):
+Celé číslo v intervalu:
 
 ```python
-while True:
-    try:
-        x = int(input("Celé číslo od -100 do 100: "))
-        if -100 <= x <= 100:
-            print(f"Číslo je {x}.")
-            break
+try:
+    x = int(input("Celé číslo od -100 do 100: "))
+    if not -100 <= x <= 100:
         raise ValueError("mimo interval")
-    except ValueError:
-        print("Chyba: zadejte celé číslo v rozsahu -100 až 100.")
+    print(f"Číslo je {x}.")
+except ValueError:
+    print("Chyba: zadejte celé číslo v rozsahu -100 až 100.")
 ```
 
-Obdobně pro desetinné číslo (`float`), sudé číslo (`x % 2 != 0`), dělení nulou (`ZeroDivisionError`).
+Desetinné číslo:
+
+```python
+try:
+    x = float(input("Desetinné číslo: "))
+    print(f"Číslo je {x}.")
+except ValueError:
+    print("Chyba: zadejte desetinné číslo.")
+```
+
+Sudé číslo:
+
+```python
+try:
+    x = int(input("Sudé číslo: "))
+    if x % 2 != 0:
+        raise ValueError("liché")
+    print(f"Číslo {x} je sudé.")
+except ValueError:
+    print("Chyba: zadejte sudé celé číslo.")
+```
+
+Dělení:
+
+```python
+try:
+    x = int(input("Dělitel: "))
+    print(f"10 / {x} = {10 / x}")
+except ValueError:
+    print("Chyba: zadejte celé číslo.")
+except ZeroDivisionError:
+    print("Chyba: nulou dělit nelze.")
+```
 @end
 
 ---
 
 ## Cvičení 2 — Bezpečný input (★★☆)
 
-Načtěte kladné celé číslo — dokud nedostane platný vstup.
+Načtěte **jedno** kladné celé číslo. Při chybě (text, nula, záporné) vypište `Neplatný vstup.` a skončete.
+
+Po úspěchu: `Děkuji, zadali jste: X`
 
 @reseni
 ```python
-while True:
-    try:
-        n = int(input("Zadejte kladné celé číslo: "))
-        if n <= 0:
-            raise ValueError("není kladné")
-        break
-    except ValueError:
-        print("Neplatný vstup. Zkuste znovu.")
-
-print("Děkuji, zadali jste:", n)
+try:
+    n = int(input("Zadejte kladné celé číslo: "))
+    if n <= 0:
+        raise ValueError("není kladné")
+    print("Děkuji, zadali jste:", n)
+except ValueError:
+    print("Neplatný vstup.")
 ```
 @end
 

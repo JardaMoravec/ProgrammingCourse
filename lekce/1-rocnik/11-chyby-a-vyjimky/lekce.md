@@ -20,7 +20,7 @@ migrovano_z:
 
 - Pochopíte, proč program „spadne“
 - Naučíte se odchytávat předvídatelné chyby
-- Napišete robustnější vstupní formulář
+- Ošetříte neplatný vstup, aniž by program spadl
 
 ## Typy problémů
 
@@ -47,15 +47,14 @@ except ValueError:
 ## Více typů výjimek
 
 ```python
-while True:
-    try:
-        x = int(input("Číslo: "))
-        y = 10 / x
-        break
-    except ValueError:
-        print("Zadejte celé číslo.")
-    except ZeroDivisionError:
-        print("Nulou dělit nelze.")
+try:
+    x = int(input("Číslo: "))
+    y = 10 / x
+    print("Výsledek:", y)
+except ValueError:
+    print("Zadejte celé číslo.")
+except ZeroDivisionError:
+    print("Nulou dělit nelze.")
 ```
 
 ## as — detail výjimky

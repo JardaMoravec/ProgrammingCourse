@@ -1,9 +1,10 @@
 title: Kladné celé číslo
 stars: 2
 description: |
-  Napište program, který opakovaně načítá vstup, dokud uživatel nezadá **kladné celé číslo**.
+  Napište program, který načte **jeden** vstup a ověří, zda je to **kladné celé
+  číslo**. Cyklus `while` nepoužívejte.
 
-  Při chybě: `Neplatný vstup. Zkuste znovu.`
+  Při chybě (text, nula, záporné číslo): `Neplatný vstup.`
 
   Po úspěchu: `Děkuji, zadali jste: X`
 cases:
@@ -11,19 +12,18 @@ cases:
   input: |
     5
   output: 'Děkuji, zadali jste: 5'
-- name: chyba-pak-ok
+- name: nula
   input: |
     0
+  output: Neplatný vstup.
+- name: zaporne
+  input: |
     -3
+  output: Neplatný vstup.
+- name: text
+  input: |
     abc
-    7
-  output: 'Neplatný vstup. Zkuste znovu.
-
-    Neplatný vstup. Zkuste znovu.
-
-    Neplatný vstup. Zkuste znovu.
-
-    Děkuji, zadali jste: 7'
+  output: Neplatný vstup.
 io: |
-  **Vstup:** jedno nebo více pokusů
-  **Výstup:** chyby a potvrzení
+  **Vstup:** jeden pokus
+  **Výstup:** potvrzení, nebo chybová hláška
