@@ -66,3 +66,44 @@ rozdil = prodejni - nakupni
 print("Rozdíl:", rozdil, "Kč")  # -40 Kč (ztráta)
 ```
 @end
+
+---
+
+## Cvičení 4 — Kopírování hodnoty (★☆☆)
+
+```python
+a = 3
+b = a
+a = 7
+print(a)
+print(b)
+```
+
+Co se vypíše? Nejdřív odhadněte, pak ověřte v Pythonu.
+
+@reseni
+Při `b = a` se do `b` uloží **tehdejší** hodnota `a`. Pozdější změna `a` už `b` neovlivní.
+
+```python
+a = 3
+b = a
+a = 7
+print(a)  # 7
+print(b)  # 3
+```
+@end
+
+---
+
+## Cvičení 5 — Složení textu (★☆☆)
+
+Do proměnných `jmeno` a `prijmeni` uložte jméno a příjmení. Složte z nich `cele_jmeno` (mezera mezi nimi) a vypište pozdrav ve tvaru `Ahoj, Anna Novák!`
+
+@reseni
+```python
+jmeno = "Anna"
+prijmeni = "Novák"
+cele_jmeno = jmeno + " " + prijmeni
+print("Ahoj, " + cele_jmeno + "!")
+```
+@end

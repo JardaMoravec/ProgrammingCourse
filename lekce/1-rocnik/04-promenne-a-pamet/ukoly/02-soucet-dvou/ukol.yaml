@@ -1,6 +1,6 @@
 title: Součet dvou proměnných
 stars: 1
-moodle: PRG-1-04-03
+moodle: PRG-1-04-02
 description: |
   Napište program s proměnnými `a = 12` a `b = 8`.
   Uložte součet do proměnné `soucet` a vypište:

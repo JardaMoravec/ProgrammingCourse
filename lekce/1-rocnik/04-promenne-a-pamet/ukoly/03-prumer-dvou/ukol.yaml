@@ -1,6 +1,6 @@
 title: Průměr dvou čísel
 stars: 2
-moodle: PRG-1-04-04
+moodle: PRG-1-04-03
 description: |
   Napište program s proměnnými `a = 14` a `b = 6`.
   Vypočítejte aritmetický průměr a vypište:

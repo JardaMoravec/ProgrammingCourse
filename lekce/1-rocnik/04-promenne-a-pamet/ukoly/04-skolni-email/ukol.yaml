@@ -1,0 +1,14 @@
+title: Školní e-mail
+stars: 1
+moodle: PRG-1-04-04
+description: |
+  Napište program s proměnnými `uzivatel = "karel"` a `domena = "skola.cz"`.
+  Složte z nich e-mailovou adresu (znak `@` mezi nimi) a vypište ji.
+
+  Očekávaný výstup: `karel@skola.cz`
+io: |
+  **Vstup:** žádný (hodnoty jsou v kódu)
+  **Výstup:** `karel@skola.cz`
+cases:
+  - name: karel na skola.cz
+    output: "karel@skola.cz"
