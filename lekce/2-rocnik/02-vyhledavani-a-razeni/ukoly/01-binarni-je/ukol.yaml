@@ -1,0 +1,45 @@
+title: Binární hledání (True / False)
+stars: 2
+moodle: PRG-2-02-01
+description: |
+  Načtěte jeden řádek **vzestupně seřazených** celých čísel a na druhém řádku
+  hledané číslo.
+
+  Zjistěte **binárním hledáním** (půlení seznamu), zda se číslo vyskytuje.
+  Funkce vrací jen `True` nebo `False` — **pozici nehledejte**.
+
+  Lineární průchod (`for` / `while` přes celý seznam) ani operátor `in`
+  nejsou přípustné.
+
+  Vypište přesně `True` nebo `False` (jako `print` v Pythonu).
+
+  Pro automatický test použijte `input()` **bez textu**.
+cases:
+  - name: uprostred
+    input: |
+      1 4 9 16 25 36 49 64
+      25
+    output: "True"
+  - name: prvni
+    input: |
+      1 4 9 16 25 36 49 64
+      1
+    output: "True"
+  - name: posledni
+    input: |
+      1 4 9 16 25 36 49 64
+      64
+    output: "True"
+  - name: neni-mezi
+    input: |
+      1 4 9 16 25 36 49 64
+      10
+    output: "False"
+  - name: neni-mimo
+    input: |
+      1 4 9 16 25 36 49 64
+      100
+    output: "False"
+io: |
+  **Vstup:** seřazená čísla na jednom řádku, pak hledané číslo
+  **Výstup:** `True` nebo `False`

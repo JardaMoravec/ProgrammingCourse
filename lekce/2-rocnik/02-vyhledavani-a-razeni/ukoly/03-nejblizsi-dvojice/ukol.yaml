@@ -1,0 +1,42 @@
+title: Nejbližší dvojice
+stars: 3
+moodle: PRG-2-02-03
+description: |
+  Načtěte jeden řádek celých čísel (nejméně dvě). Seřaďte je **vlastním**
+  algoritmem (`sort()`, `sorted()` a podobné funkce jsou zakázané).
+
+  V seřazeném seznamu najděte dva **sousedy** s nejmenším rozdílem.
+  Když je takových dvojic víc, vezměte tu **vlevo** (menší čísla).
+
+  Vypište obě čísla na jeden řádek, menší první.
+
+  Příklad: `8 3 10 1 6` → seřazeno `1 3 6 8 10` → nejmenší rozdíl je 2
+  u dvojice `1 3`, výstup:
+
+  `1 3`
+
+  Pro automatický test použijte `input()` **bez textu**.
+cases:
+  - name: zaklad
+    input: |
+      8 3 10 1 6
+    output: "1 3"
+  - name: uz-serazeny
+    input: |
+      1 2 10
+    output: "1 2"
+  - name: duplicity
+    input: |
+      4 7 4
+    output: "4 4"
+  - name: zaporna
+    input: |
+      -10 -1 0 20
+    output: "-1 0"
+  - name: dva
+    input: |
+      9 4
+    output: "4 9"
+io: |
+  **Vstup:** jeden řádek celých čísel
+  **Výstup:** dvě čísla s nejmenším rozdílem, menší první

@@ -9,6 +9,7 @@ cile:
   - Najdete prvek lineárním hledáním (cyklus i rekurze)
   - Najdete prvek binárním hledáním v seřazeném seznamu
   - Seřadíte seznam vlastním algoritmem (bez sort)
+  - Porovnáte počet kroků algoritmů podle počtu položek
 migrovano_z:
   - "zdroje/Programování 2.docx (kap. Vyhledávací algoritmy)"
   - "zdroje/Programování 2 – Python manuál.docx"
@@ -16,7 +17,7 @@ migrovano_z:
 
 # Vyhledávání a řazení — základ
 
-Lekce má **10 hodin** (dva týdny). Navazuje na [rekurzi](../01-rekurze/lekce.md). Bez složitosti algoritmů — jen postup, který umíte napsat.
+Lekce má **10 hodin** (dva týdny). Navazuje na [rekurzi](../01-rekurze/lekce.md). U každého postupu uvidíte, **kolik kroků** potřebuje vzhledem k počtu položek.
 
 V 1. ročníku jste v seznamu hledali cyklem a řadili jste `sort()`. Tady uvidíte, **jak** hledání a řazení funguje uvnitř. Vestavěné `sort()` / `sorted()` v úkolech **nejsou** povolené.
 
@@ -25,6 +26,7 @@ V 1. ročníku jste v seznamu hledali cyklem a řadili jste `sort()`. Tady uvid�
 - Projdete seznam **lineárně** (od začátku) cyklem i rekurzí
 - Použijete **binární hledání**, když je seznam **seřazený**
 - Napíšete **bublinkové řazení** — bez `sort()` a `sorted()`
+- Odhadnete, jak počet kroků roste s délkou seznamu
 
 ## Kdy který postup
 
@@ -68,6 +70,8 @@ def linearni_rek(pole, x, i=0):
 
 Bazický případ: index je za koncem → prvek tam **není**.
 
+**Složitost:** v nejhorším případě (prvek chybí, nebo je až na konci) zkontrolujete **každou** položku. U `n` prvků je to až **`n` porovnání**. Tisíc položek → až tisíc kroků.
+
 → viz `priklady/linearni_hledani.py`
 
 ## Binární hledání
@@ -78,20 +82,21 @@ Funguje jen nad **seřazeným** seznamem (od nejmenšího). Myšlenka: podívát
 - střed je **větší** → hledejte jen v **levé** polovině
 - střed je **menší** → hledejte jen v **pravé** polovině
 
-Na osmi číslech stačí pár porovnání místo až osmi.
+Každý krok **rozřízne seznam na dvě poloviny** a dál pracujete jen s jednou z nich.
 
 ```python
-def binarni(pole, x, levy=0, pravy=None):
-    if pravy is None:
-        pravy = len(pole) - 1
-    if levy > pravy:
+def binarni(pole, x):
+    if not pole:
         return None
-    stred = (levy + pravy) // 2
+    stred = len(pole) // 2  # celočíselné dělení: 5 // 2 je 2, ne 2.5
     if pole[stred] == x:
         return stred + 1
     if pole[stred] > x:
-        return binarni(pole, x, levy, stred - 1)
-    return binarni(pole, x, stred + 1, pravy)
+        return binarni(pole[:stred], x)
+    nalez = binarni(pole[stred + 1:], x)
+    if nalez is None:
+        return None
+    return stred + 1 + nalez
 
 
 pole = [4, 8, 10, 45, 48, 49, 51, 100]
@@ -99,13 +104,17 @@ print(binarni(pole, 45))  # 4
 print(binarni(pole, 7))   # None
 ```
 
-`levy` a `pravy` jsou indexy úseku, ve kterém ještě má smysl hledat. Až `levy > pravy`, úsek je prázdný.
+`//` je **celočíselné dělení** — desetinnou část zahodí, aby `stred` byl platný index.
+
+`pole[:stred]` je **levá** polovina (čísla před středem), `pole[stred + 1:]` **pravá**. Prázdný seznam → číslo tam není. Pozice počítáme **od jedné**. V pravé polovině je první prvek dál v původním seznamu, proto k nalezené pozici přičtěte `stred + 1`.
 
 Hledání 45 v `[4, 8, 10, 45, 48, 49, 51, 100]`:
 
-1. střed je 48 — větší než 45 → berete **levou** polovinu
-2. střed je 10 — menší než 45 → berete **pravou** polovinu
-3. zbývá 45 — **shoda**, pozice 4
+1. střed je 48 — větší než 45 → dál jen `[4, 8, 10, 45]`
+2. střed je 10 — menší než 45 → dál jen `[45]`
+3. 45 — **shoda**, pozice 4
+
+**Složitost:** seznam se pořád **půlí**. U `n` prvků stačí zhruba **`log₂ n` porovnání** (8 položek → 3 kroky, 1000 položek → kolem 10). To je mnohem míň než lineární hledání.
 
 ![Binární hledání čísla 45](diagramy/binarni-hledani.svg)
 
@@ -144,6 +153,8 @@ Největší číslo je vpravo. Další průchody seřadí zbytek.
 
 `n - 1 - i`: po každém průchodu je na konci o jedno správně umístěné číslo víc, takže příště stačí kratší úsek.
 
+**Složitost:** dva vnořené cykly. Počet porovnání roste se **čtvercem** počtu položek (zhruba `n²`). Dvakrát delší seznam → zhruba **čtyřikrát** víc práce. Deset položek je v pohodě, tisíc už je stovky tisíc porovnání.
+
 Prohození bez třetí proměnné:
 
 ```python
@@ -152,7 +163,7 @@ a, b = b, a
 
 → viz `priklady/bublinkove_razeni.py`
 
-Jiný řadící algoritmus (třeba výběrem minima) je taky v pořádku — v úkolu stačí **libovolný vlastní**.
+Jiný řadící algoritmus (třeba výběrem minima) je taky v pořádku — v úkolu řazení stačí **libovolný vlastní** (ne `sort`).
 
 ## Načtení seznamu z konzole
 
@@ -171,16 +182,28 @@ x = int(input())
 |-------|----------|
 | binární hledání na neseřazeném seznamu | špatná odpověď |
 | pozice od nuly, úkol chce od jedné | o jednu vedle |
-| `return binarni(...)` zapomenete | funkce vrátí `None` i při nálezu |
+| `return binarni(...)` zapomenete | výsledek z poloviny seznamu se zahodí |
 | `pole.sort()` v úkolu | nedostatečná |
+
+## Složitost podle počtu položek
+
+`n` je počet prvků v seznamu. Zajímá nás **nejhorší případ**.
+
+| Algoritmus | Nejhorší případ | 8 položek | 1000 položek |
+|------------|-----------------|-----------|--------------|
+| lineární hledání | až `n` porovnání | 8 | 1000 |
+| binární hledání | zhruba `log₂ n` | 3 | ~10 |
+| bublinkové řazení | zhruba `n²` porovnání | ~64 | ~1 000 000 |
+
+Binární hledání se vyplatí u **dlouhého seřazeného** seznamu. Bublinkové řazení je srozumitelné, ale u velkých dat pomalé.
 
 ## Shrnutí
 
-| Pojem | Podmínka | Postup |
-|-------|----------|--------|
-| lineární hledání | žádná | prvek po prvku |
-| binární hledání | seznam je seřazený | půlení úseku |
-| bublinkové řazení | — | prohazovat sousedy |
+| Pojem | Podmínka | Postup | Kroky |
+|-------|----------|--------|-------|
+| lineární hledání | žádná | prvek po prvku | `n` |
+| binární hledání | seznam je seřazený | půlení seznamu | `log₂ n` |
+| bublinkové řazení | — | prohazovat sousedy | `n²` |
 
 Automatický test v AMOS u cvičných úkolů kontroluje **výstup**. Učitel může zkontrolovat, že v kódu opravdu je rekurze, binární půlení, nebo vlastní řazení (ne `sort`).
 

@@ -71,27 +71,28 @@ print(pocet([2, 5, 2, 2, 7], 2))  # 3
 
 ## Cvičení 4 — Binární hledání (★★☆)
 
-Seznam je **seřazený**. Funkce `binarni_je(pole, x)` vrátí `True` / `False`. Rekurze s `levy` a `pravy`.
+Seznam je **seřazený**. Funkce `binarni(pole, x)` vrátí **pozici od jedné**, nebo `None`. Rekurze: seznam vždy **rozdělte na poloviny** (`pole[:stred]` a `pole[stred + 1:]`).
 
-Ověření: `binarni_je([1, 4, 9, 16, 25], 16)` je `True`.
+Ověření: `binarni([1, 4, 9, 16, 25], 16)` je `4`.
 
 @reseni
 ```python
-def binarni_je(pole, x, levy=0, pravy=None):
-    if pravy is None:
-        pravy = len(pole) - 1
-    if levy > pravy:
-        return False
-    stred = (levy + pravy) // 2
+def binarni(pole, x):
+    if not pole:
+        return None
+    stred = len(pole) // 2  # celočíselné dělení: 5 // 2 je 2, ne 2.5
     if pole[stred] == x:
-        return True
+        return stred + 1
     if pole[stred] > x:
-        return binarni_je(pole, x, levy, stred - 1)
-    return binarni_je(pole, x, stred + 1, pravy)
+        return binarni(pole[:stred], x)
+    nalez = binarni(pole[stred + 1:], x)
+    if nalez is None:
+        return None
+    return stred + 1 + nalez
 
 
-print(binarni_je([1, 4, 9, 16, 25], 16))  # True
-print(binarni_je([1, 4, 9, 16, 25], 10))  # False
+print(binarni([1, 4, 9, 16, 25], 16))  # 4
+print(binarni([1, 4, 9, 16, 25], 10))  # None
 ```
 @end
 

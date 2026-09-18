@@ -1,17 +1,18 @@
-"""Binární hledání v seřazeném seznamu. Pozice od jedné."""
+"""Binární hledání — půlení seznamu řezem. Pozice od jedné."""
 
 
-def binarni(pole, x, levy=0, pravy=None):
-    if pravy is None:
-        pravy = len(pole) - 1
-    if levy > pravy:
+def binarni(pole, x):
+    if not pole:
         return None
-    stred = (levy + pravy) // 2
+    stred = len(pole) // 2  # celočíselné dělení: 5 // 2 je 2, ne 2.5
     if pole[stred] == x:
         return stred + 1
     if pole[stred] > x:
-        return binarni(pole, x, levy, stred - 1)
-    return binarni(pole, x, stred + 1, pravy)
+        return binarni(pole[:stred], x)
+    nalez = binarni(pole[stred + 1:], x)
+    if nalez is None:
+        return None
+    return stred + 1 + nalez
 
 
 if __name__ == "__main__":

@@ -52,7 +52,7 @@ moduly:
   - id: algoritmizace
     nazev: Algoritmizace
     hodiny: 20
-    # ŠVP 21 h → 20 h (dvě lekce po 10 h). Bez analýzy složitosti a bez číselných algoritmů.
+    # ŠVP 21 h → 20 h (dvě lekce po 10 h). Srovnání počtu kroků podle n (bez formální analýzy O). Bez číselných algoritmů.
     svp_temata:
       - rekurze, využití rekurze
       - vyhledávací algoritmy
@@ -84,10 +84,9 @@ moduly:
             kompetence: [k1-datove-typy, k2-ridici-struktury, k3-strukturovane-programy]
             prerekvizity: [01-rekurze]
             ukoly_zdroje:
-              - "úkol 3 - hledání pomocí rekurze"
+              - "binární hledání True/False"
               - "počet výskytů rekurzí"
-              - "binární hledání"
-              - "úkol 6 - řadící algoritmus"
+              - "nejbližší dvojice po seřazení"
               - "známkovaný úkol (tajné zadání)"
 
   - id: oop
