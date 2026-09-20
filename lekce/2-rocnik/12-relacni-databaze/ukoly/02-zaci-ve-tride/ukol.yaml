@@ -1,0 +1,47 @@
+title: Žáci ve třídě
+stars: 2
+moodle: PRG-2-12-02
+description: |
+  Dvě tabulky v paměti. Zapište je **přesně** takto:
+
+  třídy: `id` 1 `1.A`, `id` 2 `1.B`
+
+  žáci (v tomto pořadí):
+
+  - Anna, `trida_id` 1
+  - Boris, `trida_id` 2
+  - Cyril, `trida_id` 1
+  - Dana, `trida_id` 1
+  - Eva, `trida_id` 2
+
+  Načtěte `id` třídy. Vypište jména žáků této třídy, každé na vlastní
+  řádek, v pořadí ze seznamu.
+
+  Když zadané `id` mezi třídami **není**, vypište jen `Nenalezeno`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+cases:
+  - name: prvni-a
+    input: |
+      1
+    output: |-
+      Anna
+      Cyril
+      Dana
+  - name: prvni-b
+    input: |
+      2
+    output: |-
+      Boris
+      Eva
+  - name: neni
+    input: |
+      9
+    output: "Nenalezeno"
+  - name: nula
+    input: |
+      0
+    output: "Nenalezeno"
+io: |
+  **Vstup:** jedno celé číslo (`id` třídy)
+  **Výstup:** jména žáků po řádcích, nebo `Nenalezeno`

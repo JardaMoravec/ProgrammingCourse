@@ -1,0 +1,40 @@
+title: Zastávka podle id
+stars: 1
+moodle: PRG-2-12-01
+description: |
+  Tabulka zastávek je v paměti (seznam slovníků). Zapište ji **přesně**
+  takto — žádný `input` na názvy:
+
+  `{"id": 1, "nazev": "Hlavni nadrazi"}`
+  `{"id": 2, "nazev": "Namesti"}`
+  `{"id": 3, "nazev": "Skola"}`
+  `{"id": 4, "nazev": "Nemocnice"}`
+
+  Načtěte jedno celé číslo — hledané `id`. Vypište `nazev` zastávky
+  s tímto klíčem. Když taková zastávka není, vypište `Nenalezeno`.
+
+  Pro automatický test použijte `input()` **bez textu**.
+cases:
+  - name: druha
+    input: |
+      2
+    output: "Namesti"
+  - name: prvni
+    input: |
+      1
+    output: "Hlavni nadrazi"
+  - name: posledni
+    input: |
+      4
+    output: "Nemocnice"
+  - name: neni
+    input: |
+      9
+    output: "Nenalezeno"
+  - name: nula
+    input: |
+      0
+    output: "Nenalezeno"
+io: |
+  **Vstup:** jedno celé číslo (`id`)
+  **Výstup:** název zastávky, nebo `Nenalezeno`

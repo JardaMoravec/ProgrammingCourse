@@ -1,0 +1,12 @@
+id: 12-relacni-databaze
+rocnik: 2
+nazev: Principy relační databáze
+modul: sql
+hodiny: 5
+obtiznost: zacatecnik
+prerekvizity: [11-oop-navrh-a-procviceni]
+kompetence: [k6-sql-zaklady, k7-databaze]
+svp: [principy relační databáze]
+tagy: [databaze, relace, klic, tabulka]
+migrovano_z:
+  - "zdroje/_Osnovy 2 roč.docx"

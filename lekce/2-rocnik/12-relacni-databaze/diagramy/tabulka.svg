@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Tabulka knihy: sloupce, radky a primarni klic id">
+  <rect class="d-bg" width="720" height="280" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <text class="d-text" x="360" y="36" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">tabulka knihy</text>
+
+  <rect class="d-soft" x="48" y="56" width="120" height="40" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="108" y="82" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#2563eb">id</text>
+
+  <rect class="d-surface" x="176" y="56" width="320" height="40" rx="6" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="336" y="82" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="600" fill="#1a1d26">nazev</text>
+
+  <rect class="d-surface" x="504" y="56" width="168" height="40" rx="6" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="588" y="82" text-anchor="middle" font-family="Consolas, monospace" font-size="13" font-weight="600" fill="#1a1d26">rok</text>
+
+  <rect class="d-soft" x="48" y="104" width="120" height="40" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text class="d-accent" x="108" y="130" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#2563eb">1</text>
+  <rect class="d-surface" x="176" y="104" width="320" height="40" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-text" x="336" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">R.U.R.</text>
+  <rect class="d-surface" x="504" y="104" width="168" height="40" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-muted" x="588" y="130" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#5c6370">1920</text>
+
+  <rect class="d-soft" x="48" y="152" width="120" height="40" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text class="d-accent" x="108" y="178" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#2563eb">2</text>
+  <rect class="d-surface" x="176" y="152" width="320" height="40" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-text" x="336" y="178" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">V&#225;lka s Mloky</text>
+  <rect class="d-surface" x="504" y="152" width="168" height="40" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-muted" x="588" y="178" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#5c6370">1936</text>
+
+  <rect class="d-soft" x="48" y="200" width="120" height="40" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text class="d-accent" x="108" y="226" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#2563eb">3</text>
+  <rect class="d-surface" x="176" y="200" width="320" height="40" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-text" x="336" y="226" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">Krakatit</text>
+  <rect class="d-surface" x="504" y="200" width="168" height="40" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-muted" x="588" y="226" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#5c6370">1922</text>
+
+  <text class="d-muted" x="360" y="262" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">sloupec id je prim&#225;rn&#237; kl&#237;&#269; &#8212; jeden &#345;&#225;dek = jedna kniha</text>
+</svg>

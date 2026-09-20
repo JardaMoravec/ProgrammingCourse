@@ -72,6 +72,8 @@ Lekce **10** má 3 úkoly (`PRG-2-10-01` až `03`): záporné číslo, košík, 
 
 Lekce **11** je pololetní projekt (`PRG-2-11-01`, 9 h). Téma schválí učitel; hodnotí učitel, ne automatický test. Volitelně [návrhové vzory](../bonus/07-navrhove-vzory/lekce.md).
 
+Lekce **12** má 3 úkoly (`PRG-2-12-01` až `03`): zastávka podle klíče, žáci ve třídě, neplatný odkaz. SQL ještě není — tabulky v paměti.
+
 ## Moduly (ŠVP)
 
 | Modul | ŠVP | Osnova | Lekce |

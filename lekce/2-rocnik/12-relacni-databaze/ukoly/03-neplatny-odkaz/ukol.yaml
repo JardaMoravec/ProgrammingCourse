@@ -1,0 +1,50 @@
+title: Neplatný odkaz
+stars: 3
+moodle: PRG-2-12-03
+description: |
+  Dvě tabulky v paměti. Zapište je **přesně** takto:
+
+  zákazníci: `id` 10 Novak, `id` 20 Svoboda
+
+  objednávky (v tomto pořadí):
+
+  - `id` 1, číslo `A100`, `zakaznik_id` 10
+  - `id` 2, číslo `A101`, `zakaznik_id` 20
+  - `id` 3, číslo `A102`, `zakaznik_id` 99
+
+  Třetí objednávka odkazuje na zákazníka, který v tabulce **není**.
+  Databáze by takový cizí klíč nepustila — tady to musíte poznat sami.
+
+  Načtěte `id` objednávky.
+
+  - objednávka existuje a zákazník taky: vypište `CISLO, JMENO`
+    (např. `A100, Novak`)
+  - objednávka existuje, ale `zakaznik_id` v zákaznících není:
+    vypište `neplatny odkaz`
+  - objednávka se zadaným `id` není: vypište `Nenalezeno`
+
+  Pro automatický test použijte `input()` **bez textu**.
+cases:
+  - name: platna-prvni
+    input: |
+      1
+    output: "A100, Novak"
+  - name: platna-druha
+    input: |
+      2
+    output: "A101, Svoboda"
+  - name: rozbity-klic
+    input: |
+      3
+    output: "neplatny odkaz"
+  - name: neni-objednavka
+    input: |
+      8
+    output: "Nenalezeno"
+  - name: nula
+    input: |
+      0
+    output: "Nenalezeno"
+io: |
+  **Vstup:** jedno celé číslo (`id` objednávky)
+  **Výstup:** `CISLO, JMENO`, nebo `neplatny odkaz`, nebo `Nenalezeno`

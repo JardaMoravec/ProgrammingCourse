@@ -124,7 +124,7 @@ Nápady, které nemusíte použít: půjčovna (kolo / koloběžka), jídelna (j
 | má | složení |
 | pololetní projekt | jedna aplikace z lekcí 03–10, známka |
 
-Příště relační databáze — tabulky, klíče, žádný Python.
+Příště relační databáze — tabulky, klíče, ještě bez SQL.
 
 Volitelně: [návrhové vzory (bonus)](../../bonus/07-navrhove-vzory/lekce.md) — mimo 170 hodin.
 
@@ -132,5 +132,5 @@ Známku určuje **učitel** (téma, návrh, splnění seznamu, že kód umíte v
 
 ## Co dál
 
-Další lekce: **Principy relační databáze**.
+→ [Lekce 12: Principy relační databáze](../12-relacni-databaze/lekce.md)
 
