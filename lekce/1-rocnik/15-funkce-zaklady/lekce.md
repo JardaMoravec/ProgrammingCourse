@@ -134,3 +134,5 @@ Krátký popis pod `def` — dokumentace pro čtenáře kódu.
 ## Co dál
 
 → [Lekce 16: Seznamy](../16-seznamy/lekce.md)
+
+Volitelně: [vibe coding (bonus)](../../bonus/08-vibe-coding/lekce.md) — asistent kódu pod kontrolou, mimo 81 hodin.

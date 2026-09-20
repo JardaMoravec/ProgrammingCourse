@@ -19,8 +19,9 @@ Nejsou v 81 h (1. ročník) ani v 68 h (3. ročník). Lze je přeskočit.
 | 05 | `05-csv-json-xml` | CSV, JSON a XML | 3 | 1. ročník, lekce 26 |
 | 06 | `06-api-rest-graphql` | API — REST a GraphQL | — | 3. ročník, lekce 01 |
 | 07 | `07-navrhove-vzory` | Návrhové vzory — základ | — | 2. ročník, lekce 11 |
+| 08 | `08-vibe-coding` | Vibe coding | — | 1. ročník, lekce 15 |
 
-Konzole, Git, Docker, REST/GraphQL a návrhové vzory mají jen cvičení v hodině. CSV/JSON/XML a ORM mají úkoly v AMOS.
+Konzole, Git, Docker, REST/GraphQL, návrhové vzory a vibe coding mají jen cvičení v hodině. CSV/JSON/XML a ORM mají úkoly v AMOS.
 
 ## Build
 

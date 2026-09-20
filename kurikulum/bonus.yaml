@@ -18,6 +18,7 @@ predchozi_znalosti:
   - API REST/GraphQL: HTTP z 3. ročníku (lekce 01)
   - ORM: Flask a sqlite3 (3. ročník, lekce 16–20)
   - Návrhové vzory: OOP návrh (2. ročník, lekce 11)
+  - Vibe coding: funkce (1. ročník, lekce 15)
 
 moduly:
   - id: nastroje-vyvoje
@@ -53,6 +54,18 @@ moduly:
             svp: [vývojové prostředí]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [02-git-a-github]
+
+      - id: vibe-coding
+        nazev: Vibe coding
+        hodiny: 0
+        lekce:
+          - id: "08-vibe-coding"
+            soubor: lekce/bonus/08-vibe-coding
+            nazev: Vibe coding
+            hodiny: 0
+            svp: [vývojové prostředí]
+            kompetence: [k3-strukturovane-programy]
+            prerekvizity: [15-funkce-zaklady]
 
   - id: formaty-dat
     nazev: Formáty dat

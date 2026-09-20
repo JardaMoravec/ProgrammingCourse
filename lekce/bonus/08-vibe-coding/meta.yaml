@@ -1,0 +1,11 @@
+id: 08-vibe-coding
+rocnik: bonus
+nazev: Vibe coding
+modul: nastroje-vyvoje
+hodiny: 0
+obtiznost: zacatecnik
+prerekvizity: [15-funkce-zaklady]
+kompetence: [k3-strukturovane-programy]
+svp: [vývojové prostředí]
+tagy: [ai, asistent, prompt, kontrola, bonus]
+migrovano_z: []
