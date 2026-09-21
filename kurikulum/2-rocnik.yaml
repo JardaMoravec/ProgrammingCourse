@@ -87,6 +87,7 @@ moduly:
               - "binární hledání True/False"
               - "počet výskytů rekurzí"
               - "nejbližší dvojice po seřazení"
+              - "vložení do seřazeného seznamu"
               - "známkovaný úkol (tajné zadání)"
 
   - id: oop
