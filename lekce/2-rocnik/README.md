@@ -52,7 +52,7 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 
 Lekce **01** má 5 úkolů do AMOS (`PRG-2-01-01` až `05`).
 
-Lekce **02** má 4 úkoly (`PRG-2-02-01` až `04`): binární True/False, počet výskytů, nejbližší dvojice, vložení do seřazeného. Lekce končí známkovaným úkolem s tajným zadáním.
+Lekce **02** má 5 úkolů (`PRG-2-02-01` až `05`): binární True/False, počet výskytů, nejbližší dvojice, vložení do seřazeného, nejdelší mezera. Lekce končí známkovaným úkolem s tajným zadáním.
 
 Lekce **03** má 3 úkoly (`PRG-2-03-01` až `03`); úkol 03 je knihovna (Autor a Kniha).
 

@@ -16,6 +16,7 @@ LEKCE_ROOT = ROOT / "lekce"
 SABLONY = ROOT / "sablony"
 
 TASK_DIR_RE = re.compile(r"^(\d{2})-([a-z0-9-]+)$")
+SECRET_DIR_RE = re.compile(r"^z(\d{2})-([a-z0-9-]+)$")
 
 
 def is_lesson_group(name: str) -> bool:
@@ -63,8 +64,8 @@ def parse_meta(meta_path: Path) -> dict[str, str]:
     return data
 
 
-def load_task(task_dir: Path) -> dict | None:
-    match = TASK_DIR_RE.match(task_dir.name)
+def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
+    match = (SECRET_DIR_RE if secret else TASK_DIR_RE).match(task_dir.name)
     yaml_path = task_dir / "ukol.yaml"
     if not match or not yaml_path.exists():
         return None
@@ -72,7 +73,7 @@ def load_task(task_dir: Path) -> dict | None:
     if not isinstance(raw, dict):
         raise ValueError(f"{yaml_path}: ocekavan slovnik")
     task = {
-        "id": match.group(1),
+        "id": f"z{match.group(1)}" if secret else match.group(1),
         "slug": match.group(2),
         "title": raw["title"],
         "stars": raw["stars"],
@@ -109,12 +110,26 @@ def discover_tasks(lesson_dir: Path) -> list[dict]:
     return tasks
 
 
+def discover_secret_tasks(lesson_dir: Path) -> list[dict]:
+    ukoly_root = lesson_dir / "ukoly"
+    if not ukoly_root.is_dir():
+        return []
+    tasks: list[dict] = []
+    for task_dir in sorted(ukoly_root.iterdir()):
+        if not task_dir.is_dir():
+            continue
+        task = load_task(task_dir, secret=True)
+        if task:
+            tasks.append(task)
+    return tasks
+
+
 def cleanup_stale_ukoly(ukoly_root: Path, tasks: list[dict]) -> None:
     expected_dirs = {task_dir_name(t) for t in tasks}
     for child in ukoly_root.iterdir():
         if not child.is_dir():
             continue
-        if child.name == "reseni":
+        if child.name == "reseni" or SECRET_DIR_RE.match(child.name):
             continue
         if child.name not in expected_dirs:
             shutil.rmtree(child)
@@ -226,7 +241,7 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
     if runner_path.exists():
         runner_path.unlink()
 
-    for t in tasks:
+    for t in tasks + discover_secret_tasks(lesson_dir):
         task_dir = ukoly_root / task_dir_name(t)
         task_dir.mkdir(parents=True, exist_ok=True)
         cases_path = task_dir / "vpl_evaluate.cases"
@@ -294,11 +309,25 @@ def main() -> None:
     total = 0
     for lesson_dir in lesson_dirs():
         tasks = discover_tasks(lesson_dir)
-        if not tasks:
+        secrets = discover_secret_tasks(lesson_dir)
+        if not tasks and not secrets:
             continue
-        write_lesson_ukoly(lesson_dir, tasks)
+        if tasks:
+            write_lesson_ukoly(lesson_dir, tasks)
+        elif secrets:
+            ukoly_root = lesson_dir / "ukoly"
+            for t in secrets:
+                task_dir = ukoly_root / task_dir_name(t)
+                task_dir.mkdir(parents=True, exist_ok=True)
+                cases_path = task_dir / "vpl_evaluate.cases"
+                if t["cases"]:
+                    cases_path.write_text(format_vpl_cases(t["cases"]), encoding="utf-8")
         total += len(tasks)
-        print(f"  OK {lesson_dir.parent.name}/{lesson_dir.name} ({len(tasks)} ukolu)")
+        extra = f", {len(secrets)} tajnych" if secrets else ""
+        print(
+            f"  OK {lesson_dir.parent.name}/{lesson_dir.name} "
+            f"({len(tasks)} ukolu{extra})"
+        )
     print(f"Hotovo ({total} ukolu).")
 
 

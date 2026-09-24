@@ -10,6 +10,10 @@ lekce/**/ukoly/*/vpl_evaluate.sh
 # Referenční řešení úkolů (negenerují se, VPL je nepotřebuje)
 lekce/**/ukoly/reseni/
 
+# Tajné známkované zadání (lokálně u učitele — není v Gitu ani na webu)
+lekce/**/ukoly/z[0-9][0-9]-*/
+lekce/**/tajny-znamkovany/
+
 # Python
 __pycache__/
 *.py[cod]

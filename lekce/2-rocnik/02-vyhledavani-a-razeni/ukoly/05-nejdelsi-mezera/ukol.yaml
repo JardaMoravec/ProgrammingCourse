@@ -1,0 +1,78 @@
+title: Nejdelší mezera
+stars: 3
+moodle: PRG-2-02-05
+description: |
+  Načtěte jeden řádek celých čísel (alespoň dvě). Čísla patří do souvislé
+  řady od nejmenšího po největší; některá z té řady můžou chybět.
+
+  Najděte **nejdelší souvislou mezeru** (nejdelší úsek chybějících čísel).
+  Když je takových mezer víc, vezměte tu **vlevo** (menší čísla).
+
+  Seznam si seřaďte **vlastním** algoritmem. Vestavěné `sort()`, `sorted()`
+  a podobné funkce jsou zakázané.
+
+  Výstup přesně dva řádky:
+
+  1. začátek a konec mezery (dvě čísla; u mezery o jednom čísle stejná
+     hodnota dvakrát); když mezera není, vypište `nic`
+  2. délka mezery (kolik čísel chybí); když mezera není, vypište `0`
+
+  Příklad: `10 4 6 12` → seřazeno `4 6 10 12` → mezery 5, 7–9 a 11,
+  nejdelší je 7 až 9 (délka 3):
+
+  `7 9`
+  `3`
+
+  Pro automatický test použijte `input()` **bez textu**.
+cases:
+  - name: zaklad
+    input: |
+      10 4 6 12
+    output: |-
+      7 9
+      3
+  - name: jedno
+    input: |
+      8 3 6 4 9 5
+    output: |-
+      7 7
+      1
+  - name: nic
+    input: |
+      1 2 3 4
+    output: |-
+      nic
+      0
+  - name: dva-kraje
+    input: |
+      1 5
+    output: |-
+      2 4
+      3
+  - name: zaporna
+    input: |
+      -2 1
+    output: |-
+      -1 0
+      2
+  - name: od-nuly
+    input: |
+      0 5 2
+    output: |-
+      3 4
+      2
+  - name: shoda-vlevo
+    input: |
+      1 4 5 8
+    output: |-
+      2 3
+      2
+  - name: duplicity
+    input: |
+      1 1 4
+    output: |-
+      2 3
+      2
+io: |
+  **Vstup:** jeden řádek celých čísel (alespoň dvě)
+  **Výstup:** začátek a konec mezery, pak délka; nebo `nic` a `0`
