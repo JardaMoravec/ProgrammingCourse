@@ -1,0 +1,13 @@
+id: 14-create-table
+rocnik: 2
+nazev: Definování tabulek (CREATE TABLE)
+modul: sql
+hodiny: 5
+obtiznost: zacatecnik
+prerekvizity: [13-sql-a-sqlite]
+kompetence: [k6-sql-zaklady, k7-databaze]
+svp: [definování databázových objektů]
+tagy: [sql, sqlite, create-table, klic]
+migrovano_z:
+  - "zdroje/_Osnovy 2 roč.docx"
+  - "zdroje/Úkoly 2/ (úkol 19 - db - produkty)"

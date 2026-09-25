@@ -1,0 +1,18 @@
+title: Rodina příkazu
+stars: 1
+moodle: PRG-2-13-01
+typ: soubor
+description: |
+  Ke každému příkazu napište rodinu: `DDL`, `DQL`, `DML`, `DCL`, nebo `TCL`.
+  U `DELETE` a `DROP` jednou větou doplňte, co z databáze zmizí.
+
+  1. `ALTER TABLE knihy ADD rok INTEGER;`
+  2. `SELECT nazev FROM knihy;`
+  3. `UPDATE knihy SET nazev = 'R.U.R.';`
+  4. `DELETE FROM knihy;`
+  5. `DROP TABLE knihy;`
+  6. `REVOKE SELECT ON knihy FROM eva;`
+  7. `COMMIT;`
+odevzdani: |
+  Do AMOS nahrajte textový dokument (TXT, PDF nebo DOCX) s body 1–7.
+  Automatický test u tohoto úkolu není — hodnotí učitel.

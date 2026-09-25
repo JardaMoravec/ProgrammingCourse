@@ -1,0 +1,18 @@
+title: Klíč u knih
+stars: 1
+moodle: PRG-2-12-01
+typ: soubor
+description: |
+  Knihovna eviduje knihy v jedné tabulce. Sloupce jsou `id`, `nazev`,
+  `rok` a `isbn`. Dvě knihy se mohou jmenovat stejně. ISBN žák někdy
+  nevyplní. Rok vydání se opakuje.
+
+  V dokumentu odpovězte větami:
+
+  1. Který sloupec je vhodný **primární klíč** a proč.
+  2. Proč klíčem nemá být `nazev`.
+  3. Proč klíčem nemá být `isbn`, i když bývá jedinečné.
+  4. Co databáze udělá, když se pokusíte vložit druhý řádek se stejným `id`.
+odevzdani: |
+  Do AMOS nahrajte textový dokument (TXT, PDF nebo DOCX) s body 1–4.
+  Automatický test u tohoto úkolu není — hodnotí učitel.

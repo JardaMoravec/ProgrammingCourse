@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Python popisuje postup cyklem, SQL jednou vetou SELECT">
+  <rect class="d-bg" width="720" height="280" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-surface" x="28" y="28" width="320" height="188" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="188" y="58" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1a1d26">Python — jak</text>
+  <text class="d-muted" x="188" y="96" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#5c6370">for k in knihy:</text>
+  <text class="d-muted" x="188" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#5c6370">print(k["nazev"])</text>
+  <text class="d-muted" x="188" y="168" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">krok za krokem</text>
+
+  <rect class="d-soft" x="372" y="28" width="320" height="188" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="532" y="58" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#2563eb">SQL — co</text>
+  <text class="d-accent" x="532" y="110" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#2563eb">SELECT nazev FROM knihy;</text>
+  <text class="d-text" x="532" y="168" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#1a1d26">jeden v&#253;sledek, bez smy&#269;ky</text>
+
+  <text class="d-text" x="360" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">stejn&#233; n&#225;zvy knih, jin&#253; z&#225;pis</text>
+</svg>

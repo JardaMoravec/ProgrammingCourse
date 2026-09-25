@@ -51,7 +51,38 @@ Output = "Součet: 30"
 
 Dokumentace: [VPL BIOTES](https://vpl.dis.ulpgc.es/documentation/vpl-4.4.2/biotes.html)
 
-2. ročník používá stejný typ VPL jako 1. ročník: **jeden úkol = jedna aktivita**, soubor `main.py`, testy v `ukoly/NN-slug/vpl_evaluate.cases`.
+2. ročník používá stejný typ VPL jako 1. ročník: **jeden úkol = jedna aktivita**, soubor `main.py`, testy v `ukoly/NN-slug/vpl_evaluate.cases`. Výjimka jsou lekce **12** a **13** (a pololetní projekt v lekci 11): automatický test nemají, žák odevzdá textový dokument a hodnotí učitel.
+
+Lekce **12** a **13** mají v `ukol.yaml` `typ: soubor` a pole `odevzdani`. Do AMOS se nahrává TXT, PDF nebo DOCX s odpovědí nebo tabulkou.
+
+## 2. ročník od lekce 14 — SQL (`vpl_evaluate.py` + `vpl_evaluate.sh`)
+
+Žák odevzdá `reseni.sql`. Generátor z `ukol.yaml` (`typ: sql`) sestaví hodnotitel, který skript pustí v **nové** SQLite databázi v paměti a zkontroluje tabulky, typy sloupců, `NOT NULL`, `UNIQUE`, primární a cizí klíč.
+
+```
+lekce/2-rocnik/NN-nazev/ukoly/01-slug/
+  ukol.yaml
+  vpl_run.sh         ← generované, tlačítko Run
+  vpl_evaluate.py    ← generované
+  vpl_evaluate.sh    ← generované, tlačítko Evaluate
+```
+
+Jail nic dalšího nepotřebuje. Modul `sqlite3` je součást Pythonu.
+
+Příkaz `sqlite3 reseni.sql` **nepoužívejte**. SQLite ten argument bere jako soubor databáze, otevře konzoli a čeká na další příkazy. Skript se nespustí a hodnocení se nedostane ke slovu. `vpl_run.sh` i `vpl_evaluate.sh` pouští SQL z Pythonu a hned skončí.
+
+### Založení aktivity
+
+1. Přidejte aktivitu **Virtual programming lab**.
+2. Jazyk: **Python 3**. Jazyk SQL / SQLite nechte být — ten spouští konzoli.
+3. Požadovaný soubor od studenta: `reseni.sql`.
+4. Zapněte **Automatic evaluation**.
+5. Do **Execution files** vložte tři generované soubory:
+   - `vpl_run.sh`
+   - `vpl_evaluate.sh`
+   - `vpl_evaluate.py`
+6. `vpl_run.sh` je skript pro **Run**, `vpl_evaluate.sh` pro **Evaluate**. `reseni.sql` mezi soubory ke spuštění nepatří — ten odevzdává žák.
+7. Zkratka názvu: kód z `ukoly.md`, např. `PRG-2-14-01`.
 
 ## 3. ročník — Flask (`vpl_evaluate.py` + `vpl_evaluate.sh`)
 

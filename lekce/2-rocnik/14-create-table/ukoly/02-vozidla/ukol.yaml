@@ -1,0 +1,28 @@
+title: Vozidla
+stars: 2
+moodle: PRG-2-14-02
+typ: sql
+soubor: reseni.sql
+description: |
+  V souboru `reseni.sql` založte tabulku `vozidla`:
+
+  - `id` — `INTEGER`, primární klíč
+  - `spz` — `TEXT`, povinná a jedinečná (`NOT NULL UNIQUE`)
+  - `rok` — `INTEGER`
+
+  Jinou tabulku nezakládejte. Data nepište.
+evaluate:
+  - name: tabulka vozidla
+    table: vozidla
+    columns:
+      - name: id
+        type: INTEGER
+        pk: 1
+      - name: spz
+        type: TEXT
+        notnull: 1
+        unique: 1
+      - name: rok
+        type: INTEGER
+odevzdani: |
+  Do AMOS nahrajte `reseni.sql` a spusťte **Evaluate**.

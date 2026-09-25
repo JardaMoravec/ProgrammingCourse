@@ -1,6 +1,6 @@
 # Cvičení — Principy relační databáze
 
-Cvičení jsou na hodinu. Úkoly do AMOS mají jiná zadání. SQL zatím **nepište** — stačí tabulky na papír a v Pythonu seznam slovníků, který už znáte z 1. ročníku.
+Cvičení jsou na hodinu. Úkoly do AMOS mají jiná zadání. SQL ani Python **nepište** — stačí text a tabulky na papír.
 
 ## Cvičení 1 — Primární klíč (★☆☆)
 
@@ -66,78 +66,50 @@ U každé věty napište **ano**, nebo **ne**.
 
 ---
 
-## Cvičení 4 — Hledání podle klíče (★☆☆)
+## Cvičení 4 — Řádek podle klíče (★☆☆)
 
-Tabulka filmů v paměti. Najděte film s `id` `3` a vypište název.
+Tabulka `filmy`:
 
-```python
-filmy = [
-    {"id": 1, "nazev": "Matrix"},
-    {"id": 2, "nazev": "Amelie"},
-    {"id": 3, "nazev": "Avatar"},
-]
-hledane_id = 3
-```
+| id | nazev |
+|----|-------|
+| 1 | Matrix |
+| 2 | Amelie |
+| 3 | Avatar |
 
-Ověření: výstup je `Avatar`. Když `hledane_id` změníte na `9`, má se vypsat `Nenalezeno`.
+1. Který název patří k `id` 3?
+2. Co zapíšete, když hledáte `id` 9?
+3. Proč na to nestačí hledat podle sloupce `nazev`?
 
 @reseni
-```python
-filmy = [
-    {"id": 1, "nazev": "Matrix"},
-    {"id": 2, "nazev": "Amelie"},
-    {"id": 3, "nazev": "Avatar"},
-]
-hledane_id = 3
-nalezeno = None
-for f in filmy:
-    if f["id"] == hledane_id:
-        nalezeno = f
-        break
-
-if nalezeno is None:
-    print("Nenalezeno")
-else:
-    print(nalezeno["nazev"])
-```
+1. Avatar
+2. Takový řádek v tabulce není.
+3. Název se může opakovat. `id` je primární klíč, takže určí nejvýš jeden řádek.
 @end
 
 ---
 
-## Cvičení 5 — Dvě tabulky (★★☆)
+## Cvičení 5 — Alba jednoho interpreta (★★☆)
 
-Interpret a alba — vztah **1:N**. Vypište názvy **všech** alb interpreta s `id` `1`, každé na vlastní řádek, v pořadí v seznamu.
+Vztah **1:N**. Do sešitu vypište názvy alb interpreta s `id` 1. Album jiného interpreta tam nepatří.
 
-```python
-interpreti = [
-    {"id": 1, "jmeno": "Chinaski"},
-    {"id": 2, "jmeno": "Kabát"},
-]
-alba = [
-    {"id": 1, "nazev": "Premium 2003", "interpret_id": 1},
-    {"id": 2, "nazev": "Dole v dole", "interpret_id": 2},
-    {"id": 3, "nazev": "Originál", "interpret_id": 1},
-]
-```
+**interpreti**
 
-Ověření: dva řádky `Premium 2003` a `Originál`. Album *Dole v dole* se vypsat nesmí.
+| id | jmeno |
+|----|-------|
+| 1 | Chinaski |
+| 2 | Kabát |
+
+**alba**
+
+| id | nazev | interpret_id |
+|----|-------|--------------|
+| 1 | Premium 2003 | 1 |
+| 2 | Dole v dole | 2 |
+| 3 | Originál | 1 |
 
 @reseni
-```python
-interpreti = [
-    {"id": 1, "jmeno": "Chinaski"},
-    {"id": 2, "jmeno": "Kabát"},
-]
-alba = [
-    {"id": 1, "nazev": "Premium 2003", "interpret_id": 1},
-    {"id": 2, "nazev": "Dole v dole", "interpret_id": 2},
-    {"id": 3, "nazev": "Originál", "interpret_id": 1},
-]
+Premium 2003  
+Originál
 
-for a in alba:
-    if a["interpret_id"] == 1:
-        print(a["nazev"])
-```
-
-Seznam `interpreti` tady k výpisu nepotřebujete — `interpret_id` už říká, která alba patří jedničce. V databázi by totéž hlídal cizí klíč.
+*Dole v dole* má `interpret_id` 2, takže patří Kabátu. Seznam interpretů k výpisu nepotřebujete — cizí klíč už říká, která alba patří jedničce.
 @end

@@ -1,0 +1,16 @@
+title: SQLite a server
+stars: 2
+moodle: PRG-2-13-02
+typ: soubor
+description: |
+  U každé věty napište **ano**, nebo **ne**, a jednu větu proč.
+
+  1. Zkopírování souboru `knihy.db` je záloha celé sqlite databáze.
+  2. PostgreSQL je v tomto kurzu SŘBD, ve kterém budete psát úkoly.
+  3. `SELECT` říká, jaký výsledek chcete, ne cyklus, kterým k němu dojdete.
+  4. `GRANT` v SQLite založí účet, stejně jako na serveru MySQL.
+  5. `.schema knihy` je příkaz SQL a patří do rodiny DDL.
+  6. Textovou hodnotu v SQL píšete do jednoduchých uvozovek.
+odevzdani: |
+  Do AMOS nahrajte textový dokument (TXT, PDF nebo DOCX) s body 1–6.
+  Automatický test není — hodnotí učitel.

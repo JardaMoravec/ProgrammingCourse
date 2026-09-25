@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="SQLite cte soubor db, serverova databaze ma mezi programem a daty server">
+  <rect class="d-bg" width="720" height="280" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+
+  <rect class="d-soft" x="24" y="28" width="328" height="196" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="188" y="58" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#2563eb">SQLite</text>
+  <text class="d-text" x="188" y="96" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">sqlite3 / DB Browser</text>
+  <text class="d-accent" x="188" y="128" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="18" fill="#2563eb">&#8595;</text>
+  <text class="d-text" x="188" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="700" fill="#1a1d26">knihy.db</text>
+  <text class="d-muted" x="188" y="192" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">jeden soubor, bez serveru</text>
+
+  <rect class="d-surface" x="368" y="28" width="328" height="196" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="532" y="58" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#1a1d26">PostgreSQL, MySQL</text>
+  <text class="d-text" x="532" y="96" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">program</text>
+  <text class="d-muted" x="532" y="122" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" fill="#5c6370">&#8595;</text>
+  <text class="d-text" x="532" y="148" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">server (&#250;&#269;et, s&#237;&#357;)</text>
+  <text class="d-muted" x="532" y="174" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" fill="#5c6370">&#8595;</text>
+  <text class="d-muted" x="532" y="198" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">data na serveru</text>
+
+  <text class="d-text" x="360" y="256" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1d26">v kurzu z&#367;stanete u SQLite</text>
+</svg>

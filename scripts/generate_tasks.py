@@ -93,6 +93,8 @@ def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
         task["soubor"] = raw["soubor"]
     if raw.get("evaluate"):
         task["evaluate"] = raw["evaluate"]
+    if raw.get("seed") is not None:
+        task["seed"] = raw["seed"]
     return task
 
 
@@ -159,6 +161,7 @@ def build_ukoly_md(
     types = {(t.get("typ") or "vpl") for t in tasks}
     has_vpl = "vpl" in types and any(t.get("cases") for t in tasks)
     has_flask = "flask" in types
+    has_sql = "sql" in types
     parts = [
         f"# Úkoly — {lesson_name}",
         "",
@@ -182,6 +185,13 @@ def build_ukoly_md(
         parts += [
             "> V AMOS spusťte **Evaluate** — test ověří routy a HTML značky",
             "> (text na stránce může být vlastní).",
+            "",
+        ]
+    elif has_sql:
+        parts += [
+            "> V AMOS spusťte **Evaluate** — test spustí SQL ve SQLite a ověří tabulky.",
+            "",
+            "**Odevzdání:** soubor `reseni.sql`.",
             "",
         ]
     for t in tasks:
@@ -249,7 +259,7 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
             cases_path.write_text(format_vpl_cases(t["cases"]), encoding="utf-8")
         elif cases_path.exists():
             cases_path.unlink()
-        write_flask_vpl(task_dir, t)
+        write_custom_vpl(task_dir, t)
         for fname, content in t.get("files", {}).items():
             (task_dir / fname).write_text(content, encoding="utf-8")
 
@@ -265,27 +275,65 @@ def format_flask_evaluator(soubor: str, tests: list) -> str:
     )
 
 
-def write_flask_vpl(task_dir: Path, task: dict) -> None:
+def format_sql_evaluator(soubor: str, seed: str, tests: list) -> str:
+    template = (SABLONY / "vpl_evaluate_sql.py").read_text(encoding="utf-8")
+    for placeholder in ("__STUDENT_FILE__", "__SEED_PY__", "__TESTS__"):
+        if placeholder not in template:
+            raise ValueError(f"sablony/vpl_evaluate_sql.py: chybí {placeholder}")
+    return (
+        template.replace("__STUDENT_FILE__", soubor, 1)
+        .replace("__SEED_PY__", json.dumps(seed or ""), 1)
+        .replace("__TESTS__", json.dumps(tests, ensure_ascii=False, indent=2), 1)
+    )
+
+
+def write_run_sh(path: Path) -> None:
+    sh_text = (SABLONY / "vpl_evaluate_flask.sh").read_text(encoding="utf-8")
+    sh_text = sh_text.replace("\r\n", "\n")
+    if not sh_text.endswith("\n"):
+        sh_text += "\n"
+    path.write_bytes(sh_text.encode("utf-8"))
+
+
+def write_sql_run_sh(path: Path, soubor: str) -> None:
+    sh_text = (SABLONY / "vpl_run_sql.sh").read_text(encoding="utf-8")
+    sh_text = sh_text.replace("__STUDENT_FILE__", soubor, 1)
+    sh_text = sh_text.replace("\r\n", "\n")
+    if not sh_text.endswith("\n"):
+        sh_text += "\n"
+    path.write_bytes(sh_text.encode("utf-8"))
+
+
+def write_custom_vpl(task_dir: Path, task: dict) -> None:
     py_path = task_dir / "vpl_evaluate.py"
     sh_path = task_dir / "vpl_evaluate.sh"
-    if task.get("typ") != "flask":
+    run_path = task_dir / "vpl_run.sh"
+    typ = task.get("typ")
+    if typ not in ("flask", "sql"):
         if py_path.exists():
             py_path.unlink()
         if sh_path.exists():
             sh_path.unlink()
+        if run_path.exists():
+            run_path.unlink()
         return
     soubor = task.get("soubor")
     tests = task.get("evaluate") or []
     if not soubor or not tests:
         raise ValueError(
-            f"{task_dir / 'ukol.yaml'}: typ flask vyžaduje soubor: a evaluate:"
+            f"{task_dir / 'ukol.yaml'}: typ {typ} vyžaduje soubor: a evaluate:"
         )
-    py_path.write_text(format_flask_evaluator(soubor, tests), encoding="utf-8")
-    sh_text = (SABLONY / "vpl_evaluate_flask.sh").read_text(encoding="utf-8")
-    sh_text = sh_text.replace("\r\n", "\n")
-    if not sh_text.endswith("\n"):
-        sh_text += "\n"
-    sh_path.write_bytes(sh_text.encode("utf-8"))
+    if typ == "flask":
+        py_path.write_text(format_flask_evaluator(soubor, tests), encoding="utf-8")
+        if run_path.exists():
+            run_path.unlink()
+    else:
+        py_path.write_text(
+            format_sql_evaluator(soubor, str(task.get("seed") or ""), tests),
+            encoding="utf-8",
+        )
+        write_sql_run_sh(run_path, soubor)
+    write_run_sh(sh_path)
 
 
 def lesson_dirs() -> list[Path]:

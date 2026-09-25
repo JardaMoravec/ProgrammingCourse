@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="CREATE TABLE produkty se sloupci id, nazev a cena">
+  <rect class="d-bg" width="720" height="280" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+  <text class="d-text" x="360" y="36" text-anchor="middle" font-family="Consolas, monospace" font-size="15" font-weight="700" fill="#1a1d26">CREATE TABLE produkty</text>
+
+  <rect class="d-soft" x="48" y="64" width="624" height="44" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="360" y="92" text-anchor="middle" font-family="Consolas, monospace" font-size="14" font-weight="700" fill="#2563eb">id INTEGER PRIMARY KEY</text>
+
+  <rect class="d-surface" x="48" y="116" width="624" height="44" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text class="d-text" x="360" y="144" text-anchor="middle" font-family="Consolas, monospace" font-size="14" fill="#1a1d26">nazev TEXT NOT NULL</text>
+
+  <rect class="d-surface" x="48" y="168" width="624" height="44" rx="6" fill="#fff" stroke="#e5e7eb"/>
+  <text class="d-muted" x="360" y="196" text-anchor="middle" font-family="Consolas, monospace" font-size="14" fill="#5c6370">cena REAL</text>
+
+  <text class="d-muted" x="360" y="248" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">jeden p&#345;&#237;kaz zalo&#382;&#237; tabulku, sloupce i prim&#225;rn&#237; kl&#237;&#269;</text>
+</svg>

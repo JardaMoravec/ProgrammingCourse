@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" aria-label="Pet rodin prikazu SQL: DDL, DQL, DML, DCL a TCL">
+  <rect class="d-bg" width="720" height="300" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+  <text class="d-text" x="360" y="32" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">rodiny p&#345;&#237;kaz&#367; SQL</text>
+
+  <rect class="d-soft" x="24" y="52" width="128" height="168" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="88" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#2563eb">DDL</text>
+  <text class="d-text" x="88" y="114" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">CREATE</text>
+  <text class="d-text" x="88" y="134" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">ALTER</text>
+  <text class="d-text" x="88" y="154" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">DROP</text>
+  <text class="d-muted" x="88" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">lekce 14</text>
+
+  <rect class="d-soft" x="164" y="52" width="128" height="168" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="228" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#2563eb">DQL</text>
+  <text class="d-text" x="228" y="134" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">SELECT</text>
+  <text class="d-muted" x="228" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">lekce 15&#8211;20</text>
+
+  <rect class="d-soft" x="304" y="52" width="128" height="168" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="368" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#2563eb">DML</text>
+  <text class="d-text" x="368" y="114" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">INSERT</text>
+  <text class="d-text" x="368" y="134" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">UPDATE</text>
+  <text class="d-text" x="368" y="154" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#1a1d26">DELETE</text>
+  <text class="d-muted" x="368" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">lekce 21&#8211;22</text>
+
+  <rect class="d-surface" x="444" y="52" width="120" height="168" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="504" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#1a1d26">DCL</text>
+  <text class="d-muted" x="504" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">GRANT</text>
+  <text class="d-muted" x="504" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">REVOKE</text>
+  <text class="d-muted" x="504" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">lekce 23</text>
+
+  <rect class="d-surface" x="576" y="52" width="120" height="168" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-text" x="636" y="84" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="16" font-weight="700" fill="#1a1d26">TCL</text>
+  <text class="d-muted" x="636" y="122" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">BEGIN</text>
+  <text class="d-muted" x="636" y="142" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#5c6370">COMMIT</text>
+  <text class="d-muted" x="636" y="190" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" fill="#5c6370">lekce 23</text>
+
+  <text class="d-muted" x="360" y="262" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="12" fill="#5c6370">DELETE ma&#382;e &#345;&#225;dky (DML), DROP ma&#382;e tabulku (DDL)</text>
+</svg>

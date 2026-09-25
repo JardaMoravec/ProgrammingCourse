@@ -1,0 +1,12 @@
+id: 13-sql-a-sqlite
+rocnik: 2
+nazev: Koncepce jazyka SQL a SQLite
+modul: sql
+hodiny: 5
+obtiznost: zacatecnik
+prerekvizity: [12-relacni-databaze]
+kompetence: [k6-sql-zaklady]
+svp: [koncepce jazyka SQL]
+tagy: [sql, sqlite, ddl, dql, dml, dcl]
+migrovano_z:
+  - "zdroje/_Osnovy 2 roč.docx"

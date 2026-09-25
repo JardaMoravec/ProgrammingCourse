@@ -1,0 +1,48 @@
+title: Oddělení a lidé
+stars: 3
+moodle: PRG-2-14-03
+typ: sql
+soubor: reseni.sql
+description: |
+  V souboru `reseni.sql` založte dvě tabulky. Nejdřív `oddeleni`, pak `lide`,
+  protože cizí klíč odkazuje na tabulku, která už musí existovat.
+
+  **oddeleni**
+
+  - `id` — `INTEGER`, primární klíč
+  - `nazev` — `TEXT`, povinný
+
+  **lide**
+
+  - `id` — `INTEGER`, primární klíč
+  - `jmeno` — `TEXT`, povinné
+  - `oddeleni_id` — `INTEGER`, cizí klíč na `oddeleni.id`
+
+  Data nepište.
+evaluate:
+  - name: tabulka oddeleni
+    table: oddeleni
+    columns:
+      - name: id
+        type: INTEGER
+        pk: 1
+      - name: nazev
+        type: TEXT
+        notnull: 1
+  - name: tabulka lide
+    table: lide
+    columns:
+      - name: id
+        type: INTEGER
+        pk: 1
+      - name: jmeno
+        type: TEXT
+        notnull: 1
+      - name: oddeleni_id
+        type: INTEGER
+    foreign_keys:
+      - column: oddeleni_id
+        ref_table: oddeleni
+        ref_column: id
+odevzdani: |
+  Do AMOS nahrajte `reseni.sql` a spusťte **Evaluate**.

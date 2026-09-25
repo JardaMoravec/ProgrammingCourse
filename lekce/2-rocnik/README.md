@@ -72,7 +72,11 @@ Lekce **10** má 3 úkoly (`PRG-2-10-01` až `03`): záporné číslo, košík, 
 
 Lekce **11** je pololetní projekt (`PRG-2-11-01`, 9 h). Téma schválí učitel; hodnotí učitel, ne automatický test. Volitelně [návrhové vzory](../bonus/07-navrhove-vzory/lekce.md).
 
-Lekce **12** má 3 úkoly (`PRG-2-12-01` až `03`): zastávka podle klíče, žáci ve třídě, neplatný odkaz. SQL ještě není — tabulky v paměti.
+Lekce **12** má 3 úkoly (`PRG-2-12-01` až `03`): klíč u knih, linka a zastávky, neplatný odkaz. Odevzdává se textový dokument s odpovědí nebo tabulkou, ne program. SQL ještě není.
+
+Lekce **13** má 2 úkoly (`PRG-2-13-01` a `02`): rodina příkazu, SQLite a server. Odevzdává se textový dokument, bez spuštění databáze.
+
+Lekce **14** má 3 úkoly (`PRG-2-14-01` až `03`): produkty, vozidla, oddělení a lidé. Odevzdává se `reseni.sql`. Hodnotitel ho spustí ve SQLite. Modul `sqlite3` v Pythonu je lekce 24.
 
 ## Moduly (ŠVP)
 

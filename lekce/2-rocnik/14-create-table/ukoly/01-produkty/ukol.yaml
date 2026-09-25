@@ -1,0 +1,27 @@
+title: Produkty
+stars: 1
+moodle: PRG-2-14-01
+typ: sql
+soubor: reseni.sql
+description: |
+  V souboru `reseni.sql` založte tabulku `produkty`:
+
+  - `id` — `INTEGER`, primární klíč
+  - `nazev` — `TEXT`, povinný (`NOT NULL`)
+  - `cena` — `REAL`
+
+  Jinou tabulku nezakládejte. Data (`INSERT`) nepište.
+evaluate:
+  - name: tabulka produkty
+    table: produkty
+    columns:
+      - name: id
+        type: INTEGER
+        pk: 1
+      - name: nazev
+        type: TEXT
+        notnull: 1
+      - name: cena
+        type: REAL
+odevzdani: |
+  Do AMOS nahrajte `reseni.sql` a spusťte **Evaluate**.

@@ -256,6 +256,9 @@ moduly:
             svp: [koncepce jazyka SQL]
             kompetence: [k6-sql-zaklady]
             prerekvizity: [12-relacni-databaze]
+            ukoly_zdroje:
+              - "rodina příkazu — textový dokument"
+              - "SQLite a server — ano/ne s odůvodněním"
 
           - id: "14-create-table"
             soubor: lekce/2-rocnik/14-create-table
@@ -264,7 +267,10 @@ moduly:
             svp: [definování databázových objektů]
             kompetence: [k6-sql-zaklady, k7-databaze]
             prerekvizity: [13-sql-a-sqlite]
-            ukoly_zdroje: ["úkol 19- db - produkty"]
+            ukoly_zdroje:
+              - "úkol 19 - db - produkty"
+              - "vozidla — NOT NULL UNIQUE"
+              - "oddělení a lidé — cizí klíč"
 
       - id: dql
         nazev: Dotazy (SELECT, JOIN, agregace)

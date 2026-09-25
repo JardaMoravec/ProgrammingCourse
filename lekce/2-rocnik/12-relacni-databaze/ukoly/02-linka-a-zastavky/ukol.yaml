@@ -1,0 +1,19 @@
+title: Linka a zastávky
+stars: 2
+moodle: PRG-2-12-02
+typ: soubor
+description: |
+  Dopravní podnik eviduje **linky** a **zastávky na lince**. Jedna linka
+  má víc zastávek, zastávka v tomto úkolu patří jedné lince (vztah **1:N**).
+
+  V dokumentu nakreslete **dvě tabulky**:
+
+  - název tabulky, sloupce, označený primární klíč a cizí klíč,
+  - v každé tabulce aspoň **dva** ukázkové řádky, aby byl vidět odkaz,
+  - u jedné linky aspoň dvě zastávky.
+
+  Jméno linky u zastávky znovu jako text nepište — stačí číslo cizího klíče.
+odevzdani: |
+  Do AMOS nahrajte dokument (TXT, PDF nebo DOCX) s oběma tabulkami.
+  Tabulku můžete zapsat jako text po sloupcích. Automatický test není —
+  hodnotí učitel.
