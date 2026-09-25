@@ -7,5 +7,5 @@ obtiznost: zacatecnik
 prerekvizity: [02-html-css-shrnuti]
 kompetence: [k4-formulare-skript]
 svp: [skriptovací jazyk, dynamické webové stránky]
-tagy: [flask, instalace, hello]
+tagy: [flask, instalace, venv, hello]
 migrovano_z: []

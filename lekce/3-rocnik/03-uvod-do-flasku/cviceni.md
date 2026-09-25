@@ -1,5 +1,7 @@
 # Cvičení — Úvod do Flasku
 
+Nejdřív ve složce projektu zapněte virtuální prostředí z lekce (na řádku je `(test)`). Flask je nainstalovaný v něm — bez zapnutí prostředí příkaz `flask` modul nenajde.
+
 Soubory spouštějte v téže složce:
 
 ```bash
