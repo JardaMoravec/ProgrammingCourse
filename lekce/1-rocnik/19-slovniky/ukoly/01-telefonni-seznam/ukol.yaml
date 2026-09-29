@@ -1,5 +1,6 @@
 title: Překlad barev
 stars: 1
+ignore_input_prompt: true
 description: 'Napište program s pevným slovníkem:
 
   - červená → red

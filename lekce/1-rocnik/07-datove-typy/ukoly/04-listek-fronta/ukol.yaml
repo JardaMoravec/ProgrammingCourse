@@ -1,5 +1,6 @@
 title: Pořadí ve frontě
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-07-04
 description: |
   Na úřadě si vyzvednete lístek a na displeji vidíte, které číslo se právě volá.

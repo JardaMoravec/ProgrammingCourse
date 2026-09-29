@@ -1,5 +1,6 @@
 title: Nejbližší dvojice
 stars: 3
+ignore_input_prompt: true
 moodle: PRG-2-02-03
 description: |
   Načtěte jeden řádek celých čísel (nejméně dvě). Seřaďte je **vlastním**
@@ -15,7 +16,6 @@ description: |
 
   `1 3`
 
-  Pro automatický test použijte `input()` **bez textu**.
 cases:
   - name: zaklad
     input: |

@@ -1,5 +1,6 @@
 title: Alespoň jedno záporné
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-08-04
 description: |
   Napište program, který načte dvě celá čísla `a` a `b` a vypíše `True` nebo `False`,

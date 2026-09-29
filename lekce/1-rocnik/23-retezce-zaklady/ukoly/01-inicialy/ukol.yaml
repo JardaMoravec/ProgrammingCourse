@@ -1,5 +1,6 @@
 title: Počet samohlásek
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte slovo a vypíše počet samohlásek (a, e, i, o, u — bez ohledu na velikost písmen).
 cases:
 - name: program

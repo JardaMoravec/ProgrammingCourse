@@ -1,5 +1,6 @@
 title: Přidání do seznamu
 stars: 3
+ignore_input_prompt: true
 description: |
   Napište funkci `pridej(seznam, prvek)` přidávající prvek do seznamu. Načtěte N, vytvořte prázdný seznam, N-krát načtěte číslo, volejte `pridej`, na závěr vypište seznam.
 cases:

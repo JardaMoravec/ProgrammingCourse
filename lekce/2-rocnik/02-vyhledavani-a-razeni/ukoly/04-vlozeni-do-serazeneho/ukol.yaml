@@ -1,5 +1,6 @@
 title: Vložení do seřazeného
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-02-04
 description: |
   Načtěte jeden řádek **už vzestupně seřazených** celých čísel. Na druhém
@@ -17,7 +18,6 @@ description: |
 
   `0 1 4 9 10 16 25 30`
 
-  Pro automatický test použijte `input()` **bez textu**.
 cases:
   - name: zaklad
     input: |

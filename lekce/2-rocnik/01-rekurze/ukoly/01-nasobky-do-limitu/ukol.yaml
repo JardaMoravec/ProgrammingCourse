@@ -1,5 +1,6 @@
 title: Násobky do 500
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-01-01
 description: |
   Napište **rekurzivní** funkci, která najde všechny kladné násobky zadaného
@@ -10,7 +11,6 @@ description: |
   Cykly `for` / `while` nejsou přípustné. `range` nepoužívejte k vygenerování
   celého seznamu — seznam stavte rekurzí.
 
-  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
 
 cases:
   - name: nasobky-7

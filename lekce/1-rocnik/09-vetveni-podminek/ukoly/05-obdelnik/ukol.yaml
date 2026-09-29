@@ -1,5 +1,6 @@
 title: Dostatek peněz
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-09-05
 description: |
   Napište program, který načte **cenu zboží** a **kolik máte v peněžence** (Kč).

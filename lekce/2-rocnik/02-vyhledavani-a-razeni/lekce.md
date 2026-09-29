@@ -167,11 +167,11 @@ Jiný řadící algoritmus (třeba výběrem minima) je taky v pořádku — v �
 
 ## Načtení seznamu z konzole
 
-Úkoly čtou **jeden řádek čísel** a často ještě druhé číslo. `input()` bez textu:
+Úkoly čtou **jeden řádek čísel** a často ještě druhé číslo. Výzva v `input()` může být libovolná, test ji ignoruje:
 
 ```python
-pole = [int(x) for x in input().split()]
-x = int(input())
+pole = [int(x) for x in input("Čísla: ").split()]
+x = int(input("Hledané číslo: "))
 ```
 
 `split()` rozdělí řádek podle mezer. `int` každé slovo změní na číslo.

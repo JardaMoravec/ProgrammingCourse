@@ -1,5 +1,6 @@
 title: Prvních šest mocnin
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-01-03
 description: |
   Napište **rekurzivní** program: načtěte celé číslo větší než 1 a spočítejte
@@ -12,7 +13,6 @@ description: |
 
   Cykly `for` / `while` nejsou přípustné.
 
-  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
 
 cases:
   - name: dvojka

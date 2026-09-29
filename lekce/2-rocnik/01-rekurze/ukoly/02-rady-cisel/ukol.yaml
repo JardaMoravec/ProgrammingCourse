@@ -1,5 +1,6 @@
 title: Řady čísel
 stars: 3
+ignore_input_prompt: true
 moodle: PRG-2-01-02
 description: |
   Napište **rekurzivní** program, který z celého čísla n (n ≥ 0) sestaví
@@ -14,7 +15,6 @@ description: |
 
   Hotovou strukturu vypište jedním `print`.
 
-  Pro automatický test použijte `int(input())` **bez textu** ve `input`.
 
 cases:
   - name: n-0

@@ -1,5 +1,6 @@
 title: Součet zadaných čísel
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který opakovaně načítá celá čísla. Na vstupu `0` skončí a vypíše součet všech předchozích čísel.
 cases:
 - name: 1+2+3

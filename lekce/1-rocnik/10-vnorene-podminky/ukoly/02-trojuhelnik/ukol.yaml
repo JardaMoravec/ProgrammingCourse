@@ -1,5 +1,6 @@
 title: Existence trojúhelníku
 stars: 3
+ignore_input_prompt: true
 description: |
   Napište program, který načte délky stran a, b, c. Pokud některá ≤ 0, vypište `Chyba: strany musí být kladné.`
 

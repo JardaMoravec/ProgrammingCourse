@@ -1,5 +1,6 @@
 title: Druhý nejmenší
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte N a N celých čísel (N ≥ 2, různé hodnoty) a bez vestavěných funkcí najde druhé nejmenší číslo.
 cases:
 - name: 5-1-9

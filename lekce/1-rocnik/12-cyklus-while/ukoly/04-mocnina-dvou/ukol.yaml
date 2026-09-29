@@ -1,5 +1,6 @@
 title: Největší mocnina dvou
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte celé číslo n > 0 a while cyklem najde největší mocninu 2, která je ≤ n.
 cases:
 - name: n=20

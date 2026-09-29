@@ -1,5 +1,6 @@
 title: Kilogramy na gramy
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-09-03
 description: |
   Převod jednotek objekt nepotřebuje — je to **statická** metoda.
@@ -11,7 +12,6 @@ description: |
   Načtěte jedno celé číslo (kilogramy) a vypište výsledek
   `Hmotnost.kg_na_g(...)`.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: dva

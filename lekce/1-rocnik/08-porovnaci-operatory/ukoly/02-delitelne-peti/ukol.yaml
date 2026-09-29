@@ -1,5 +1,6 @@
 title: Dělitelnost třemi
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-08-02
 description: |
   Napište program, který načte celé číslo a vypíše `True` nebo `False` podle toho,

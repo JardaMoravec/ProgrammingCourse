@@ -1,5 +1,6 @@
 title: Košík
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-10-02
 description: |
   Košík jde procházet cyklem, protože má `__iter__`.
@@ -11,7 +12,6 @@ description: |
   do košíku. Cyklem `for polozka in kosik` vypište názvy (jeden
   na řádek). Nepoužívejte `for polozka in kosik.polozky`.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: tri

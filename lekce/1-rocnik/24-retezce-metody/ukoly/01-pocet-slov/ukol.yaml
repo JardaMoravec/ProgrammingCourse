@@ -1,5 +1,6 @@
 title: Počet vět
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte text a vypíše počet vět (věty oddělené tečkou `.`).
 cases:
 - name: 2 vety

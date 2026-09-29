@@ -1,5 +1,6 @@
 title: Dlouhá slova
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte N a N slov a vypíše seznam slov delších než 4 znaky.
 cases:
 - name: 4 slova

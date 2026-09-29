@@ -1,5 +1,6 @@
 title: Teplotní režim
 stars: 3
+ignore_input_prompt: true
 moodle: PRG-1-09-03
 description: |
   Napište program, který načte teplotu venku (°C, desetinné číslo) a vypíše jednu z kategorií:

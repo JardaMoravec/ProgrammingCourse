@@ -41,41 +41,66 @@ def escape_posix_ere(text: str) -> str:
     return _POSIX_ERE_SPECIAL.sub(r"\\\1", text)
 
 
+PROMPT_NOTE = (
+    "**Výzva u `input()`:** libovolný text, nebo prázdné `input()`. Test výzvu ignoruje."
+)
+
+
+def case_reads_stdin(cases: list[dict]) -> bool:
+    return any(str(c.get("input") or "").strip() for c in cases)
+
+
+def _flexible_number(number: str) -> str:
+    if "." not in number:
+        return rf"{number}(\.0+)?"
+    whole, frac = number.split(".", 1)
+    significant = frac.rstrip("0")
+    if significant:
+        return rf"{whole}\.{significant}0*"
+    return rf"{whole}(\.0+)?"
+
+
 def prompt_tolerant_output(out: str, *, numeric: bool) -> str:
     """Výstup VPL, který ignoruje text vypsaný funkcí input().
 
-    Shoda je na konci výstupu. Cokoli před očekávaným textem (výzva u input)
-    se nehodnotí. U numeric se u posledního čísla povolí 16 i 16.0 i 16.00.
+    Očekávaný text musí být na konci. Před ním smí být výzva na stejném řádku
+    i celé řádky s písmenem (typická výzva). Řádky jen z číslic navíc neprojdou,
+    takže delší výpis není automaticky správný. U numeric se u posledního čísla
+    povolí 16 i 16.0 i 16.00.
     """
     text = str(out).rstrip("\r\n")
     body = escape_posix_ere(text)
     if numeric:
         match = _NUMBER_AT_END.search(text)
         if match:
-            label = escape_posix_ere(text[: match.start()])
-            number = match.group(1)
-            if "." in number:
-                whole, frac = number.split(".", 1)
-                significant = frac.rstrip("0")
-                if significant:
-                    number_re = rf"{whole}\.{significant}0*"
-                else:
-                    number_re = rf"{whole}(\.0+)?"
-            else:
-                number_re = rf"{number}(\.0+)?"
-            body = label + number_re
-    return f"/{body}[[:space:]]*$/"
+            body = escape_posix_ere(text[: match.start()]) + _flexible_number(
+                match.group(1)
+            )
+    return (
+        r"/^([^\n]*[[:alpha:]][^\n]*\n)*"
+        r"([^\n]*[^[:alnum:]_])?"
+        + body
+        + r"[[:space:]]*$/"
+    )
+
+
+def ignore_prompts(task: dict, rocnik: str) -> bool:
+    """Výzvu u input() ignorují testy v 1. a 2. ročníku."""
+    if task.get("ignore_input_prompt"):
+        return True
+    return str(rocnik) in {"1", "2"} and case_reads_stdin(task.get("cases") or [])
 
 
 def format_vpl_cases(cases: list[dict], *, ignore_input_prompt: bool = False) -> str:
     lines: list[str] = []
+    tolerate = ignore_input_prompt
     for c in cases:
         lines.append(f"Case = {c['name']}")
         if c.get("input") is not None:
             lines.append(f"Input = {str(c['input']).rstrip()}")
         out = c.get("output")
         if out is not None:
-            if ignore_input_prompt:
+            if tolerate:
                 pattern = prompt_tolerant_output(
                     str(out), numeric=bool(c.get("numeric"))
                 )
@@ -248,8 +273,11 @@ def build_ukoly_md(
             description,
             "",
         ]
-        if t.get("io"):
-            parts += ["**Formát:**", "", str(t["io"]).strip(), ""]
+        io = str(t["io"]).strip() if t.get("io") else ""
+        if str(rocnik) in {"1", "2"} and case_reads_stdin(t.get("cases") or []) and "Výzva u `input()`" not in io:
+            io = f"{io}\n{PROMPT_NOTE}".strip()
+        if io:
+            parts += ["**Formát:**", "", io, ""]
         if t.get("odevzdani"):
             parts += ["**Odevzdání:**", "", str(t["odevzdani"]).strip(), ""]
     if tajny_znamkovany:
@@ -300,7 +328,7 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
             cases_path.write_text(
                 format_vpl_cases(
                     t["cases"],
-                    ignore_input_prompt=bool(t.get("ignore_input_prompt")),
+                    ignore_input_prompt=ignore_prompts(t, rocnik),
                 ),
                 encoding="utf-8",
             )
@@ -411,6 +439,7 @@ def main() -> None:
             write_lesson_ukoly(lesson_dir, tasks)
         elif secrets:
             ukoly_root = lesson_dir / "ukoly"
+            rocnik = parse_meta(lesson_dir / "meta.yaml").get("rocnik", "1")
             for t in secrets:
                 task_dir = ukoly_root / task_dir_name(t)
                 task_dir.mkdir(parents=True, exist_ok=True)
@@ -419,7 +448,7 @@ def main() -> None:
                     cases_path.write_text(
                         format_vpl_cases(
                             t["cases"],
-                            ignore_input_prompt=bool(t.get("ignore_input_prompt")),
+                            ignore_input_prompt=ignore_prompts(t, rocnik),
                         ),
                         encoding="utf-8",
                     )

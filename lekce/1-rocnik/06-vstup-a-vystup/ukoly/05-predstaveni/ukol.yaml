@@ -1,0 +1,39 @@
+title: Představení
+stars: 2
+ignore_input_prompt: true
+moodle: PRG-1-06-05
+description: |
+  Napište program, který načte jméno, město a věk (celé číslo).
+  Vypíše dva řádky, například pro `Anna`, `Brno` a `16`:
+
+  `Anna z města Brno`
+  `Věk: 16 let`
+io: |
+  **Vstup:** jméno, město, věk (každé na vlastním řádku)
+  **Výstup:** dva řádky `JMÉNO z města MĚSTO` a `Věk: X let`
+  **Výzva u `input()`:** libovolný text, nebo prázdné `input()`. Test výzvu ignoruje.
+cases:
+  - name: Anna
+    input: |
+      Anna
+      Brno
+      16
+    output: |
+      Anna z města Brno
+      Věk: 16 let
+  - name: Petr
+    input: |
+      Petr
+      Praha
+      17
+    output: |
+      Petr z města Praha
+      Věk: 17 let
+  - name: X
+    input: |
+      X
+      Y
+      0
+    output: |
+      X z města Y
+      Věk: 0 let

@@ -1,5 +1,6 @@
 title: Spořicí účet
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-08-03
 description: |
   Spořicí účet **je** účet — výpis rodiče doplníte, nekopírujete.
@@ -14,7 +15,6 @@ description: |
   Načtěte dva řádky: zůstatek, úrok.
   Vypište `print` objektu `SporiciUcet`.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: pet-tisic

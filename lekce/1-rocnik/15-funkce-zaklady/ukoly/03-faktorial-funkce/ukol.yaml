@@ -1,5 +1,6 @@
 title: Přepona trojúhelníku
 stars: 2
+ignore_input_prompt: true
 description: 'Napište funkci `prepona(a, b)` vracející délku přepony pravoúhlého trojúhelníku se odvěnami a, b (math.sqrt). Načtěte a, b a vypište `Přepona: X`.'
 cases:
 - name: 3-4

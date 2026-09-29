@@ -1,5 +1,6 @@
 title: Zvýšení o jedna
 stars: 2
+ignore_input_prompt: true
 description: Napište funkci `zvys(o)` vracející hodnotu o 1 větší. V hlavním programu načtěte celé číslo a vypište výsledek.
 cases:
 - name: '5'

@@ -1,5 +1,6 @@
 title: Počet jedniček
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte N a N známek (1–5) a vypíše, kolik je známek 1.
 cases:
 - name: 2 jednicky

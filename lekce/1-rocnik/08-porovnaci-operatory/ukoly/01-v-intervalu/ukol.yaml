@@ -1,5 +1,6 @@
 title: Body v rozsahu prospěchu
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-08-01
 description: |
   Škola považuje test za **splněný**, pokud má student **50 až 100 bodů včetně**.

@@ -1,5 +1,6 @@
 title: Vstupné do kina
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-09-06
 description: |
   Napište program, který načte **věk** (celé číslo) a **plné vstupné** (Kč).

@@ -26,12 +26,12 @@ Tenhle prompt je slabý:
 
 `udělej python co sečte čísla`
 
-Přepište ho tak, aby šel ověřit: jazyk, vstup, výstup, `input()` bez textu, jeden příklad.
+Přepište ho tak, aby šel ověřit: jazyk, vstup, přesný výstup, jeden příklad.
 
 @reseni
 Například:
 
-Python 3, bez importu. Načti dvě celá čísla, každé `int(input())` bez textu. Vypiš jeden řádek `Soucet: 30` (číslo je součet). Příklad: vstup `10` a `20`, výstup `Soucet: 30`.
+Python 3, bez importu. Načti dvě celá čísla, každé `int(input())` (výzva může být). Vypiš jeden řádek `Soucet: 30` (číslo je součet). Příklad: vstup `10` a `20`, výstup `Soucet: 30`.
 @end
 
 ---

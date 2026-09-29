@@ -1,5 +1,6 @@
 title: Součet sudých do N
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte celé kladné N a for cyklem sečte všechna sudá čísla od 2 do N včetně.
 cases:
 - name: '6'

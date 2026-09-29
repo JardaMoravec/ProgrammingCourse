@@ -47,7 +47,7 @@ Model skládá text, který **vypadá** jako program. Neví, jestli u vás AMOS 
 Proto běžně:
 
 - vymyslí funkci, kterou v kurzu ještě nemáte (`map`, dekorátor, knihovna),
-- napíše `input("Zadej cislo: ")`, ačkoli test chce `input()` **bez textu**,
+- přidá k výsledku další řádek, který test nečeká,
 - „opraví“ jednu chybu a rozbije druhou,
 - tvrdí, že kód spustil, i když ho nespustil.
 
@@ -62,7 +62,7 @@ Doplňování v editoru je totéž v malém: nabídne řádek. Šipka vpravo ho 
 Lépe — jako školní úloha:
 
 1. **jazyk** — Python 3, bez knihoven navíc,
-2. **vstup** — co přesně načíst (`input()` bez textu),
+2. **vstup** — co přesně načíst (výzva u `input()` může být, test ji ignoruje),
 3. **výstup** — přesný tvar (`Prumer: 4.5`),
 4. **omezení** — co nesmí (`while`, `sort()`, dekorátor),
 5. **příklad** — jeden vstup a očekávaný výstup.
@@ -72,7 +72,7 @@ Python 3, žádný import.
 
 Načti jedno celé n. Pak načti n celých čísel, každé na řádku.
 Vypiš průměr na jeden řádek ve tvaru: Prumer: 4.5
-input() bez textu. Žádný while.
+Žádný while.
 ```
 
 Čím víc vypadá zadání jako AMOS (vstup / výstup), tím míň si model vymýšlí. Pořád to **není** hotový úkol — je to jen návrh, který musíte ověřit.

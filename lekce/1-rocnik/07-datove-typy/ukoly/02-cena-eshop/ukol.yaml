@@ -1,5 +1,6 @@
 title: Cena z e-shopu
 stars: 1
+ignore_input_prompt: true
 moodle: PRG-1-07-02
 description: |
   E-shop posílá cenu produktu z webového formuláře vždy jako **text** (např. `"89.90"`).

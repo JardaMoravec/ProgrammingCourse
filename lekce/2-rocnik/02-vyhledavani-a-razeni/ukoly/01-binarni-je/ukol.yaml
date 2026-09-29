@@ -1,5 +1,6 @@
 title: Binární hledání (True / False)
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-02-01
 description: |
   Načtěte jeden řádek **vzestupně seřazených** celých čísel a na druhém řádku
@@ -13,7 +14,6 @@ description: |
 
   Vypište přesně `True` nebo `False` (jako `print` v Pythonu).
 
-  Pro automatický test použijte `input()` **bez textu**.
 cases:
   - name: uprostred
     input: |

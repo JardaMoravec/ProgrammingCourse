@@ -1,5 +1,6 @@
 title: Pizza
 stars: 1
+ignore_input_prompt: true
 moodle: PRG-2-07-01
 description: |
   Pizza **je** jídlo — společné věci patří rodiči.
@@ -15,7 +16,6 @@ description: |
   Načtěte tři řádky: název, cenu, průměr.
   Vypište `print(pizza)` a na dalším řádku výsledek `s_dph()`.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: quattro

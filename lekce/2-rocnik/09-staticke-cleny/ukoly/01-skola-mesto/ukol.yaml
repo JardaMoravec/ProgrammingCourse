@@ -1,5 +1,6 @@
 title: Škola a město
 stars: 1
+ignore_input_prompt: true
 moodle: PRG-2-09-01
 description: |
   Město platí **pro všechny** školy stejné — patří třídě.
@@ -11,7 +12,6 @@ description: |
 
   Načtěte jeden řádek (název školy) a vypište `print` objektu `Skola`.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: gml

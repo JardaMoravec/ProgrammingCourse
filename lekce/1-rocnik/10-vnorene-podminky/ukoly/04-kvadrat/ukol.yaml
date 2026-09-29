@@ -1,5 +1,6 @@
 title: Kvadrátová rovnice — diskriminant
 stars: 3
+ignore_input_prompt: true
 description: Napište program, který načte koeficienty a, b, c (celá čísla) kvadrátové rovnice ax²+bx+c=0 a vypíše diskriminant D = b² − 4ac.
 cases:
 - name: x2-5x+6

@@ -1,5 +1,6 @@
 title: Kladné celé číslo
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte **jeden** vstup a ověří, zda je to **kladné celé
   číslo**. Cyklus `while` nepoužívejte.

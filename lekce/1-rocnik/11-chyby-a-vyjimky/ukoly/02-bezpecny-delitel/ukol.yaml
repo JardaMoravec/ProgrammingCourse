@@ -1,5 +1,6 @@
 title: Bezpečné dělení
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte dvě celá čísla a vypíše podíl a/b. Pokud dělíte nulou, vypište `Chyba: dělení nulou.` místo pádu programu.
 

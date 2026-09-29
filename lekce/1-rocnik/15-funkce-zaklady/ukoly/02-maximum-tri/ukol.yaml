@@ -1,5 +1,6 @@
 title: Minimum ze tří
 stars: 2
+ignore_input_prompt: true
 description: 'Napište funkci `minimum(a, b, c)` vracející nejmenší ze tří čísel (bez vestavěné `min`). V hlavním programu načtěte tři čísla a vypište `Minimum: X`.'
 cases:
 - name: 1-5-3

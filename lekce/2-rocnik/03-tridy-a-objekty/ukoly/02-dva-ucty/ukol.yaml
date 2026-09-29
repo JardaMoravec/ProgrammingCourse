@@ -1,5 +1,6 @@
 title: Dva účty
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-2-03-02
 description: |
   Načtěte dvě celá čísla: počáteční zůstatek účtu A a účtu B.
@@ -15,7 +16,6 @@ description: |
 
   (Čísla závisí na vstupu. Po odečtení 20 od A.)
 
-  Pro automatický test použijte `int(input())` **bez textu**.
 
 cases:
   - name: sto-a-padesat

@@ -1,5 +1,6 @@
 title: Kruh — obvod a obsah
 stars: 2
+ignore_input_prompt: true
 moodle: PRG-1-09-04
 description: |
   Napište program, který načte poloměr kruhu. Pokud je **záporný**, vypište:

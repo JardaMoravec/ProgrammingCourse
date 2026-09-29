@@ -1,5 +1,6 @@
 title: Odpočítávání
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte celé kladné číslo N a while cyklem vypíše odpočítávání od N do 0 — každé číslo na vlastní řádek.
 cases:
 - name: '3'

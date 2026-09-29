@@ -1,5 +1,6 @@
 title: Počet výskytů
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte N, pak N celých čísel a cílové číslo h. Vypište, kolikrát se h v seznamu vyskytuje.
 cases:
 - name: 2x3

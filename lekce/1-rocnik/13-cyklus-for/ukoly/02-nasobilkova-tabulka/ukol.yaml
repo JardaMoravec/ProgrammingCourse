@@ -1,5 +1,6 @@
 title: Součet čtverců
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte celé kladné N a for cyklem vypočítá součet 1² + 2² + … + N².
 cases:
 - name: '3'

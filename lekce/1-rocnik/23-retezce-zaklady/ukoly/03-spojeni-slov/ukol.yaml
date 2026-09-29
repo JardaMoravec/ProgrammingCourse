@@ -1,5 +1,6 @@
 title: Spojení slov
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte N a N slov a spojí je do věty (jedna mezera mezi slovy). Vypište výslednou větu.
 cases:

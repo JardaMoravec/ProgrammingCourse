@@ -1,5 +1,6 @@
 title: Kontrola e-mailu
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte e-mail a vypíše `Vypadá platně` nebo `Neplatný formát` (zjednodušeně: musí obsahovat `@` a `.`).
 cases:

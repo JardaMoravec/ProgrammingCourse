@@ -1,5 +1,6 @@
 title: Vstupenka do kina
 stars: 3
+ignore_input_prompt: true
 description: |
   Napište program, který načte věk a vypíše cenu vstupenky podle kategorií:
 

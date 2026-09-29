@@ -1,5 +1,6 @@
 title: VIP lístek
 stars: 1
+ignore_input_prompt: true
 moodle: PRG-2-08-01
 description: |
   Lístek do kina **je** lístek — VIP jen jinak popíše sedadlo.
@@ -13,7 +14,6 @@ description: |
   Načtěte jeden řádek (označení sedadla) a vypište `popis()`
   u objektu `VipListek`.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: rada-a

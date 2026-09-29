@@ -1,5 +1,6 @@
 title: Součet po převodu
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte dvě celá čísla jako text (pomocí `input()`) a vypíše jejich součet jako celé číslo.
 cases:
 - name: 10+5

@@ -1,5 +1,6 @@
 title: Převod na celé číslo
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte text a pokusí se ho převést na celé číslo. Při úspěchu vypíše `Hodnota: X`, při chybě `Chyba: neplatné celé číslo.`
 

@@ -1,5 +1,6 @@
 title: Součet zadaných čísel
 stars: 2
+ignore_input_prompt: true
 description: 'Napište program, který while cyklem načítá celá čísla a sčítá je. Když uživatel zadá **0**, cyklus skončí a program vypíše `Součet: X`.'
 cases:
 - name: 1+2+3

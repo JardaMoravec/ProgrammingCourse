@@ -1,5 +1,6 @@
 title: Minimum a maximum
 stars: 3
+ignore_input_prompt: true
 moodle: PRG-2-01-05
 description: |
   Načtěte jeden řádek celých čísel oddělených mezerou a uložte je do seznamu.
@@ -19,7 +20,6 @@ description: |
 
   (Nejdřív maximum, pak minimum, každé na vlastním řádku.)
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: puvodni-seznam

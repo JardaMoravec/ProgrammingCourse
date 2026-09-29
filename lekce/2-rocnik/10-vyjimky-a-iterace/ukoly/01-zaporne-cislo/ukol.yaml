@@ -1,5 +1,6 @@
 title: Záporné číslo
 stars: 1
+ignore_input_prompt: true
 moodle: PRG-2-10-01
 description: |
   Vlastní výjimka je třída — potomek `Exception`.
@@ -8,7 +9,6 @@ description: |
   číslo. Když je **menší než 0**, vyvolejte `ZaporneCislo` a v
   `except` vypište `zaporne`. Jinak číslo vypište.
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: zaporne

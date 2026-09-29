@@ -1,5 +1,6 @@
 title: Obsah kruhu
 stars: 2
+ignore_input_prompt: true
 description: 'Napište funkci `obsah_kruhu(r)` vracející obsah kruhu o poloměru r (π ≈ 3.14159). V hlavním programu načtěte poloměr a vypište:
 
 

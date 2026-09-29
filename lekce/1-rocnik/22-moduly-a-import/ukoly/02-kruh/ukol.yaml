@@ -1,5 +1,6 @@
 title: Obvod a obsah kruhu
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte poloměr r a vypíše obvod a obsah kruhu (použijte `math.pi`):
 

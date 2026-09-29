@@ -1,5 +1,6 @@
 title: Velká písmena
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte větu a vypíše ji celou velkými písmeny.
 cases:
 - name: ahoj

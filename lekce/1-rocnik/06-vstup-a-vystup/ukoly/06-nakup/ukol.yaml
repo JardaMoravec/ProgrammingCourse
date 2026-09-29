@@ -1,0 +1,42 @@
+title: Nákup
+stars: 2
+ignore_input_prompt: true
+moodle: PRG-1-06-06
+description: |
+  Napište program, který načte název zboží (text), cenu za kus (desetinné číslo)
+  a počet kusů (celé číslo). Vypíše dva řádky. Celkovou cenu (cena × počet)
+  vypište f-stringem na **2 desetinná místa** (`:.2f`).
+
+  Příklad pro `mleko`, `12.5` a `2`:
+
+  `mleko: 2 ks`
+  `Celkem: 25.00 Kč`
+io: |
+  **Vstup:** název, cena za kus, počet kusů (každé na vlastním řádku)
+  **Výstup:** `NÁZEV: N ks` a `Celkem: X.XX Kč` (vždy dvě desetinná místa)
+  **Výzva u `input()`:** libovolný text, nebo prázdné `input()`. Test výzvu ignoruje.
+cases:
+  - name: mleko
+    input: |
+      mleko
+      12.5
+      2
+    output: |
+      mleko: 2 ks
+      Celkem: 25.00 Kč
+  - name: caj
+    input: |
+      caj
+      9.99
+      3
+    output: |
+      caj: 3 ks
+      Celkem: 29.97 Kč
+  - name: rohlik
+    input: |
+      rohlik
+      3.2
+      5
+    output: |
+      rohlik: 5 ks
+      Celkem: 16.00 Kč

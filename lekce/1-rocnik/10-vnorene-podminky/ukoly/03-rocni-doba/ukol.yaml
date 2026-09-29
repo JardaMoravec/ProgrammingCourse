@@ -1,5 +1,6 @@
 title: Roční období
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte číslo měsíce (1–12) a vypíše roční období:
 

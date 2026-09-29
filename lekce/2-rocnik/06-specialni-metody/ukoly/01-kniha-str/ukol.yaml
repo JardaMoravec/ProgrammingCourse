@@ -1,5 +1,6 @@
 title: Kniha a __str__
 stars: 1
+ignore_input_prompt: true
 moodle: PRG-2-06-01
 description: |
   Načtěte dva řádky: název knihy a rok vydání (rok je celé číslo).
@@ -12,7 +13,6 @@ description: |
 
   `Válka s Mloky (1936)`
 
-  Pro automatický test použijte `input()` **bez textu**.
 
 cases:
   - name: mloci

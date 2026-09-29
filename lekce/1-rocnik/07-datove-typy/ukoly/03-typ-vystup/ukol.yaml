@@ -1,5 +1,6 @@
 title: Celočíselný a desetinný tvar
 stars: 2
+ignore_input_prompt: true
 description: |
   Napište program, který načte desetinné číslo a vypíše jeho celočíselnou a desetinnou část na dvou řádcích:
 
