@@ -1,5 +1,6 @@
 title: Věk za pět let
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte současný věk (celé číslo) a vypíše, kolik let bude za 5 let.
 cases:
 - name: '16'
@@ -17,9 +18,8 @@ cases:
 
     '
   output: Za 5 let vám bude 45.
-io: '**Vstup:** věk
-
+io: |
+  **Vstup:** věk
   **Výstup:** `Za 5 let vám bude X.`
-
-  '
+  **Výzva u `input()`:** libovolný text, nebo prázdné `input()`. Test výzvu ignoruje.
 moodle: PRG-1-06-04

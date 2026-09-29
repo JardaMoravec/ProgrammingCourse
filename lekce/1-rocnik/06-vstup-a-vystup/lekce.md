@@ -128,7 +128,7 @@ jmeno = input("Zadejte své jméno: ")
 print("Ahoj", jmeno, "!")
 ```
 
-Text v uvozovkách u `input()` je **výzva** pro uživatele — v testech VPL se posílá jen samotná data (bez výzev).
+Text v uvozovkách u `input()` je **výzva** pro uživatele. Může být libovolný, nebo může `input()` zůstat bez textu. Testy posílají na vstup jen samotná data a text výzvy při hodnocení ignorují. Hodnotí se výsledný výpis na konci výstupu.
 
 ## Vstup jako číslo
 

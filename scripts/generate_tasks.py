@@ -33,7 +33,41 @@ def stars(n: int) -> str:
     return "★" * int(n) + "☆" * (3 - int(n))
 
 
-def format_vpl_cases(cases: list[dict]) -> str:
+_POSIX_ERE_SPECIAL = re.compile(r"([.^$*+?()\[\]{}|\\/])")
+_NUMBER_AT_END = re.compile(r"(-?\d+(?:\.\d+)?)$")
+
+
+def escape_posix_ere(text: str) -> str:
+    return _POSIX_ERE_SPECIAL.sub(r"\\\1", text)
+
+
+def prompt_tolerant_output(out: str, *, numeric: bool) -> str:
+    """Výstup VPL, který ignoruje text vypsaný funkcí input().
+
+    Shoda je na konci výstupu. Cokoli před očekávaným textem (výzva u input)
+    se nehodnotí. U numeric se u posledního čísla povolí 16 i 16.0 i 16.00.
+    """
+    text = str(out).rstrip("\r\n")
+    body = escape_posix_ere(text)
+    if numeric:
+        match = _NUMBER_AT_END.search(text)
+        if match:
+            label = escape_posix_ere(text[: match.start()])
+            number = match.group(1)
+            if "." in number:
+                whole, frac = number.split(".", 1)
+                significant = frac.rstrip("0")
+                if significant:
+                    number_re = rf"{whole}\.{significant}0*"
+                else:
+                    number_re = rf"{whole}(\.0+)?"
+            else:
+                number_re = rf"{number}(\.0+)?"
+            body = label + number_re
+    return f"/{body}[[:space:]]*$/"
+
+
+def format_vpl_cases(cases: list[dict], *, ignore_input_prompt: bool = False) -> str:
     lines: list[str] = []
     for c in cases:
         lines.append(f"Case = {c['name']}")
@@ -41,7 +75,12 @@ def format_vpl_cases(cases: list[dict]) -> str:
             lines.append(f"Input = {str(c['input']).rstrip()}")
         out = c.get("output")
         if out is not None:
-            if c.get("numeric"):
+            if ignore_input_prompt:
+                pattern = prompt_tolerant_output(
+                    str(out), numeric=bool(c.get("numeric"))
+                )
+                lines.append(f"Output = {pattern}")
+            elif c.get("numeric"):
                 lines.append(f"Output = {out}")
             else:
                 lines.append(f'Output = "{out}"')
@@ -83,6 +122,8 @@ def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
     }
     if raw.get("io"):
         task["io"] = raw["io"]
+    if raw.get("ignore_input_prompt"):
+        task["ignore_input_prompt"] = True
     if raw.get("moodle"):
         task["moodle"] = raw["moodle"]
     if raw.get("files"):
@@ -256,7 +297,13 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
         task_dir.mkdir(parents=True, exist_ok=True)
         cases_path = task_dir / "vpl_evaluate.cases"
         if t["cases"]:
-            cases_path.write_text(format_vpl_cases(t["cases"]), encoding="utf-8")
+            cases_path.write_text(
+                format_vpl_cases(
+                    t["cases"],
+                    ignore_input_prompt=bool(t.get("ignore_input_prompt")),
+                ),
+                encoding="utf-8",
+            )
         elif cases_path.exists():
             cases_path.unlink()
         write_custom_vpl(task_dir, t)
@@ -369,7 +416,13 @@ def main() -> None:
                 task_dir.mkdir(parents=True, exist_ok=True)
                 cases_path = task_dir / "vpl_evaluate.cases"
                 if t["cases"]:
-                    cases_path.write_text(format_vpl_cases(t["cases"]), encoding="utf-8")
+                    cases_path.write_text(
+                        format_vpl_cases(
+                            t["cases"],
+                            ignore_input_prompt=bool(t.get("ignore_input_prompt")),
+                        ),
+                        encoding="utf-8",
+                    )
         total += len(tasks)
         extra = f", {len(secrets)} tajnych" if secrets else ""
         print(

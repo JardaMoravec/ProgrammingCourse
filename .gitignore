@@ -15,6 +15,9 @@ lekce/**/ukoly/reseni/
 lekce/**/ukoly/z[0-9][0-9]-*/
 lekce/**/tajny-znamkovany/
 
+# Odevzdaná řešení a hodnocení (lokálně u učitele)
+řešení/
+
 # Python
 __pycache__/
 *.py[cod]

@@ -4,25 +4,17 @@
 
 > Zdroj: `zdroje/Úkoly 1/úkol 1 - výpočet let do důchodu.docx`
 
-Vytvořte konzolovou aplikaci:
+Vytvořte konzolovou aplikaci. Věk je menší než 65:
 
 - načte věk uživatele,
-- vypočítá roky do důchodu (předpoklad: důchod ve 65 letech),
-- vypíše srozumitelnou zprávu.
+- vypočítá roky do důchodu (důchod ve 65 letech),
+- vypíše zprávu, např. `Do důchodu jdete za 40 let.`
 
 @reseni
 ```python
-DUODUCHOD = 65
-
 vek = int(input("Zadejte věk: "))
-let = DUODUCHOD - vek
-
-if let > 0:
-    print(f"Do důchodu jdete za {let} let.")
-elif let == 0:
-    print("Do důchodu jdete letos.")
-else:
-    print("Už jste v důchodovém věku.")
+let = 65 - vek
+print(f"Do důchodu jdete za {let} let.")
 ```
 @end
 

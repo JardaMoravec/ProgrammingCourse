@@ -1,5 +1,6 @@
 title: Obsah čtverce
 stars: 2
+ignore_input_prompt: true
 description: Napište program, který načte délku strany čtverce (desetinné číslo) a vypíše jeho obsah.
 cases:
 - name: strana 4
@@ -20,4 +21,5 @@ cases:
 io: |
   **Vstup:** délka strany
   **Výstup:** `Obsah čtverce: X`
+  **Výzva u `input()`:** libovolný text, nebo prázdné `input()`. Test výzvu ignoruje.
 moodle: PRG-1-06-02

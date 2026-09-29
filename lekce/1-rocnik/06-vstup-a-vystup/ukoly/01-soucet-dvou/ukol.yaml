@@ -1,5 +1,6 @@
 title: Součet dvou čísel
 stars: 1
+ignore_input_prompt: true
 description: Napište program, který načte dvě celá čísla a vypíše jejich součet.
 cases:
 - name: 2+3
@@ -23,9 +24,8 @@ cases:
 
     '
   output: 'Součet: 30'
-io: '**Vstup:** dvě celá čísla
-
+io: |
+  **Vstup:** dvě celá čísla
   **Výstup:** `Součet: X`
-
-  '
+  **Výzva u `input()`:** libovolný text, nebo prázdné `input()`. Test výzvu ignoruje.
 moodle: PRG-1-06-01
