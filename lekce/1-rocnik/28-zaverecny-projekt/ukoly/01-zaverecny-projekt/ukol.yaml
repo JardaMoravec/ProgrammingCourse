@@ -1,0 +1,39 @@
+title: Závěrečný projekt
+stars: 3
+typ: soubor
+moodle: PRG-1-28-01
+description: |
+  **Známkovaný závěrečný projekt** (12 hodin v rozvrhu). Nová syntaxe
+  nepřibývá — složíte to, co umíte z lekcí 04–27.
+
+  Téma schválí učitel **v první hodině**. Nesmí to být kopie z hodin
+  (součet, čtverec, pozdrav, věk, nákup, odpočet, průměr známek,
+  počet řádků).
+
+  Program musí splnit **vše**:
+
+  - načte textový soubor s aspoň **pěti** řádky dat
+  - zapíše výsledek do **jiného** textového souboru
+  - aspoň jeden `input()` a srozumitelný výpis na obrazovku
+  - podmínka `if`
+  - cyklus (`for` nebo `while`) nad načtenými daty
+  - aspoň **dvě** vlastní funkce: mají parametr a vracejí hodnotu
+    (`return`); bez `global`
+  - seznam nebo slovník
+  - úprava textu metodou řetězce (`strip`, `split`, `lower`, …)
+
+  Aplikaci nevymýšlejte zbytečně složitě. Součástí hodnocení je:
+
+  - schválené téma a návrh **před** kódem
+  - přesné dodržení seznamu výše
+  - že kód umíte učiteli vysvětlit
+
+  Automatický test výstup nekontroluje — hodnotí **učitel**.
+
+odevzdani: |
+  Do AMOS nahrajte `main.py` a ukázkový vstupní soubor (např. `data.txt`).
+  Evaluate nemusí projít — známku určuje učitel podle kódu a ukázky
+  v hodině.
+io: |
+  **Vstup:** textový soubor s daty a aspoň jedna hodnota z `input()`
+  **Výstup:** výpis na obrazovku a výsledek v jiném textovém souboru

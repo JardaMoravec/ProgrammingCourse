@@ -1,0 +1,10 @@
+id: 28-zaverecny-projekt
+rocnik: 1
+nazev: Závěrečný projekt
+modul: strukturovane-programovani
+hodiny: 12
+obtiznost: pokrocily
+prerekvizity: [27-funkce-pokrocile]
+kompetence: [k1-datove-typy, k2-ridici-struktury, k3-strukturovane-programy]
+svp: [proměnné, řídicí struktury, cykly, funkce, pole, znaky, řetězce, IO operace (čtení a zápis dat do souboru)]
+migrovano_z: ["kurikulum/1-rocnik.yaml"]

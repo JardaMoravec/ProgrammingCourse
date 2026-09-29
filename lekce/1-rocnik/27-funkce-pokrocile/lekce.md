@@ -2,7 +2,7 @@
 id: 27-funkce-pokrocile
 rocnik: 1
 nazev: Funkce — lokální a globální proměnné
-hodiny: 3
+hodiny: 2
 obtiznost: pokrocily
 prerekvizity: [26-soubory-zapis]
 cile:
@@ -83,6 +83,6 @@ Preferujte **parametry a return** před `global`. Globální proměnné jen výj
 
 ## Co dál
 
-Závěr povinné výuky 1. ročníku — doplňte **úkoly v Moodle** (VPL), které vám chybí. V 2. ročníku navážete objektovým programováním.
+Další je [závěrečný projekt](../28-zaverecny-projekt/lekce.md) — složíte jednu konzolovou aplikaci ze všeho, co jste letos probrali. Ve 2. ročníku navážete objektovým programováním.
 
 Volitelně: [Konzole](../../bonus/01-konzole/lekce.md), [Git a GitHub](../../bonus/02-git-a-github/lekce.md), [Docker](../../bonus/03-docker/lekce.md). Po souborech také [CSV, JSON a XML](../../bonus/05-csv-json-xml/lekce.md). Nejsou v 81 hodinách, lze je přeskočit.

@@ -2,7 +2,7 @@ id: 26-soubory-zapis
 rocnik: 1
 nazev: IO operace — zápis do souboru
 modul: strukturovane-programovani
-hodiny: 3
+hodiny: 2
 obtiznost: stredni
 prerekvizity: [25-soubory-cteni]
 kompetence: [k3-strukturovane-programy]

@@ -2,7 +2,7 @@
 id: 01-programovani-a-jazyky
 rocnik: 1
 nazev: Programování a programovací jazyky
-hodiny: 3
+hodiny: 1
 obtiznost: zacatecnik
 prerekvizity: []
 cile:

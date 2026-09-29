@@ -2,7 +2,7 @@ id: 27-funkce-pokrocile
 rocnik: 1
 nazev: Funkce — lokální a globální proměnné
 modul: strukturovane-programovani
-hodiny: 3
+hodiny: 2
 obtiznost: pokrocily
 prerekvizity: [26-soubory-zapis]
 kompetence: [k3-strukturovane-programy]

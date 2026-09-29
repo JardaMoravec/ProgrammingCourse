@@ -45,12 +45,12 @@ moduly:
     bloky:
       - id: uvod-a-prostredi
         nazev: Úvod do programování a prostředí
-        hodiny: 9
+        hodiny: 3
         lekce:
           - id: "01-programovani-a-jazyky"
             soubor: lekce/1-rocnik/01-programovani-a-jazyky
             nazev: Programování a programovací jazyky
-            hodiny: 3
+            hodiny: 1
             svp: [anatomie programu]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: []
@@ -58,7 +58,7 @@ moduly:
           - id: "02-python-a-prostredi"
             soubor: lekce/1-rocnik/02-python-a-prostredi
             nazev: Python, instalace a vývojové prostředí
-            hodiny: 3
+            hodiny: 1
             svp: [vývojové prostředí]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [01-programovani-a-jazyky]
@@ -66,14 +66,14 @@ moduly:
           - id: "03-bloky-kodu"
             soubor: lekce/1-rocnik/03-bloky-kodu
             nazev: Anatomie programu a bloky kódu
-            hodiny: 3
+            hodiny: 1
             svp: [anatomie programu, vývojové prostředí]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [02-python-a-prostredi]
 
       - id: promenne-a-operatory
         nazev: Proměnné, datové typy a operátory
-        hodiny: 18
+        hodiny: 17
         lekce:
           - id: "04-promenne-a-pamet"
             soubor: lekce/1-rocnik/04-promenne-a-pamet
@@ -86,7 +86,7 @@ moduly:
           - id: "05-aritmeticke-operatory"
             soubor: lekce/1-rocnik/05-aritmeticke-operatory
             nazev: Aritmetické operátory a konzole
-            hodiny: 3
+            hodiny: 2
             svp: [aritmetické, logické operátory]
             kompetence: [k1-datove-typy]
             prerekvizity: [04-promenne-a-pamet]
@@ -129,7 +129,7 @@ moduly:
 
       - id: ridici-struktury
         nazev: Řídicí struktury a cykly
-        hodiny: 18
+        hodiny: 17
         lekce:
           - id: "10-vnorene-podminky"
             soubor: lekce/1-rocnik/10-vnorene-podminky
@@ -166,7 +166,7 @@ moduly:
           - id: "14-ridici-struktury-procviceni"
             soubor: lekce/1-rocnik/14-ridici-struktury-procviceni
             nazev: Řídicí struktury — souhrn a procvičení
-            hodiny: 3
+            hodiny: 2
             svp: [řídicí struktury, vnořené podmínky, cykly]
             kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
             prerekvizity: [13-cyklus-for]
@@ -245,7 +245,7 @@ moduly:
 
       - id: retezce-a-soubory
         nazev: Znaky, řetězce a práce se soubory
-        hodiny: 15
+        hodiny: 11
         lekce:
           - id: "23-retezce-zaklady"
             soubor: lekce/1-rocnik/23-retezce-zaklady
@@ -258,7 +258,7 @@ moduly:
           - id: "24-retezce-metody"
             soubor: lekce/1-rocnik/24-retezce-metody
             nazev: Metody řetězců
-            hodiny: 3
+            hodiny: 2
             svp: [znaky, řetězce]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [23-retezce-zaklady]
@@ -268,7 +268,7 @@ moduly:
           - id: "25-soubory-cteni"
             soubor: lekce/1-rocnik/25-soubory-cteni
             nazev: IO operace — čtení ze souboru
-            hodiny: 3
+            hodiny: 2
             svp: [IO operace (čtení a zápis dat do souboru)]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [24-retezce-metody]
@@ -276,7 +276,7 @@ moduly:
           - id: "26-soubory-zapis"
             soubor: lekce/1-rocnik/26-soubory-zapis
             nazev: IO operace — zápis do souboru
-            hodiny: 3
+            hodiny: 2
             svp: [IO operace (čtení a zápis dat do souboru)]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [25-soubory-cteni]
@@ -284,17 +284,32 @@ moduly:
           - id: "27-funkce-pokrocile"
             soubor: lekce/1-rocnik/27-funkce-pokrocile
             nazev: Funkce — lokální a globální proměnné
-            hodiny: 3
+            hodiny: 2
             svp: [funkce]
             kompetence: [k3-strukturovane-programy]
             prerekvizity: [26-soubory-zapis]
             ukoly_zdroje:
               - "známkovaný úkol (tajné zadání)"
 
+      - id: zaverecny-projekt
+        nazev: Závěrečný projekt
+        hodiny: 12
+        lekce:
+          - id: "28-zaverecny-projekt"
+            soubor: lekce/1-rocnik/28-zaverecny-projekt
+            nazev: Závěrečný projekt
+            hodiny: 12
+            svp: [proměnné, řídicí struktury, cykly, funkce, pole, znaky, řetězce, IO operace (čtení a zápis dat do souboru)]
+            kompetence: [k1-datove-typy, k2-ridici-struktury, k3-strukturovane-programy]
+            prerekvizity: [27-funkce-pokrocile]
+            ukoly_zdroje:
+              - "známkovaný závěrečný projekt (hodnotí učitel)"
+
 hodnoceni:
   - elektronické testy (Moodle VPL)
   - samostatné úkoly (Moodle VPL)
   - známkované úkoly s tajným zadáním (lekce 07, 09, 15, 21, 24, 27)
+  - známkovaný závěrečný projekt (lekce 28, hodnotí učitel)
   - práce v hodině (cvičení)
   - aktivita
 

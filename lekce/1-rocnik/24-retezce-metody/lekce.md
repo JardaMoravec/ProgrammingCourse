@@ -2,7 +2,7 @@
 id: 24-retezce-metody
 rocnik: 1
 nazev: Metody řetězců
-hodiny: 3
+hodiny: 2
 obtiznost: stredni
 prerekvizity: [23-retezce-zaklady]
 cile:

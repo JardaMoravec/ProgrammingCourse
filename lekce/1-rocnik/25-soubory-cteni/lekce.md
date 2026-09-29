@@ -2,7 +2,7 @@
 id: 25-soubory-cteni
 rocnik: 1
 nazev: IO operace — čtení ze souboru
-hodiny: 3
+hodiny: 2
 obtiznost: stredni
 prerekvizity: [24-retezce-metody]
 cile:

@@ -2,7 +2,7 @@ id: 02-python-a-prostredi
 rocnik: 1
 nazev: Python, instalace a vývojové prostředí
 modul: strukturovane-programovani
-hodiny: 3
+hodiny: 1
 obtiznost: zacatecnik
 prerekvizity: [01-programovani-a-jazyky]
 kompetence: [k3-strukturovane-programy]

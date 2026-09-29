@@ -2,7 +2,7 @@
 id: 05-aritmeticke-operatory
 rocnik: 1
 nazev: Aritmetické operátory a konzole
-hodiny: 3
+hodiny: 2
 obtiznost: zacatecnik
 prerekvizity: [04-promenne-a-pamet]
 cile:

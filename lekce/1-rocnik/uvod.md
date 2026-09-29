@@ -13,6 +13,7 @@ Předmět má **81 hodin** (27 týdnů × 3 h). Navazuje na něj 2. ročník (ob
 | Řídicí struktury | vnořené podmínky, výjimky, `while`, `for`, funkce |
 | Pole a kolekce | seznamy, n-tice, slovníky, cykly nad daty, moduly |
 | Řetězce a soubory | text, čtení a zápis souborů, lokální a globální proměnné |
+| Závěrečný projekt | jedna konzolová aplikace ze všeho, co umíte |
 
 Volitelně: [Konzole — Windows a Linux](../../bonus/01-konzole/lekce.md) (po lekci 02), [Git a GitHub](../../bonus/02-git-a-github/lekce.md), [Docker](../../bonus/03-docker/lekce.md) a [CSV, JSON a XML](../../bonus/05-csv-json-xml/lekce.md) — **bonus**, nejsou v 81 hodinách, lze je přeskočit. Konzole je totéž okno jako `python --version`; Git a Docker jsou nástroje okolo kódu; CSV/JSON/XML jsou formáty dat v souboru.
 

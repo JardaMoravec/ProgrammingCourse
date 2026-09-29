@@ -52,8 +52,9 @@ Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / inst
 | 25 | `25-soubory-cteni` | Čtení ze souboru | 4 |
 | 26 | `26-soubory-zapis` | Zápis do souboru | 4 |
 | 27 | `27-funkce-pokrocile` | Funkce — lokální/globální | 4 |
+| 28 | `28-zaverecny-projekt` | Závěrečný projekt | — (hodnotí učitel) |
 
-**Celkem: 97 úkolů** s VPL testy (lekce 04–27). Volitelně [bonus](../bonus/README.md) mimo 81 h (konzole, Git, Docker, CSV/JSON/XML, vibe coding).
+Úkoly s VPL testy jsou v lekcích 04–27. Lekce **28** je známkovaný závěrečný projekt bez automatického testu. Volitelně [bonus](../bonus/README.md) mimo 81 h (konzole, Git, Docker, CSV/JSON/XML, vibe coding).
 
 Známkované úkoly s tajným zadáním (nejsou v materiálu, hodnotí učitel) na konci lekcí **07**, **09**, **15**, **21**, **24** a **27**.
 

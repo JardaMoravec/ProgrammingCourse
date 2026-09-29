@@ -2,7 +2,7 @@
 id: 14-ridici-struktury-procviceni
 rocnik: 1
 nazev: Řídicí struktury — souhrn a procvičení
-hodiny: 3
+hodiny: 2
 obtiznost: stredni
 prerekvizity: [13-cyklus-for]
 cile:
