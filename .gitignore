@@ -18,6 +18,9 @@ lekce/**/tajny-znamkovany/
 # Odevzdaná řešení a hodnocení (lokálně u učitele)
 řešení/
 
+# Individuální studijní plány (lokálně u učitele)
+dokumenty/ISP/
+
 # Python
 __pycache__/
 *.py[cod]
