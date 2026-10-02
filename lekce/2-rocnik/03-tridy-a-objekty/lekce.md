@@ -6,6 +6,7 @@ hodiny: 5
 obtiznost: zacatecnik
 prerekvizity: [02-vyhledavani-a-razeni]
 cile:
+  - Zařadíte objektové programování mezi paradigmata a odlišíte ho od funkcionálního
   - Vysvětlíte rozdíl mezi třídou a objektem
   - Vytvoříte instanci třídy a nastavíte atributy tečkou
   - Odlišíte dva objekty stejné třídy
@@ -22,8 +23,27 @@ Z 1. ročníku umíte slovník (`student["jmeno"]`) a metody u hotových typů (
 
 Zatím **bez konstruktoru** (`__init__`) a **bez vlastních metod** — to je lekce 04 a 05. Tady stačí třída, objekt a tečka.
 
+## Co je objektové programování
+
+**Paradigma** je způsob, jak o programu přemýšlíte a z čeho ho skládáte. Python, který píšete od prváku, je pořád stejný jazyk. Mění se jen to, kolem čeho kód stavíte.
+
+Zatím jste psali **imperativně**: příkazy jdou za sebou, funkce dostane data a vrátí výsledek. Rekurze z minulé lekce je pořád funkce, která volá funkci.
+
+**Objektové programování** (OOP) skládá program z **objektů**. Objekt drží svá data pohromadě a později i operace, které s nimi umí. Místo „vezmi jméno a funkci“ říkáte „tahle osoba má jméno“ a v další lekci „tahle osoba se umí představit“.
+
+**Funkcionální programování** skládá program z **funkcí**. Funkce dostane hodnotu a vrátí novou. Data se pokud možno nemění na místě: ze seznamu vznikne nový seznam, původní zůstane. Zápis do proměnné, výpis nebo změna argumentu se omezují.
+
+| | Objektové | Funkcionální |
+|---|---|---|
+| Z čeho se program skládá | z objektů | z funkcí |
+| Kam patří data | k objektu | do funkce a z ní ven |
+| Změna | objekt si data přepíše | vznikne nová hodnota |
+
+V tomto ročníku jdeme cestou OOP. Funkcionální styl v Pythonu existuje, tady ho rozebírat nebudeme. Stačí vědět, že je to jiná odpověď na stejnou otázku: jak velký program rozdělit, aby se v něm dalo vyznat.
+
 ## Cíle lekce
 
+- Zařadíte objektové programování mezi **paradigmata** a odlišíte ho od funkcionálního
 - Pochopíte, co je **třída** a co je **objekt** (instance)
 - Nastavíte **atributy** operátorem tečka
 - Uvidíte, že dva objekty stejné třídy mají **vlastní** data
