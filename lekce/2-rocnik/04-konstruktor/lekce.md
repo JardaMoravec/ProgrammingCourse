@@ -203,6 +203,8 @@ Příště metody: objekt umí i **něco udělat**, nejen data držet.
 
 Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že atributy nastavuje konstruktor (ne jen tečka po `Osoba()`).
 
+Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele. Hodnotí učitel.
+
 ## Co dál
 
 → [Lekce 05: Metody a self](../05-metody/lekce.md)

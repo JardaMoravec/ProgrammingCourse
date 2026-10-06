@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Generuje ukoly.md a VPL testy (cases / Flask hodnotitel) z lekce/**/ukoly/*/ukol.yaml."""
+"""Generuje ukoly.md a VPL testy (cases / Flask hodnotitel) z lekce/**/ukoly/*/ukol.yaml.
+
+U tajných známkovaných úkolů (složka zNN-) vznikne i zadani.html pro vložení do Moodlu.
+"""
 
 from __future__ import annotations
 
+import html
 import json
 import re
 import shutil
 import sys
 from pathlib import Path
 
+import markdown
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -203,6 +208,73 @@ def cleanup_stale_ukoly(ukoly_root: Path, tasks: list[dict]) -> None:
             shutil.rmtree(child)
 
 
+def assignment_markdown(task: dict, rocnik: str) -> str:
+    """Zadání úkolu v Markdownu: popis, formát vstupu a výstupu, odevzdání."""
+    description = strip_format_from_description(task["description"])
+    parts = [f"# {task['title']}", "", description, ""]
+    io = str(task["io"]).strip() if task.get("io") else ""
+    if (
+        str(rocnik) in {"1", "2"}
+        and case_reads_stdin(task.get("cases") or [])
+        and "Výzva u `input()`" not in io
+    ):
+        io = f"{io}\n{PROMPT_NOTE}".strip()
+    if io:
+        parts += ["**Formát:**", "", io, ""]
+    if task.get("odevzdani"):
+        parts += ["**Odevzdání:**", "", str(task["odevzdani"]).strip(), ""]
+    return "\n".join(parts).rstrip() + "\n"
+
+
+_CODE_LINE = re.compile(r"^\s*`[^`]+`\s*$")
+_IO_LABEL = re.compile(r"^\*\*(Vstup|Výstup|Výzva)\b")
+
+
+def prepare_assignment_markdown(text: str) -> str:
+    """Ukázkový výstup a řádky Vstup/Výstup nechá jako samostatné odstavce."""
+    out: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if _CODE_LINE.match(line) or _IO_LABEL.match(stripped):
+            if out and out[-1] != "":
+                out.append("")
+            out.append(stripped)
+            if _CODE_LINE.match(line):
+                out.append("")
+        else:
+            out.append(line)
+    return "\n".join(out)
+
+
+def format_secret_zadani_html(task: dict, rocnik: str) -> str:
+    """Samostatná HTML stránka. Moodle Markdown nebere, text se vloží z prohlížeče."""
+    body = markdown.markdown(
+        prepare_assignment_markdown(assignment_markdown(task, rocnik)),
+        extensions=["tables", "fenced_code", "attr_list"],
+    )
+    title = html.escape(str(task["title"]))
+    return (
+        "<!DOCTYPE html>\n"
+        '<html lang="cs">\n'
+        "<head>\n"
+        '<meta charset="utf-8">\n'
+        f"<title>{title}</title>\n"
+        "</head>\n"
+        "<body>\n"
+        "<!-- Otevřete v prohlížeči, označte zadání a vložte ho do Moodlu. -->\n"
+        f"{body}\n"
+        "</body>\n"
+        "</html>\n"
+    )
+
+
+def write_secret_zadani_html(task_dir: Path, task: dict, rocnik: str) -> None:
+    (task_dir / "zadani.html").write_text(
+        format_secret_zadani_html(task, rocnik),
+        encoding="utf-8",
+    )
+
+
 def strip_format_from_description(description: str) -> str:
     """Odstraní řádky „Formát:“ z popisu — formát patří do pole io."""
     lines = str(description).strip().splitlines()
@@ -335,6 +407,8 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
         elif cases_path.exists():
             cases_path.unlink()
         write_custom_vpl(task_dir, t)
+        if str(t["id"]).startswith("z"):
+            write_secret_zadani_html(task_dir, t, rocnik)
         for fname, content in t.get("files", {}).items():
             (task_dir / fname).write_text(content, encoding="utf-8")
 
@@ -452,6 +526,7 @@ def main() -> None:
                         ),
                         encoding="utf-8",
                     )
+                write_secret_zadani_html(task_dir, t, rocnik)
         total += len(tasks)
         extra = f", {len(secrets)} tajnych" if secrets else ""
         print(

@@ -8,6 +8,7 @@ prerekvizity: [03-tridy-a-objekty]
 kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
 svp: [třídy a členy, vlastnosti tříd, objekty]
 tagy: [oop, konstruktor, init, self]
+znamkovany_tajny: true
 migrovano_z:
   - "zdroje/Programování 2.docx (kap. Konstruktor)"
   - "zdroje/Programování 2 – Python manuál.docx"

@@ -138,6 +138,8 @@ Příště statické metody a proměnné — členy, které patří třídě, ne
 
 Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že v cyklu není `if` podle typu a že přepis má stejné jméno metody.
 
+Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele. Hodnotí učitel.
+
 ## Co dál
 
 → [Lekce 09: Statické metody a proměnné](../09-staticke-cleny/lekce.md)

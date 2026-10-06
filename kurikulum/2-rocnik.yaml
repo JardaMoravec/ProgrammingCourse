@@ -130,6 +130,7 @@ moduly:
               - "úkol 7b - oop - knihovna (konstruktor)"
               - "úkol 8 - oop - autoservis"
               - "film — konstruktor ze vstupu"
+              - "známkovaný úkol (tajné zadání)"
 
           - id: "05-metody"
             soubor: lekce/2-rocnik/05-metody
@@ -182,6 +183,7 @@ moduly:
               - "VIP lístek — přepis popis()"
               - "tarify — seznam a stejné volání"
               - "spořicí účet — super a __str__"
+              - "známkovaný úkol (tajné zadání)"
 
           - id: "09-staticke-cleny"
             soubor: lekce/2-rocnik/09-staticke-cleny
