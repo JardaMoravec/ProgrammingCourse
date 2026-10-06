@@ -23,40 +23,40 @@ Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / inst
 
 ## Přehled lekcí
 
-| # | ID | Téma | Úkoly VPL |
-|---|-----|------|-----------|
+| # | ID | Téma | Úkoly |
+|---|-----|------|-------|
 | 01 | `01-programovani-a-jazyky` | Programování a jazyky | — |
 | 02 | `02-python-a-prostredi` | Python a IDE | — |
 | 03 | `03-bloky-kodu` | Bloky kódu | — |
 | 04 | `04-promenne-a-pamet` | Proměnné, paměť a pojmenování | 4 |
 | 05 | `05-aritmeticke-operatory` | Aritmetické operátory | 5 |
-| 06 | `06-vstup-a-vystup` | Vstup a výstup (input, print) | 4 |
-| 07 | `07-datove-typy` | Datové typy a přetypování | 4 |
+| 06 | `06-vstup-a-vystup` | Vstup a výstup (input, print) | 6 |
+| 07 | `07-datove-typy` | Datové typy a přetypování | 5 ★ |
 | 08 | `08-porovnaci-operatory` | Logické operátory | 4 |
-| 09 | `09-vetveni-podminek` | Větvení if/elif/else | 5 |
+| 09 | `09-vetveni-podminek` | Větvení if/elif/else | 6 ★ |
 | 10 | `10-vnorene-podminky` | Vnořené podmínky | 4 |
 | 11 | `11-chyby-a-vyjimky` | Výjimky try/except | 4 |
 | 12 | `12-cyklus-while` | Cyklus while | 4 |
 | 13 | `13-cyklus-for` | Cyklus for a range | 4 |
 | 14 | `14-ridici-struktury-procviceni` | Řízení — procvičení | 4 |
-| 15 | `15-funkce-zaklady` | Funkce — základy | 4 |
+| 15 | `15-funkce-zaklady` | Funkce — základy | 4 ★ |
 | 16 | `16-seznamy` | Seznamy | 4 |
 | 17 | `17-metody-seznamu` | Metody seznamů | 4 |
 | 18 | `18-tuples-a-range` | Tuples a range | 4 |
 | 19 | `19-slovniky` | Slovníky | 4 |
 | 20 | `20-cykly-nad-kolekcemi` | Cykly nad kolekcemi | 4 |
-| 21 | `21-kolekce-procviceni` | Kolekce — procvičení | 4 |
+| 21 | `21-kolekce-procviceni` | Kolekce — procvičení | 4 ★ |
 | 22 | `22-moduly-a-import` | Moduly a math | 4 |
 | 23 | `23-retezce-zaklady` | Řetězce | 4 |
-| 24 | `24-retezce-metody` | Metody řetězců | 4 |
+| 24 | `24-retezce-metody` | Metody řetězců | 4 ★ |
 | 25 | `25-soubory-cteni` | Čtení ze souboru | 4 |
 | 26 | `26-soubory-zapis` | Zápis do souboru | 4 |
-| 27 | `27-funkce-pokrocile` | Funkce — lokální/globální | 4 |
-| 28 | `28-zaverecny-projekt` | Závěrečný projekt | — (hodnotí učitel) |
+| 27 | `27-funkce-pokrocile` | Funkce — lokální/globální | 4 ★ |
+| 28 | `28-zaverecny-projekt` | Závěrečný projekt | 1 |
+
+★ lekce končí známkovaným úkolem s tajným zadáním (hodnotí učitel, zadání není v materiálu).
 
 Úkoly s VPL testy jsou v lekcích 04–27. Lekce **28** je známkovaný závěrečný projekt bez automatického testu. Volitelně [bonus](../bonus/README.md) mimo 81 h (konzole, Git, Docker, CSV/JSON/XML, vibe coding).
-
-Známkované úkoly s tajným zadáním (nejsou v materiálu, hodnotí učitel) na konci lekcí **07**, **09**, **15**, **21**, **24** a **27**.
 
 ## Build
 

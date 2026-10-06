@@ -1,0 +1,74 @@
+title: Rohlíky
+stars: 3
+ignore_input_prompt: true
+moodle: PRG-1-07-05
+description: |
+  Pekař dává rohlíky do sáčků. Napište program, který načte čtyři řádky:
+
+  1. jméno zákazníka (text),
+  2. kolik rohlíků kupuje (celé číslo),
+  3. kolik rohlíků se vejde do jednoho sáčku (celé číslo),
+  4. cena jednoho rohlíku v Kč (desetinné číslo).
+
+  `input()` vrací text. Počet rohlíků a velikost sáčku převeďte přes
+  `int()`, cenu přes `float()`. Jméno nechte jako text.
+
+  Spočítejte, kolik sáčků se naplní (`//`), kolik rohlíků zbyde mimo
+  sáček (`%`) a celkovou cenu (počet rohlíků krát cena jednoho). Cenu
+  vypište f-stringem na **2 desetinná místa** (`:.2f`).
+
+  Anna kupuje 23 rohlíků, do sáčku se jich vejde 6 a jeden stojí 3,50 Kč.
+  Tři sáčky jsou plné, 5 rohlíků zbude:
+
+  `Zákazník: Anna`
+  `Sáčků: 3`
+  `Zbývá: 5`
+  `Celkem: 80.50 Kč`
+io: |
+  **Vstup:** jméno, počet rohlíků, rohlíků v sáčku, cena jednoho rohlíku
+  **Výstup:** čtyři řádky — zákazník, plné sáčky, zbytek, celková cena na 2 desetinná místa
+cases:
+  - name: zbytek
+    input: |
+      Anna
+      23
+      6
+      3.5
+    output: |-
+      Zákazník: Anna
+      Sáčků: 3
+      Zbývá: 5
+      Celkem: 80.50 Kč
+  - name: presne
+    input: |
+      Petr
+      12
+      4
+      4
+    output: |-
+      Zákazník: Petr
+      Sáčků: 3
+      Zbývá: 0
+      Celkem: 48.00 Kč
+  - name: malo
+    input: |
+      Eva
+      2
+      5
+      3.5
+    output: |-
+      Zákazník: Eva
+      Sáčků: 0
+      Zbývá: 2
+      Celkem: 7.00 Kč
+  - name: dva-a-zbytek
+    input: |
+      Karel
+      11
+      4
+      2.5
+    output: |-
+      Zákazník: Karel
+      Sáčků: 2
+      Zbývá: 3
+      Celkem: 27.50 Kč
