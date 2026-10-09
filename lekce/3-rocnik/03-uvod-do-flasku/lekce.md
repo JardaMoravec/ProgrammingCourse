@@ -70,7 +70,7 @@ Na školním Windows často **nemáte právo zapisovat** do složky, kde je nain
 
 **Virtuální prostředí** (`venv`) je oddělená kopie Pythonu jen pro tenhle projekt. Knihovny z ní se nemíchají s jinými projekty.
 
-Vytvořte si složku na práci ve 3. ročníku (třeba `flask`) a v terminálu do ní přejděte. Prostředí založíte jednou:
+Vytvořte si složku na práci ve 3. ročníku (třeba `flask`) a v terminálu do ní přejděte. Příkazy v téhle lekci píšete do **konzole**. Základy — kde jste, `cd`, rozdíly Windows a Linuxu — jsou v bonusu [Konzole — Windows a Linux](../../bonus/01-konzole/lekce.md). Je mimo 68 hodin a lze ho přeskočit, pokud příkazový řádek už umíte. Prostředí založíte jednou:
 
 ```bash
 python -m venv test
@@ -186,3 +186,5 @@ Pak stačí `python ahoj.py`. V kurzu budeme držet `python -m flask --app … r
 ## Co dál
 
 → [Lekce 04: Routy a pohledové funkce](../04-routy-a-pohledy/lekce.md)
+
+Volitelně: [Konzole — Windows a Linux (bonus)](../../bonus/01-konzole/lekce.md) — práce v příkazovém řádku, mimo 68 hodin.
