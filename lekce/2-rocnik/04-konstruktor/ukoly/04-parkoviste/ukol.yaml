@@ -1,0 +1,56 @@
+title: Parkoviště
+stars: 3
+ignore_input_prompt: true
+moodle: PRG-2-04-04
+description: |
+  Vytvořte třídy `Auto` a `ParkovaciMisto`. Atributy nastavte **konstruktorem**.
+  Vlastní metody kromě `__init__` nepište.
+
+  **Auto:** `spz`, `barva`.
+
+  **ParkovaciMisto:** `cislo` (celé číslo), `auto` (objekt `Auto`).
+  Parkovací místo auto **má** — auto z parkovacího místa nedědí.
+
+  Načtěte data pro **dvě** parkovací místa. U každého jsou tři řádky:
+  číslo parkovacího místa, SPZ, barva. Každé parkovací místo má **vlastní**
+  auto. Vypište dva řádky z atributů objektů, v pořadí vstupu:
+
+  `Parkovaci misto 3: 1A2 3456, modra`
+  `Parkovaci misto 7: 2B3 9999, cerna`
+cases:
+  - name: dve-mista
+    input: |
+      3
+      1A2 3456
+      modra
+      7
+      2B3 9999
+      cerna
+    output: |-
+      Parkovaci misto 3: 1A2 3456, modra
+      Parkovaci misto 7: 2B3 9999, cerna
+  - name: stejna-barva
+    input: |
+      1
+      ABC 1234
+      bila
+      2
+      XYZ 999
+      bila
+    output: |-
+      Parkovaci misto 1: ABC 1234, bila
+      Parkovaci misto 2: XYZ 999, bila
+  - name: bez-mezery-v-spz
+    input: |
+      12
+      1A11111
+      cervena
+      4
+      8B22222
+      zelena
+    output: |-
+      Parkovaci misto 12: 1A11111, cervena
+      Parkovaci misto 4: 8B22222, zelena
+io: |
+  **Vstup:** šest řádků — pro každé ze dvou parkovacích míst číslo, SPZ a barva
+  **Výstup:** dva řádky `Parkovaci misto CISLO: SPZ, barva`

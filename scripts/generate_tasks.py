@@ -166,6 +166,8 @@ def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
         task["evaluate"] = raw["evaluate"]
     if raw.get("seed") is not None:
         task["seed"] = raw["seed"]
+    if raw.get("zakazane"):
+        task["zakazane"] = list(raw["zakazane"])
     return task
 
 
@@ -453,11 +455,41 @@ def write_sql_run_sh(path: Path, soubor: str) -> None:
     path.write_bytes(sh_text.encode("utf-8"))
 
 
+def format_slozeni_evaluator(soubor: str, zakazane: list) -> str:
+    template = (SABLONY / "vpl_evaluate_slozeni.py").read_text(encoding="utf-8")
+    for placeholder in ("__STUDENT_FILE__", "__ZAKAZANE__"):
+        if placeholder not in template:
+            raise ValueError(f"sablony/vpl_evaluate_slozeni.py: chybí {placeholder}")
+    klice = sorted(
+        {
+            "".join(ch for ch in str(name).lower() if ch.isalnum())
+            for name in zakazane
+        }
+    )
+    return template.replace("__STUDENT_FILE__", soubor, 1).replace(
+        "__ZAKAZANE__",
+        json.dumps(klice, ensure_ascii=True),
+        1,
+    )
+
+
 def write_custom_vpl(task_dir: Path, task: dict) -> None:
     py_path = task_dir / "vpl_evaluate.py"
     sh_path = task_dir / "vpl_evaluate.sh"
     run_path = task_dir / "vpl_run.sh"
     typ = task.get("typ")
+    if typ == "slozeni":
+        py_path.write_text(
+            format_slozeni_evaluator(
+                str(task.get("soubor") or "main.py"),
+                list(task.get("zakazane") or []),
+            ),
+            encoding="utf-8",
+        )
+        write_run_sh(sh_path)
+        if run_path.exists():
+            run_path.unlink()
+        return
     if typ not in ("flask", "sql"):
         if py_path.exists():
             py_path.unlink()

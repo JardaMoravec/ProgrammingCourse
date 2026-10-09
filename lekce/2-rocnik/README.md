@@ -21,7 +21,7 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 | 01 | `01-rekurze` | Rekurze — základ | 10 | 5 |
 | 02 | `02-vyhledavani-a-razeni` | Vyhledávání a řazení — základ | 10 | 5 ★ |
 | 03 | `03-tridy-a-objekty` | Třídy, objekty a atributy | 5 | 3 |
-| 04 | `04-konstruktor` | Konstruktor | 5 | 3 ★ |
+| 04 | `04-konstruktor` | Konstruktor | 5 | 5 ★ |
 | 05 | `05-metody` | Metody a self | 5 | 3 |
 | 06 | `06-specialni-metody` | Speciální metody a vlastnosti | 5 | 2 ★ |
 | 07 | `07-dedicnost` | Dědičnost | 5 | 3 |

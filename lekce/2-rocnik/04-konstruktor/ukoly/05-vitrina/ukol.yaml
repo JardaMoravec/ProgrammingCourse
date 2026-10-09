@@ -1,0 +1,54 @@
+title: Vitrína
+stars: 3
+ignore_input_prompt: true
+moodle: PRG-2-04-05
+description: |
+  Vytvořte třídy `Exponat` a `Vitrina`. Atributy nastavte **konstruktorem**.
+  Vlastní metody kromě `__init__` nepište.
+
+  **Exponat:** `nazev`, `rok` (rok je celé číslo).
+
+  **Vitrina:** `kod` a `exponaty` (seznam **dvou** objektů `Exponat`).
+  Vitrína exponáty **má** — exponát z vitríny nedědí. Seznam vytvořte
+  v těle konstruktoru z obou exponátů, ne jako `exponaty=[]` v hlavičce.
+
+  Načtěte pět řádků: kód vitríny, název a rok prvního exponátu, název a
+  rok druhého. Jsou to **dva** objekty `Exponat` v **jedné** vitríně.
+  Vypište je v pořadí vstupu:
+
+  `Vitrina A1: Venuse, 150`
+  `Vitrina A1: Mec, 1200`
+cases:
+  - name: dva-exponaty
+    input: |
+      A1
+      Venuse
+      150
+      Mec
+      1200
+    output: |-
+      Vitrina A1: Venuse, 150
+      Vitrina A1: Mec, 1200
+  - name: stejny-rok
+    input: |
+      S2
+      Mince
+      1998
+      Bankovka
+      1998
+    output: |-
+      Vitrina S2: Mince, 1998
+      Vitrina S2: Bankovka, 1998
+  - name: stare
+    input: |
+      K1
+      Sekera
+      -500
+      Naramky
+      800
+    output: |-
+      Vitrina K1: Sekera, -500
+      Vitrina K1: Naramky, 800
+io: |
+  **Vstup:** pět řádků — kód vitríny, pak název a rok prvního exponátu, název a rok druhého
+  **Výstup:** dva řádky `Vitrina KOD: nazev, rok`
