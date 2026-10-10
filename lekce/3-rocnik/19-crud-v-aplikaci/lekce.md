@@ -27,11 +27,15 @@ Stejné zvyky: hodnota jen přes **`?`**, po úspěchu **`commit`** a **`redirec
 
 V [lekci 17](../17-vypis-z-databaze/lekce.md) stačilo `SELECT nazev`. Odkaz „upravit“ a tlačítko „smazat“ potřebují **číslo řádku**:
 
+`app.py`:
+
 ```python
 radky = db.execute("SELECT id, nazev FROM polozky").fetchall()
 ```
 
 Cestu složíte `url_for` z [lekce 08](../08-dynamicke-url/lekce.md):
+
+`templates/index.html`:
 
 ```html
 <a href="{{ url_for('upravit', id=radek.id) }}">Upravit</a>
@@ -45,6 +49,8 @@ Odkaz je GET (otevře formulář). Mazání je **formulář POST** — ne `<a hr
 ## DELETE — jeden řádek
 
 Bez `WHERE` smažete **celou tabulku**. Vždy `WHERE id = ?`:
+
+`app.py`:
 
 ```python
 @app.route("/smazat/<int:id>", methods=["POST"])
@@ -63,6 +69,8 @@ Neexistující id: `DELETE` smaže nula řádků a nespadne. Pro mazání to sta
 ## UPDATE — nejdřív načíst
 
 Stejné id v URL jako u článku v lekci 08. Nejdřív **`fetchone`**, pak buď 404, nebo formulář:
+
+`app.py`:
 
 ```python
 from flask import abort

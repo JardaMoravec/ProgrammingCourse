@@ -41,6 +41,8 @@ V [lekci 08](../08-dynamicke-url/lekce.md) byla proměnná **v cestě** (`/clane
 
 Tohle je pořád **GET** (jako adresa v prohlížeči). Formulář:
 
+`templates/index.html`:
+
 ```html
 <form action="{{ url_for('index') }}" method="get">
   <label>Hledat <input name="q"></label>
@@ -48,6 +50,8 @@ Tohle je pořád **GET** (jako adresa v prohlížeči). Formulář:
 </form>
 <p>Hledáte: {{ dotaz }}</p>
 ```
+
+`app.py`:
 
 ```python
 from flask import request
@@ -69,6 +73,8 @@ Odeslání jména, vzkazu, objednávky patří na **POST**. V URL nic nepřibude
 
 Stejná cesta musí umět **zobrazit** formulář (GET) i **přijmout** data (POST):
 
+`app.py`:
+
 ```python
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -77,6 +83,8 @@ def index():
         jmeno = request.form.get("jmeno", "")
     return render_template("index.html", jmeno=jmeno)
 ```
+
+`templates/index.html`:
 
 ```html
 {% if jmeno %}

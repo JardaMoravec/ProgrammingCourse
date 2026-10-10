@@ -70,7 +70,7 @@ V `index()` `SELECT nazev FROM obrazy`, **`fetchall()`**, spojení zavřete. Sez
 Na `/` `<h1>Galerie</h1>` a `<ul>` s `{% for %}` — oba názvy jako `<li>`. `init_db` ze cvičení 1 nechte.
 
 @reseni
-`galerie.py` — v `index()`:
+`galerie.py`:
 
 ```python
 @app.route("/")
@@ -107,9 +107,13 @@ Při POST ořežte `.strip()`. Prázdný název: **200**, **`Vyplňte název.`**
 Po přidání **Krajina** musí v seznamu být i ta.
 
 @reseni
+`galerie.py`:
+
 ```python
 from flask import Flask, redirect, render_template, request, url_for
 ```
+
+`galerie.py`:
 
 ```python
 @app.route("/", methods=["GET", "POST"])
@@ -134,6 +138,8 @@ def index():
 
 Do šablony přidejte hlášku a formulář:
 
+`templates/index.html`:
+
 ```html
 {% if chyba %}
   <p>{{ chyba }}</p>
@@ -156,6 +162,8 @@ Do `SELECT` přidejte **`id`**. U každého názvu formulář **POST** na `/smaz
 GET na `/smazat/1` má dát **405**.
 
 @reseni
+`galerie.py`:
+
 ```python
 @app.route("/smazat/<int:id>", methods=["POST"])
 def smazat(id):
@@ -168,11 +176,15 @@ def smazat(id):
 
 V `index()`:
 
+`galerie.py`:
+
 ```python
 radky = conn.execute("SELECT id, nazev FROM obrazy").fetchall()
 ```
 
 V šabloně u každé položky:
+
+`templates/index.html`:
 
 ```html
 <li>
@@ -197,9 +209,13 @@ GET: `SELECT id, nazev FROM obrazy WHERE id = ?` a **`fetchone()`**. `None` → 
 POST: pole `name="nazev"`, `.strip()`. Prázdné: **200**, **`Vyplňte název.`**. Neprázdné: `UPDATE obrazy SET nazev = ? WHERE id = ?`, `commit`, `redirect` na `/`.
 
 @reseni
+`galerie.py`:
+
 ```python
 from flask import abort
 ```
+
+`galerie.py`:
 
 ```python
 @app.route("/upravit/<int:id>", methods=["GET", "POST"])
@@ -231,6 +247,8 @@ def upravit(id):
 ```
 
 V seznamu odkaz:
+
+`templates/index.html`:
 
 ```html
 <a href="{{ url_for('upravit', id=radek.id) }}">Upravit</a>

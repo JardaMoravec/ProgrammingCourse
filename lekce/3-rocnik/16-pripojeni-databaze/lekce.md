@@ -27,6 +27,8 @@ SQL (`CREATE TABLE`, `SELECT`, `INSERT`) umíte z 2. ročníku. Dnes nejde o nov
 
 Modul `sqlite3` je v Pythonu — `pip` nepotřebujete.
 
+`app.py`:
+
 ```python
 import os
 import sqlite3
@@ -45,6 +47,8 @@ Po prvním `connect` vznikne soubor `skola.db`. Do Moodle ho nahrávat nemusíte
 
 Globální `db = sqlite3.connect(...)` nahoře v souboru je stejná past jako globální jméno v lekci 15: jeden objekt pro všechny. Flask na to má `g` — úložku **tohoto** HTTP požadavku.
 
+`app.py`:
+
 ```python
 from flask import g
 
@@ -55,6 +59,8 @@ def get_db():
         g.db.row_factory = sqlite3.Row
     return g.db
 ```
+
+`app.py`:
 
 ```python
 @app.teardown_appcontext
@@ -78,6 +84,8 @@ def close_db(chyba=None):
 
 `IF NOT EXISTS` zajistí, že druhý start (F5 serveru) nespadne — tabulka už tam je, zakládat znovu se nebude.
 
+`app.py`:
+
 ```python
 def init_db():
     db = get_db()
@@ -94,10 +102,14 @@ def init_db():
 
 `get_db` potřebuje kontext aplikace. Při startu ho otevřete takto — **ne** z `index()`:
 
+`app.py`:
+
 ```python
 with app.app_context():
     init_db()
 ```
+
+`app.py`:
 
 ```python
 # Špatně — struktura se zakládá znovu a znovu

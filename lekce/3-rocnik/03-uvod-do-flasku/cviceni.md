@@ -21,6 +21,8 @@ Vytvořte soubor `pozdrav.py`. Na adrese `/` ať aplikace vrátí přesně:
 Ověřte v prohlížeči na `http://127.0.0.1:5000`.
 
 @reseni
+`pozdrav.py`:
+
 ```python
 from flask import Flask
 
@@ -47,6 +49,8 @@ Na adrese `/` vraťte **jeden řádek** ve tvaru:
 (místo ukázky použijte své hodnoty). Pořád jen cesta `/` — další adresy až v lekci 04.
 
 @reseni
+`profil.py`:
+
 ```python
 from flask import Flask
 

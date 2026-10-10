@@ -490,6 +490,43 @@ html[data-theme="dark"] .content svg.diagram:not(.themed) {
   background: var(--code-bg);
 }
 
+.content .code-block.has-file {
+  overflow: hidden;
+}
+
+.content .code-block.has-file .highlight {
+  overflow-x: auto;
+}
+
+.content .code-file-name {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.85rem;
+  background: #1e293b;
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.2;
+}
+
+.content .code-file-name span {
+  user-select: all;
+}
+
+.content .code-file-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+
+.content .code-file-name[data-ext="py"] .code-file-icon { color: #60a5fa; }
+.content .code-file-name[data-ext="html"] .code-file-icon { color: #fb923c; }
+.content .code-file-name[data-ext="css"] .code-file-icon { color: #c084fc; }
+.content .code-file-name[data-ext="sql"] .code-file-icon { color: #4ade80; }
+
 .content .code-block .highlight {
   margin: 0;
   background: transparent;
@@ -752,6 +789,11 @@ html[data-theme="dark"] .content svg.diagram:not(.themed) {
     padding: 0.75rem 0.65rem;
   }
 
+  .content .code-file-name {
+    padding: 0.38rem 0.65rem;
+    font-size: 0.72rem;
+  }
+
   .badge {
     font-size: 0.7rem;
   }
@@ -970,6 +1012,36 @@ def _code_lexer(lang: str | None) -> TextLexer:
     return TextLexer()
 
 
+FILE_CAPTION_RE = re.compile(
+    r"<p><code>([^<]+)</code>:</p>\s*<div class=\"code-block\">"
+)
+FILE_NAME_RE = re.compile(r"[A-Za-z0-9_./\\-]+\.[A-Za-z0-9]+")
+FILE_ICON_SVG = (
+    '<svg class="code-file-icon" viewBox="0 0 16 16" aria-hidden="true">'
+    '<path fill="currentColor" d="M3.5 1.5h5.4L13 5.6V14a.5.5 0 0 1-.5.5h-9A.5.5 0 0 1 3 14V2a.5.5 0 0 1 .5-.5z"/>'
+    '<path fill="#1e293b" d="M8.6 1.8v3.5H12"/>'
+    "</svg>"
+)
+
+
+def attach_file_headers(html: str) -> str:
+    """Odstavec `soubor.py` těsně nad blokem se stane lištou se jménem souboru."""
+
+    def repl(match: re.Match[str]) -> str:
+        name = match.group(1)
+        if not FILE_NAME_RE.fullmatch(name):
+            return match.group(0)
+        ext = name.rsplit(".", 1)[-1].lower()
+        safe = html_module.escape(name)
+        return (
+            f'<div class="code-block has-file">'
+            f'<div class="code-file-name" data-ext="{ext}">'
+            f"{FILE_ICON_SVG}<span>{safe}</span></div>"
+        )
+
+    return FILE_CAPTION_RE.sub(repl, html)
+
+
 def enhance_code_blocks(html: str) -> str:
     def replace(match: re.Match[str]) -> str:
         lang = match.group(1)
@@ -1031,6 +1103,7 @@ def postprocess_student_html(html: str) -> str:
     html = re.sub(r"<p>VPL test:[^<]*</p>\s*", "", html)
     html = re.sub(r"`ukoly/[^`]+`", "", html)
     html = enhance_code_blocks(html)
+    html = attach_file_headers(html)
     html = wrap_content_tables(html)
 
     return html

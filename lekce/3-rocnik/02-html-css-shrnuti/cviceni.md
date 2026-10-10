@@ -4,6 +4,8 @@
 
 Prohlížeč z tohoto úryvku postaví jiný strom, než autor čekal. Najděte **dvě** chyby a napište, co prohlížeč pravděpodobně udělá.
 
+`index.html`:
+
 ```html
 <body>
   <p>Úvod
@@ -27,9 +29,13 @@ Prohlížeč z tohoto úryvku postaví jiný strom, než autor čekal. Najděte 
 
 Jakou barvu bude mít text? Krátce zdůvodněte.
 
+`index.html`:
+
 ```html
 <p class="perex" id="uvod">Ahoj</p>
 ```
+
+`styly.css`:
 
 ```css
 p { color: navy; }
@@ -45,6 +51,8 @@ p.perex { color: orange; }
 ---
 
 ## Cvičení 3 — Šířka boxu (★★☆)
+
+`styly.css`:
 
 ```css
 .karta {

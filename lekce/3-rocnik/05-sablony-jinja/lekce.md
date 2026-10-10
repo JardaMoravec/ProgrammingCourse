@@ -69,6 +69,8 @@ Kostra stránky je stejná jako v [lekci 02](../02-html-css-shrnuti/lekce.md) �
 
 ## render_template
 
+`app.py`:
+
 ```python
 from flask import Flask, render_template
 
@@ -88,11 +90,15 @@ V šabloně zatím stačí obyčejné HTML — i bez `{{ }}` to funguje. Už ale
 
 Hodnotu předáte jako pojmenovaný argument. Jméno v Pythonu a ve šabloně musí sedět.
 
+`app.py`:
+
 ```python
 @app.route("/")
 def index():
     return render_template("index.html", skola="SPŠ ukázka")
 ```
+
+`templates/index.html`:
 
 ```html
 <h1>{{ skola }}</h1>
@@ -108,6 +114,8 @@ Jinja hodnoty v `{{ }}` **escapuje**: kdyby ve jménu bylo `<`, prohlížeč ho 
 
 Hlášení, jídla, jména — v Pythonu je to seznam, v HTML cyklus:
 
+`app.py`:
+
 ```python
 @app.route("/")
 def index():
@@ -117,6 +125,8 @@ def index():
         hlaseni=["Třídní schůzky ve čtvrtek", "Zítra odpadá 6. hodina"],
     )
 ```
+
+`templates/index.html`:
 
 ```html
 <ul>
@@ -129,6 +139,8 @@ def index():
 `{% for %}` musí mít `{% endfor %}`. Proměnná `text` existuje jen uvnitř cyklu.
 
 Krátká podmínka, až ji budete potřebovat:
+
+`templates/index.html`:
 
 ```html
 {% if hlaseni %}

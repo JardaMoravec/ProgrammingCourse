@@ -27,6 +27,8 @@ Připojení a `init_db` (jen `CREATE TABLE`) máte z [lekce 16](../16-pripojeni-
 
 `execute` umí druhý argument — **tuple hodnot**. Místo hodnoty v SQL napíšete `?`, SQLite ji doplní samo:
 
+`app.py`:
+
 ```python
 nazev = request.form.get("nazev", "").strip()
 db.execute("INSERT INTO polozky (nazev) VALUES (?)", (nazev,))
@@ -36,6 +38,8 @@ db.commit()
 Čárka u `(nazev,)` patří k tuple o jedné položce. Bez ní to není tuple a `execute` spadne.
 
 Dva sloupce — dva otazníky, dvě hodnoty ve stejném pořadí:
+
+`app.py`:
 
 ```python
 db.execute(
@@ -55,6 +59,8 @@ Bez `commit()` je vložení jen v paměti. Restart (nebo někdy i další požad
 Když po `INSERT` vrátíte šablonu (stav 200), F5 prohlížeč **znovu pošle POST** a řádek se zdvojí.
 
 Proto stejný vzor jako v lekci 13: platná data → zápis → `flash` → `redirect`. Chyba validace → **200**, `{{ chyba }}`, **bez** `INSERT`.
+
+`app.py`:
 
 ```python
 @app.route("/", methods=["GET", "POST"])

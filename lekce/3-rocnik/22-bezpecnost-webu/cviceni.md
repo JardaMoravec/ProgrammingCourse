@@ -41,7 +41,9 @@ def index():
     return render_template("index.html", jmeno=jmeno)
 ```
 
-`templates/index.html` — nejdřív bez kontroly (`|safe`):
+Nejdřív s filtrem `|safe`:
+
+`templates/index.html`:
 
 ```html
 <h1>Pozdrav</h1>
@@ -55,6 +57,8 @@ def index():
 ```
 
 Pak `|safe` smažte:
+
+`templates/index.html`:
 
 ```html
   <p>Ahoj, {{ jmeno }}</p>

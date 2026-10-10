@@ -25,11 +25,15 @@ Databáze to není — jméno v relaci zmizí s cookie. Trvalé uložení je [le
 
 ## session jako slovník
 
+`app.py`:
+
 ```python
 from flask import session
 
 app.secret_key = "skola"
 ```
+
+`app.py`:
 
 ```python
 session["jmeno"] = jmeno
@@ -44,11 +48,15 @@ Po úspěšném POST zase `redirect` ([lekce 13](../13-presmerovani-a-flash/lekc
 
 V šabloně relace je sama:
 
+`templates/index.html`:
+
 ```html
 {% if jmeno %}
   <p>Ahoj, {{ jmeno }}</p>
 {% endif %}
 ```
+
+`app.py`:
 
 ```python
 return render_template("index.html", jmeno=session.get("jmeno", ""))
@@ -71,6 +79,8 @@ V DevTools → Aplikace → Cookies uvidíte cookie `session`. Upravovat ji ruč
 
 ## Ne globální proměnná
 
+`app.py`:
+
 ```python
 # Špatně — jeden údaj pro všechny návštěvníky webu
 aktualni = ""
@@ -90,12 +100,16 @@ Flash vs. relace:
 
 ## Odhlášení
 
+`app.py`:
+
 ```python
 @app.route("/odhlasit", methods=["POST"])
 def odhlasit():
     session.clear()
     return redirect(url_for("index"))
 ```
+
+`templates/index.html`:
 
 ```html
 <form action="{{ url_for('odhlasit') }}" method="post">

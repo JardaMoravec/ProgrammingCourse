@@ -33,6 +33,8 @@ Navazuje na [lekci 01](../01-jak-funguje-web/lekce.md) (HTTP, URL). Další krok
 
 Prohlížeč nejdřív dostane HTML (tělo HTTP odpovědi z [lekce 01](../01-jak-funguje-web/lekce.md)). V `<head>` najde odkaz na CSS a stáhne ho **dalším** požadavkem.
 
+`index.html`:
+
 ```html
 <link rel="stylesheet" href="styly.css">
 ```
@@ -58,6 +60,8 @@ Když v DevTools (F12) otevřete záložku Prvky / Elements, vidíte právě ten
 > Chyba v HTML (neuzavřená značka, zakázané vnoření) neznamená vždy červenou obrazovku. Prohlížeč strom **opraví odhadem** — a výsledek pak nesedí s tím, co jste mysleli. Proto se vyplatí psát platnou strukturu.
 
 Minimální kostra, kterou budete v šablonách opakovat:
+
+`index.html`:
 
 ```html
 <!DOCTYPE html>
@@ -90,6 +94,8 @@ Prvek není jen `width`. K obsahu se přičítá **padding** a **border** (u vý
 
 ![Schéma: obsah, padding, border, margin](diagramy/box-model.svg)
 
+`styly.css`:
+
 ```css
 .box {
   width: 200px;
@@ -108,9 +114,13 @@ Když na jeden prvek sedí víc pravidel:
 2. **specifita** (prvek `< třída `< id),
 3. **pořadí v souboru** (pozdější vyhraje, když je specifita stejná).
 
+`index.html`:
+
 ```html
 <p class="intro" id="uvod">Text</p>
 ```
+
+`styly.css`:
 
 ```css
 p { color: blue; }

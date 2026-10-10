@@ -27,6 +27,8 @@ Zápis `open(…)` z 1. ročníku je pro text, který program sám vytvoří. Na
 
 Bez dvou věcí prohlížeč soubor **nepošle**:
 
+`templates/index.html`:
+
 ```html
 <form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data">
   <label>Soubor <input type="file" name="soubor"></label>
@@ -44,6 +46,8 @@ Bez dvou věcí prohlížeč soubor **nepošle**:
 V Síti uvidíte POST se typem `multipart/form-data`, ne obyčejný formulář.
 
 ## request.files a uložení
+
+`app.py`:
 
 ```python
 from werkzeug.utils import secure_filename
@@ -69,6 +73,8 @@ Prázdný výběr poznáte podle `filename == ""`. `if not soubor` nestačí —
 ## Obrázek na stránce
 
 Soubor ve `static/uploads/foto.png` Flask naservíruje na `/static/uploads/foto.png`. V šabloně:
+
+`templates/index.html`:
 
 ```html
 <img src="{{ url_for('static', filename='uploads/foto.png') }}" alt="Nahraná fotka">

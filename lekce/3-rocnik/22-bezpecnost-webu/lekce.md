@@ -25,12 +25,16 @@ Vstup z formuláře je **cizí text**. Nevíte, jestli je to „Eva“, nebo zna
 
 Prohlížeč čte HTML. Když do stránky vložíte řetězec z formuláře jako značky, prohlížeč je **provede** (tučné písmo, odkaz, skript). Tomu se říká **XSS** (*cross-site scripting*).
 
+`app.py`:
+
 ```python
 # Špatně — vstup se stane HTML
 return f"<p>Hledáte: {dotaz}</p>"
 ```
 
 V [lekci 05](../05-sablony-jinja/lekce.md) `{{ dotaz }}` Jinja **escapuje**: `<` se stane `&lt;`, takže v prohlížeči uvidíte znaky, ne značku.
+
+`templates/index.html`:
 
 ```html
 <p>Hledáte: {{ dotaz }}</p>
@@ -47,10 +51,14 @@ Filtr `|safe` escapování **vypne**. Patří jen k HTML, které jste napsali vy
 
 V lekci 18 byl zákaz f-řetězce u `INSERT`. Důvod: hodnota s uvozovkou **ukončí** SQL řetězec a zbytek se čte jako příkaz. Pak podmínka může platit pro **všechny** řádky, ne jen pro hledaný název.
 
+`app.py`:
+
 ```python
 # Špatně — vstup se stane součástí SQL
 db.execute(f"SELECT nazev FROM polozky WHERE nazev = '{dotaz}'")
 ```
+
+`app.py`:
 
 ```python
 # Správně — SQL je pevný text, hodnota jde vedle

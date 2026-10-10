@@ -29,6 +29,8 @@ Přesměrování a flash zpráva jsou [lekce 13](../13-presmerovani-a-flash/lekc
 
 `request.form.get("jmeno", "")` může být `""` nebo samé mezery. Nejdřív **ořežte**:
 
+`app.py`:
+
 ```python
 jmeno = request.form.get("jmeno", "").strip()
 if not jmeno:
@@ -38,6 +40,8 @@ if not jmeno:
 `not jmeno` platí u prázdného řetězce. Mezery `"   "` po `strip()` taky zmizí.
 
 Hlášku předejte do šablony. Formulář nechte na stránce (hodnota v `value`, ať se nemusí psát znovu):
+
+`templates/index.html`:
 
 ```html
 {% if chyba %}
@@ -51,6 +55,8 @@ Stav zůstane **200**. Nejste na 404 — požadavek dorazil, jen data nesedí.
 ## Číslo: int a ValueError
 
 Z formuláře vždy přijde **řetězec**. `"7"` není `7`, dokud nezavoláte `int`.
+
+`app.py`:
 
 ```python
 raw = request.form.get("pocet", "").strip()

@@ -54,9 +54,13 @@ Pro `static/styly.css` Flask sám obslouží `GET /static/styly.css`. **Nepíše
 
 V základu (jednou, pro všechny stránky):
 
+`templates/zaklad.html`:
+
 ```html
 <link rel="stylesheet" href="{{ url_for('static', filename='styly.css') }}">
 ```
+
+`templates/zaklad.html`:
 
 ```html
 <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo školy">

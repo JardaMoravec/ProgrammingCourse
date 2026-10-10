@@ -31,6 +31,8 @@ V [lekci 03](../03-uvod-do-flasku/lekce.md) měla aplikace jednu cestu `/`. Web 
 
 **Pohledová funkce** (*view*) je obyčejná pythonovská [funkce](../../1-rocnik/15-funkce-zaklady/lekce.md). Nespouštíte ji sami. Prohlížeč pošle `GET /kontakt`, Flask funkci najde, zavolá a to, co `return` vrátí, pošle jako tělo odpovědi.
 
+`skola.py`:
+
 ```python
 @app.route("/kontakt")
 def kontakt():
@@ -59,6 +61,8 @@ Když cesta v tabulce **není**, Flask nevolá žádný váš kód a odpoví **4
 
 Stačí další dekorátor a další funkce. Pořád **jeden** `app = Flask(__name__)`.
 
+`skola.py`:
+
 ```python
 from flask import Flask
 
@@ -82,6 +86,8 @@ Spustění beze změny: `python -m flask --app NAZEV run --debug`. V prohlíže�
 Každý pohled vrací **vlastní** řetězec. Prohlížeč ho znovu vykreslí jako HTML (Flask u řetězce posílá `Content-Type: text/html`). Delší značky dejte do trojitých uvozovek.
 
 Stránky spojíte obyčejným odkazem. Hodnota `href` je **cesta routy**, ne název funkce:
+
+`skola.py`:
 
 ```python
 @app.route("/")

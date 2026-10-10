@@ -74,6 +74,8 @@ Použijte `get_db()` s `g` a `teardown_appcontext` jako v lekci. Tabulka `klice`
 
 Proto:
 
+`klice.py`:
+
 ```python
 with app.app_context():
     init_db()

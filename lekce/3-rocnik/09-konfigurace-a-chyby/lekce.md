@@ -27,12 +27,16 @@ V [lekci 08](../08-dynamicke-url/lekce.md) neznámý článek vrátil větu „n
 
 Nastavení patří na instanci aplikace, ne do náhodných globálních proměnných:
 
+`app.py`:
+
 ```python
 app = Flask(__name__)
 app.config["NAZEV"] = "Školní nástěnka"
 ```
 
 V šabloně je slovník `config` k dispozici sám:
+
+`templates/zaklad.html`:
 
 ```html
 <h1>{{ config.NAZEV }}</h1>
@@ -45,6 +49,8 @@ Hodí se na titulek webu, e-mail správce, později řetězec k databázi. **Taj
 ## Vlastní stránka 404
 
 Bez routy Flask pošle anglické „Not Found“. Registrace:
+
+`app.py`:
 
 ```python
 @app.errorhandler(404)
@@ -65,6 +71,8 @@ Stránka **500** (pád v kódu) se dá registrovat stejně. S `--debug` ji ale u
 ## abort — položka neexistuje
 
 Routa `/clanek/9` existuje (`<int:cislo>` sedí), ale ve slovníku klíč 9 není. Pak **vy** rozhodnete:
+
+`app.py`:
 
 ```python
 from flask import abort

@@ -53,12 +53,16 @@ V kódu musí být `app.secret_key` a v konfiguraci **název webu**, který se v
 `get_db()` přes **`g`**, zavření v `@app.teardown_appcontext`.  
 `init_db()` jen `CREATE TABLE IF NOT EXISTS` + `commit`. Volání:
 
+`app.py`:
+
 ```python
 with app.app_context():
     init_db()
 ```
 
 `CREATE TABLE` **nesmí** být v pohledu. V `get_db()` po `connect`:
+
+`app.py`:
 
 ```python
 g.db.execute("PRAGMA foreign_keys = ON")
@@ -80,6 +84,8 @@ Relaci **1:N** znáte z 2. ročníku (SQL). Tady ji napojíte ve Flasku. Názvy 
 V `CREATE TABLE` u potomka **musí** být `FOREIGN KEY (… ) REFERENCES …`. Rodiče zakládejte **první**.
 
 Seznam a detail potomka čtou **obě** tabulky (`JOIN`). Samostatné `SELECT` jen z potomka, bez jména rodiče, nestačí.
+
+`app.py`:
 
 ```sql
 -- tvar; názvy si dosaďte
@@ -126,6 +132,8 @@ Flask **`session`** z [lekce 15](../15-relace/lekce.md) (ne plést s relací tab
 - když je jméno v `session`, je **vidět v kořenové šabloně na všech stránkách**.
 
 Neznámá cesta i chybějící id → **vlastní** 404 (ne šedá stránka Flasku), stav **404**, odkaz zpět přes `url_for`:
+
+`app.py`:
 
 ```python
 @app.errorhandler(404)

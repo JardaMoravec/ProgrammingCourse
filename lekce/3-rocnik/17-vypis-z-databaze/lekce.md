@@ -38,6 +38,8 @@ Bez `fetchall` / `fetchone` předáte do šablony kurzor — cyklus v HTML nebud
 
 ## fetchall — všechny řádky
 
+`app.py`:
+
 ```python
 @app.route("/")
 def index():
@@ -45,6 +47,8 @@ def index():
     radky = db.execute("SELECT nazev FROM polozky").fetchall()
     return render_template("index.html", radky=radky)
 ```
+
+`templates/index.html`:
 
 ```html
 <ul>
@@ -60,12 +64,16 @@ Prázdná tabulka: `radky` je `[]`, cyklus se neprovede. Můžete přidat `{% if
 
 `SELECT COUNT(*)` vrátí **jeden** řádek s jedním číslem. Speciální `fetch` pro agregace (`COUNT`, `SUM`, …) není — je to pořád jeden řádek, proto `fetchone`, ne `fetchall`:
 
+`app.py`:
+
 ```python
 radek = db.execute("SELECT COUNT(*) FROM polozky").fetchone()
 pocet = radek[0]
 ```
 
 `fetchone()` je `None`, když výsledek nemá žádný řádek. U `COUNT(*)` řádek vždy je — i při nule položek. U `SELECT … WHERE cislo = 999` už `None` hlídejte, než sáhnete na `[0]`.
+
+`app.py`:
 
 ```python
 radek = db.execute("SELECT nazev FROM polozky WHERE id = 1").fetchone()

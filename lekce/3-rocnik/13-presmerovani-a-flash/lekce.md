@@ -27,6 +27,8 @@ Relace (`session`) jsou [lekce 15](../15-relace/lekce.md). Dnes z nich potřebuj
 
 Vzor: *zpracuj POST → odpověz 302 → prohlížeč sám pošle GET*.
 
+`app.py`:
+
 ```python
 from flask import redirect, url_for
 
@@ -55,11 +57,15 @@ V Síti uvidíte dva řádky: POST **302** a hned GET **200**.
 
 Po `redirect` už pohled **nemá** data z POST. Úspěch proto nenecháte v `zprava=` u `render_template`, ale uložíte na **příští** požadavek:
 
+`app.py`:
+
 ```python
 from flask import flash
 
 app.secret_key = "skola"
 ```
+
+`app.py`:
 
 ```python
 flash("Zapsáno.")
@@ -67,6 +73,8 @@ return redirect(url_for("index"))
 ```
 
 V šabloně:
+
+`templates/index.html`:
 
 ```html
 {% for zprava in get_flashed_messages() %}

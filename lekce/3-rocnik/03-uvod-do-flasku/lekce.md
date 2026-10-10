@@ -164,6 +164,8 @@ Na `http://127.0.0.1:5000/neexistuje` dostanete **404** — Flask tu routu nemá
 
 Druhá cesta, kterou najdete v návodech:
 
+`ahoj.py`:
+
 ```python
 if __name__ == "__main__":
     app.run(debug=True)

@@ -27,6 +27,8 @@ Bez dynamické cesty byste na každý článek psali novou funkci. S parametrem 
 
 Hranaté závorky v dekorátoru jsou **místo pro hodnotu**:
 
+`app.py`:
+
 ```python
 @app.route("/ahoj/<jmeno>")
 def ahoj(jmeno):
@@ -46,6 +48,8 @@ Jméno v `<jmeno>` a parametr [funkce](../../1-rocnik/15-funkce-zaklady/lekce.md
 
 Bez uvedení typu je hodnota **řetězec**. Číslo v cestě označíte `int`:
 
+`app.py`:
+
 ```python
 @app.route("/clanek/<int:cislo>")
 def clanek(cislo):
@@ -61,6 +65,8 @@ Jiné převodníky teď nepotřebujete. Query v URL (`?q=`) sem nepatří — to
 V [lekci 04](../04-routy-a-pohledy/lekce.md) jste psali `href="/kontakt"`. Když cestu změníte, všechny odkazy zůstanou staré.
 
 `url_for` bere **název pohledové funkce**:
+
+`templates/index.html`:
 
 ```html
 <a href="{{ url_for('index') }}">Domů</a>
@@ -81,6 +87,8 @@ V Pythonu totéž: `from flask import url_for` a `url_for("clanek", cislo=2)` �
 
 Články v slovníku, odkazy cyklem:
 
+`app.py`:
+
 ```python
 CLANKY = {
     1: "Zápis do kroužků začíná v pondělí.",
@@ -98,6 +106,8 @@ def clanek(cislo):
     text = CLANKY.get(cislo, "Článek neexistuje.")
     return render_template("clanek.html", cislo=cislo, text=text)
 ```
+
+`templates/index.html`:
 
 ```html
 {% for cislo, text in clanky.items() %}

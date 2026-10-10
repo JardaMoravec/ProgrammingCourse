@@ -40,6 +40,8 @@ Pohled se **nemění**: pořád `return render_template("index.html")`. Flask ne
 
 V základu označíte, *kam* smí potomek psát:
 
+`templates/zaklad.html`:
+
 ```html
 <title>{% block title %}SPŠ ukázka{% endblock %}</title>
 …
@@ -53,6 +55,8 @@ V základu označíte, *kam* smí potomek psát:
 Text mezi `{% block title %}` a `{% endblock %}` je **záložní** — použije se, když potomek blok nevyplní.
 
 Potomek začíná `extends` (před ním v souboru nesmí být značky HTML):
+
+`templates/kontakt.html`:
 
 ```html
 {% extends "zaklad.html" %}
@@ -74,6 +78,8 @@ templates/
   index.html
   kontakt.html
 ```
+
+`app.py`:
 
 ```python
 @app.route("/")

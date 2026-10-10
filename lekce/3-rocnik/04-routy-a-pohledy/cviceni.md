@@ -22,6 +22,8 @@ Soubor `dve_stranky.py`. Dvě routy, **prostý text** (ne HTML):
 Obě otevřete v prohlížeči (`/info` dopsat za `:5000`). Na `/neexistuje` ověřte **404**.
 
 @reseni
+`dve_stranky.py`:
+
 ```python
 from flask import Flask
 
@@ -55,6 +57,8 @@ Soubor `bufet.py`. Dvě routy, odpověď je **krátké HTML** (ne prostý text):
 V prohlížeči klikněte na odkazy — nesmí skončit na 404.
 
 @reseni
+`bufet.py`:
+
 ```python
 from flask import Flask
 
@@ -97,6 +101,8 @@ Soubor `nastenka.py`. Tři routy, na každé **HTML** a odkazy na **obě ostatn�
 Stačí `<h1>`, `<p>` a `<a href="…">`. Ověřte, že z každé stránky jdou otevřít zbylé dvě.
 
 @reseni
+`nastenka.py`:
+
 ```python
 from flask import Flask
 
