@@ -2,6 +2,21 @@ title: Vitrína
 stars: 3
 ignore_input_prompt: true
 moodle: PRG-2-04-05
+typ: oop
+soubor: main.py
+struktura:
+  jen_init: true
+  tridy:
+    - jmeno: Exponat
+      atributy: [nazev, rok]
+    - jmeno: Vitrina
+      atributy: [kod, exponaty]
+      neni_potomek: [Exponat]
+      seznamy:
+        - atribut: exponaty
+          trida: Exponat
+          pocet: 2
+          novy: true
 description: |
   Vytvořte třídy `Exponat` a `Vitrina`. Atributy nastavte **konstruktorem**.
   Vlastní metody kromě `__init__` nepište.
@@ -18,6 +33,9 @@ description: |
 
   `Vitrina A1: Venuse, 150`
   `Vitrina A1: Mec, 1200`
+
+  Test kontroluje výpis i strukturu: obě třídy, atributy nastavené
+  v `__init__` a seznam dvou exponátů vytvořený v těle konstruktoru vitríny.
 cases:
   - name: dva-exponaty
     input: |
@@ -29,6 +47,16 @@ cases:
     output: |-
       Vitrina A1: Venuse, 150
       Vitrina A1: Mec, 1200
+    instance:
+      trida: Vitrina
+      kod: A1
+      exponaty:
+        - trida: Exponat
+          nazev: Venuse
+          rok: 150
+        - trida: Exponat
+          nazev: Mec
+          rok: 1200
   - name: stejny-rok
     input: |
       S2
@@ -39,6 +67,16 @@ cases:
     output: |-
       Vitrina S2: Mince, 1998
       Vitrina S2: Bankovka, 1998
+    instance:
+      trida: Vitrina
+      kod: S2
+      exponaty:
+        - trida: Exponat
+          nazev: Mince
+          rok: 1998
+        - trida: Exponat
+          nazev: Bankovka
+          rok: 1998
   - name: stare
     input: |
       K1
@@ -49,6 +87,16 @@ cases:
     output: |-
       Vitrina K1: Sekera, -500
       Vitrina K1: Naramky, 800
+    instance:
+      trida: Vitrina
+      kod: K1
+      exponaty:
+        - trida: Exponat
+          nazev: Sekera
+          rok: -500
+        - trida: Exponat
+          nazev: Naramky
+          rok: 800
 io: |
   **Vstup:** pět řádků — kód vitríny, pak název a rok prvního exponátu, název a rok druhého
   **Výstup:** dva řádky `Vitrina KOD: nazev, rok`

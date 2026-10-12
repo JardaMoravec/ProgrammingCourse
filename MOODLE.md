@@ -53,6 +53,8 @@ Dokumentace: [VPL BIOTES](https://vpl.dis.ulpgc.es/documentation/vpl-4.4.2/biote
 
 2. ročník používá stejný typ VPL jako 1. ročník: **jeden úkol = jedna aktivita**, soubor `main.py`, testy v `ukoly/NN-slug/vpl_evaluate.cases`. Výjimka jsou lekce **12** a **13** (a pololetní projekt v lekci 11): automatický test nemají, žák odevzdá textový dokument a hodnotí učitel.
 
+Úkol **Vitrína** v lekci 04 (`PRG-2-04-05`, `typ: oop`) cases nepoužívá. Do **Execution files** vložte `vpl_evaluate.sh` a `vpl_evaluate.py`. Test hlídá výpis a zároveň třídy, konstruktory a složení. Bez správné struktury je známka 0, i kdyby text na výstupu seděl. Když struktura sedí, body se dělí podle jednotlivých vstupů.
+
 Lekce **12** a **13** mají v `ukol.yaml` `typ: soubor` a pole `odevzdani`. Do AMOS se nahrává TXT, PDF nebo DOCX s odpovědí nebo tabulkou.
 
 ## 2. ročník od lekce 14 — SQL (`vpl_evaluate.py` + `vpl_evaluate.sh`)

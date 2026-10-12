@@ -20,7 +20,7 @@ Vše ostatní je **generované**, **šablony**, **nástroje** nebo **archiv migr
 | `graficky-vystup/` | `build_html_output.py` | `lekce/**/*.md` |
 | `lekce/**/ukoly.md` | `generate_tasks.py` | `lekce/**/ukoly/*/ukol.yaml` |
 | `lekce/**/ukoly/*/vpl_evaluate.cases` | `generate_tasks.py` | `ukol.yaml` (1. a 2. ročník) |
-| `lekce/**/ukoly/*/vpl_evaluate.py` + `.sh` | `generate_tasks.py` | `ukol.yaml` (Flask, 3. ročník) |
+| `lekce/**/ukoly/*/vpl_evaluate.py` + `.sh` | `generate_tasks.py` | `ukol.yaml` (Flask, SQL, OOP struktura) |
 
 ### Není datová vrstva
 

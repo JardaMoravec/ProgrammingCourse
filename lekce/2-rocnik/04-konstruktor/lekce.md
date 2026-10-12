@@ -201,7 +201,7 @@ V úkolu autoservisu bude auto mít motor a čtyři kola — stejný postup, jen
 
 Příště metody: objekt umí i **něco udělat**, nejen data držet.
 
-Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že atributy nastavuje konstruktor (ne jen tečka po `Osoba()`).
+Automatický test v AMOS kontroluje **výstup**. U úkolu Vitrína kontroluje i třídy a konstruktor. U ostatních úkolů může učitel zkontrolovat, že atributy nastavuje konstruktor (ne jen tečka po vytvoření objektu).
 
 Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele. Hodnotí učitel.
 

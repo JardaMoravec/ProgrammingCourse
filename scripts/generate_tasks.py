@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generuje ukoly.md a VPL testy (cases / Flask hodnotitel) z lekce/**/ukoly/*/ukol.yaml.
+"""Generuje ukoly.md a VPL testy (cases / Flask / OOP hodnotitel) z lekce/**/ukoly/*/ukol.yaml.
 
 U tajných známkovaných úkolů (složka zNN-) vznikne i zadani.html pro vložení do Moodlu.
 """
@@ -168,6 +168,8 @@ def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
         task["seed"] = raw["seed"]
     if raw.get("zakazane"):
         task["zakazane"] = list(raw["zakazane"])
+    if raw.get("struktura"):
+        task["struktura"] = raw["struktura"]
     return task
 
 
@@ -398,7 +400,7 @@ def write_lesson_ukoly(lesson_dir: Path, tasks: list[dict]) -> None:
         task_dir = ukoly_root / task_dir_name(t)
         task_dir.mkdir(parents=True, exist_ok=True)
         cases_path = task_dir / "vpl_evaluate.cases"
-        if t["cases"]:
+        if t["cases"] and t.get("typ") != "oop":
             cases_path.write_text(
                 format_vpl_cases(
                     t["cases"],
@@ -473,6 +475,29 @@ def format_slozeni_evaluator(soubor: str, zakazane: list) -> str:
     )
 
 
+def format_oop_evaluator(
+    soubor: str,
+    struktura: dict,
+    cases: list,
+    *,
+    ignoruj_vyzvu: bool,
+) -> str:
+    template = (SABLONY / "vpl_evaluate_oop.py").read_text(encoding="utf-8")
+    for placeholder in ("__STUDENT_FILE__", "__TESTS__"):
+        if placeholder not in template:
+            raise ValueError(f"sablony/vpl_evaluate_oop.py: chybí {placeholder}")
+    payload = {
+        "struktura": struktura,
+        "cases": cases,
+        "ignoruj_vyzvu": ignoruj_vyzvu,
+    }
+    return template.replace("__STUDENT_FILE__", soubor, 1).replace(
+        "__TESTS__",
+        json.dumps(payload, ensure_ascii=True, indent=2),
+        1,
+    )
+
+
 def write_custom_vpl(task_dir: Path, task: dict) -> None:
     py_path = task_dir / "vpl_evaluate.py"
     sh_path = task_dir / "vpl_evaluate.sh"
@@ -483,6 +508,33 @@ def write_custom_vpl(task_dir: Path, task: dict) -> None:
             format_slozeni_evaluator(
                 str(task.get("soubor") or "main.py"),
                 list(task.get("zakazane") or []),
+            ),
+            encoding="utf-8",
+        )
+        write_run_sh(sh_path)
+        if run_path.exists():
+            run_path.unlink()
+        return
+    if typ == "oop":
+        soubor = str(task.get("soubor") or "")
+        struktura = task.get("struktura")
+        cases = list(task.get("cases") or [])
+        if not soubor or not isinstance(struktura, dict) or not cases:
+            raise ValueError(
+                f"{task_dir / 'ukol.yaml'}: typ oop vyžaduje soubor:, struktura: a cases:"
+            )
+        for case in cases:
+            if not isinstance(case, dict) or "instance" not in case:
+                raise ValueError(
+                    f"{task_dir / 'ukol.yaml'}: případ {case.get('name')!r} "
+                    "nemá instance:"
+                )
+        py_path.write_text(
+            format_oop_evaluator(
+                soubor,
+                struktura,
+                cases,
+                ignoruj_vyzvu=bool(task.get("ignore_input_prompt")),
             ),
             encoding="utf-8",
         )
