@@ -168,6 +168,10 @@ def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
         task["seed"] = raw["seed"]
     if raw.get("zakazane"):
         task["zakazane"] = list(raw["zakazane"])
+    if isinstance(raw.get("parametry"), dict):
+        task["parametry"] = raw["parametry"]
+    if raw.get("slozeni"):
+        task["slozeni"] = raw["slozeni"]
     if raw.get("struktura"):
         task["struktura"] = raw["struktura"]
     return task
@@ -457,21 +461,60 @@ def write_sql_run_sh(path: Path, soubor: str) -> None:
     path.write_bytes(sh_text.encode("utf-8"))
 
 
-def format_slozeni_evaluator(soubor: str, zakazane: list) -> str:
+def format_slozeni_evaluator(
+    soubor: str,
+    zakazane: list,
+    parametry: dict | None = None,
+    slozeni: str | None = None,
+) -> str:
     template = (SABLONY / "vpl_evaluate_slozeni.py").read_text(encoding="utf-8")
-    for placeholder in ("__STUDENT_FILE__", "__ZAKAZANE__"):
+    for placeholder in (
+        "__STUDENT_FILE__",
+        "__ZAKAZANE__",
+        "__REZIM__",
+        "__MIN_POVINNE__",
+        "__MIN_VOLITELNE__",
+        "__PROFIL_VNITRNI__",
+        "__PROFIL_VNEJSI__",
+        "__SLOZENI__",
+    ):
         if placeholder not in template:
             raise ValueError(f"sablony/vpl_evaluate_slozeni.py: chybí {placeholder}")
+    pravidlo = parametry or {}
+    rezim = str(pravidlo.get("rezim") or "soucet")
+    if rezim == "role":
+        vnitrni = pravidlo.get("vnitrni") or {}
+        vnejsi = pravidlo.get("vnejsi") or {}
+        profil_vnitrni = [
+            int(vnitrni.get("povinne", 3)),
+            int(vnitrni.get("volitelne", 1)),
+        ]
+        profil_vnejsi = [
+            int(vnejsi.get("povinne", 1)),
+            int(vnejsi.get("volitelne", 3)),
+        ]
+        min_povinne = 0
+        min_volitelne = 0
+    else:
+        profil_vnitrni = [0, 0]
+        profil_vnejsi = [0, 0]
+        min_povinne = int(pravidlo.get("povinne", 4))
+        min_volitelne = int(pravidlo.get("volitelne", 4))
     klice = sorted(
         {
             "".join(ch for ch in str(name).lower() if ch.isalnum())
             for name in zakazane
         }
     )
-    return template.replace("__STUDENT_FILE__", soubor, 1).replace(
-        "__ZAKAZANE__",
-        json.dumps(klice, ensure_ascii=True),
-        1,
+    return (
+        template.replace("__STUDENT_FILE__", soubor, 1)
+        .replace("__ZAKAZANE__", json.dumps(klice, ensure_ascii=True), 1)
+        .replace("__REZIM__", json.dumps(rezim), 1)
+        .replace("__MIN_POVINNE__", str(min_povinne), 1)
+        .replace("__MIN_VOLITELNE__", str(min_volitelne), 1)
+        .replace("__PROFIL_VNITRNI__", json.dumps(profil_vnitrni), 1)
+        .replace("__PROFIL_VNEJSI__", json.dumps(profil_vnejsi), 1)
+        .replace("__SLOZENI__", json.dumps(slozeni or "dve_a_dve"), 1)
     )
 
 
@@ -508,6 +551,8 @@ def write_custom_vpl(task_dir: Path, task: dict) -> None:
             format_slozeni_evaluator(
                 str(task.get("soubor") or "main.py"),
                 list(task.get("zakazane") or []),
+                task.get("parametry"),
+                task.get("slozeni"),
             ),
             encoding="utf-8",
         )
