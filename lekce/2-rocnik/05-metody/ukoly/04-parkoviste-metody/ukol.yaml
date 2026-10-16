@@ -1,0 +1,58 @@
+title: Parkoviště — metody
+stars: 3
+moodle: PRG-2-05-04
+description: |
+  Navazuje na parkoviště z lekce 04 — tentokrát **s metodami**.
+  Třídy `Auto`, `ParkovaciMisto` a `Parkoviste` s konstruktorem.
+  `__str__` nepište.
+
+  **Auto:** `spz`, `barva`, `vyska` (číslo v metrech).
+
+  - `popis(self)` vrátí `spz, barva`
+  - `vejde_se_do(self, max_vyska)` vrátí `True`, když `vyska` **není větší**
+    než `max_vyska`, jinak `False`
+  - `prebarvit(self, barva)` nastaví `barva`
+
+  **ParkovaciMisto:** `cislo` (celé číslo), `max_vyska`, `auto` (objekt `Auto`).
+
+  - `vypis(self)` vypíše `Parkovaci misto CISLO: POPIS`. POPIS je návratová
+    hodnota `auto.popis()` — metodu **zavolejte**
+  - `kontrola_vysky(self)` vrátí výsledek `auto.vejde_se_do(max_vyska)`.
+    Metodu auta **zavolejte** (nekopírujte vzorec do místa)
+
+  **Parkoviste:** `nazev` a čtyři místa `prvni`, `druhe`, `treti`, `ctvrte`
+  (objekty `ParkovaciMisto`).
+
+  - `vypis_info(self)` vypíše `nazev`
+  - `kontrola_vysky(self)` vrátí `True`, jen když **všechna čtyři** místa
+    projdou `kontrola_vysky`; metodu místa **zavolejte**
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - parkoviště Centrum
+  - místo 3, max. výška 1.9, auto `1A2 3456`, modra, výška 1.5
+  - místo 7, max. výška 1.9, auto `2B3 9999`, cerna, výška 2.1
+    (auto je nad maximem)
+  - místo 8, max. výška 2.2, auto `5C1 0001`, bila, výška 1.8
+  - místo 9, max. výška 1.6, auto `3D4 1111`, seda, výška 1.6
+
+  V hlavním programu: `vypis_info()`, `vypis()` místa 3,
+  `prebarvit("cervena")` na autě z místa 7, `vypis()` místa 7,
+  vypište výsledek `kontrola_vysky()` parkoviště.
+
+  Přesně čtyři řádky:
+
+  `Centrum`
+  `Parkovaci misto 3: 1A2 3456, modra`
+  `Parkovaci misto 7: 2B3 9999, cervena`
+  `False`
+cases:
+  - name: centrum-vyska
+    output: |-
+      Centrum
+      Parkovaci misto 3: 1A2 3456, modra
+      Parkovaci misto 7: 2B3 9999, cervena
+      False
+io: |
+  **Vstup:** žádný
+  **Výstup:** čtyři řádky (název, místo 3, místo 7 po přebarvení, kontrola výšky)
