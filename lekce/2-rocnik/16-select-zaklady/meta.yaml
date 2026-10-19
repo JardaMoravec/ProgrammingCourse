@@ -1,0 +1,10 @@
+id: 16-select-zaklady
+rocnik: 2
+nazev: SELECT — základy
+modul: sql
+hodiny: 5
+obtiznost: zacatecnik
+prerekvizity: [15-create-table]
+kompetence: [k6-sql-zaklady]
+svp: [načítaní dat pomocí jazyka DQL (SELECT)]
+tagy: [sql, select, distinct]

@@ -335,7 +335,7 @@ def build_ukoly_md(
         ]
     elif has_sql:
         parts += [
-            "> V AMOS spusťte **Evaluate** — test spustí SQL ve SQLite a ověří tabulky.",
+            "> V AMOS spusťte **Evaluate** — test spustí SQL ve SQLite a ověří výsledek.",
             "",
             "**Odevzdání:** soubor `reseni.sql`.",
             "",

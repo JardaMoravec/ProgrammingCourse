@@ -1,0 +1,34 @@
+title: Třídy
+stars: 2
+moodle: PRG-2-16-03
+typ: sql
+soubor: reseni.sql
+seed: |
+  CREATE TABLE zaci (
+      id INTEGER PRIMARY KEY,
+      jmeno TEXT NOT NULL,
+      trida TEXT NOT NULL
+  );
+  INSERT INTO zaci (id, jmeno, trida) VALUES (1, 'Eva', '1.A');
+  INSERT INTO zaci (id, jmeno, trida) VALUES (2, 'Karel', '1.B');
+  INSERT INTO zaci (id, jmeno, trida) VALUES (3, 'Anna', '1.A');
+evaluate:
+  - name: třídy bez opakování
+    headers: [trida]
+    rows:
+      - ["1.A"]
+      - ["1.B"]
+description: |
+  Tabulka `zaci` už v databázi je. Má sloupce `id`, `jmeno` a `trida`.
+  Ve třídě `1.A` jsou dva žáci.
+
+  Vypište názvy tříd tak, aby se žádná neopakovala.
+
+  Výsledek:
+
+  ```
+  1.A
+  1.B
+  ```
+odevzdani: |
+  Soubor `reseni.sql` s jedním příkazem `SELECT`.

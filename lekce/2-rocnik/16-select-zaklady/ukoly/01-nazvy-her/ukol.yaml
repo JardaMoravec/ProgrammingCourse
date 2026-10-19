@@ -1,0 +1,32 @@
+title: Názvy her
+stars: 1
+moodle: PRG-2-16-01
+typ: sql
+soubor: reseni.sql
+seed: |
+  CREATE TABLE hry (
+      id INTEGER PRIMARY KEY,
+      nazev TEXT NOT NULL,
+      rok INTEGER
+  );
+  INSERT INTO hry (id, nazev, rok) VALUES (1, 'Sach', 1960);
+  INSERT INTO hry (id, nazev, rok) VALUES (2, 'Dama', 1975);
+evaluate:
+  - name: názvy her
+    headers: [nazev]
+    rows:
+      - ["Sach"]
+      - ["Dama"]
+description: |
+  Tabulka `hry` už v databázi je. Má sloupce `id`, `nazev` a `rok`.
+
+  Vypište jen názvy her. Tabulku nezakládejte a řádky do ní nevkládejte.
+
+  Výsledek:
+
+  ```
+  Sach
+  Dama
+  ```
+odevzdani: |
+  Soubor `reseni.sql` s jedním příkazem `SELECT`.

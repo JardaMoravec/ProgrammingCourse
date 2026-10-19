@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-label="SELECT nazev vrati z tabulky knihy jen sloupec nazev">
+  <rect class="d-bg" width="720" height="250" rx="10" fill="#f8f9fb" stroke="#e5e7eb"/>
+  <text class="d-text" x="360" y="28" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="14" font-weight="600" fill="#1a1d26">SELECT nazev FROM knihy</text>
+
+  <rect class="d-surface" x="28" y="52" width="250" height="150" rx="8" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="153" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#2563eb">knihy</text>
+  <text class="d-muted" x="70" y="108" font-family="Consolas, monospace" font-size="12" fill="#5c6370">id</text>
+  <text class="d-text" x="120" y="108" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">nazev</text>
+  <text class="d-muted" x="210" y="108" font-family="Consolas, monospace" font-size="12" fill="#5c6370">rok</text>
+  <text class="d-muted" x="70" y="136" font-family="Consolas, monospace" font-size="12" fill="#5c6370">1</text>
+  <text class="d-text" x="120" y="136" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">R.U.R.</text>
+  <text class="d-muted" x="210" y="136" font-family="Consolas, monospace" font-size="12" fill="#5c6370">1920</text>
+  <text class="d-muted" x="70" y="164" font-family="Consolas, monospace" font-size="12" fill="#5c6370">2</text>
+  <text class="d-text" x="120" y="164" font-family="Consolas, monospace" font-size="12" fill="#1a1d26">Krakatit</text>
+  <text class="d-muted" x="210" y="164" font-family="Consolas, monospace" font-size="12" fill="#5c6370">1924</text>
+
+  <text class="d-accent" x="360" y="130" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="22" fill="#2563eb">&#8594;</text>
+
+  <rect class="d-soft" x="442" y="52" width="250" height="150" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="d-accent" x="567" y="78" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#2563eb">v&#253;sledek</text>
+  <text class="d-text" x="567" y="116" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#1a1d26">nazev</text>
+  <text class="d-text" x="567" y="146" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#1a1d26">R.U.R.</text>
+  <text class="d-text" x="567" y="174" text-anchor="middle" font-family="Consolas, monospace" font-size="13" fill="#1a1d26">Krakatit</text>
+</svg>

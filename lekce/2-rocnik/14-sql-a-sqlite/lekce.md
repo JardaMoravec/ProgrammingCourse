@@ -75,11 +75,11 @@ SQL se učí po skupinách. Každá skupina má v ročníku vlastní lekce.
 
 | Rodina | K čemu | Příkazy | Lekce |
 |--------|--------|---------|-------|
-| **DDL** | struktura (tabulky) | `CREATE`, `ALTER`, `DROP` | 14 |
-| **DQL** | čtení | `SELECT` | 15–20 |
-| **DML** | změna řádků | `INSERT`, `UPDATE`, `DELETE` | 21–22 |
-| **DCL** | práva uživatelů | `GRANT`, `REVOKE` | 23 |
-| **TCL** | transakce | `BEGIN`, `COMMIT`, `ROLLBACK` | 23 |
+| **DDL** | struktura (tabulky) | `CREATE`, `ALTER`, `DROP` | 15 |
+| **DQL** | čtení | `SELECT` | 16–21 |
+| **DML** | změna řádků | `INSERT`, `UPDATE`, `DELETE` | 22–23 |
+| **DCL** | práva uživatelů | `GRANT`, `REVOKE` | 24 |
+| **TCL** | transakce | `BEGIN`, `COMMIT`, `ROLLBACK` | 24 |
 
 ![Pět rodin SQL a ve které lekci přijdou na řadu](diagramy/skupiny-prikazu.svg)
 

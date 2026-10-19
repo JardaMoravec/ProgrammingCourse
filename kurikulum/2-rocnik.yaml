@@ -302,6 +302,10 @@ moduly:
             svp: [načítaní dat pomocí jazyka DQL (SELECT)]
             kompetence: [k6-sql-zaklady]
             prerekvizity: [15-create-table]
+            ukoly_zdroje:
+              - sloupec
+              - více sloupců
+              - DISTINCT
 
           - id: "17-select-where"
             soubor: lekce/2-rocnik/17-select-where

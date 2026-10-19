@@ -33,7 +33,7 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 | 13 | `13-relacni-databaze` | Principy relační databáze | 5 | 3 |
 | 14 | `14-sql-a-sqlite` | Koncepce jazyka SQL a SQLite | 5 | 2 |
 | 15 | `15-create-table` | Definování tabulek (CREATE TABLE) | 5 | 3 |
-| 16 | `16-select-zaklady` | SELECT — základy | 5 | — |
+| 16 | `16-select-zaklady` | SELECT — základy | 5 | 3 |
 | 17 | `17-select-where` | SELECT — WHERE | 5 | — |
 | 18 | `18-select-razeni` | SELECT — řazení, LIMIT a NULL | 5 | — |
 | 19 | `19-join-a-relace` | JOIN a relace 1:N | 5 | — |

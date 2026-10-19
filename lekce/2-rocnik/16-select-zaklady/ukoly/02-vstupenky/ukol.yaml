@@ -1,0 +1,32 @@
+title: Vstupenky
+stars: 2
+moodle: PRG-2-16-02
+typ: sql
+soubor: reseni.sql
+seed: |
+  CREATE TABLE vstupenky (
+      id INTEGER PRIMARY KEY,
+      akce TEXT NOT NULL,
+      cena INTEGER NOT NULL
+  );
+  INSERT INTO vstupenky (id, akce, cena) VALUES (1, 'Koncert', 350);
+  INSERT INTO vstupenky (id, akce, cena) VALUES (2, 'Divadlo', 180);
+evaluate:
+  - name: akce a cena
+    headers: [akce, cena]
+    rows:
+      - ["Koncert", 350]
+      - ["Divadlo", 180]
+description: |
+  Tabulka `vstupenky` už v databázi je. Má sloupce `id`, `akce` a `cena`.
+
+  Vypište akci a cenu. Ve výsledku je nejdřív akce, potom cena.
+
+  Výsledek:
+
+  ```
+  Koncert | 350
+  Divadlo | 180
+  ```
+odevzdani: |
+  Soubor `reseni.sql` s jedním příkazem `SELECT`.
