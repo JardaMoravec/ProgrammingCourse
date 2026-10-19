@@ -39,11 +39,11 @@ Nápady, které nemusíte použít: knihovna (autor → kniha), školní akce (s
 
 Aplikace se spouští ze složky, kde leží hlavní `.py` (doporučený název `app.py`):
 
-```
-app.py                 ← nebo jiný název; učitel musí vědět, který soubor spustit
-templates/             ← šablony (názvy souborů jsou vaše)
-static/                ← CSS a nahrané soubory
-*.db                   ← vznikne při startu, neodevzdáváte ho
+```tree
+app.py — nebo jiný název; učitel musí vědět, který soubor spustit
+templates/ — šablony (názvy souborů jsou vaše)
+static/ — CSS a nahrané soubory
+*.db — vznikne při startu, neodevzdáváte ho
 ```
 
 Cesta k databázi v `app.config` přes `os.path` a `__file__`. Název souboru `.db` je váš.

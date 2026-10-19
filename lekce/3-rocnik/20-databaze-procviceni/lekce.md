@@ -32,12 +32,12 @@ Bezpečnost (XSS, skládání SQL z formuláře) je [lekce 22](../22-bezpecnost-
 
 ## Složky mini-aplikace
 
-```
+```tree
 app.py
 templates/
   index.html
   upravit.html
-knihovna.db   ← vznikne při startu
+knihovna.db — vznikne při startu
 ```
 
 `CREATE TABLE` patří **jen** do `init_db` při startu. `SELECT` / `INSERT` / `UPDATE` / `DELETE` do pohledů. Po úspěšném zápisu **302**, po chybě validace **200**.

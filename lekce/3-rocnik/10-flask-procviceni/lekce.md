@@ -35,7 +35,7 @@ Formuláře, objekt `request` a databáze sem nepatří. To je od [lekce 11](../
 
 ## Složky mini-aplikace
 
-```
+```tree
 app.py
 templates/
   zaklad.html

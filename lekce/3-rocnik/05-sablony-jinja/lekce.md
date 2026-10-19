@@ -57,9 +57,9 @@ Když v dalších lekcích napíšeme „do pohledu“, myslíme tu **pythonovsk
 
 Flask hledá šablony ve složce **`templates`** vedle vašeho `.py`:
 
-```
-moje_app.py
-templates/
+```tree
+moje_app.py — program, který spouštíte
+templates/ — složka se šablonami
   index.html
 ```
 

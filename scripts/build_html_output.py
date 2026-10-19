@@ -444,6 +444,105 @@ html[data-theme="dark"] .content svg.diagram:not(.themed) {
 
 .content li { margin: 0.25rem 0; }
 
+.content ul.file-tree,
+.content .file-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.content ul.file-tree {
+  margin: 1rem 0;
+  padding: 0.55rem 0.85rem 0.55rem 0.7rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.content .file-tree li {
+  position: relative;
+  margin: 0;
+}
+
+.content .file-tree ul {
+  margin-left: 0.55rem;
+  padding-left: 0.95rem;
+}
+
+.content .file-tree ul > li::before {
+  content: "";
+  position: absolute;
+  left: -0.95rem;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--muted);
+  opacity: 0.55;
+}
+
+.content .file-tree ul > li:last-child::before {
+  bottom: auto;
+  height: 0.72rem;
+}
+
+.content .file-tree ul > li::after {
+  content: "";
+  position: absolute;
+  left: -0.95rem;
+  top: 0.72rem;
+  width: 0.7rem;
+  border-top: 1px solid var(--muted);
+  opacity: 0.55;
+}
+
+.content .file-tree .ft-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  min-height: 1.55rem;
+  padding: 0.12rem 0;
+}
+
+.content .file-tree .ft-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.12rem;
+  color: var(--muted);
+}
+
+.content .file-tree li.dir > .ft-label > .ft-icon { color: #d97706; }
+html[data-theme="dark"] .content .file-tree li.dir > .ft-label > .ft-icon { color: #fbbf24; }
+
+.content .file-tree .ft-icon[data-ext="py"] { color: #2563eb; }
+.content .file-tree .ft-icon[data-ext="html"] { color: #ea580c; }
+.content .file-tree .ft-icon[data-ext="css"] { color: #9333ea; }
+.content .file-tree .ft-icon[data-ext="svg"] { color: #059669; }
+.content .file-tree .ft-icon[data-ext="sql"],
+.content .file-tree .ft-icon[data-ext="db"] { color: #16a34a; }
+
+html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="py"] { color: #60a5fa; }
+html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="html"] { color: #fb923c; }
+html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="css"] { color: #c084fc; }
+html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="svg"] { color: #34d399; }
+html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="sql"],
+html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="db"] { color: #4ade80; }
+
+.content .file-tree .ft-name {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.25rem;
+}
+
+.content .file-tree li.dir > .ft-label > .ft-name { font-weight: 600; }
+
+.content .file-tree .ft-note {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.25rem;
+}
+
+.content .file-tree .ft-note::before { content: "— "; }
+
 .content table:not(.highlighttable) {
   width: 100%;
   border-collapse: collapse;
@@ -1042,11 +1141,115 @@ def attach_file_headers(html: str) -> str:
     return FILE_CAPTION_RE.sub(repl, html)
 
 
+TREE_NOTE_RE = re.compile(r"\s+(?:—|–|←|\|)\s+")
+TREE_FOLDER_ICON = (
+    '<svg class="ft-icon" viewBox="0 0 16 16" aria-hidden="true">'
+    '<path fill="currentColor" d="M1.6 4.2c0-.9.7-1.6 1.6-1.6h2.7l1.1 1.3h5.8c.9 0 1.6.7 1.6 1.6v6.6c0 .9-.7 1.6-1.6 1.6H3.2c-.9 0-1.6-.7-1.6-1.6V4.2z"/>'
+    "</svg>"
+)
+TREE_FILE_ICON = (
+    '<svg class="ft-icon" viewBox="0 0 16 16" aria-hidden="true">'
+    '<path fill="currentColor" d="M3.5 1.5h5.2L13 5.8V14a.5.5 0 0 1-.5.5h-9A.5.5 0 0 1 3 14V2a.5.5 0 0 1 .5-.5z"/>'
+    '<path fill="var(--surface)" d="M8.5 1.7V5.2H12"/>'
+    "</svg>"
+)
+
+
+def _parse_file_tree(text: str) -> list[dict]:
+    raw_lines = []
+    for line in text.splitlines():
+        expanded = line.replace("\t", "  ").rstrip()
+        if expanded.strip():
+            raw_lines.append(expanded)
+    indents = []
+    for line in raw_lines:
+        spaces = len(line) - len(line.lstrip(" "))
+        if spaces:
+            indents.append(spaces)
+    unit = min(indents) if indents else 2
+
+    nodes: list[dict] = []
+    for line in raw_lines:
+        spaces = len(line) - len(line.lstrip(" "))
+        body = line.strip()
+        parts = TREE_NOTE_RE.split(body, maxsplit=1)
+        name = parts[0].strip()
+        note = parts[1].strip() if len(parts) > 1 else ""
+        nodes.append(
+            {
+                "depth": spaces // unit,
+                "name": name,
+                "note": note,
+                "dir": name.endswith("/"),
+                "children": [],
+            }
+        )
+
+    root: dict = {"children": []}
+    stack: list[tuple[int, dict]] = [(-1, root)]
+    for node in nodes:
+        while stack and stack[-1][0] >= node["depth"]:
+            stack.pop()
+        stack[-1][1]["children"].append(node)
+        stack.append((node["depth"], node))
+    return root["children"]
+
+
+def _tree_ext(name: str) -> str:
+    base = name.rstrip("/")
+    if "." not in base:
+        return ""
+    return base.rsplit(".", 1)[-1].lower().lstrip("*")
+
+
+def _render_tree_items(nodes: list[dict]) -> str:
+    parts: list[str] = []
+    for node in nodes:
+        if node["dir"]:
+            icon = TREE_FOLDER_ICON
+            ext_attr = ""
+            kind = "dir"
+        else:
+            icon = TREE_FILE_ICON
+            ext = _tree_ext(node["name"])
+            ext_attr = f' data-ext="{html_module.escape(ext)}"' if ext else ""
+            kind = "file"
+        icon = icon.replace('class="ft-icon"', f'class="ft-icon"{ext_attr}', 1)
+        note = (
+            f'<span class="ft-note">{html_module.escape(node["note"])}</span>'
+            if node["note"]
+            else ""
+        )
+        children = (
+            f"<ul>{_render_tree_items(node['children'])}</ul>"
+            if node["children"]
+            else ""
+        )
+        parts.append(
+            f'<li class="{kind}">'
+            f'<span class="ft-label">{icon}'
+            f'<span class="ft-name">{html_module.escape(node["name"])}</span>'
+            f"{note}</span>{children}</li>"
+        )
+    return "".join(parts)
+
+
+def render_file_tree(text: str) -> str:
+    """Strom složek — ne kódový blok, soubory a složky s čarami."""
+    return (
+        '<ul class="file-tree" aria-label="Složky a soubory">'
+        f"{_render_tree_items(_parse_file_tree(text))}"
+        "</ul>"
+    )
+
+
 def enhance_code_blocks(html: str) -> str:
     def replace(match: re.Match[str]) -> str:
         lang = match.group(1)
         code = html_module.unescape(match.group(2))
         code = code.replace("\r\n", "\n").replace("\r", "\n").rstrip("\n")
+        if (lang or "").lower() == "tree":
+            return render_file_tree(code)
         lexer = _code_lexer(lang)
         highlighted = highlight(code, lexer, PYGMENTS_FORMATTER)
         return f'<div class="code-block">{highlighted}</div>'

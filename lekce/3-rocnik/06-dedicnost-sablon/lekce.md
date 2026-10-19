@@ -71,7 +71,7 @@ Jména bloků musí sedět (`obsah` ≠ `content`). HTML mimo bloky v potomkovi 
 
 ## Dvě stránky, jedno menu
 
-```
+```tree
 app.py
 templates/
   zaklad.html

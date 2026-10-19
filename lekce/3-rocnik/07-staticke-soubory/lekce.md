@@ -34,7 +34,7 @@ Flask má dvě vedlejší složky:
 | `templates/` | šablony Jinja | (Flask je vyplní, soubor se nestahuje) |
 | `static/` | CSS, obrázky, později JS | `/static/název-souboru` |
 
-```
+```tree
 app.py
 templates/
   zaklad.html
