@@ -4,7 +4,7 @@ rocnik: bonus
 nazev: Návrhové vzory — základ
 hodiny: 0
 obtiznost: stredni
-prerekvizity: [11-oop-navrh-a-procviceni]
+prerekvizity: [12-oop-navrh-a-procviceni]
 cile:
   - Vysvětlíte, že návrhový vzor je pojmenovaný postup, ne nová syntaxe
   - Poznáte iterátor, strategii a továrnu na příkladech, které už umíte
@@ -19,7 +19,7 @@ cile:
 - Uvidíte tři vzory, které už z 2. ročníku skoro znáte
 - Do pololetního projektu je **nemusíte** umět jmenovat
 
-Tahle lekce **není v 170 hodinách** 2. ročníku. Je **bonus** k [návrhu a pololetnímu projektu](../../2-rocnik/11-oop-navrh-a-procviceni/lekce.md) — smíte ji přeskočit. Nová syntaxe nepřibývá. Přibývají jen **jména** pro postupy, které už děláte.
+Tahle lekce **není v 170 hodinách** 2. ročníku. Je **bonus** k [návrhu a pololetnímu projektu](../../2-rocnik/12-oop-navrh-a-procviceni/lekce.md) — smíte ji přeskočit. Nová syntaxe nepřibývá. Přibývají jen **jména** pro postupy, které už děláte.
 
 ## Co je návrhový vzor
 
@@ -31,7 +31,7 @@ Stejný problém (chci procházet skupinu v `for`, chci různé tarify bez `if` 
 
 Vzory **nepřikazují** téma. Iterátor je u skupiny jmen, u košíku i u filmotéky. Mění se názvy tříd, ne nápad.
 
-Do pololetního projektu stačí splnit seznam z lekce 11. Vzory jsou slovník navíc — ať návrh umíte **popsat**.
+Do pololetního projektu stačí splnit seznam z lekce 12. Vzory jsou slovník navíc — ať návrh umíte **popsat**.
 
 ## Tři vzory, které už máte
 
@@ -39,7 +39,7 @@ Do pololetního projektu stačí splnit seznam z lekce 11. Vzory jsou slovník n
 
 Problém: chcete `for polozka in kosik`, ne `for polozka in kosik.polozky`.
 
-Postup z [lekce 10](../../2-rocnik/10-vyjimky-a-iterace/lekce.md): objekt má `__iter__` a vrátí iterátor (často `iter(self.seznam)`).
+Postup z [lekce 11](../../2-rocnik/11-vyjimky-a-iterace/lekce.md): objekt má `__iter__` a vrátí iterátor (často `iter(self.seznam)`).
 
 ```python
 class Skupina:
@@ -61,7 +61,7 @@ Jméno vzoru: **iterátor**. Cyklus `for` pak bere prvky po jednom, až dojde `S
 
 Problém: pes i kočka se ozvou jinak, ale v cyklu chcete **jedno** volání.
 
-Postup z [lekce 08](../../2-rocnik/08-polymorfismus/lekce.md): stejná metoda, jiné tělo u potomka. Cyklus bez `if` podle typu.
+Postup z [lekce 09](../../2-rocnik/09-polymorfismus/lekce.md): stejná metoda, jiné tělo u potomka. Cyklus bez `if` podle typu.
 
 ```python
 for zvire in [Pes("Azor"), Kocka("Micka")]:
@@ -102,7 +102,7 @@ Jméno vzoru: **továrna**. Funkce (nebo statická metoda) vrátí už hotový o
 | vzor = nový příkaz Pythonu | nic se neinstaluje, nic se neučí syntakticky |
 | `if` podle typu **v cyklu** | to není strategie — další potomek = další větev |
 | `if` v továrně považovat za zakázaný | při **vzniku** je `if` v pořádku |
-| do projektu nacpat všechny vzory | stačí splnit zadání lekce 11 |
+| do projektu nacpat všechny vzory | stačí splnit zadání lekce 12 |
 
 Existují desítky dalších jmen (jedináček, pozorovatel, dekorátor…). V tomhle kurzu je **nepotřebujete**. Až uvidíte cizí kód s těmito třemi, poznáte nápad.
 
@@ -110,8 +110,8 @@ Existují desítky dalších jmen (jedináček, pozorovatel, dekorátor…). V t
 
 | Vzor | Problém | Co už umíte |
 |------|---------|-------------|
-| iterátor | `for x in objekt` | `__iter__`, lekce 10 |
-| strategie | stejné volání, jiný výsledek | přepis metody, lekce 08 |
+| iterátor | `for x in objekt` | `__iter__`, lekce 11 |
+| strategie | stejné volání, jiný výsledek | přepis metody, lekce 09 |
 | továrna | z údaje vznikne správný potomek | `if` **jen** při vytváření |
 
-Zpět k projektu: [Lekce 11 — návrh a pololetní projekt](../../2-rocnik/11-oop-navrh-a-procviceni/lekce.md).
+Zpět k projektu: [Lekce 12 — návrh a pololetní projekt](../../2-rocnik/12-oop-navrh-a-procviceni/lekce.md).

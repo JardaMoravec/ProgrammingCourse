@@ -289,7 +289,7 @@ def main():
     heading(doc, "1.  Rozsah 1. pololetí")
     para(
         doc,
-        "Ročník má 170 hodin (34 týdnů po 5 hodinách). V 1. pololetí se probírá 65 hodin, lekce 01 až 11. Jsou to dva celky — algoritmizace a objektové programování včetně pololetního projektu. SQL, tedy relační databáze, tabulky a dotazy, se probírá ve 2. pololetí.",
+        "Ročník má 170 hodin (34 týdnů po 5 hodinách). V 1. pololetí se probírá 65 hodin, lekce 01 až 12. Jsou to dva celky — algoritmizace a objektové programování včetně pololetního projektu. SQL, tedy relační databáze, tabulky a dotazy, se probírá ve 2. pololetí.",
         align="justify", space_after=6,
     )
 
@@ -315,16 +315,18 @@ def main():
          "Odliší metodu od funkce. Napíše metodu, která čte nebo mění údaje svého objektu, a zavolá metodu jiného objektu."),
         ("06", "Speciální metody",
          "Napíše __str__, aby se objekt vypsal čitelně. Porovná dva objekty přes == (__eq__) a zjistí počet prvků přes len (__len__)."),
-        ("07", "Dědičnost",
+        ("07", "Třídy — souhrn a procvičení",
+         "Složí třídu, konstruktor, metodu a speciální metody __str__, __eq__ a __len__ do jednoho programu. Nová syntaxe nepřibývá."),
+        ("08", "Dědičnost",
          "Zapíše vztah „je“ (například pes je zvíře). Potomek použije údaje a metody rodiče a doplní vlastní konstruktor přes super()."),
-        ("08", "Polymorfismus",
+        ("09", "Polymorfismus",
          "U potomka přepíše metodu rodiče. Stejné volání metody dá u různých potomků různý výsledek. Projde seznam objektů různých typů jedním cyklem."),
-        ("09", "Statické metody a proměnné",
+        ("10", "Statické metody a proměnné",
          "Odliší údaj jednoho objektu od údaje společného pro celou třídu. Napíše statickou metodu bez self."),
-        ("10", "Vlastní výjimky a iterace",
+        ("11", "Vlastní výjimky a iterace",
          "Napíše vlastní výjimku, vyvolá ji a odchytí. Upraví objekt tak, aby šel projít cyklem for."),
-        ("11", "Návrh a pololetní projekt",
-         "Ze zadání nejdřív navrhne třídy a teprve potom píše kód. Odevzdá jednu konzolovou aplikaci, která spojí učivo lekcí 03–10. Téma schvaluje vyučující."),
+        ("12", "Návrh a pololetní projekt",
+         "Ze zadání nejdřív navrhne třídy a teprve potom píše kód. Odevzdá jednu konzolovou aplikaci, která spojí učivo lekcí 03–11. Téma schvaluje vyučující."),
     ]
 
     table = doc.add_table(rows=1 + len(topics), cols=3)
@@ -346,7 +348,7 @@ def main():
     heading(doc, "3.  Úkoly a klasifikace")
     bullet(doc, "Žák plní úkoly předmětu. Průběžné úkoly odevzdává v AMOS ve stejných termínech jako ostatní žáci.")
     bullet(doc, "Známkované úkoly se vypracovávají v hodině a termín je vždy hlášen předem. Žák se jich proto může zúčastnit.")
-    bullet(doc, "Pololetní projekt z lekce 11 je známkovaný. Žák navrhne téma, vyučující ho schválí a žák projekt odevzdá v zadaném termínu.")
+    bullet(doc, "Pololetní projekt z lekce 12 je známkovaný. Žák navrhne téma, vyučující ho schválí a žák projekt odevzdá v zadaném termínu.")
     bullet(doc, "Klasifikace za 1. pololetí vychází ze známek za známkované úkoly a ze známky za pololetní projekt, podle klasifikačního řádu školy.")
     bullet(doc, "Když z průběžné práce nevznikne dostatek známek pro uzavření klasifikace, vykoná žák v lednu individuální přezkoušení. Jinak se přezkoušení nekoná.")
 
@@ -383,7 +385,7 @@ def main():
                     shade(ex.rows[r_i].cells[c_i], "FBF9F3")
 
     para(doc, "Rozsah a průběh", size=11, bold=True, color=NAVY_RGB, space_before=8, space_after=2)
-    bullet(doc, "Přezkoušení pokryje ta témata z přehledu výše, ze kterých žák nemá dostatek známek. Když podklady chybí z celého pololetí, zkouší se lekce 01 až 11.")
+    bullet(doc, "Přezkoušení pokryje ta témata z přehledu výše, ze kterých žák nemá dostatek známek. Když podklady chybí z celého pololetí, zkouší se lekce 01 až 12.")
     bullet(doc, "Probíhá ve škole u počítače. Žák napíše krátký program v Pythonu a stručně vysvětlí příslušné pojmy. Trvá přibližně 45–60 minut.")
     bullet(doc, "O tom, že se přezkoušení bude konat, a o učebně informuje vyučující žáka a zákonného zástupce e-mailem nejpozději 7 dní předem.")
     bullet(doc, "Známka z přezkoušení doplní chybějící podklady. Známky za známkované úkoly a za pololetní projekt zůstávají v platnosti.")

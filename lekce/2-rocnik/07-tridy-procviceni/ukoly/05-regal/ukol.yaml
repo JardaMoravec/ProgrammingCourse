@@ -1,0 +1,44 @@
+title: Regál knih
+stars: 3
+ignore_input_prompt: true
+moodle: PRG-2-07-05
+description: |
+  První řádek je počet knih `N` (celé číslo aspoň 1).
+  Pak následuje `N` dvojic: název a rok (rok je celé číslo).
+  Každý údaj je na vlastním řádku.
+
+  Třída `Kniha` s konstruktorem `__init__(self, nazev, rok)`.
+  `__str__` vrátí `nazev (rok)`.
+
+  Třída `Regal`. V konstruktoru si založte prázdný seznam.
+  `pridej(self, kniha)` knihu přidá.
+  `__len__(self)` vrátí počet knih.
+
+  Knihy ze vstupu přidejte do regálu. Pak je vypište cyklem
+  přes `print(kniha)` (ne skládejte větu ručně) a na poslední
+  řádek `print(len(regal))`.
+
+
+cases:
+  - name: dve-knihy
+    input: |
+      2
+      R.U.R.
+      1920
+      Krakatit
+      1924
+    output: |-
+      R.U.R. (1920)
+      Krakatit (1924)
+      2
+  - name: jedna-kniha
+    input: |
+      1
+      Krakatit
+      1924
+    output: |-
+      Krakatit (1924)
+      1
+io: |
+  **Vstup:** `N`, pak `N`× název a rok
+  **Výstup:** `N` řádků `NAZEV (ROK)` a na konci počet knih

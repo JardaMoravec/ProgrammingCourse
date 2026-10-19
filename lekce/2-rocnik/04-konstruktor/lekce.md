@@ -2,7 +2,7 @@
 id: 04-konstruktor
 rocnik: 2
 nazev: Konstruktor
-hodiny: 5
+hodiny: 4
 obtiznost: zacatecnik
 prerekvizity: [03-tridy-a-objekty]
 cile:
@@ -16,7 +16,7 @@ migrovano_z:
 
 # Konstruktor
 
-Lekce má **5 hodin** (jeden týden). Navazuje na [třídy a atributy](../03-tridy-a-objekty/lekce.md).
+Lekce má **4 hodiny**. Navazuje na [třídy a atributy](../03-tridy-a-objekty/lekce.md).
 
 Minule jste atributy doplňovali **až po** vytvoření objektu, řádek po řádku. To je pracné a snadno na nějaký zapomenete (`AttributeError`). **Konstruktor** je nastaví hned, když objekt vzniká.
 

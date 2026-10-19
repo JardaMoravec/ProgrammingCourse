@@ -1,0 +1,38 @@
+title: Školka
+stars: 2
+ignore_input_prompt: true
+moodle: PRG-2-07-04
+description: |
+  Načtěte tři řádky: jména tří dětí.
+
+  Třída `Dite` s konstruktorem `__init__(self, jmeno)`.
+  `__eq__(self, jine)` vrátí `True`, když mají obě děti stejné jméno.
+
+  Třída `Skolka`. V konstruktoru si založte prázdný seznam.
+  `pridej(self, dite)` dítě přidá.
+  `__len__(self)` vrátí počet dětí.
+
+  Vytvořte tři děti v pořadí ze vstupu a všechna přidejte do školky.
+  Vypište dva řádky: `print` prvního `==` třetího, pak `print(len(skolka))`.
+
+
+cases:
+  - name: dve-anny
+    input: |
+      Anna
+      Petr
+      Anna
+    output: |-
+      True
+      3
+  - name: vsichni-jini
+    input: |
+      Eva
+      Karel
+      Petr
+    output: |-
+      False
+      3
+io: |
+  **Vstup:** tři jména (každé na vlastním řádku)
+  **Výstup:** dva řádky — rovnost prvního a třetího, délka školky

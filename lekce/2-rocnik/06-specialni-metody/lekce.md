@@ -2,7 +2,7 @@
 id: 06-specialni-metody
 rocnik: 2
 nazev: Speciální metody
-hodiny: 5
+hodiny: 3
 obtiznost: stredni
 prerekvizity: [05-metody]
 cile:
@@ -17,11 +17,11 @@ migrovano_z:
 
 # Speciální metody
 
-Lekce má **5 hodin** (jeden týden). Navazuje na [metody](../05-metody/lekce.md).
+Lekce má **3 hodiny**. Navazuje na [metody](../05-metody/lekce.md).
 
 Minule jste psali `print(o.cele_jmeno())`. Když vypíšete **celý objekt**, Python ukáže jen typ a adresu v paměti. **`__str__`** to změní: `print(o)` vypíše čitelný text. Stejně fungují další speciální metody: `==` zavolá **`__eq__`**, `len()` zavolá **`__len__`**.
 
-Dědičnost je až lekce 07. Iterace (`__iter__`) je [lekce 10](../10-vyjimky-a-iterace/lekce.md).
+Souhrn těchto lekcí je [lekce 07](../07-tridy-procviceni/lekce.md). Dědičnost je lekce 08. Iterace (`__iter__`) je [lekce 11](../11-vyjimky-a-iterace/lekce.md).
 
 ## Cíle lekce
 
@@ -200,12 +200,10 @@ Python má i další speciální metody (`__lt__` pro `<`, `__repr__` pro ladic�
 | `a == b` | spustí `__eq__`, vpravo je druhý parametr |
 | `__len__` | počet prvků pro `len(objekt)` |
 
-Příště dědičnost — společné atributy a metody přesunete do rodiče.
+Příště souhrn — třídu, konstruktor, metodu a speciální metody složíte do jednoho programu.
 
 Automatický test v AMOS u cvičných úkolů kontroluje **výstup**.
 
-Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele. Hodnotí učitel.
-
 ## Co dál
 
-→ [Lekce 07: Dědičnost](../07-dedicnost/lekce.md)
+→ [Lekce 07: Třídy — souhrn a procvičení](../07-tridy-procviceni/lekce.md)

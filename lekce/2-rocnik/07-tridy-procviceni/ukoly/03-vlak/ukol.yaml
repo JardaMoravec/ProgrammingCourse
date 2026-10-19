@@ -1,0 +1,32 @@
+title: Vlak a vagon
+stars: 2
+ignore_input_prompt: true
+moodle: PRG-2-07-03
+description: |
+  Načtěte dva řádky: název vlaku a typ vagonu.
+
+  Třída `Vagon` s konstruktorem `__init__(self, typ)`.
+  `__str__` vrátí typ.
+
+  Třída `Vlak` s konstruktorem `__init__(self, nazev, vagon)`.
+  Atribut `vagon` je objekt `Vagon`.
+  `__str__` vrátí `nazev, ` a text vagonu (`str(self.vagon)`).
+
+  Vypište objekt vlaku přes `print(vlak)`, neskládejte větu ručně
+  v `print`.
+
+
+cases:
+  - name: pendolino
+    input: |
+      Pendolino
+      jidelni
+    output: "Pendolino, jidelni"
+  - name: regio
+    input: |
+      Regio
+      sedaci
+    output: "Regio, sedaci"
+io: |
+  **Vstup:** název vlaku, typ vagonu (každé na vlastním řádku)
+  **Výstup:** jedna věta z `print(vlak)` — `NAZEV, TYP`

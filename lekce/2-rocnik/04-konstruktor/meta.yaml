@@ -2,7 +2,7 @@ id: 04-konstruktor
 rocnik: 2
 nazev: Konstruktor
 modul: oop
-hodiny: 5
+hodiny: 4
 obtiznost: zacatecnik
 prerekvizity: [03-tridy-a-objekty]
 kompetence: [k4-trida-objekt, k5-jednoduche-objekty]

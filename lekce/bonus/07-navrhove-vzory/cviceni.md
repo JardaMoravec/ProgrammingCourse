@@ -48,5 +48,5 @@ def udelej_zvire(druh, jmeno):
 Je `self.motor = Motor(90)` u auta návrhový vzor ze tří výše? Co to je?
 
 @reseni
-Není to iterátor, strategie ani továrna. Je to **složení** (auto motor **má**) z lekce 07 / 11. Vzor je pojmenovaný postup; ne každý vztah mezi třídami má v téhle lekci jméno.
+Není to iterátor, strategie ani továrna. Je to **složení** (auto motor **má**) z lekce 08 / 12. Vzor je pojmenovaný postup; ne každý vztah mezi třídami má v téhle lekci jméno.
 @end

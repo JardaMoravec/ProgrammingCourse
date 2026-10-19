@@ -2,7 +2,7 @@ id: 05-metody
 rocnik: 2
 nazev: Metody a self
 modul: oop
-hodiny: 5
+hodiny: 3
 obtiznost: stredni
 prerekvizity: [04-konstruktor]
 kompetence: [k4-trida-objekt, k5-jednoduche-objekty]

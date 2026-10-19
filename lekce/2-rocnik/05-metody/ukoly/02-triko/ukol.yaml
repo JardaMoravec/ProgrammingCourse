@@ -13,7 +13,7 @@ description: |
   - `prodat(self, pocet)` — sníží `pocet_kusu` o `pocet`
 
   Speciální metodu `__str__` nepište. Společného rodiče s kalhotami
-  a botami zatím nedělejte — to je lekce 07 (dědičnost).
+  a botami zatím nedělejte — to je lekce 08 (dědičnost).
 
   Načtěte tři celá čísla: počáteční počet, kolik naskladnit, kolik
   prodat. Vytvořte triko velikost `L`, barva `modra`, značka `Nike`,

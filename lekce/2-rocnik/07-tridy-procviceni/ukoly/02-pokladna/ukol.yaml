@@ -1,0 +1,35 @@
+title: Pokladna
+stars: 2
+ignore_input_prompt: true
+moodle: PRG-2-07-02
+description: |
+  Načtěte tři celá čísla: počáteční částka, vklad a výběr.
+
+  Třída `Pokladna` s konstruktorem `__init__(self, castka)`.
+
+  Metody:
+
+  - `vloz(self, castka)` — přičte částku
+  - `vyber(self, castka)` — odečte částku
+  - `zustatek(self)` — vrátí aktuální částku
+
+  Vytvořte pokladnu, zavolejte `vloz` a `vyber`. Vypište jen to,
+  co vrátí `zustatek()` — jedno číslo.
+
+
+cases:
+  - name: sto-plus-ctyricet-minus-patnact
+    input: |
+      100
+      40
+      15
+    output: "125"
+  - name: nula
+    input: |
+      0
+      10
+      3
+    output: "7"
+io: |
+  **Vstup:** počáteční částka, vklad, výběr (celá čísla, každé na řádku)
+  **Výstup:** výsledná částka (jedno číslo)

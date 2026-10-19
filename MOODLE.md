@@ -84,7 +84,7 @@ Příkaz `sqlite3 reseni.sql` **nepoužívejte**. SQLite ten argument bere jako 
    - `vpl_evaluate.sh`
    - `vpl_evaluate.py`
 6. `vpl_run.sh` je skript pro **Run**, `vpl_evaluate.sh` pro **Evaluate**. `reseni.sql` mezi soubory ke spuštění nepatří — ten odevzdává žák.
-7. Zkratka názvu: kód z `ukoly.md`, např. `PRG-2-14-01`.
+7. Zkratka názvu: kód z `ukoly.md`, např. `PRG-2-15-01`.
 
 ## 3. ročník — Flask (`vpl_evaluate.py` + `vpl_evaluate.sh`)
 

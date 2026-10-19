@@ -123,7 +123,7 @@ moduly:
           - id: "04-konstruktor"
             soubor: lekce/2-rocnik/04-konstruktor
             nazev: Konstruktor
-            hodiny: 5
+            hodiny: 4
             svp: [třídy a členy, vlastnosti tříd, objekty]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [03-tridy-a-objekty]
@@ -138,7 +138,7 @@ moduly:
           - id: "05-metody"
             soubor: lekce/2-rocnik/05-metody
             nazev: Metody a self
-            hodiny: 5
+            hodiny: 3
             svp: [implementace metod třídy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [04-konstruktor]
@@ -150,77 +150,91 @@ moduly:
           - id: "06-specialni-metody"
             soubor: lekce/2-rocnik/06-specialni-metody
             nazev: Speciální metody
-            hodiny: 5
+            hodiny: 3
             svp: [implementace metod třídy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [05-metody]
             ukoly_zdroje:
               - "kniha — __str__ ze vstupu"
               - "autobus — rovnost a délka"
+
+          - id: "07-tridy-procviceni"
+            soubor: lekce/2-rocnik/07-tridy-procviceni
+            nazev: Třídy — souhrn a procvičení
+            hodiny: 5
+            svp: [třídy a členy, vlastnosti tříd, objekty, implementace metod třídy]
+            kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+            prerekvizity: [06-specialni-metody]
+            ukoly_zdroje:
+              - "zastávka — konstruktor"
+              - "pokladna — metody"
+              - "vlak — __str__"
+              - "školka — rovnost a délka"
+              - "regál — všechno najednou"
               - "známkovaný úkol (tajné zadání)"
 
       - id: dedicnost-a-navrh
         nazev: Dědičnost, polymorfismus a návrh
         hodiny: 25
         lekce:
-          - id: "07-dedicnost"
-            soubor: lekce/2-rocnik/07-dedicnost
+          - id: "08-dedicnost"
+            soubor: lekce/2-rocnik/08-dedicnost
             nazev: Dědičnost
             hodiny: 5
             svp: [struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
-            prerekvizity: [06-specialni-metody]
+            prerekvizity: [07-tridy-procviceni]
             ukoly_zdroje:
               - "pizza — jídlo (dědičnost ze života)"
               - "úkol 13 - oop - oblečení (s rodičem)"
               - "úkol 11 - oop - elektro (mobil a notebook)"
 
-          - id: "08-polymorfismus"
-            soubor: lekce/2-rocnik/08-polymorfismus
+          - id: "09-polymorfismus"
+            soubor: lekce/2-rocnik/09-polymorfismus
             nazev: Polymorfismus
             hodiny: 3
             svp: [struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
-            prerekvizity: [07-dedicnost]
+            prerekvizity: [08-dedicnost]
             ukoly_zdroje:
               - "VIP lístek — přepis popis()"
               - "tarify — seznam a stejné volání"
               - "spořicí účet — super a __str__"
               - "známkovaný úkol (tajné zadání)"
 
-          - id: "09-staticke-cleny"
-            soubor: lekce/2-rocnik/09-staticke-cleny
+          - id: "10-staticke-cleny"
+            soubor: lekce/2-rocnik/10-staticke-cleny
             nazev: Statické metody a proměnné
             hodiny: 5
             svp: [třídy a členy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
-            prerekvizity: [08-polymorfismus]
+            prerekvizity: [09-polymorfismus]
             ukoly_zdroje:
               - "škola a město — proměnná třídy"
               - "účastníci — počítadlo instancí"
               - "kilogramy na gramy — @staticmethod"
 
-          - id: "10-vyjimky-a-iterace"
-            soubor: lekce/2-rocnik/10-vyjimky-a-iterace
+          - id: "11-vyjimky-a-iterace"
+            soubor: lekce/2-rocnik/11-vyjimky-a-iterace
             nazev: Vlastní výjimky a iterace
             hodiny: 3
             svp: [implementace metod třídy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
-            prerekvizity: [09-staticke-cleny]
+            prerekvizity: [10-staticke-cleny]
             ukoly_zdroje:
               - "záporné číslo — vlastní výjimka"
               - "košík — __iter__"
               - "úkol 17 - oop - filmotéka"
 
-          - id: "11-oop-navrh-a-procviceni"
-            soubor: lekce/2-rocnik/11-oop-navrh-a-procviceni
+          - id: "12-oop-navrh-a-procviceni"
+            soubor: lekce/2-rocnik/12-oop-navrh-a-procviceni
             nazev: OOP — návrh a pololetní projekt
             hodiny: 9
             svp: [objektově orientovaná analýza a návrh, struktury, dědičnost, mnohotvárnost]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty, k9-aplikace]
-            prerekvizity: [10-vyjimky-a-iterace]
+            prerekvizity: [11-vyjimky-a-iterace]
             ukoly_zdroje:
-              - "pololetní projekt (9 h; 2 h z lekce 08 a 2 h z lekce 10)"
+              - "pololetní projekt (9 h; 2 h z lekce 09 a 2 h z lekce 11)"
               - "úkol 14 - oop - herní strategie"
               - "úkol 15 - oop - herní strategie -2"
               - "úkol 18 - oop - šachovnice"
@@ -246,32 +260,32 @@ moduly:
         nazev: Relační model a definice dat
         hodiny: 15
         lekce:
-          - id: "12-relacni-databaze"
-            soubor: lekce/2-rocnik/12-relacni-databaze
+          - id: "13-relacni-databaze"
+            soubor: lekce/2-rocnik/13-relacni-databaze
             nazev: Principy relační databáze
             hodiny: 5
             svp: [principy relační databáze]
             kompetence: [k6-sql-zaklady, k7-databaze]
-            prerekvizity: [11-oop-navrh-a-procviceni]
+            prerekvizity: [12-oop-navrh-a-procviceni]
 
-          - id: "13-sql-a-sqlite"
-            soubor: lekce/2-rocnik/13-sql-a-sqlite
+          - id: "14-sql-a-sqlite"
+            soubor: lekce/2-rocnik/14-sql-a-sqlite
             nazev: Koncepce jazyka SQL a SQLite
             hodiny: 5
             svp: [koncepce jazyka SQL]
             kompetence: [k6-sql-zaklady]
-            prerekvizity: [12-relacni-databaze]
+            prerekvizity: [13-relacni-databaze]
             ukoly_zdroje:
               - "rodina příkazu — textový dokument"
               - "SQLite a server — ano/ne s odůvodněním"
 
-          - id: "14-create-table"
-            soubor: lekce/2-rocnik/14-create-table
+          - id: "15-create-table"
+            soubor: lekce/2-rocnik/15-create-table
             nazev: Definování tabulek (CREATE TABLE)
             hodiny: 5
             svp: [definování databázových objektů]
             kompetence: [k6-sql-zaklady, k7-databaze]
-            prerekvizity: [13-sql-a-sqlite]
+            prerekvizity: [14-sql-a-sqlite]
             ukoly_zdroje:
               - "úkol 19 - db - produkty"
               - "vozidla — NOT NULL UNIQUE"
@@ -281,79 +295,79 @@ moduly:
         nazev: Dotazy (SELECT, JOIN, agregace)
         hodiny: 30
         lekce:
-          - id: "15-select-zaklady"
-            soubor: lekce/2-rocnik/15-select-zaklady
+          - id: "16-select-zaklady"
+            soubor: lekce/2-rocnik/16-select-zaklady
             nazev: SELECT — základy
             hodiny: 5
             svp: [načítaní dat pomocí jazyka DQL (SELECT)]
             kompetence: [k6-sql-zaklady]
-            prerekvizity: [14-create-table]
+            prerekvizity: [15-create-table]
 
-          - id: "16-select-where"
-            soubor: lekce/2-rocnik/16-select-where
+          - id: "17-select-where"
+            soubor: lekce/2-rocnik/17-select-where
             nazev: SELECT — WHERE
             hodiny: 5
             svp: [načítaní dat pomocí jazyka DQL (SELECT)]
             kompetence: [k6-sql-zaklady]
-            prerekvizity: [15-select-zaklady]
+            prerekvizity: [16-select-zaklady]
 
-          - id: "17-select-razeni"
-            soubor: lekce/2-rocnik/17-select-razeni
+          - id: "18-select-razeni"
+            soubor: lekce/2-rocnik/18-select-razeni
             nazev: SELECT — řazení, LIMIT a NULL
             hodiny: 5
             svp: [načítaní dat pomocí jazyka DQL (SELECT)]
             kompetence: [k6-sql-zaklady]
-            prerekvizity: [16-select-where]
+            prerekvizity: [17-select-where]
 
-          - id: "18-join-a-relace"
-            soubor: lekce/2-rocnik/18-join-a-relace
+          - id: "19-join-a-relace"
+            soubor: lekce/2-rocnik/19-join-a-relace
             nazev: JOIN a relace 1:N
             hodiny: 5
             svp: [kombinování dat z více tabulek]
             kompetence: [k6-sql-zaklady, k7-databaze]
-            prerekvizity: [17-select-razeni]
+            prerekvizity: [18-select-razeni]
             ukoly_zdroje: ["úkol 20 - db - státy a kontinenty", "úkol 21 - db - produkty 2"]
 
-          - id: "19-agregace"
-            soubor: lekce/2-rocnik/19-agregace
+          - id: "20-agregace"
+            soubor: lekce/2-rocnik/20-agregace
             nazev: Agregační funkce
             hodiny: 5
             svp: [tvorba složitějších dotazů]
             kompetence: [k6-sql-zaklady]
-            prerekvizity: [18-join-a-relace]
+            prerekvizity: [19-join-a-relace]
             ukoly_zdroje: ["úkol 23 - db - produkty 3"]
 
-          - id: "20-group-by"
-            soubor: lekce/2-rocnik/20-group-by
+          - id: "21-group-by"
+            soubor: lekce/2-rocnik/21-group-by
             nazev: GROUP BY, HAVING a složitější dotazy
             hodiny: 5
             svp: [tvorba složitějších dotazů]
             kompetence: [k6-sql-zaklady]
-            prerekvizity: [19-agregace]
+            prerekvizity: [20-agregace]
             ukoly_zdroje: ["úkol 29 - db - knihovna"]
 
       - id: dml-a-integrita
         nazev: Správa dat, integrita a bezpečnost
         hodiny: 15
         lekce:
-          - id: "21-insert"
-            soubor: lekce/2-rocnik/21-insert
+          - id: "22-insert"
+            soubor: lekce/2-rocnik/22-insert
             nazev: INSERT
             hodiny: 5
             svp: [správa dat pomocí jazyka DML (UPDATE, INSERT, DELETE)]
             kompetence: [k6-sql-zaklady, k7-databaze]
-            prerekvizity: [20-group-by]
+            prerekvizity: [21-group-by]
 
-          - id: "22-update-delete"
-            soubor: lekce/2-rocnik/22-update-delete
+          - id: "23-update-delete"
+            soubor: lekce/2-rocnik/23-update-delete
             nazev: UPDATE a DELETE
             hodiny: 5
             svp: [správa dat pomocí jazyka DML (UPDATE, INSERT, DELETE)]
             kompetence: [k6-sql-zaklady, k7-databaze]
-            prerekvizity: [21-insert]
+            prerekvizity: [22-insert]
 
-          - id: "23-transakce-a-bezpecnost"
-            soubor: lekce/2-rocnik/23-transakce-a-bezpecnost
+          - id: "24-transakce-a-bezpecnost"
+            soubor: lekce/2-rocnik/24-transakce-a-bezpecnost
             nazev: Transakce, integrita, DCL a výkon
             hodiny: 5
             svp:
@@ -361,28 +375,28 @@ moduly:
               - zajištění integrity databáze pomocí transakcí
               - problematika výkonu a ladění SQL
             kompetence: [k6-sql-zaklady, k7-databaze, k8-db-bezpecnost]
-            prerekvizity: [22-update-delete]
+            prerekvizity: [23-update-delete]
 
       - id: sql-v-pythonu
         nazev: Integrace SQL do Pythonu
         hodiny: 10
         lekce:
-          - id: "24-sqlite3-select"
-            soubor: lekce/2-rocnik/24-sqlite3-select
+          - id: "25-sqlite3-select"
+            soubor: lekce/2-rocnik/25-sqlite3-select
             nazev: sqlite3 — připojení a SELECT
             hodiny: 5
             svp: [integrace jazyka SQL do aplikací]
             kompetence: [k6-sql-zaklady, k9-aplikace]
-            prerekvizity: [23-transakce-a-bezpecnost]
+            prerekvizity: [24-transakce-a-bezpecnost]
             ukoly_zdroje: ["úkol 22 - db - lokality – přístup do databáze"]
 
-          - id: "25-sqlite3-dml"
-            soubor: lekce/2-rocnik/25-sqlite3-dml
+          - id: "26-sqlite3-dml"
+            soubor: lekce/2-rocnik/26-sqlite3-dml
             nazev: sqlite3 — zápis a parametrizované dotazy
             hodiny: 5
             svp: [integrace jazyka SQL do aplikací, správa dat pomocí jazyka DML (UPDATE, INSERT, DELETE)]
             kompetence: [k6-sql-zaklady, k8-db-bezpecnost, k9-aplikace]
-            prerekvizity: [24-sqlite3-select]
+            prerekvizity: [25-sqlite3-select]
             ukoly_zdroje: ["úkol 24 - db - lokality - mazaní záznamů", "úkol 25 - db - lokality - insert do databáze"]
 
   - id: aplikovane-programovani
@@ -396,50 +410,50 @@ moduly:
         nazev: Konzolové aplikace s databází
         hodiny: 10
         lekce:
-          - id: "26-konzolova-crud"
-            soubor: lekce/2-rocnik/26-konzolova-crud
+          - id: "27-konzolova-crud"
+            soubor: lekce/2-rocnik/27-konzolova-crud
             nazev: Konzolová CRUD aplikace
             hodiny: 5
             svp: [praktické úlohy zaměřené na aplikaci poznatků z programování]
             kompetence: [k7-databaze, k9-aplikace]
-            prerekvizity: [25-sqlite3-dml]
+            prerekvizity: [26-sqlite3-dml]
             ukoly_zdroje: ["úkol 26 - db - lokality - administrace"]
 
-          - id: "27-sql-aplikace-procviceni"
-            soubor: lekce/2-rocnik/27-sql-aplikace-procviceni
+          - id: "28-sql-aplikace-procviceni"
+            soubor: lekce/2-rocnik/28-sql-aplikace-procviceni
             nazev: SQL v aplikaci — souhrn a procvičení
             hodiny: 5
             svp: [praktické úlohy zaměřené na aplikaci poznatků z programování]
             kompetence: [k5-jednoduche-objekty, k7-databaze, k9-aplikace]
-            prerekvizity: [26-konzolova-crud]
+            prerekvizity: [27-konzolova-crud]
             ukoly_zdroje: ["úkol 27 - db - počty produktů - na známky", "úkol 28 - db - knihovna"]
 
       - id: projekt
         nazev: Závěrečný projekt
         hodiny: 25
         lekce:
-          - id: "28-projekt"
-            soubor: lekce/2-rocnik/28-projekt
+          - id: "29-projekt"
+            soubor: lekce/2-rocnik/29-projekt
             nazev: Závěrečný projekt — zadání a práce
             hodiny: 20
             svp: [praktické úlohy zaměřené na aplikaci poznatků z programování]
             kompetence: [k5-jednoduche-objekty, k7-databaze, k8-db-bezpecnost, k9-aplikace]
-            prerekvizity: [27-sql-aplikace-procviceni]
+            prerekvizity: [28-sql-aplikace-procviceni]
             ukoly_zdroje: ["úkol 30 - db - správce úkolů"]
 
-          - id: "29-projekt-prezentace"
-            soubor: lekce/2-rocnik/29-projekt-prezentace
+          - id: "30-projekt-prezentace"
+            soubor: lekce/2-rocnik/30-projekt-prezentace
             nazev: Závěrečný projekt — odevzdání a prezentace
             hodiny: 5
             svp: [praktické úlohy zaměřené na aplikaci poznatků z programování]
             kompetence: [k9-aplikace]
-            prerekvizity: [28-projekt]
+            prerekvizity: [29-projekt]
 
 hodnoceni:
   - elektronické testy (Moodle VPL)
   - samostatné úkoly (Moodle VPL)
   - práce v hodině (cvičení)
-  - pololetní projekt (OOP, lekce 11)
+  - pololetní projekt (OOP, lekce 12)
   - závěrečný projekt (konzolová aplikace s databází)
   - aktivita
 
@@ -458,10 +472,10 @@ mapovani_zdroju:
     typ: svp-osnova
   - soubor: zdroje/Programování 2.docx
     typ: ucitelsky-text
-    lekce: [01-rekurze, 02-vyhledavani-a-razeni, 03-tridy-a-objekty, 04-konstruktor, 05-metody, 06-specialni-metody, 07-dedicnost, 08-polymorfismus, 09-staticke-cleny, 10-vyjimky-a-iterace]
+    lekce: [01-rekurze, 02-vyhledavani-a-razeni, 03-tridy-a-objekty, 04-konstruktor, 05-metody, 06-specialni-metody, 08-dedicnost, 09-polymorfismus, 10-staticke-cleny, 11-vyjimky-a-iterace]
   - soubor: zdroje/Programování 2 – Python manuál.docx
     typ: ucitelsky-text
-    lekce: [01-rekurze, 02-vyhledavani-a-razeni, 03-tridy-a-objekty, 04-konstruktor, 05-metody, 06-specialni-metody, 07-dedicnost, 08-polymorfismus, 09-staticke-cleny, 10-vyjimky-a-iterace]
+    lekce: [01-rekurze, 02-vyhledavani-a-razeni, 03-tridy-a-objekty, 04-konstruktor, 05-metody, 06-specialni-metody, 08-dedicnost, 09-polymorfismus, 10-staticke-cleny, 11-vyjimky-a-iterace]
   - slozka: zdroje/Úkoly 2/
     typ: cviceni
     pocet: 30

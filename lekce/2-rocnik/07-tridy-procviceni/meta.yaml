@@ -1,0 +1,12 @@
+id: 07-tridy-procviceni
+rocnik: 2
+nazev: Třídy — souhrn a procvičení
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [06-specialni-metody]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [třídy a členy, vlastnosti tříd, objekty, implementace metod třídy]
+tagy: [oop, opakovani, init, str, eq, len]
+znamkovany_tajny: true
+migrovano_z: []

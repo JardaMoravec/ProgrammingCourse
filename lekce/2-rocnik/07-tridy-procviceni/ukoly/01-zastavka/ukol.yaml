@@ -1,0 +1,29 @@
+title: Zastávka
+stars: 1
+ignore_input_prompt: true
+moodle: PRG-2-07-01
+description: |
+  Načtěte dva řádky: název zastávky a pásmo (pásmo je celé číslo).
+
+  Třída `Zastavka` s konstruktorem `__init__(self, nazev, pasmo)`.
+  Atributy nastavte **v konstruktoru**. `__str__` nepište.
+
+  Vypište přesně jednu větu složenou z atributů:
+
+  `Hlavni nadrazi, pasmo 100`
+
+
+cases:
+  - name: nadrazi
+    input: |
+      Hlavni nadrazi
+      100
+    output: "Hlavni nadrazi, pasmo 100"
+  - name: andel
+    input: |
+      Andel
+      2
+    output: "Andel, pasmo 2"
+io: |
+  **Vstup:** název, pásmo (každé na vlastním řádku)
+  **Výstup:** jedna věta `NAZEV, pasmo CISLO`

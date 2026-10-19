@@ -2,7 +2,7 @@
 id: 05-metody
 rocnik: 2
 nazev: Metody a self
-hodiny: 5
+hodiny: 3
 obtiznost: stredni
 prerekvizity: [04-konstruktor]
 cile:
@@ -16,11 +16,11 @@ migrovano_z:
 
 # Metody a self
 
-Lekce má **5 hodin** (jeden týden). Navazuje na [konstruktor](../04-konstruktor/lekce.md).
+Lekce má **3 hodiny**. Navazuje na [konstruktor](../04-konstruktor/lekce.md).
 
 Dosud objekt **držel data** (atributy). **Metoda** je funkce, která k objektu **patří** — umí data přečíst, spočítat z nich výsledek nebo je změnit.
 
-Speciální metoda `__str__` je až lekce 06. Dědičnost (společný rodič u oblečení) až lekce 07. Tady stačí obyčejné metody a `self`.
+Speciální metoda `__str__` je až lekce 06. Dědičnost (společný rodič u oblečení) až lekce 08. Tady stačí obyčejné metody a `self`.
 
 ## Cíle lekce
 
