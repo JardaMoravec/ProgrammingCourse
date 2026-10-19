@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import html as html_module
 import re
 import shutil
@@ -1459,12 +1460,28 @@ def total_hours(lessons: list[Path]) -> int:
     return total
 
 
-def css_href(ctx: RocnikContext) -> str:
-    return "../styles.css"
+# Otisk obsahu souboru. Stejné CSS/JS si prohlížeč nechá v cache;
+# po změně se změní adresa a stáhne se nová verze bez tvrdého obnovení.
+ASSET_VERSIONS: dict[str, str] = {}
+
+
+def content_version(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:12]
+
+
+def asset_href(filename: str, ctx: RocnikContext | None) -> str:
+    prefix = "../" if ctx else ""
+    version = ASSET_VERSIONS.get(filename, "")
+    query = f"?v={version}" if version else ""
+    return f"{prefix}{filename}{query}"
+
+
+def css_href(ctx: RocnikContext | None) -> str:
+    return asset_href("styles.css", ctx)
 
 
 def js_href(ctx: RocnikContext | None) -> str:
-    return "../nav.js" if ctx else "nav.js"
+    return asset_href("nav.js", ctx)
 
 
 def favicon_href(ctx: RocnikContext | None) -> str:
@@ -1521,7 +1538,7 @@ def document_shell(
   <meta name="author" content="{AUTHOR}">
   <title>{window_title}</title>
   <link rel="icon" href="{favicon_href(ctx)}" type="image/svg+xml">
-  <link rel="stylesheet" href="{css_href(ctx) if ctx else "styles.css"}">
+  <link rel="stylesheet" href="{css_href(ctx)}">
   {THEME_INIT_SCRIPT}
 </head>
 <body>
@@ -1802,8 +1819,17 @@ def build_rocnik(ctx: RocnikContext) -> None:
 
 def main() -> None:
     VYSTUP_DIR.mkdir(exist_ok=True)
-    (VYSTUP_DIR / "styles.css").write_text(build_styles_css(), encoding="utf-8")
-    (VYSTUP_DIR / "nav.js").write_text(NAV_JS.strip() + "\n", encoding="utf-8")
+    css = build_styles_css()
+    js = NAV_JS.strip() + "\n"
+    ASSET_VERSIONS["styles.css"] = content_version(css)
+    ASSET_VERSIONS["nav.js"] = content_version(js)
+    (VYSTUP_DIR / "styles.css").write_text(css, encoding="utf-8")
+    (VYSTUP_DIR / "nav.js").write_text(js, encoding="utf-8")
+    print(
+        "Verze souborů: "
+        f"styles.css?v={ASSET_VERSIONS['styles.css']}  "
+        f"nav.js?v={ASSET_VERSIONS['nav.js']}"
+    )
     if FAVICON_SRC.is_file():
         shutil.copy2(FAVICON_SRC, VYSTUP_DIR / "favicon.svg")
     cleanup_legacy_root_html()

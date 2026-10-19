@@ -23,7 +23,7 @@ Každá lekce = vlastní složka (stejná struktura jako 1. ročník).
 | 03 | `03-tridy-a-objekty` | Třídy, objekty a atributy | 5 | 3 |
 | 04 | `04-konstruktor` | Konstruktor | 5 | 5 ★ |
 | 05 | `05-metody` | Metody a self | 5 | 3 |
-| 06 | `06-specialni-metody` | Speciální metody a vlastnosti | 5 | 2 ★ |
+| 06 | `06-specialni-metody` | Speciální metody | 5 | 2 ★ |
 | 07 | `07-dedicnost` | Dědičnost | 5 | 3 |
 | 08 | `08-polymorfismus` | Polymorfismus | 3 | 3 ★ |
 | 09 | `09-staticke-cleny` | Statické metody a proměnné | 5 | 3 |

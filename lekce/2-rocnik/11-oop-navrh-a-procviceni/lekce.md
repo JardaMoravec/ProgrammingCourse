@@ -43,7 +43,7 @@ Bez schváleného tématu v první hodině kód nepište.
 | [03](../03-tridy-a-objekty/lekce.md) | víc objektů, každý má svá data |
 | [04](../04-konstruktor/lekce.md) | konstruktor, `self` |
 | [05](../05-metody/lekce.md) | metody, které vrací nebo mění stav |
-| [06](../06-specialni-metody/lekce.md) | `__str__`, stav měníte metodou |
+| [06](../06-specialni-metody/lekce.md) | `__str__`, `__eq__` a `__len__` |
 | [07](../07-dedicnost/lekce.md) | rodič a potomek, `super()` |
 | [08](../08-polymorfismus/lekce.md) | stejná metoda, jiné tělo, cyklus přes seznam |
 | [09](../09-staticke-cleny/lekce.md) | aspoň jedna proměnná třídy **nebo** `@staticmethod` |

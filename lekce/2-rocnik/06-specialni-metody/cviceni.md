@@ -1,4 +1,4 @@
-# Cvičení — Speciální metody a vlastnosti
+# Cvičení — Speciální metody
 
 Cvičení jsou na hodinu. Úkoly do AMOS mají jiná zadání. Dědičnost nepište.
 
@@ -62,36 +62,24 @@ print(o)  # Eva
 
 ---
 
-## Cvičení 3 — Nastav cenu (★★☆)
+## Cvičení 3 — Stejný účet (★★☆)
 
-Třída `Produkt` (`nazev`, `cena`). Metoda `nastav_cena(self, cena)` nastaví cenu; zápornou nahradí `0`. Metoda `cena_s_dph(self)` vrátí cenu × 1.21. `__str__` vypíše název a cenu.
+Třída `Ucet` (`cislo`, celé číslo). `__eq__` vrátí `True`, když mají oba účty stejné číslo.
 
-Ověření: po `nastav_cena(-10)` je `cena` `0`. `Produkt("chleba", 100).cena_s_dph()` je `121.0`.
+Ověření: `Ucet(1) == Ucet(1)` je `True`. `Ucet(1) == Ucet(2)` je `False`.
 
 @reseni
 ```python
-class Produkt:
-    def __init__(self, nazev, cena):
-        self.nazev = nazev
-        self.cena = cena
+class Ucet:
+    def __init__(self, cislo):
+        self.cislo = cislo
 
-    def nastav_cena(self, cena):
-        if cena < 0:
-            cena = 0
-        self.cena = cena
-
-    def cena_s_dph(self):
-        return self.cena * 1.21
-
-    def __str__(self):
-        return self.nazev + ", " + str(self.cena)
+    def __eq__(self, jiny):
+        return self.cislo == jiny.cislo
 
 
-p = Produkt("chleba", 100)
-print(p.cena_s_dph())  # 121.0
-p.nastav_cena(-10)
-print(p.cena)          # 0
-print(p)
+print(Ucet(1) == Ucet(1))  # True
+print(Ucet(1) == Ucet(2))  # False
 ```
 @end
 
@@ -125,5 +113,34 @@ class Auto:
 
 a = Auto("Skoda", Motor("TSI", "benzin"))
 print(a)  # Skoda, TSI benzin
+```
+@end
+
+---
+
+## Cvičení 5 — Délka košíku (★★☆)
+
+Třída `Kosik`. Metoda `pridej(self, nazev)` přidá název do seznamu. `__len__` vrátí počet položek.
+
+Ověření: prázdný košík má `len` `0`. Po `pridej("chleba")` a `pridej("mleko")` je `len(kosik)` `2`.
+
+@reseni
+```python
+class Kosik:
+    def __init__(self):
+        self.polozky = []
+
+    def pridej(self, nazev):
+        self.polozky.append(nazev)
+
+    def __len__(self):
+        return len(self.polozky)
+
+
+k = Kosik()
+print(len(k))  # 0
+k.pridej("chleba")
+k.pridej("mleko")
+print(len(k))  # 2
 ```
 @end

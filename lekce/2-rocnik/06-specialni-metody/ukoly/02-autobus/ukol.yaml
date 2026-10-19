@@ -1,0 +1,34 @@
+title: Autobus — rovnost a délka
+stars: 2
+moodle: PRG-2-06-02
+description: |
+  Třída `Cestujici` s konstruktorem `__init__(self, jmeno)`.
+  `__eq__(self, jiny)` vrátí `True`, když mají oba stejné jméno.
+
+  Třída `Autobus`. V konstruktoru si založte prázdný seznam.
+  `pridej(self, cestujici)` cestujícího přidá.
+  `__len__(self)` vrátí počet cestujících.
+
+  Naplňte **přesně** těmito daty (žádný `input`):
+
+  - cestující Eva, Eva a Karel (tři objekty)
+  - do autobusu přidejte první Evu a Karla
+
+  Vypište tři řádky: `print` první `==` druhé Evy, `print` Evy `==` Karla,
+  `print(len(autobus))`.
+
+  Přesně tři řádky:
+
+  `True`
+  `False`
+  `2`
+
+cases:
+  - name: dve-evy
+    output: |-
+      True
+      False
+      2
+io: |
+  **Vstup:** žádný
+  **Výstup:** tři řádky — rovnost dvou Ev, rovnost Evy a Karla, délka autobusu

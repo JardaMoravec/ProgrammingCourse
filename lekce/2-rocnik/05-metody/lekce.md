@@ -182,10 +182,10 @@ Pak `autor.pridej_knihu(k)` — čitelnější než sahat na seznam zvenku.
 | `return` | výsledek ven z metody |
 | změna atributu | `self.vek = vek` uvnitř metody |
 
-Příště speciální metody — hlavně `__str__`, ať `print(o)` vypíše čitelný text.
+Příště speciální metody — `__str__`, aby `print(o)` vypsal text, a k tomu `__eq__` a `__len__`.
 
 Automatický test v AMOS kontroluje **výstup**. Učitel může zkontrolovat, že práce je v metodách (ne jen `print` v hlavním programu).
 
 ## Co dál
 
-→ [Lekce 06: Speciální metody a vlastnosti](../06-specialni-metody/lekce.md)
+→ [Lekce 06: Speciální metody](../06-specialni-metody/lekce.md)

@@ -2,7 +2,9 @@
 # Přepsáno z: zdroje/_Osnovy 2 roč.docx
 # Učitelský text: zdroje/Programování 2.docx, zdroje/Programování 2 – Python manuál.docx
 # Úkoly: zdroje/Úkoly 2/ (30 zadání) — mapování u jednotlivých lekcí
-# Jazyk: Python (ŠVP u OOP používá slovník z C# — struktury, řádkové metody, mnohotvárnost)
+# Jazyk: Python (ŠVP u OOP používá slovník z C# — struktury, mnohotvárnost).
+# Řádkové metody (C# get/set a viditelnost) se neučí: Python atribut neschová.
+# Místo nich lekce 06 učí speciální metody __str__, __eq__ a __len__.
 # SQL: SQLite (původní Úkoly 2 počítají s MySQL; sjednoceno s 3. ročníkem)
 # Tkinter / GUI se neučí — kompetence „framework“ se naplní ve 3. ročníku (Flask)
 # Algoritmizace SŠ základ (ŠVP 21 h → 20 h, dvě lekce po 10 h). SQL posílené místo Tkinteru.
@@ -99,7 +101,6 @@ moduly:
       - třídy a členy
       - vlastnosti tříd, objekty
       - implementace metod třídy
-      - implementace řádkových metod
       - struktury, dědičnost, mnohotvárnost
       - objektově orientovaná analýza a návrh
     bloky:
@@ -148,14 +149,14 @@ moduly:
 
           - id: "06-specialni-metody"
             soubor: lekce/2-rocnik/06-specialni-metody
-            nazev: Speciální metody a vlastnosti
+            nazev: Speciální metody
             hodiny: 5
-            svp: [implementace metod třídy, implementace řádkových metod]
+            svp: [implementace metod třídy]
             kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
             prerekvizity: [05-metody]
             ukoly_zdroje:
               - "kniha — __str__ ze vstupu"
-              - "osoba a adresa — složení a vlastnosti"
+              - "autobus — rovnost a délka"
               - "známkovaný úkol (tajné zadání)"
 
       - id: dedicnost-a-navrh
