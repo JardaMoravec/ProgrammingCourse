@@ -347,25 +347,44 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  align-items: flex-end;
+  gap: 0.2rem;
+  margin: 0 0 -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.tabs + .content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .tab {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  padding: 0.55rem 1.2rem 0.6rem;
+  border-radius: 10px 10px 0 0;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 42%, var(--bg));
+  color: var(--muted);
+}
+
+.tab:hover {
   color: var(--text);
+  background: color-mix(in srgb, var(--surface) 78%, var(--bg));
 }
 
 .tab.active {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
+  background: var(--surface);
+  color: var(--accent);
+  border-bottom-color: var(--surface);
+  box-shadow: inset 0 3px 0 var(--accent);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .content {
@@ -854,14 +873,16 @@ html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="db"] { color: #4a
 
   .content h3 { font-size: 1rem; }
 
-  .tabs { gap: 0.35rem; }
+  .tabs {
+    gap: 0.15rem;
+  }
 
   .tab {
-    flex: 1 1 calc(33% - 0.35rem);
+    flex: 1 1 0;
     min-width: 0;
     text-align: center;
-    font-size: 0.82rem;
-    padding: 0.45rem 0.5rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.35rem 0.55rem;
   }
 
   .index-grid {
@@ -1707,7 +1728,8 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
         parts = ['<div class="tabs">']
         for key, href, label in links:
             cls = " active" if key == active else ""
-            parts.append(f'<a class="tab{cls}" href="{href}">{label}</a>')
+            current = ' aria-current="page"' if key == active else ""
+            parts.append(f'<a class="tab{cls}" href="{href}"{current}>{label}</a>')
         parts.append("</div>")
         return "\n      ".join(parts)
 
