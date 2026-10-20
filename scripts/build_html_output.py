@@ -352,6 +352,7 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
   margin: 0 0 -1px;
   position: relative;
   z-index: 1;
+  scroll-margin-top: 0.75rem;
 }
 
 .tabs + .content {
@@ -360,7 +361,9 @@ html[data-theme="dark"] .theme-moon { color: var(--accent); }
 }
 
 .tab {
-  padding: 0.55rem 1.2rem 0.6rem;
+  padding: 0.6rem 1.85rem 0.65rem;
+  min-width: 8rem;
+  text-align: center;
   border-radius: 10px 10px 0 0;
   text-decoration: none;
   font-size: 0.95rem;
@@ -875,14 +878,14 @@ html[data-theme="dark"] .content .file-tree .ft-icon[data-ext="db"] { color: #4a
 
   .tabs {
     gap: 0.15rem;
+    scroll-margin-top: 4.25rem;
   }
 
   .tab {
     flex: 1 1 0;
     min-width: 0;
-    text-align: center;
     font-size: 0.85rem;
-    padding: 0.5rem 0.35rem 0.55rem;
+    padding: 0.55rem 0.5rem 0.6rem;
   }
 
   .index-grid {
@@ -1725,11 +1728,13 @@ def build_lesson(ctx: RocnikContext, lesson_dir: Path) -> None:
             links.append(("ukoly", f"{lid}-ukoly.html", "Úkoly"))
         if len(links) == 1:
             return ""
-        parts = ['<div class="tabs">']
+        parts = ['<div class="tabs" id="sekce">']
         for key, href, label in links:
             cls = " active" if key == active else ""
             current = ' aria-current="page"' if key == active else ""
-            parts.append(f'<a class="tab{cls}" href="{href}"{current}>{label}</a>')
+            parts.append(
+                f'<a class="tab{cls}" href="{href}#sekce"{current}>{label}</a>'
+            )
         parts.append("</div>")
         return "\n      ".join(parts)
 
