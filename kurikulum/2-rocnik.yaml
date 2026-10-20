@@ -157,6 +157,8 @@ moduly:
             ukoly_zdroje:
               - "kniha — __str__ ze vstupu"
               - "autobus — rovnost a délka"
+              - "koncert — __str__, __eq__ a __len__"
+              - "družstvo — text, rovnost dvou údajů a délka"
 
           - id: "07-tridy-procviceni"
             soubor: lekce/2-rocnik/07-tridy-procviceni

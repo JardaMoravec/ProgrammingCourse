@@ -1305,6 +1305,11 @@ def postprocess_student_html(html: str) -> str:
     html = re.sub(r'<a href="[^"]*kurikulum[^"]*">[^<]*</a>', "", html)
     html = re.sub(r'<a href="[^"]*\.yaml">[^<]*</a>', "", html)
     html = re.sub(r"<p>VPL test:[^<]*</p>\s*", "", html)
+    html = re.sub(
+        r"<p>\s*<strong>AMOS:</strong>\s*(?:<code>)?[^<]*(?:</code>)?\s*</p>\s*",
+        "",
+        html,
+    )
     html = re.sub(r"`ukoly/[^`]+`", "", html)
     html = enhance_code_blocks(html)
     html = attach_file_headers(html)

@@ -1,0 +1,75 @@
+title: Družstvo
+stars: 3
+ignore_input_prompt: true
+moodle: PRG-2-06-04
+description: |
+  První řádek je počet hráčů `N` (celé číslo aspoň 2).
+  Druhý řádek je název družstva.
+  Pak následuje `N` dvojic: jméno a číslo dresu (číslo je celé číslo).
+  Každý údaj je na vlastním řádku.
+
+  Třída `Hrac` s konstruktorem `__init__(self, jmeno, cislo)`.
+  `__str__` vrátí `jmeno #cislo` (třeba `Eva #7`).
+  `__eq__(self, jiny)` vrátí `True`, jen když sedí jméno i číslo.
+
+  Třída `Druzstvo` s konstruktorem `__init__(self, nazev)`.
+  V konstruktoru si založte prázdný seznam.
+  `pridej(self, hrac)` hráče přidá.
+  `__len__(self)` vrátí počet hráčů.
+  `__str__` vrátí `nazev: pocet`. Počet berte z `len(self)`.
+
+  Hráče ze vstupu přidejte do družstva v pořadí, v jakém přišli.
+  Vypište čtyři řádky: `print(druzstvo)`, `print` prvního hráče,
+  `print` prvního `==` posledního a `print(len(druzstvo))`.
+  Věty neskládejte ručně v `print`.
+
+
+cases:
+  - name: stejny-dres-a-jmeno
+    input: |
+      3
+      Sparta
+      Eva
+      7
+      Karel
+      10
+      Eva
+      7
+    output: |-
+      Sparta: 3
+      Eva #7
+      True
+      3
+  - name: stejne-jmeno
+    input: |
+      2
+      Slavia
+      Anna
+      4
+      Anna
+      11
+    output: |-
+      Slavia: 2
+      Anna #4
+      False
+      2
+  - name: stejny-dres
+    input: |
+      4
+      Banik
+      Eva
+      7
+      Karel
+      7
+      Lucie
+      8
+      Petr
+      7
+    output: |-
+      Banik: 4
+      Eva #7
+      False
+      4
+io: |
+  **Vstup:** `N`, název družstva, pak `N`× jméno a číslo dresu
+  **Výstup:** čtyři řádky — text družstva, text prvního hráče, rovnost prvního a posledního, délka

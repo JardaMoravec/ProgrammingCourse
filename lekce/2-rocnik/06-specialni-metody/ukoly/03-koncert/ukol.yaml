@@ -1,0 +1,49 @@
+title: Koncert — text, rovnost a délka
+stars: 2
+ignore_input_prompt: true
+moodle: PRG-2-06-03
+description: |
+  Načtěte čtyři řádky: název koncertu a jména tří účinkujících.
+
+  Třída `Ucinkujici` s konstruktorem `__init__(self, jmeno)`.
+  `__str__` vrátí jméno.
+  `__eq__(self, jiny)` vrátí `True`, když mají oba stejné jméno.
+
+  Třída `Koncert` s konstruktorem `__init__(self, nazev)`.
+  V konstruktoru si založte prázdný seznam.
+  `pridej(self, ucinkujici)` účinkujícího přidá.
+  `__len__(self)` vrátí počet účinkujících.
+  `__str__` vrátí `nazev (pocet)`. Počet berte z `len(self)`.
+
+  Vytvořte koncert a tři účinkující v pořadí ze vstupu a všechny
+  přidejte. Vypište čtyři řádky: `print(koncert)`, `print` prvního
+  účinkujícího, `print` prvního `==` třetího a `print(len(koncert))`.
+  Věty neskládejte ručně v `print`.
+
+
+cases:
+  - name: dve-evy
+    input: |
+      Rockfest
+      Eva
+      Karel
+      Eva
+    output: |-
+      Rockfest (3)
+      Eva
+      True
+      3
+  - name: vsichni-jini
+    input: |
+      Jazz
+      Anna
+      Petr
+      Lucie
+    output: |-
+      Jazz (3)
+      Anna
+      False
+      3
+io: |
+  **Vstup:** název koncertu a tři jména (každé na vlastním řádku)
+  **Výstup:** čtyři řádky — text koncertu, text prvního, rovnost prvního a třetího, délka
