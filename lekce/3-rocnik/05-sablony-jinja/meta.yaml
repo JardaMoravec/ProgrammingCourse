@@ -8,4 +8,5 @@ prerekvizity: [04-routy-a-pohledy]
 kompetence: [k2-html, k3-web-vytvoreni, k4-formulare-skript]
 svp: [šablony, dynamické webové stránky]
 tagy: [flask, jinja, sablony]
+znamkovany_tajny: true
 migrovano_z: []

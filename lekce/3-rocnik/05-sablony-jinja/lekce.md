@@ -173,6 +173,8 @@ Víc šablon = víc souborů v `templates/` (`index.html`, `kontakt.html`). Kaž
 | `{% for %} … {% endfor %}` | cyklus v šabloně |
 | `TemplateNotFound` | soubor nebo složka `templates` se nenašly |
 
+Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele. Hodnotí učitel.
+
 ## Co dál
 
 → [Lekce 06: Dědičnost šablon](../06-dedicnost-sablon/lekce.md)

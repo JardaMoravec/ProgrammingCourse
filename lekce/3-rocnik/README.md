@@ -35,7 +35,7 @@ Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02*
 | 02 | `02-html-css-shrnuti` | HTML a CSS — shrnutí | — |
 | 03 | `03-uvod-do-flasku` | Úvod do Flasku | 1 |
 | 04 | `04-routy-a-pohledy` | Routy a pohledové funkce | 2 |
-| 05 | `05-sablony-jinja` | Šablony Jinja2 (4 h) | 2 |
+| 05 | `05-sablony-jinja` | Šablony Jinja2 (4 h) | 2 ★ |
 | 06 | `06-dedicnost-sablon` | Dědičnost šablon | 1 |
 | 07 | `07-staticke-soubory` | Statické soubory (CSS, obrázky) | 1 |
 | 08 | `08-dynamicke-url` | Dynamické URL a url_for | 1 |
@@ -54,6 +54,8 @@ Lekce **01** má úkol k odevzdání **snímku / výpisu** (ne VPL). Lekce **02*
 | 22 | `22-bezpecnost-webu` | Bezpečnost (XSS, SQL injection) | 2 |
 | 23 | `23-projekt` | Projekt — zadání a práce (20 h) | 1 (soubor) |
 | 24 | `24-projekt-prezentace` | Projekt — odevzdání a prezentace (4 h) | — |
+
+★ lekce končí známkovaným úkolem s tajným zadáním (hodnotí učitel, zadání není v materiálu).
 
 **Celkem: 23 lekcí v 68 h** (lekce 01 a 23 mají úkol bez VPL, lekce 03–20 a 22 mají Flask VPL; lekce 24 je prezentace bez `ukoly.md`). ORM je v [bonusové skupině](../bonus/README.md).
 

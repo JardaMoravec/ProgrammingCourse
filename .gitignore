@@ -18,8 +18,8 @@ lekce/**/tajny-znamkovany/
 # Odevzdaná řešení a hodnocení (lokálně u učitele)
 řešení/
 
-# Individuální studijní plány (lokálně u učitele)
-dokumenty/ISP/
+# Dokumenty učitele (lokálně — není v Gitu ani na webu)
+dokumenty/
 
 # Python
 __pycache__/

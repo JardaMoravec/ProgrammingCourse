@@ -284,6 +284,7 @@ moduly:
 hodnoceni:
   - elektronické testy (Moodle VPL)
   - samostatné úkoly (Moodle VPL)
+  - známkovaný úkol s tajným zadáním (lekce 05, hodnotí učitel)
   - práce v hodině (cvičení)
   - závěrečný projekt (Flask aplikace s formuláři a databází)
   - aktivita
