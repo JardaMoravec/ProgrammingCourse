@@ -98,7 +98,10 @@ Příště dědičnost — společný kód dvou tříd přesunete do rodiče.
 
 Automatický test v AMOS kontroluje **výstup** pěti úkolů.
 
-Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od učitele. Hodnotí učitel.
+Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete jednu ze dvou
+variant od učitele. Na práci máte **40 minut**. Automatický test hodnotí
+strukturu programu: třídy, konstruktory, atributy, metody a složení objektů.
+Text výpisu se nehodnotí.
 
 ## Co dál
 

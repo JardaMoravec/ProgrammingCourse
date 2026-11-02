@@ -174,6 +174,8 @@ def load_task(task_dir: Path, *, secret: bool = False) -> dict | None:
         task["slozeni"] = raw["slozeni"]
     if raw.get("struktura"):
         task["struktura"] = raw["struktura"]
+    if "kontrolovat_vystup" in raw:
+        task["kontrolovat_vystup"] = bool(raw["kontrolovat_vystup"])
     return task
 
 
@@ -524,6 +526,7 @@ def format_oop_evaluator(
     cases: list,
     *,
     ignoruj_vyzvu: bool,
+    kontrolovat_vystup: bool = True,
 ) -> str:
     template = (SABLONY / "vpl_evaluate_oop.py").read_text(encoding="utf-8")
     for placeholder in ("__STUDENT_FILE__", "__TESTS__"):
@@ -533,6 +536,7 @@ def format_oop_evaluator(
         "struktura": struktura,
         "cases": cases,
         "ignoruj_vyzvu": ignoruj_vyzvu,
+        "kontrolovat_vystup": kontrolovat_vystup,
     }
     return template.replace("__STUDENT_FILE__", soubor, 1).replace(
         "__TESTS__",
@@ -580,6 +584,7 @@ def write_custom_vpl(task_dir: Path, task: dict) -> None:
                 struktura,
                 cases,
                 ignoruj_vyzvu=bool(task.get("ignore_input_prompt")),
+                kontrolovat_vystup=bool(task.get("kontrolovat_vystup", True)),
             ),
             encoding="utf-8",
         )

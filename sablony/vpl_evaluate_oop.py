@@ -122,10 +122,28 @@ def _seznam_pravidlo(trida: str, atribut: str) -> dict | None:
     return None
 
 
+def _objekt_pravidlo(trida: str, atribut: str) -> dict | None:
+    spec = next((item for item in _spec_tridy() if item.get("jmeno") == trida), None)
+    if spec is None:
+        return None
+    for rule in spec.get("objekty") or []:
+        if rule.get("atribut") == atribut:
+            return rule
+    return None
+
+
 def _zkontroluj_ast(tree: ast.AST) -> list[str]:
     chyby: list[str] = []
     tridy = _tridy(tree)
-    jen_init = bool(DATA["struktura"].get("jen_init"))
+    struktura = DATA["struktura"]
+    jen_init = bool(struktura.get("jen_init"))
+    if struktura.get("presne_tridy"):
+        ocekavane = [str(spec["jmeno"]) for spec in _spec_tridy()]
+        nalezene = [cls.name for cls in tridy]
+        if sorted(nalezene) != sorted(ocekavane):
+            chyby.append(
+                "V souboru musí být právě třídy: " + ", ".join(ocekavane) + "."
+            )
     for cls in tridy:
         metody = _metody(cls)
         if jen_init and any(method.name != "__init__" for method in metody):
@@ -162,6 +180,32 @@ def _zkontroluj_ast(tree: ast.AST) -> list[str]:
         hlavicka += [arg.arg for arg in init.args.args]
         if not hlavicka or hlavicka[0] != "self":
             chyby.append(f"__init__ třídy {jmeno} musí začínat parametrem self.")
+        if "parametry" in spec:
+            ocekavane_parametry = [str(name) for name in spec["parametry"]]
+            nalezene_parametry = _parametry(init)
+            if nalezene_parametry != ocekavane_parametry:
+                chyby.append(
+                    f"__init__ třídy {jmeno} musí mít parametry "
+                    f"{', '.join(ocekavane_parametry)} v tomto pořadí."
+                )
+        for nazev_metody in spec.get("metody") or []:
+            metody = [method for method in _metody(cls) if method.name == nazev_metody]
+            pocet = len(metody)
+            if pocet != 1:
+                chyby.append(
+                    f"Třída {jmeno} musí mít právě jednu metodu {nazev_metody}."
+                )
+                continue
+            podpis = (spec.get("podpisy") or {}).get(nazev_metody)
+            if podpis is not None:
+                parametry = [arg.arg for arg in metody[0].args.posonlyargs]
+                parametry += [arg.arg for arg in metody[0].args.args]
+                parametry += [arg.arg for arg in metody[0].args.kwonlyargs]
+                if parametry != [str(name) for name in podpis]:
+                    chyby.append(
+                        f"Metoda {jmeno}.{nazev_metody} musí mít parametry "
+                        f"{', '.join(str(name) for name in podpis)}."
+                    )
         chybi = [
             name for name in _atributy(spec) if name not in _prirazene_atributy(init)
         ]
@@ -253,6 +297,25 @@ def _porovnej(snap: dict, spec: dict) -> str | None:
             if chyba:
                 return chyba
             continue
+        if isinstance(expected, dict):
+            pravidlo = _objekt_pravidlo(ocekavana, key)
+            if not isinstance(actual, dict) or "cls" not in actual:
+                return f"Atribut {key} objektu {ocekavana} musí obsahovat objekt."
+            if pravidlo and actual.get("cls") != pravidlo.get("trida"):
+                return (
+                    f"Atribut {key} objektu {ocekavana} musí obsahovat "
+                    f"{pravidlo.get('trida')}, je {actual.get('cls')}."
+                )
+            parametr = str((pravidlo or {}).get("parametr") or "")
+            if parametr and actual.get("id") not in (snap.get("param_id") or set()):
+                return (
+                    f"Objekt {key} musí být předán konstruktoru "
+                    f"{ocekavana} parametrem {parametr}."
+                )
+            chyba = _porovnej(actual, expected)
+            if chyba:
+                return chyba
+            continue
         if actual != expected or isinstance(actual, bool) != isinstance(expected, bool):
             doplnek = ""
             if isinstance(expected, int) and not isinstance(expected, bool):
@@ -274,6 +337,12 @@ def _porovnej_seznam(snap: dict, key: str, actual: object, expected: list) -> st
             "Vytvořte ho v těle konstruktoru z jednotlivých objektů."
         )
     items = list(actual["__list__"])
+    minimum = pravidlo.get("min_pocet") if pravidlo else None
+    if minimum is not None and len(items) < int(minimum):
+        return (
+            f"Seznam {key} má mít alespoň {int(minimum)} položky, "
+            f"má {len(items)}."
+        )
     if pravidlo and pravidlo.get("pocet") is not None and len(items) != int(pravidlo["pocet"]):
         return (
             f"Seznam {key} má mít {_polozek(int(pravidlo['pocet']))}, "
@@ -378,7 +447,7 @@ def _spust(source: str, stdin_text: str) -> tuple[str | None, dict, str | None]:
                         "__z_parametru__": id(value) in info.get("param_listu", ()),
                     }
                 else:
-                    attrs[key] = value
+                    attrs[key] = registry.get(id(value), value)
             registry[id(self)] = {
                 "cls": type(self).__name__,
                 "id": id(self),
@@ -421,7 +490,9 @@ def _ohodnot_pripad(source: str, case: dict) -> list[str]:
     if chyba:
         return [chyba]
     problemy: list[str] = []
-    if not _vystup_sedi(stdout or "", str(case.get("output") or "")):
+    if DATA.get("kontrolovat_vystup", True) and not _vystup_sedi(
+        stdout or "", str(case.get("output") or "")
+    ):
         problemy.append(
             "Výstup nesedí. "
             f"Očekáváno: {_jedna_radka(str(case.get('output') or ''))}. "
