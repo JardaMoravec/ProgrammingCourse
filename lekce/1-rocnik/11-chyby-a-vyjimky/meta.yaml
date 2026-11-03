@@ -7,6 +7,7 @@ obtiznost: stredni
 prerekvizity: [10-vnorene-podminky]
 kompetence: [k2-ridici-struktury, k3-strukturovane-programy]
 svp: [řídicí struktury]
+znamkovany_tajny: true
 migrovano_z:
   - "zdroje/Programování 1.docx (kap. Chyby a výjimky)"
   - "zdroje/Úkoly 1/úkol 12 - procvičení výjimek.docx"

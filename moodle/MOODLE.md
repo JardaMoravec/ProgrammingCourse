@@ -62,6 +62,25 @@ neukládá; k uložení je nutné výslovně přidat `--save`.
    python scripts/moodle_e2e.py --class 2I --lesson 2 --task Z01 --save
    ```
 
+## Stažení odevzdání
+
+Skript `scripts/moodle_download_submissions.py` stáhne odevzdání VPL aktivity
+bez změn v Moodle. Přihlásí se do kurzu a aktivity podle třídy, lekce a čísla
+úkolu, otevře „Submissions list“ a v nabídce tří teček zvolí
+„Download submissions“. Stažený archiv i ZIP archivy odevzdané uvnitř
+studentských složek rozbalí do `řešení/<třída> - Lekce NN - <název úkolu>`.
+Rozbalené vnořené ZIP soubory smaže. Existující cílovou složku nepřepisuje.
+
+```bash
+python scripts/moodle_download_submissions.py --class 2IM --lesson 7 --task Z02
+python scripts/moodle_download_submissions.py --class 3I --lesson 5 --task 1
+```
+
+Použijte `Z01` pro známkovaný úkol a běžné číslo (např. `1`) pro ostatní.
+Při použití školního SSO dokončete přihlášení v otevřeném okně Chromium.
+Výsledky zůstávají lokální v ignorované složce `řešení/`. Pokud cílová složka
+již existuje, nejprve ji ručně přejmenujte nebo přesuňte.
+
 ## 1. ročník — stdin / stdout (`vpl_evaluate.cases`)
 
 Každá lekce **04–27** obsahuje:

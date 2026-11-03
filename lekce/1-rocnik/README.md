@@ -35,7 +35,7 @@ Lekce **01–03** (úvod) nemají `ukoly.md` — jsou čistě teoretické / inst
 | 08 | `08-porovnaci-operatory` | Logické operátory | 4 |
 | 09 | `09-vetveni-podminek` | Větvení if/elif/else | 6 ★ |
 | 10 | `10-vnorene-podminky` | Vnořené podmínky | 4 |
-| 11 | `11-chyby-a-vyjimky` | Výjimky try/except | 4 |
+| 11 | `11-chyby-a-vyjimky` | Výjimky try/except | 4 ★ |
 | 12 | `12-cyklus-while` | Cyklus while | 4 |
 | 13 | `13-cyklus-for` | Cyklus for a range | 4 |
 | 14 | `14-ridici-struktury-procviceni` | Řízení — procvičení | 4 |
