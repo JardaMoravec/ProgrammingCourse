@@ -42,5 +42,6 @@ Thumbs.db
 .env.*
 *.pem
 credentials.json
+moodle/e2e.local.json
 
 zdroje/

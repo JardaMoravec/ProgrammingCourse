@@ -1,0 +1,8 @@
+{
+  "base_url": "https://moodle.example.edu",
+  "username": "",
+  "password": "",
+  "courses": {
+    "1A": 100
+  }
+}

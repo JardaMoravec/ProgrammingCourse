@@ -2,6 +2,66 @@
 
 Návod pro učitele: jak z repozitáře založit automaticky hodnocené úkoly v Moodle.
 
+## E2E automatizace (základ)
+
+Skript `scripts/moodle_e2e.py` otevře Moodle v prohlížeči Chromium, přihlásí
+uživatele, najde nebo vytvoří a pojmenuje sekci podle čísla lekce, načte údaje
+z `ukol.yaml` a vyplní formulář nové VPL aktivity. Ve výchozím stavu formulář
+neukládá; k uložení je nutné výslovně přidat `--save`.
+
+1. Nainstalujte závislosti a prohlížeč:
+
+   ```bash
+   python -m pip install -r requirements-moodle.txt
+   python -m playwright install chromium
+   ```
+
+2. Zkopírujte `moodle/e2e.example.json` na `moodle/e2e.local.json` a nastavte
+   `base_url`, `username` a `password`. Lokální konfigurace je v `.gitignore`.
+   V objektu `courses` nastavte mapování názvu třídy na ID jejího kurzu.
+   Heslo je v tomto souboru uložené jako prostý text; chraňte přístup k počítači
+   a soubor nikam nesdílejte.
+3. Spusťte například:
+
+   ```bash
+   python scripts/moodle_e2e.py --class 3I --lesson 7 --task 1 --pause
+   ```
+
+   Skript použije přihlašovací údaje pouze při lokálním přihlášení přes běžný
+   Moodle formulář. Pokud škola používá SSO nebo jiný formulář, ponechte
+   přihlašovací pole prázdná a přihlaste se ručně v otevřeném prohlížeči.
+4. Ročník se odvodí z prvního čísla třídy (např. `2I` → 2. ročník,
+   `1:IM` → 1. ročník). Skript nastaví název a úplný popis úkolu, na začátek
+   popisu vloží ikonu kalendáře a tučný nadpis „Zadání:“. Běžné úkoly mají
+   v popisu termín 10 dní od spuštění a vypnutý začátek i konec období odevzdání.
+   Známkované úkoly se vybírají kódem `Z01` (složka `z01-*`) a název aktivity
+   bude `ZNÁMKOVANÝ ÚKOL - <skutečný název úkolu>`; jejich období odevzdání
+   se předvyplní na otevření za hodinu a uzavření za dvě hodiny.
+   Pomocí „Omezit přístup“ se známkovaná aktivita úplně skryje až do půlnoci
+   následujícího dne; popis se nezobrazuje ani na titulní straně kurzu.
+   Čas lze po vytvoření aktivity ručně doladit v jejím nastavení. Pokud sekce
+   pro lekci v 1. nebo 2. ročníku chybí, skript ji vytvoří a pojmenuje
+   `Lekce NN - úkoly`. S `--pause` zůstane
+   formulář otevřený pro kontrolu. Moodle může přepnout režim úprav i načíst
+   editor asynchronně; skript počká na inicializaci JavaScriptového přepínače
+   před kliknutím, až 90 sekund na potvrzení režimu a až 60 sekund na další
+   prvky stránky.
+5. Po kontrole formulář uložte výslovným spuštěním s `--save`; skript použije
+   tlačítko „Uložit a zobrazit“ a ověří, že se aktivita zobrazuje v cílové
+   sekci. Pokud úkol obsahuje právě jeden soubor `*.cases`, nahraje jeho obsah
+   do „Tests configuration“. Ostatní soubory `vpl_*` (například
+   `vpl_evaluate.py`, `vpl_evaluate.sh` nebo `vpl_run.sh`) nahraje do
+   „Execution files“ u běžných i známkovaných úkolů. V „Execution options“
+   nastaví Run a Evaluate na Ano. V „Requested files“ vytvoří soubor uvedený
+   v `soubor` v `ukol.yaml`, nebo `main.py`, pokud položka není uvedena.
+   Požadované Python soubory začínají komentářem `# Zde napište svůj kód`.
+   Například:
+
+   ```bash
+   python scripts/moodle_e2e.py --class 2I --lesson 8 --task 1 --save
+   python scripts/moodle_e2e.py --class 2I --lesson 2 --task Z01 --save
+   ```
+
 ## 1. ročník — stdin / stdout (`vpl_evaluate.cases`)
 
 Každá lekce **04–27** obsahuje:
