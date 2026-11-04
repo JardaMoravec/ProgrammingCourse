@@ -71,6 +71,15 @@ print(p.jmeno)         # Azor         — atribut z konstruktoru Zvire
 Kočka je taky zvíře, jen jiný zvuk:
 
 ```python
+class Zvire:
+    def __init__(self, jmeno, vek):
+        self.jmeno = jmeno
+        self.vek = vek
+
+    def predstavit(self):
+        return self.jmeno + ", vek " + str(self.vek)
+
+
 class Kocka(Zvire):
     def zamnoukej(self):
         return "Mnou!"
@@ -115,6 +124,15 @@ print(z.pozice)        # skladnik
 Pes má navíc plemeno. Konstruktor potomka nejdřív nechá rodiče nastavit jméno a věk, pak doplní svoje:
 
 ```python
+class Zvire:
+    def __init__(self, jmeno, vek):
+        self.jmeno = jmeno
+        self.vek = vek
+
+    def predstavit(self):
+        return self.jmeno + ", vek " + str(self.vek)
+
+
 class Pes(Zvire):
     def __init__(self, jmeno, vek, plemeno):
         super().__init__(jmeno, vek)
@@ -125,6 +143,8 @@ class Pes(Zvire):
 
 
 p = Pes("Azor", 5, "labrador")
+print(p.predstavit())  # Azor, vek 5
+print(p.stekej())      # Haf!
 print(p.jmeno)     # Azor
 print(p.plemeno)   # labrador
 ```
@@ -165,16 +185,29 @@ V lekci 05 bylo jen tričko. Teď vidíte, proč se hodí rodič: kalhoty dostan
 
 ## __str__ u potomka
 
-Potomek zdědí i `__str__`. Když chcete ve výpisu i plemeno, metodu **přepíšete** (napíšete ji znovu u psa). Víc o přepisování je v lekci 08 — tady stačí vědět, že to jde:
+Potomek zdědí i `__str__`. Když chcete ve výpisu i plemeno, metodu **přepíšete** (napíšete ji znovu u psa). Víc o přepisování je v lekci 09 — tady stačí vědět, že to jde:
 
 ```python
+class Zvire:
+    def __init__(self, jmeno, vek):
+        self.jmeno = jmeno
+        self.vek = vek
+
+    def __str__(self):
+        return self.jmeno + ", vek " + str(self.vek)
+
+
 class Pes(Zvire):
     def __init__(self, jmeno, vek, plemeno):
         super().__init__(jmeno, vek)
         self.plemeno = plemeno
 
     def __str__(self):
-        return self.jmeno + ", vek " + str(self.vek) + ", " + self.plemeno
+        return super().__str__() + ", " + self.plemeno
+
+
+p = Pes("Azor", 5, "labrador")
+print(p)  # Azor, vek 5, labrador
 ```
 
 `print(p)` pak použije `__str__` **psa**, ne zvířete.
