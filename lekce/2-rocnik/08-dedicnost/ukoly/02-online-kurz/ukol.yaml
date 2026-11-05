@@ -1,0 +1,33 @@
+title: Online kurz
+stars: 2
+moodle: PRG-2-08-02
+description: |
+  Třída `Kurz` má konstruktor `__init__(self, nazev, cena)`, metodu
+  `zlevni(self, procenta)` a `__str__`, který vrátí
+  `nazev, cena X Kc`.
+
+  Třída `OnlineKurz(Kurz)` má navíc atribut `platforma`. V konstruktoru
+  použijte `super()`. Přepište `__str__` tak, aby k textu rodiče přidala
+  `, platforma NAZEV`.
+
+  Načtěte název, cenu, platformu a slevu v procentech. Zlevněte kurz
+  a vypište ho přes `print(kurz)`. Cenu po slevě počítejte jako celé
+  číslo: `cena - cena * procenta // 100`.
+io: |
+  **Vstup:** název kurzu, cena, platforma a sleva v procentech (každý údaj na řádku)
+  **Výstup:** jeden řádek `nazev, cena X Kc, platforma NAZEV`
+cases:
+  - name: python
+    input: |
+      Python pro zacatecniky
+      800
+      Moodle
+      10
+    output: "Python pro zacatecniky, cena 720 Kc, platforma Moodle"
+  - name: databaze
+    input: |
+      Databaze
+      1200
+      Ucebna
+      25
+    output: "Databaze, cena 900 Kc, platforma Ucebna"

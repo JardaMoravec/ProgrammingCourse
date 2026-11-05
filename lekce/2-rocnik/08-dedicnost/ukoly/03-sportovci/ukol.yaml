@@ -1,0 +1,46 @@
+title: Sportovci
+stars: 3
+moodle: PRG-2-08-03
+description: |
+  Vytvořte rodičovskou třídu `Sportovec` s konstruktorem
+  `__init__(self, jmeno)`. Každý sportovec začíná s 0 body.
+  Metoda `pridej_body(self, pocet)` přičte body a `__str__` vrátí
+  `jmeno: N bodu`.
+
+  Třída `Bezec(Sportovec)` má navíc `disciplina` a metodu
+  `zabehni(self, kilometry)`, která přidá 2 body za každý kilometr.
+  Třída `Cyklista(Sportovec)` má navíc `typ_kola` a metodu
+  `ujed(self, kilometry)`, která přidá 3 body za každý kilometr.
+  V obou konstruktorech potomků použijte `super()`. Metody potomků
+  mají pro přičítání bodů zavolat zděděnou `pridej_body`.
+
+  Načtěte jméno běžce, jeho disciplínu a uběhnuté kilometry; potom
+  jméno cyklisty, typ kola a ujeté kilometry. Každému nakonec přidejte
+  ještě 5 bodů metodou `pridej_body`. Vypište oba sportovce, každého
+  na samostatný řádek.
+io: |
+  **Vstup:** jméno, disciplína a kilometry běžce; jméno, typ kola a kilometry cyklisty (každý údaj na řádku)
+  **Výstup:** dva řádky `jmeno: N bodu` (běžec, cyklista)
+cases:
+  - name: zavod
+    input: |
+      Eva
+      maraton
+      7
+      Karel
+      silnicni
+      10
+    output: |-
+      Eva: 19 bodu
+      Karel: 35 bodu
+  - name: kratka-trat
+    input: |
+      Iva
+      sprint
+      2
+      Adam
+      horske
+      4
+    output: |-
+      Iva: 9 bodu
+      Adam: 17 bodu

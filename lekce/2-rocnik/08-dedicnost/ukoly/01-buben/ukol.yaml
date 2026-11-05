@@ -1,0 +1,27 @@
+title: Buben
+stars: 1
+moodle: PRG-2-08-01
+description: |
+  Třída `Nastroj` má konstruktor `__init__(self, znacka)` a metodu
+  `popis(self)`, která vrátí značku.
+
+  Třída `Buben(Nastroj)` má metodu `zvuk(self)`, která vrátí `Bum!`.
+  Vlastní konstruktor bubnu nepište — zdědí ho od nástroje. Vytvořte
+  buben podle značky ze vstupu. Vypište `popis()` a `zvuk()` každý
+  na samostatný řádek.
+io: |
+  **Vstup:** značka nástroje
+  **Výstup:** značka a zvuk bubnu, každý na samostatném řádku
+cases:
+  - name: znacka
+    input: |
+      Yamaha
+    output: |-
+      Yamaha
+      Bum!
+  - name: jina-znacka
+    input: |
+      Sonor
+    output: |-
+      Sonor
+      Bum!
