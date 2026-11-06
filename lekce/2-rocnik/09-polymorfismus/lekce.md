@@ -7,8 +7,8 @@ obtiznost: stredni
 prerekvizity: [08-dedicnost]
 cile:
   - Přepíšete metodu rodiče u potomka
-  - Stejné volání dá u různých potomků různý výsledek
-  - Projedete seznam smíšených objektů jedním cyklem
+- Stejné volání dá u různých potomků různý výsledek
+- Projedete seznam smíšených objektů jedním cyklem bez `if` podle typu
 migrovano_z:
   - "zdroje/Programování 2.docx (kap. Polymorfismus)"
   - "zdroje/Programování 2 – Python manuál.docx"
@@ -18,7 +18,7 @@ migrovano_z:
 
 Lekce má **3 hodiny**. Navazuje na [dědičnost](../08-dedicnost/lekce.md). Zbytek týdenní dotace využijte na procvičení polymorfismu.
 
-Minule pes **je** zvíře a společné věci patří rodiči. Tady mají potomci **stejnou** metodu, ale **jiné** tělo. Zavoláte `ozvi_se()` — pes řekne `Haf!`, kočka `Mnou!`. ŠVP tomu říká *mnohotvárnost*.
+Minule žák **je** osoba a společné věci patří rodiči. Tady mají potomci **stejnou** metodu, ale **jiné** tělo. Zavoláte `prezentuj_se()` — žák řekne něco jiného než učitel. ŠVP tomu říká *mnohotvárnost*.
 
 ## Cíle lekce
 
@@ -31,87 +31,98 @@ Minule pes **je** zvíře a společné věci patří rodiči. Tady mají potomci
 Rodič metodu má. Potomek ji napíše znovu **pod stejným jménem**. Tomu se říká přepis.
 
 ```python
-class Zvire:
+class Osoba:
     def __init__(self, jmeno):
         self.jmeno = jmeno
 
-    def ozvi_se(self):
-        return "..."
+    def prezentuj_se(self):
+        return "Jsem osoba."
 
 
-class Pes(Zvire):
-    def ozvi_se(self):
-        return "Haf!"
+class Zak(Osoba):
+    def prezentuj_se(self):
+        return "Jsem žák."
 
 
-class Kocka(Zvire):
-    def ozvi_se(self):
-        return "Mnou!"
+class Ucitel(Osoba):
+    def prezentuj_se(self):
+        return "Jsem učitel."
 
 
-print(Pes("Azor").ozvi_se())     # Haf!
-print(Kocka("Micka").ozvi_se())  # Mnou!
-print(Zvire("x").ozvi_se())      # ...
+print(Zak("Eva").prezentuj_se())          # Jsem žák.
+print(Ucitel("Jan").prezentuj_se())       # Jsem učitel.
+print(Osoba("x").prezentuj_se())          # Jsem osoba.
 ```
 
-U psa se **nepoužije** `ozvi_se` zvířete. Platí to, co je napsané u `Pes`. Rodičovská verze zůstane pro čisté zvíře a jako základ, když ji později zavoláte přes `super()`.
+U žáka se **nepoužije** `prezentuj_se` osoby. Platí to, co je napsané u `Zak`. Rodičovská verze zůstane pro čistou osobu a jako základ, když ji později zavoláte přes `super()`.
 
-Jméno metody musí sedět **přesně**. `stekej` místo `ozvi_se` není přepis — je to nová metoda navíc a `ozvi_se` pořád vrací `...`.
+Jméno metody musí sedět **přesně**. `oznamit_se` místo `prezentuj_se` není přepis — je to nová metoda navíc a `prezentuj_se` pořád vrací `Jsem osoba.`.
 
-→ viz `priklady/ozvi_se.py`
+→ viz `priklady/prezentuj_se.py`
 
-![Stejné volání ozvi_se u psa a kočky](diagramy/polymorfismus.svg)
+![Stejné volání prezentuj_se u žáka a učitele](diagramy/polymorfismus.svg)
 
 ## Seznam různých objektů
 
-Do jednoho seznamu dáte psa i kočku. Cyklus volá **stejnou** metodu. Každý objekt odpoví po svém:
+Do jednoho seznamu dáte žáka i učitele. Cyklus volá **stejnou** metodu. Každá osoba odpoví po svém:
 
 ```python
-seznam = [Pes("Azor"), Kocka("Micka"), Pes("Rex")]
-for zvire in seznam:
-    print(zvire.jmeno + ": " + zvire.ozvi_se())
+seznam = [Zak("Eva"), Ucitel("Jan"), Zak("Tomáš")]
+for osoba in seznam:
+    print(osoba.jmeno + ": " + osoba.prezentuj_se())
 ```
 
 Výstup:
 
 ```
-Azor: Haf!
-Micka: Mnou!
-Rex: Haf!
+Eva: Jsem žák.
+Jan: Jsem učitel.
+Tomáš: Jsem žák.
 ```
 
-Proměnná `zvire` je jednou pes, jednou kočka. Nepíšete `if` „když je to pes, vypiš Haf“. To by polymorfismus obešlo — a při dalším potomkovi byste museli podmínku doplňovat.
+Proměnná `osoba` je jednou žák, jednou učitel. Nepíšete `if` „když je to žák, vypiš Jsem žák". To by polymorfismus obešlo — a při dalším potomkovi byste museli podmínku doplňovat.
 
-→ viz `priklady/seznam_zvirat.py`
+→ viz `priklady/seznam_osob.py`
 
 ## super() u přepsané metody
 
-U konstruktoru už `super()` znáte. Stejně ho použijete, když chcete **rodičovské** tělo a k němu něco přidat. Minule šlo `__str__` u psa opsat celé. Teď rodiče znovu nekopírujte:
+U konstruktoru už `super()` znáte. Stejně ho použijete, když chcete **rodičovské** tělo a k němu něco přidat. Minule šlo `__str__` u žáka opsat celé. Teď rodiče znovu nekopírujte:
 
 ```python
-class Zvire:
+class Osoba:
     def __init__(self, jmeno, vek):
         self.jmeno = jmeno
         self.vek = vek
 
     def __str__(self):
-        return self.jmeno + ", vek " + str(self.vek)
+        return self.jmeno + ", věk " + str(self.vek)
 
 
-class Pes(Zvire):
-    def __init__(self, jmeno, vek, plemeno):
+class Zak(Osoba):
+    def __init__(self, jmeno, vek, rocnik):
         super().__init__(jmeno, vek)
-        self.plemeno = plemeno
+        self.rocnik = rocnik
 
     def __str__(self):
-        return super().__str__() + ", " + self.plemeno
+        return super().__str__() + ", " + str(self.rocnik) + ". ročník"
 
 
-print(Pes("Azor", 5, "labrador"))
-# Azor, vek 5, labrador
+class Ucitel(Osoba):
+    def __init__(self, jmeno, vek, predmet):
+        super().__init__(jmeno, vek)
+        self.predmet = predmet
+
+    def __str__(self):
+        return super().__str__() + ", učitel " + self.predmet
+
+
+print(Zak("Eva", 14, 2))
+print(Ucitel("Jan", 40, "matematiky"))
+# Eva, věk 14, 2. ročník
+# Jan, věk 40, učitel matematiky
 ```
 
-`super().__str__()` spustí výpis zvířete. Pes jen připojí plemeno. Když se změní `__str__` rodiče, potomek to zdědí automaticky.
+`super().__str__()` spustí výpis osoby. Žák jen připojí ročník, učitel připojí předmět. Když se změní `__str__` rodiče, potomkové to zdědí automaticky.
 
 → viz `priklady/str_super.py`
 
@@ -120,10 +131,10 @@ print(Pes("Azor", 5, "labrador"))
 | Chyba | Následek |
 |-------|----------|
 | jiný název metody než u rodiče | přepis se nekoná, volá se rodič |
-| `if` podle typu v cyklu | další potomek = další větev, polymorfismus chybí |
+| `if` podle typu (žák/učitel) v cyklu | další potomek = další větev, polymorfismus chybí |
 | v přepsaném `__str__` znovu skládáte jméno a věk | patří do `super().__str__()` |
-| voláte `Pes.ozvi_se()` bez objektu | chybí `self`, `TypeError` |
-| do seznamu dáte třídu (`Pes`) místo instance (`Pes("Azor")`) | volání metody spadne |
+| voláte `Zak.prezentuj_se()` bez objektu | chybí `self`, `TypeError` |
+| do seznamu dáte třídu (`Zak`) místo instance (`Zak("Eva")`) | volání metody spadne |
 
 ## Shrnutí
 

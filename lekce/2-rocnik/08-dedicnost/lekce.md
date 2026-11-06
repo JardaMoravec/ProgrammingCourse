@@ -6,7 +6,7 @@ hodiny: 5
 obtiznost: stredni
 prerekvizity: [07-tridy-procviceni]
 cile:
-  - Vysvětlíte vztah „je“ (pes je zvíře) a zapíšete ho třídou
+  - Vysvětlíte vztah „je" (žák je osoba) a zapíšete ho třídou
   - Potomek použije atributy a metody rodiče
   - Doplníte konstruktor potomka přes super()
 migrovano_z:
@@ -18,7 +18,7 @@ migrovano_z:
 
 Lekce má **5 hodin** (jeden týden). Navazuje na [souhrn tříd](../07-tridy-procviceni/lekce.md).
 
-Když dvě třídy mají spoustu **stejného** kódu (atributy, `naskladnit`, `__str__`) a platí, že jedna věc **je** druhá (pes **je** zvíře), společné věci napíšete jednou u **rodiče**. Potomek je zdědí a přidá jen to svoje.
+Když dvě třídy mají spoustu **stejného** kódu (atributy, metody) a platí, že jedna věc **je** druhá (žák **je** osoba), společné věci napíšete jednou u **rodiče**. Potomek je zdědí a přidá jen to svoje.
 
 Přepisování stejné metody u více potomků (polymorfismus) je až lekce 09. Tady jde o vztah rodič → potomek a `super()`.
 
@@ -32,69 +32,17 @@ Přepisování stejné metody u více potomků (polymorfismus) je až lekce 09. 
 
 | Ze života | V kódu | Vztah |
 |-----------|--------|--------|
-| pes **je** zvíře | `class Pes(Zvire)` | dědičnost |
 | žák **je** osoba | `class Zak(Osoba)` | dědičnost |
-| tričko **je** oblečení | `class Triko(Obleceni)` | dědičnost |
+| učitel **je** osoba | `class Ucitel(Osoba)` | dědičnost |
 | auto **má** motor | `self.motor = Motor(...)` | složení (lekce 04) |
 
-Kolo u auta **není** auto — proto kolo z auta **nedědí**. Pes zvíře **je**, proto dědí.
+Žák je osoba — proto žák **dědí** od osoby. Motor u auta **není** auto — proto motor z auta **nedědí**.
 
-![Rodič Zvire a potomci Pes a Kocka](diagramy/dedicnost.svg)
+![Rodič Osoba a potomci Žák a Učitel](diagramy/dedicnost.svg)
 
 ## Potomek použije rodiče
 
 Rodič drží to, co mají všichni. Potomek v závorkách uvede jméno rodiče:
-
-```python
-class Zvire:
-    def __init__(self, jmeno, vek):
-        self.jmeno = jmeno
-        self.vek = vek
-
-    def predstavit(self):
-        return self.jmeno + ", vek " + str(self.vek)
-
-
-class Pes(Zvire):
-    def stekej(self):
-        return "Haf!"
-
-
-p = Pes("Azor", 5)
-print(p.predstavit())  # Azor, vek 5  — metoda z Zvire
-print(p.stekej())      # Haf!         — metoda z Pes
-print(p.jmeno)         # Azor         — atribut z konstruktoru Zvire
-```
-
-`Pes("Azor", 5)` funguje, protože pes **nemá vlastní** konstruktor — použije se `__init__` zvířete.
-
-Kočka je taky zvíře, jen jiný zvuk:
-
-```python
-class Zvire:
-    def __init__(self, jmeno, vek):
-        self.jmeno = jmeno
-        self.vek = vek
-
-    def predstavit(self):
-        return self.jmeno + ", vek " + str(self.vek)
-
-
-class Kocka(Zvire):
-    def zamnoukej(self):
-        return "Mnou!"
-
-
-k = Kocka("Micka", 3)
-print(k.predstavit())
-print(k.zamnoukej())
-```
-
-→ viz `priklady/zvire.py`
-
-## Zaměstnanec je osoba
-
-Stejný nápad jako v učebnici: zaměstnanec **je** osoba, plus má práci.
 
 ```python
 class Osoba:
@@ -106,131 +54,133 @@ class Osoba:
         return self.jmeno + " " + self.prijmeni
 
 
-class Zamestnanec(Osoba):
-    def nastav_pozici(self, pozice):
-        self.pozice = pozice
+class Zak(Osoba):
+    def ucit_se(self):
+        return "Učím se!"
 
 
-z = Zamestnanec("Karel", "Omáčka")
-z.nastav_pozici("skladnik")
-print(z.cele_jmeno())  # Karel Omáčka
-print(z.pozice)        # skladnik
+class Ucitel(Osoba):
+    def ucit(self, predmet):
+        return "Učím " + predmet
+
+
+z = Zak("Eva", "Nováková")
+print(z.cele_jmeno())  # Eva Nováková  — metoda z Osoba
+print(z.ucit_se())     # Učím se!      — metoda z Zak
+print(z.jmeno)         # Eva           — atribut z konstruktoru Osoba
+
+u = Ucitel("Jan", "Dvořák")
+print(u.cele_jmeno())  # Jan Dvořák    — metoda z Osoba
+print(u.ucit("matematiku"))  # Učím matematiku  — metoda z Ucitel
 ```
 
-→ viz `priklady/osoba_zamestnanec.py`
+`Zak("Eva", "Nováková")` i `Ucitel("Jan", "Dvořák")` fungují, protože **nemají vlastní** konstruktor — používají `__init__` osoby. Žák i Učitel jsou **osoby**, takže mají automaticky `cele_jmeno()` i všechny atributy.
+
+→ viz `priklady/osoba_zak_ucitel.py`
 
 ## super() — potomek má navíc atribut
 
-Pes má navíc plemeno. Konstruktor potomka nejdřív nechá rodiče nastavit jméno a věk, pak doplní svoje:
+Žák i Učitel mají navíc své atributy. Konstruktor potomka nejdřív nechá rodiče nastavit jméno a příjmení, pak doplní svoje:
 
 ```python
-class Zvire:
-    def __init__(self, jmeno, vek):
+class Osoba:
+    def __init__(self, jmeno, prijmeni):
         self.jmeno = jmeno
-        self.vek = vek
+        self.prijmeni = prijmeni
 
-    def predstavit(self):
-        return self.jmeno + ", vek " + str(self.vek)
-
-
-class Pes(Zvire):
-    def __init__(self, jmeno, vek, plemeno):
-        super().__init__(jmeno, vek)
-        self.plemeno = plemeno
-
-    def stekej(self):
-        return "Haf!"
+    def cele_jmeno(self):
+        return self.jmeno + " " + self.prijmeni
 
 
-p = Pes("Azor", 5, "labrador")
-print(p.predstavit())  # Azor, vek 5
-print(p.stekej())      # Haf!
-print(p.jmeno)     # Azor
-print(p.plemeno)   # labrador
+class Zak(Osoba):
+    def __init__(self, jmeno, prijmeni, rocnik):
+        super().__init__(jmeno, prijmeni)
+        self.rocnik = rocnik
+
+
+class Ucitel(Osoba):
+    def __init__(self, jmeno, prijmeni, predmet):
+        super().__init__(jmeno, prijmeni)
+        self.predmet = predmet
+
+
+z = Zak("Eva", "Nováková", 2)
+print(z.cele_jmeno())  # Eva Nováková
+print(z.rocnik)        # 2
+
+u = Ucitel("Jan", "Dvořák", "matematika")
+print(u.cele_jmeno())  # Jan Dvořák
+print(u.predmet)       # matematika
 ```
 
-`super()` znamená „rodič této třídy“. `super().__init__(...)` spustí konstruktor zvířete. Bez toho by pes neměl `jmeno` a `vek`.
+`super()` znamená „rodič této třídy". `super().__init__(...)` spustí konstruktor osoby. Bez toho by žák i učitel neměli `jmeno` a `prijmeni`.
 
-Nepíšete `Zvire.__init__(self, ...)` — `super()` je kratší a méně chybové.
+Nepíšete `Osoba.__init__(self, ...)` — `super()` je kratší a méně chybové.
 
-## Společné metody u oblečení
-
-Tričko i kalhoty jdou naskladnit. To nekopírujte dvakrát — patří rodiči `Obleceni`:
-
-```python
-class Obleceni:
-    def __init__(self, pocet_kusu, velikost, barva):
-        self.pocet_kusu = pocet_kusu
-        self.velikost = velikost
-        self.barva = barva
-
-    def naskladnit(self, pocet):
-        self.pocet_kusu = self.pocet_kusu + pocet
-
-
-class Triko(Obleceni):
-    def __init__(self, pocet_kusu, velikost, barva, s_lemecek):
-        super().__init__(pocet_kusu, velikost, barva)
-        self.s_lemecek = s_lemecek
-
-
-t = Triko(10, "L", "modra", True)
-t.naskladnit(5)
-print(t.pocet_kusu)  # 15
-```
-
-V lekci 05 bylo jen tričko. Teď vidíte, proč se hodí rodič: kalhoty dostanou `naskladnit` zadarmo.
-
-→ viz `priklady/obleceni.py`
+→ viz `priklady/osoba_zak_ucitel_super.py`
 
 ## __str__ u potomka
 
-Potomek zdědí i `__str__`. Když chcete ve výpisu i plemeno, metodu **přepíšete** (napíšete ji znovu u psa). Víc o přepisování je v lekci 09 — tady stačí vědět, že to jde:
+Potomek zdědí i `__str__`. Když chcete ve výpisu i další informace, metodu **přepíšete** (napíšete ji znovu u potomka). Víc o přepisování je v lekci 09 — tady stačí vědět, že to jde:
 
 ```python
-class Zvire:
-    def __init__(self, jmeno, vek):
+class Osoba:
+    def __init__(self, jmeno, prijmeni):
         self.jmeno = jmeno
-        self.vek = vek
+        self.prijmeni = prijmeni
 
     def __str__(self):
-        return self.jmeno + ", vek " + str(self.vek)
+        return self.jmeno + " " + self.prijmeni
 
 
-class Pes(Zvire):
-    def __init__(self, jmeno, vek, plemeno):
-        super().__init__(jmeno, vek)
-        self.plemeno = plemeno
+class Zak(Osoba):
+    def __init__(self, jmeno, prijmeni, rocnik):
+        super().__init__(jmeno, prijmeni)
+        self.rocnik = rocnik
 
     def __str__(self):
-        return super().__str__() + ", " + self.plemeno
+        return super().__str__() + ", " + str(self.rocnik) + ". ročník"
 
 
-p = Pes("Azor", 5, "labrador")
-print(p)  # Azor, vek 5, labrador
+class Ucitel(Osoba):
+    def __init__(self, jmeno, prijmeni, predmet):
+        super().__init__(jmeno, prijmeni)
+        self.predmet = predmet
+
+    def __str__(self):
+        return super().__str__() + ", učitel " + self.predmet
+
+
+z = Zak("Eva", "Nováková", 2)
+print(z)  # Eva Nováková, 2. ročník
+
+u = Ucitel("Jan", "Dvořák", "matematiky")
+print(u)  # Jan Dvořák, učitel matematiky
 ```
 
-`print(p)` pak použije `__str__` **psa**, ne zvířete.
+`print(z)` a `print(u)` používají `__str__` **potomka**, ne osoby. Každý potomek má vlastní verzi `__str__`.
+
+→ viz `priklady/osoba_zak_ucitel_str.py`
 
 ## Časté chyby
 
 | Chyba | Následek |
 |-------|----------|
-| `class Pes: Zvire` místo `class Pes(Zvire)` | pes zvíře nezdědí |
+| `class Zak: Osoba` místo `class Zak(Osoba)` | žák osobu nezdědí |
 | zapomenete `super().__init__(...)` | chybí atributy rodiče, `AttributeError` |
-| auto dědí z motoru | špatný vztah — auto motor **má**, není jím |
+| učitel dědí z předmětu | špatný vztah — učitel **má** předmět, není jím |
 | kopírujete stejnou metodu do tří potomků | patří k rodiči |
-| `Zvire()` místo `Pes(...)` když chcete psa | dostanete jen zvíře, bez `stekej` |
+| `Osoba()` místo `Zak(...)` když chcete žáka | dostanete jen osobu, bez `rocnik` |
 
 ## Shrnutí
 
 | Pojem | Význam |
 |-------|--------|
-| rodič | společné atributy a metody (`Zvire`) |
-| potomek | `class Pes(Zvire)` — **je** rodič plus svoje |
+| rodič | společné atributy a metody (`Osoba`) |
+| potomek | `class Zak(Osoba)` — **je** rodič plus svoje |
 | dědičnost | potomek metody rodiče umí, aniž by je psal |
 | `super()` | přístup k rodiči, hlavně ke konstruktoru |
-| složení | objekt **má** jiný objekt (auto má motor) |
+| složení | objekt **má** jiný objekt (učitel má třidu) |
 
 Příště polymorfismus — stejné volání, jiný výsledek podle typu potomka.
 

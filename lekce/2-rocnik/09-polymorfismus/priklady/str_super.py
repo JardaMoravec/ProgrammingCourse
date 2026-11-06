@@ -1,22 +1,32 @@
 """Přepis __str__ doplní rodiče přes super()."""
 
 
-class Zvire:
+class Osoba:
     def __init__(self, jmeno, vek):
         self.jmeno = jmeno
         self.vek = vek
 
     def __str__(self):
-        return self.jmeno + ", vek " + str(self.vek)
+        return self.jmeno + ", věk " + str(self.vek)
 
 
-class Pes(Zvire):
-    def __init__(self, jmeno, vek, plemeno):
+class Zak(Osoba):
+    def __init__(self, jmeno, vek, rocnik):
         super().__init__(jmeno, vek)
-        self.plemeno = plemeno
+        self.rocnik = rocnik
 
     def __str__(self):
-        return super().__str__() + ", " + self.plemeno
+        return super().__str__() + ", " + str(self.rocnik) + ". ročník"
 
 
-print(Pes("Azor", 5, "labrador"))
+class Ucitel(Osoba):
+    def __init__(self, jmeno, vek, predmet):
+        super().__init__(jmeno, vek)
+        self.predmet = predmet
+
+    def __str__(self):
+        return super().__str__() + ", učitel " + self.predmet
+
+
+print(Zak("Eva", 14, 2))
+print(Ucitel("Jan", 40, "matematiky"))
