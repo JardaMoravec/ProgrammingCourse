@@ -27,9 +27,10 @@ neukládá; k uložení je nutné výslovně přidat `--save`.
    python scripts/moodle_e2e.py --class 3I --lesson 7 --task 1 --pause
    ```
 
-   Skript použije přihlašovací údaje pouze při lokálním přihlášení přes běžný
-   Moodle formulář. Pokud škola používá SSO nebo jiný formulář, ponechte
-   přihlašovací pole prázdná a přihlaste se ručně v otevřeném prohlížeči.
+   Skript otevře přímo `/login/index.php`, bez předchozího načítání úvodní
+   stránky. Je-li nakonfigurované běžné přihlášení, počká na pole uživatelského
+   jména, heslo a tlačítko pro odeslání; při SSO se přihlaste ručně v otevřeném
+   prohlížeči.
 4. Ročník se odvodí z prvního čísla třídy (např. `2I` → 2. ročník,
    `1:IM` → 1. ročník). Skript nastaví název a úplný popis úkolu, na začátek
    popisu vloží ikonu kalendáře a tučný nadpis „Zadání:“. Běžné úkoly mají
@@ -46,10 +47,11 @@ neukládá; k uložení je nutné výslovně přidat `--save`.
    formulář otevřený pro kontrolu. Moodle může přepnout režim úprav i načíst
    editor asynchronně nebo pomalu načítat části kurzu; skript čeká na
    zobrazení konkrétních ovládacích prvků místo čekání na úplné načtení
-   formuláře VPL. Počká na
-   inicializaci JavaScriptového přepínače
-   před kliknutím, až 90 sekund na potvrzení režimu a až 60 sekund na další
-   prvky stránky. Běh vypisuje časované kroky; pokud se nepodaří najít sekci,
+   formuláře VPL. Každé čekání na ovládací prvek nebo podmínku stránky vypíše
+   jeho začátek, výsledek a dobu trvání; navigace čeká na odpověď Moodle a
+   následně na konkrétní ovládací prvek potřebný v daném kroku. Na přepnutí
+   režimu úprav čeká až 90 sekund, na další prvky až 60 sekund. Pokud se
+   nepodaří najít sekci,
    zobrazí také URL a názvy sekcí nalezené v kurzu. Pokud se v dialogu
    výběru aktivity neaktivuje tlačítko „Přidat“, vypíše stav volby VPL,
    tlačítek a případných zaškrtávacích polí.
@@ -85,8 +87,9 @@ python scripts/moodle_download_submissions.py --class 3I --lesson 5 --task 1
 
 Použijte `Z01` pro známkovaný úkol a běžné číslo (např. `1`) pro ostatní.
 Při použití školního SSO dokončete přihlášení v otevřeném okně Chromium.
-Skript počká na načtení seznamu odevzdání, klikne na nabídku `#action-menu-toggle-1`
-a počká, až se zobrazí volba ke stažení.
+Skript otevře přímo přihlašovací stránku, vypisuje začátek a výsledek čekání
+na jednotlivé prvky a navigace a po otevření seznamu odevzdání rozbalí
+`#action-menu-toggle-1`. Poté čeká na viditelnou volbu ke stažení.
 Výsledky zůstávají lokální v ignorované složce `řešení/`. Pokud cílová složka
 již existuje, nejprve ji ručně přejmenujte nebo přesuňte.
 

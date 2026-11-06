@@ -43,6 +43,7 @@ def log_progress(message: str) -> None:
 
 
 def wait_for_locator(locator, description: str, timeout: int = PAGE_TIMEOUT_MS):
+    from playwright.sync_api import Error as PlaywrightError
     from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
     log_progress(f"Čekám na {description} ({timeout // 1000} s).")
@@ -52,6 +53,9 @@ def wait_for_locator(locator, description: str, timeout: int = PAGE_TIMEOUT_MS):
     except PlaywrightTimeoutError:
         elapsed = time.monotonic() - started
         log_progress(f"{description} se nenašlo po {elapsed:.1f} s.")
+        raise
+    except PlaywrightError as error:
+        log_progress(f"Čekání na {description} selhalo: {error}")
         raise
     log_progress(f"{description} je připraveno ({time.monotonic() - started:.1f} s).")
     return locator
@@ -76,6 +80,7 @@ def wait_for_condition(
     timeout: int = PAGE_TIMEOUT_MS,
     arg=_NO_WAIT_ARGUMENT,
 ) -> None:
+    from playwright.sync_api import Error as PlaywrightError
     from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
     log_progress(f"Čekám na {description} ({timeout // 1000} s).")
@@ -89,10 +94,14 @@ def wait_for_condition(
         elapsed = time.monotonic() - started
         log_progress(f"Nepodařilo se: {description} ({elapsed:.1f} s).")
         raise
+    except PlaywrightError as error:
+        log_progress(f"Čekání na {description} selhalo: {error}")
+        raise
     log_progress(f"Hotovo: {description} ({time.monotonic() - started:.1f} s).")
 
 
 def click_and_wait_for_navigation(page, locator, description: str) -> None:
+    from playwright.sync_api import Error as PlaywrightError
     from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
     log_progress(f"Odesílám: {description}.")
@@ -107,22 +116,53 @@ def click_and_wait_for_navigation(page, locator, description: str) -> None:
         elapsed = time.monotonic() - started
         log_progress(
             f"Po akci „{description}“ nenastala navigace "
-            f"({elapsed:.1f} s, URL: {page.url})."
+            f"({elapsed:.1f} s, stránka {urlparse(page.url).path})."
         )
         raise RuntimeError(
             f"Po akci „{description}“ Moodle nenačetl další stránku."
         ) from error
+    except PlaywrightError as error:
+        log_progress(f"Akce „{description}“ selhala: {error}")
+        raise
     log_progress(
         f"Stránka po akci „{description}“ je načtena "
-        f"({time.monotonic() - started:.1f} s): {page.url}"
+        f"({time.monotonic() - started:.1f} s): {urlparse(page.url).path}"
+    )
+
+
+def click_element(locator, description: str) -> None:
+    from playwright.sync_api import Error as PlaywrightError
+
+    log_progress(f"Klikám na {description}.")
+    started = time.monotonic()
+    try:
+        locator.click(no_wait_after=True)
+    except PlaywrightError as error:
+        log_progress(
+            f"Kliknutí na {description} selhalo "
+            f"({time.monotonic() - started:.1f} s): {error}"
+        )
+        raise
+    log_progress(
+        f"Kliknutí na {description} dokončeno "
+        f"({time.monotonic() - started:.1f} s)."
     )
 
 
 def navigate(page, url: str) -> None:
+    from playwright.sync_api import Error as PlaywrightError
+
     parsed_url = urlparse(url)
     log_progress(f"Otevírám stránku {parsed_url.path}; čekám na odpověď Moodle.")
     started = time.monotonic()
-    page.goto(url, wait_until="commit")
+    try:
+        page.goto(url, wait_until="commit")
+    except PlaywrightError as error:
+        log_progress(
+            f"Navigace na {parsed_url.path} selhala "
+            f"({time.monotonic() - started:.1f} s): {error}"
+        )
+        raise
     log_progress(
         f"Stránka {urlparse(page.url).path} odpověděla "
         f"({time.monotonic() - started:.1f} s)."
@@ -130,9 +170,18 @@ def navigate(page, url: str) -> None:
 
 
 def reload_page(page, description: str) -> None:
+    from playwright.sync_api import Error as PlaywrightError
+
     log_progress(f"Obnovuji stránku: {description}.")
     started = time.monotonic()
-    page.reload(wait_until="commit")
+    try:
+        page.reload(wait_until="commit")
+    except PlaywrightError as error:
+        log_progress(
+            f"Obnovení stránky „{description}“ selhalo "
+            f"({time.monotonic() - started:.1f} s): {error}"
+        )
+        raise
     log_progress(
         f"Stránka obnovena ({time.monotonic() - started:.1f} s): "
         f"{urlparse(page.url).path}"
@@ -140,6 +189,7 @@ def reload_page(page, description: str) -> None:
 
 
 def wait_for_url(page, url, description: str, timeout: int = NAVIGATION_TIMEOUT_MS):
+    from playwright.sync_api import Error as PlaywrightError
     from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 
     log_progress(f"Čekám na {description} ({timeout // 1000} s).")
@@ -151,6 +201,9 @@ def wait_for_url(page, url, description: str, timeout: int = NAVIGATION_TIMEOUT_
             f"{description} se nenačetlo ({time.monotonic() - started:.1f} s, "
             f"aktuální stránka {urlparse(page.url).path})."
         )
+        raise
+    except PlaywrightError as error:
+        log_progress(f"Navigace na {description} selhala: {error}")
         raise
     log_progress(
         f"{description} načteno ({time.monotonic() - started:.1f} s)."
@@ -166,7 +219,10 @@ def login_to_moodle(page, config: dict) -> None:
     if page.locator("body.loggedin").count() or not urlparse(page.url).path.endswith(
         "/login/index.php"
     ):
-        log_progress(f"Moodle již potvrzuje přihlášení: {page.url}")
+        log_progress(
+            "Moodle již potvrzuje přihlášení: "
+            f"{urlparse(page.url).path}"
+        )
         return
 
     username = page.locator('input[name="username"], #username').first
@@ -186,7 +242,10 @@ def login_to_moodle(page, config: dict) -> None:
             if page.locator("body.loggedin").count() or not urlparse(
                 page.url
             ).path.endswith("/login/index.php"):
-                log_progress(f"Moodle již potvrzuje přihlášení: {page.url}")
+                log_progress(
+                    "Moodle již potvrzuje přihlášení: "
+                    f"{urlparse(page.url).path}"
+                )
                 return
             log_progress(
                 "Běžné přihlašovací pole není dostupné; přihlaste se ručně "
@@ -207,8 +266,7 @@ def login_to_moodle(page, config: dict) -> None:
                 "tlačítko pro přihlášení",
                 timeout=PAGE_TIMEOUT_MS,
             )
-            log_progress("Odesílám přihlašovací formulář.")
-            submit.click(no_wait_after=True)
+            click_element(submit, "tlačítko pro přihlášení")
             form_ready = True
     else:
         log_progress(
@@ -233,7 +291,7 @@ def login_to_moodle(page, config: dict) -> None:
         raise RuntimeError(
             f"{reason} Ověřte údaje nebo dokončete přihlášení v prohlížeči."
         ) from None
-    log_progress(f"Přihlášení potvrzeno: {page.url}")
+    log_progress(f"Přihlášení potvrzeno: {urlparse(page.url).path}")
 
 
 def load_config(path: Path) -> dict:
@@ -395,10 +453,10 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
             if not new_dialog.is_visible():
                 new_button = page.locator("#vpl_ide_new")
                 if not new_button.is_visible():
-                    more_button.click()
+                    click_element(more_button, "další soubory VPL")
                 if not new_dialog.is_visible():
                     wait_for_locator(new_button, "tlačítko pro vytvoření souboru VPL")
-                    new_button.click()
+                    click_element(new_button, "vytvoření nového souboru VPL")
         wait_for_locator(new_dialog, f"dialog pro vytvoření {filename}")
         new_dialog.locator("#vpl_ide_input_newfilename").fill(filename)
         confirm = new_dialog.get_by_role("button", name="OK", exact=True)
@@ -406,7 +464,7 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
             raise RuntimeError(
                 f"V dialogu editoru VPL nebylo nalezeno potvrzení pro {filename}."
             )
-        confirm.click()
+        click_element(confirm, f"potvrzení vytvoření souboru {filename}")
         wait_for_condition(
             page,
             f"vytvoření souboru {filename} v editoru",
@@ -422,7 +480,7 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
     editor_id = file_tabs.get_attribute("aria-controls")
     if not editor_id or not re.fullmatch(r"vpl_file\d+", editor_id):
         raise RuntimeError(f"Nelze určit editor souboru {filename}.")
-    file_tabs.locator("a").click()
+    click_element(file_tabs.locator("a"), f"otevření souboru {filename}")
     wait_for_condition(
         page,
         f"inicializaci editoru ACE pro {filename}",
@@ -453,7 +511,7 @@ def save_vpl_editor_file(page, filename: str, editor_id: str, content: str) -> N
         ".contains('ui-button-disabled')",
         timeout=PAGE_TIMEOUT_MS,
     )
-    page.locator("#vpl_ide_save").click()
+    click_element(page.locator("#vpl_ide_save"), f"uložení souboru {filename}")
     wait_for_condition(
         page,
         f"dokončení ukládání souboru {filename}",
@@ -492,7 +550,7 @@ def save_vpl_editor_file(page, filename: str, editor_id: str, content: str) -> N
     saved_editor_id = file_tabs.get_attribute("aria-controls")
     if not saved_editor_id or not re.fullmatch(r"vpl_file\d+", saved_editor_id):
         raise RuntimeError(f"Nelze ověřit uložený soubor {filename}.")
-    file_tabs.locator("a").click()
+    click_element(file_tabs.locator("a"), f"ověření souboru {filename}")
     wait_for_condition(
         page,
         f"inicializaci editoru ACE pro uložený soubor {filename}",
@@ -526,15 +584,17 @@ def configure_submission_period(
     submission_period_toggle = page.locator(
         'a[data-bs-toggle="collapse"][href="#id_submissionperiodcontainer"]'
     )
+    wait_for_locator(submission_period_toggle, "skupinu Submission period")
     if submission_period_toggle.count() != 1:
         raise RuntimeError(
             "Ve formuláři nebyla nalezena skupina „Submission period“."
         )
     if submission_period_toggle.get_attribute("aria-expanded") != "true":
-        submission_period_toggle.click()
+        click_element(submission_period_toggle, "rozbalení Submission period")
 
     for field_name, value in (("startdate", start), ("duedate", end)):
         enabled = page.locator(f'input[name="{field_name}[enabled]"]')
+        wait_for_locator(enabled, f"přepínač {field_name}[enabled]")
         if enabled.count() != 1:
             raise RuntimeError(
                 f"Ve formuláři chybí přepínač {field_name}[enabled]."
@@ -554,6 +614,7 @@ def configure_submission_period(
             selector = page.locator(
                 f'select[name="{field_name}[{component}]"]'
             )
+            wait_for_locator(selector, f"pole {field_name}[{component}]")
             if selector.count() != 1:
                 raise RuntimeError(
                     f"Ve formuláři chybí pole {field_name}[{component}]."
@@ -580,6 +641,7 @@ def configure_submission_period(
         minute_selector = page.locator(
             f'select[name="{field_name}[minute]"]'
         )
+        wait_for_locator(minute_selector, f"pole {field_name}[minute]")
         if minute_selector.count() != 1:
             raise RuntimeError(
                 f"Ve formuláři chybí pole {field_name}[minute]."
@@ -624,12 +686,13 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
     if panel.count() != 1:
         raise RuntimeError("Ve formuláři chybí sekce „Omezit přístup“.")
     toggle = panel.locator('a[data-bs-toggle="collapse"]')
+    wait_for_locator(toggle, "ovládání rozbalení Omezení přístupu")
     if toggle.count() != 1:
         raise RuntimeError(
             "V sekci „Omezit přístup“ nebylo nalezeno ovládání rozbalení."
         )
     if toggle.get_attribute("aria-expanded") != "true":
-        toggle.click()
+        click_element(toggle, "rozbalení Omezení přístupu")
     wait_for_visible(
         page,
         "#id_availabilityconditionsheadercontainer",
@@ -656,17 +719,18 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
             "V sekci „Omezit přístup“ nebylo nalezeno tlačítko "
             "„Přidat omezení“."
         )
-    add_restriction.click()
+    click_element(add_restriction, "Přidat omezení")
     date_option = page.locator("#availability_addrestriction_date")
+    wait_for_locator(date_option, "volbu omezení Datum")
     if date_option.count() != 1:
         raise RuntimeError(
             "V nabídce „Přidat omezení“ nebyla nalezena právě jedna volba "
             "„Datum“."
         )
-    wait_for_locator(date_option, "volbu omezení Datum")
-    date_option.click()
+    click_element(date_option, "volbu omezení Datum")
 
     direction = panel.locator('select[name="direction"]')
+    wait_for_locator(direction, "typ datumové podmínky")
     if direction.count() != 1:
         raise RuntimeError("V omezení přístupu chybí typ datumové podmínky.")
     direction.select_option(">=")
@@ -683,6 +747,7 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
         ("minute", available_after.minute),
     ):
         selector = panel.locator(f'select[name="x[{component}]"]')
+        wait_for_locator(selector, f"datumové pole {component}")
         if selector.count() != 1:
             raise RuntimeError(
                 f"V datumovém omezení přístupu chybí pole {component}."
@@ -710,6 +775,9 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
     condition_visibility_toggle = panel.locator(
         ".availability-item > a.availability-eye"
     )
+    wait_for_locator(
+        condition_visibility_toggle, "ovládání viditelnosti datumového omezení"
+    )
     if condition_visibility_toggle.count() != 1:
         raise RuntimeError(
             "U datumového omezení nelze určit, zda se omezená aktivita "
@@ -717,7 +785,7 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
         )
     visibility_title = condition_visibility_toggle.get_attribute("title") or ""
     if "Klepnutím skryjete" in visibility_title:
-        condition_visibility_toggle.click()
+        click_element(condition_visibility_toggle, "skrytí omezené aktivity")
 
     try:
         conditions = json.loads(conditions_field.input_value())
@@ -779,7 +847,7 @@ def configure_vpl_activity(
             raise RuntimeError(
                 "Nelze určit editor pro soubor vpl_evaluate.cases."
             )
-        cases_tab.click()
+        click_element(cases_tab, "otevření souboru testů")
         wait_for_condition(
             page,
             "inicializaci editoru ACE pro soubor testů",
@@ -796,7 +864,7 @@ def configure_vpl_activity(
             ".contains('ui-button-disabled')",
             timeout=PAGE_TIMEOUT_MS,
         )
-        page.locator("#vpl_ide_save").click()
+        click_element(page.locator("#vpl_ide_save"), "uložení souboru testů")
         wait_for_condition(
             page,
             "dokončení ukládání souboru testů",
@@ -817,8 +885,10 @@ def configure_vpl_activity(
         )
         wait_for_condition(
             page,
-            "ověření karet uložených souborů testů",
-            "document.querySelectorAll('#vpl_tabs a').length > 0",
+            "nalezení uložené karty vpl_evaluate.cases",
+            "name => [...document.querySelectorAll('#vpl_tabs a')]"
+            ".filter(tab => tab.innerText.trim() === name).length === 1",
+            arg="vpl_evaluate.cases",
             timeout=PAGE_TIMEOUT_MS,
         )
         tab_target = cases_tab.get_attribute("href")
@@ -831,7 +901,7 @@ def configure_vpl_activity(
             raise RuntimeError(
                 "Nelze znovu určit editor pro soubor vpl_evaluate.cases."
             )
-        cases_tab.click()
+        click_element(cases_tab, "ověření uloženého souboru testů")
         wait_for_condition(
             page,
             "inicializaci editoru ACE pro uložené testy",
@@ -1459,12 +1529,12 @@ def main() -> int:
             )
             browser.close()
             return 1
-        add_content.click()
+        click_element(add_content, "Přidat obsah")
         menu_option = page.locator(
             ".dropdown-menu.show:visible"
         ).get_by_text("Aktivita nebo zdroj", exact=True)
         wait_for_locator(menu_option, "položka Aktivita nebo zdroj")
-        menu_option.click()
+        click_element(menu_option, "Aktivita nebo zdroj")
 
         log_progress(
             "Vybírám aktivitu nebo zdroj a následně Virtual programming lab."
@@ -1488,7 +1558,7 @@ def main() -> int:
             "Volba VPL nalezena; vybírám ji "
             f"({vpl_option.get_attribute('href')})."
         )
-        vpl_option.click(no_wait_after=True)
+        click_element(vpl_option, "Virtual programming lab")
         log_progress("Kliknutí na volbu VPL odesláno.")
         add_selected = chooser.get_by_role("button", name="Přidat", exact=True)
         form_url = re.compile(r"/course/modedit\.php\?.*add=vpl")
@@ -1559,8 +1629,7 @@ def main() -> int:
             )
         else:
             log_progress("VPL je vybráno; tlačítko „Přidat“ je aktivní.")
-            add_selected.click(no_wait_after=True)
-            log_progress("Kliknutí na „Přidat“ odesláno.")
+            click_element(add_selected, "Přidat VPL")
         log_progress("Čekám na otevření formuláře nové VPL aktivity.")
         try:
             if not form_url.search(page.url):

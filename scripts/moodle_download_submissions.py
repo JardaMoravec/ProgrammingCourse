@@ -10,6 +10,7 @@ import shutil
 import stat
 import sys
 import tempfile
+import time
 import unicodedata
 import zipfile
 from urllib.parse import parse_qs, urlencode, urlparse
@@ -18,6 +19,7 @@ from moodle_e2e import (
     DEFAULT_CONFIG,
     NAVIGATION_TIMEOUT_MS,
     PAGE_TIMEOUT_MS,
+    click_element,
     course_year,
     find_task,
     load_config,
@@ -129,7 +131,7 @@ def open_submissions_list(page) -> None:
             "„Submissions list“."
         )
     log_progress("Otevírám seznam odevzdání.")
-    submissions_link.click(no_wait_after=True)
+    click_element(submissions_link, "odkaz Submissions list")
     wait_for_url(
         page,
         re.compile(r"/mod/vpl/views/submissionslist\.php(?:\?|$)"),
@@ -155,7 +157,7 @@ def open_header_download_menu(page):
         'a[href*="/mod/vpl/views/downloadallsubmissions.php"]:not([href*="all=1"])'
     )
     log_progress("Rozbaluji nabídku akcí.")
-    header_menu.click(no_wait_after=True)
+    click_element(header_menu, "nabídka akcí v hlavičce odevzdání")
     wait_for_visible(
         page,
         'a[href*="/mod/vpl/views/downloadallsubmissions.php"]:not([href*="all=1"])',
@@ -312,7 +314,7 @@ def main() -> int:
 
             activity = find_activity_link(page, activity_name)
             log_progress(f"Otevírám aktivitu „{activity_name}“.")
-            activity.click(no_wait_after=True)
+            click_element(activity, f"aktivitu „{activity_name}“")
             wait_for_url(
                 page,
                 re.compile(r"/mod/vpl/view\.php(?:\?|$)"),
@@ -331,9 +333,24 @@ def main() -> int:
                 temporary_path = Path(temporary)
                 archive_path = temporary_path / "submissions.zip"
                 extracted = temporary_path / "rozbaleno"
-                with page.expect_download(timeout=PAGE_TIMEOUT_MS) as download_info:
-                    download_item.click()
+                log_progress("Čekám na stažení archivu odevzdání.")
+                download_started = time.monotonic()
+                try:
+                    with page.expect_download(
+                        timeout=PAGE_TIMEOUT_MS
+                    ) as download_info:
+                        click_element(download_item, "Download submissions")
+                except PlaywrightTimeoutError:
+                    log_progress(
+                        "Stažení archivu se neobjevilo po "
+                        f"{time.monotonic() - download_started:.1f} s."
+                    )
+                    raise
                 download = download_info.value
+                log_progress(
+                    f"Archiv stažen za {time.monotonic() - download_started:.1f} s: "
+                    f"{download.suggested_filename}; ukládám lokálně."
+                )
                 download.save_as(archive_path)
                 if not zipfile.is_zipfile(archive_path):
                     raise RuntimeError(
