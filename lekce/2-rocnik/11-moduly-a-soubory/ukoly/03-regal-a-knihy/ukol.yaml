@@ -1,0 +1,31 @@
+title: Regál a knihy ve třech modulech
+stars: 2
+moodle: PRG-2-11-03
+ignore_input_prompt: true
+description: |
+  Rozdělte program do tří souborů:
+
+  - `kniha.py` definuje třídu `Kniha` s atributem `nazev`.
+  - `regal.py` importuje `Kniha` a definuje třídu `Regal`. Regál má
+    seznam knih, metodu `pridej(kniha)` a metodu `pocet()`.
+  - `main.py` importuje `Kniha` i `Regal`, načte počet knih a jejich
+    názvy, přidá je do regálu a vypíše `regal.pocet()`.
+
+  Importy uspořádejte jedním směrem: `main.py` → `regal.py` → `kniha.py`.
+
+odevzdani: |
+  Odevzdejte `kniha.py`, `regal.py` a `main.py`.
+io: |
+  **Vstup:** počet knih a poté jejich názvy, každý na samostatném řádku
+  **Výstup:** počet knih v regálu
+cases:
+  - name: dve-knihy
+    input: |
+      2
+      R.U.R.
+      Hobit
+    output: "2"
+  - name: prazdny-regal
+    input: |
+      0
+    output: "0"

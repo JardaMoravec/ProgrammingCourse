@@ -10,18 +10,23 @@ import shutil
 import stat
 import sys
 import tempfile
+import unicodedata
 import zipfile
 from urllib.parse import parse_qs, urlencode, urlparse
 
 from moodle_e2e import (
     DEFAULT_CONFIG,
-    LOGIN_TIMEOUT_MS,
     NAVIGATION_TIMEOUT_MS,
     PAGE_TIMEOUT_MS,
     course_year,
     find_task,
     load_config,
+    login_to_moodle,
+    log_progress,
+    navigate,
     parse_task_identifier,
+    wait_for_visible,
+    wait_for_url,
 )
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -113,36 +118,96 @@ def open_submissions_list(page) -> None:
     submissions_link = page.locator(
         'a.nav-link[href*="/mod/vpl/views/submissionslist.php"]'
     )
-    if submissions_link.count() != 1 or not submissions_link.is_visible():
+    wait_for_visible(
+        page,
+        'a.nav-link[href*="/mod/vpl/views/submissionslist.php"]',
+        "odkaz „Submissions list“",
+    )
+    if submissions_link.count() != 1:
         raise RuntimeError(
-            "Na stránce VPL aktivity nebyl nalezen odkaz "
+            "Na stránce VPL aktivity nebyl nalezen právě jeden odkaz "
             "„Submissions list“."
         )
-    submissions_link.click()
-    if "/mod/vpl/views/submissionslist.php" not in urlparse(page.url).path:
-        raise RuntimeError("Odkaz neotevřel seznam odevzdání.")
+    log_progress("Otevírám seznam odevzdání.")
+    submissions_link.click(no_wait_after=True)
+    wait_for_url(
+        page,
+        re.compile(r"/mod/vpl/views/submissionslist\.php(?:\?|$)"),
+        "seznamu odevzdání",
+    )
+    log_progress(f"Seznam odevzdání otevřen: {page.url}")
 
 
 def open_header_download_menu(page):
-    header_menu = page.locator(
-        'thead a.dropdown-toggle[aria-label="Nabídka akcí"]'
+    header_menu = page.locator("#action-menu-toggle-1")
+    wait_for_visible(
+        page,
+        "#action-menu-toggle-1",
+        "nabídka akcí v hlavičce odevzdání",
     )
-    if header_menu.count() != 1 or not header_menu.is_visible():
+    if header_menu.count() != 1:
         raise RuntimeError(
-            "V hlavičce tabulky odevzdání nebyla nalezena jednoznačná "
-            "nabídka akcí."
+            "V hlavičce tabulky odevzdání nebylo nalezeno tlačítko "
+            "nabídky #action-menu-toggle-1."
         )
-    header_menu.click()
 
     download_item = page.locator(
         'a[href*="/mod/vpl/views/downloadallsubmissions.php"]:not([href*="all=1"])'
     )
-    if download_item.count() != 1 or not download_item.is_visible():
+    log_progress("Rozbaluji nabídku akcí.")
+    header_menu.click(no_wait_after=True)
+    wait_for_visible(
+        page,
+        'a[href*="/mod/vpl/views/downloadallsubmissions.php"]:not([href*="all=1"])',
+        "volba „Download submissions“",
+    )
+    if download_item.count() != 1:
         raise RuntimeError(
-            "V nabídce hlavičky tabulky nebyla nalezena volba "
+            "V nabídce hlavičky tabulky nebyla nalezena právě jedna volba "
             "„Download submissions“."
         )
     return download_item
+
+
+def normalize_activity_name(value: str) -> str:
+    value = unicodedata.normalize("NFKD", value).casefold()
+    value = "".join(
+        character
+        for character in value
+        if unicodedata.category(character) != "Mn"
+    )
+    return " ".join(
+        "".join(character if character.isalnum() else " " for character in value).split()
+    )
+
+
+def find_activity_link(page, activity_name: str):
+    activities = page.locator('a[href*="/mod/vpl/view.php"]')
+    expected = normalize_activity_name(activity_name)
+    matches = []
+    names = []
+
+    for index in range(activities.count()):
+        activity = activities.nth(index)
+        text = activity.inner_text().strip()
+        aria_label = activity.get_attribute("aria-label") or ""
+        title = activity.get_attribute("title") or ""
+        searchable_name = " ".join((text, aria_label, title))
+        names.append(text or aria_label or title or "(bez názvu)")
+        if expected in normalize_activity_name(searchable_name):
+            matches.append(activity)
+
+    if len(matches) != 1:
+        discovered = ", ".join(f"„{name}“" for name in names[:12]) or "žádná"
+        if len(names) > 12:
+            discovered += f", … (+{len(names) - 12})"
+        raise RuntimeError(
+            f"V kurzu nebyla nalezena právě jedna VPL aktivita "
+            f"odpovídající „{activity_name}“ (nalezeno: {len(matches)}). "
+            f"Nalezené VPL aktivity: {discovered}."
+        )
+
+    return matches[0]
 
 
 def main() -> int:
@@ -224,62 +289,38 @@ def main() -> int:
             page = browser.new_page(accept_downloads=True)
             page.set_default_timeout(PAGE_TIMEOUT_MS)
             page.set_default_navigation_timeout(NAVIGATION_TIMEOUT_MS)
-            page.goto(config["base_url"], wait_until="domcontentloaded")
-            if not page.locator("body.loggedin").count():
-                page.goto(
-                    f"{config['base_url']}/login/index.php",
-                    wait_until="domcontentloaded",
-                )
-
-            username = page.locator('input[name="username"], #username').first
-            password = page.locator('input[name="password"], #password').first
-            if config["username"] and username.count() and password.count():
-                username.fill(config["username"])
-                password.fill(config["password"])
-                submit = page.locator(
-                    "#loginbtn, button[type='submit'], input[type='submit']"
-                ).first
-                if submit.count():
-                    submit.click()
-            else:
-                print("Přihlaste se do Moodle v otevřeném okně prohlížeče.")
-
-            print("Čekám na přihlášení do Moodle…")
-            try:
-                page.wait_for_function(
-                    """() => document.body?.classList.contains('loggedin')
-                        || !location.pathname.endsWith('/login/index.php')""",
-                    timeout=LOGIN_TIMEOUT_MS,
-                )
-            except PlaywrightTimeoutError as error:
-                raise RuntimeError(
-                    "Přihlášení nebylo potvrzeno. Ověřte údaje nebo dokončete "
-                    "přihlášení v prohlížeči."
-                ) from error
+            login_to_moodle(page, config)
 
             course_url = (
                 f"{config['base_url']}/course/view.php?"
                 f"{urlencode({'id': course_id})}"
             )
-            page.goto(course_url, wait_until="domcontentloaded")
+            log_progress(f"Otevírám kurz '{args.class_name}' (ID {course_id}).")
+            navigate(page, course_url)
             query = parse_qs(urlparse(page.url).query)
             if query.get("id") != [course_id]:
                 raise RuntimeError(
                     f"Nepodařilo se otevřít kurz '{args.class_name}' "
                     f"(ID {course_id}); Moodle přesměroval na {page.url}."
                 )
+            wait_for_visible(
+                page,
+                'li[id^="section-"]',
+                f"sekce kurzu '{args.class_name}'",
+            )
+            log_progress(f"Kurz otevřen: {page.url}")
 
-            activity = page.locator(
-                'a[href*="/mod/vpl/view.php"]'
-            ).filter(has_text=re.compile(re.escape(activity_name)))
-            if activity.count() != 1:
-                raise RuntimeError(
-                    f"V kurzu nebyla nalezena právě jedna VPL aktivita "
-                    f"„{activity_name}“."
-                )
-            activity.click()
+            activity = find_activity_link(page, activity_name)
+            log_progress(f"Otevírám aktivitu „{activity_name}“.")
+            activity.click(no_wait_after=True)
+            wait_for_url(
+                page,
+                re.compile(r"/mod/vpl/view\.php(?:\?|$)"),
+                "VPL aktivity",
+            )
             if "/mod/vpl/view.php" not in urlparse(page.url).path:
                 raise RuntimeError("Odkaz neotevřel očekávanou VPL aktivitu.")
+            log_progress(f"Aktivita otevřena: {page.url}")
 
             open_submissions_list(page)
             download_item = open_header_download_menu(page)

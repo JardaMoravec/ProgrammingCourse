@@ -1,0 +1,33 @@
+title: Projekty s vlastními seznamy úkolů
+stars: 2
+moodle: PRG-2-13-03
+ignore_input_prompt: true
+description: |
+  Vytvořte dataclass `Projekt` s atributem `nazev` a seznamem `ukoly`.
+  Seznam nastavte pomocí `field(default_factory=list)`, aby každý
+  projekt dostal vlastní prázdný seznam.
+
+  Načtěte názvy dvou projektů a jeden úkol. Přidejte úkol pouze do
+  prvního projektu a vypište oba objekty. Druhý seznam musí zůstat
+  prázdný.
+
+io: |
+  **Vstup:** názvy dvou projektů a úkol, každý na řádku
+  **Výstup:** automatické výpisy obou projektů
+cases:
+  - name: oddelene-seznamy
+    input: |
+      Web
+      Hra
+      Navrh
+    output: |
+      Projekt(nazev='Web', ukoly=['Navrh'])
+      Projekt(nazev='Hra', ukoly=[])
+  - name: druhy-projekt
+    input: |
+      Skola
+      Knihovna
+      Databaze
+    output: |
+      Projekt(nazev='Skola', ukoly=['Databaze'])
+      Projekt(nazev='Knihovna', ukoly=[])

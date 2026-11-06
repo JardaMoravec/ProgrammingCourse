@@ -1,0 +1,41 @@
+title: Měření v dataclass
+stars: 3
+moodle: PRG-2-13-04
+ignore_input_prompt: true
+description: |
+  Vytvořte dataclass `Zaznam` s atributem `nazev` a seznamem celých
+  čísel `hodnoty`, který má výchozí hodnotu vytvořenou přes
+  `field(default_factory=list)`. Přidejte metodu `pridej(hodnota)`,
+  která přidá číslo do seznamu.
+
+  Načtěte název prvního záznamu, počet a jeho hodnoty, potom totéž pro
+  druhý záznam. Oba objekty vytvořte bez předání seznamu do konstruktoru,
+  hodnoty přidávejte metodou a nakonec vypište oba objekty.
+
+io: |
+  **Vstup:** název, počet a hodnoty pro každý ze dvou záznamů
+  **Výstup:** automatické výpisy obou záznamů
+cases:
+  - name: dva-zaznamy
+    input: |
+      Teplota
+      2
+      18
+      21
+      Tlak
+      1
+      101
+    output: |
+      Zaznam(nazev='Teplota', hodnoty=[18, 21])
+      Zaznam(nazev='Tlak', hodnoty=[101])
+  - name: prazdny-prvni
+    input: |
+      Bez dat
+      0
+      Vlhkost
+      2
+      40
+      45
+    output: |
+      Zaznam(nazev='Bez dat', hodnoty=[])
+      Zaznam(nazev='Vlhkost', hodnoty=[40, 45])

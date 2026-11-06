@@ -1,0 +1,26 @@
+title: Obdélník a odvozená plocha
+stars: 1
+moodle: PRG-2-12-01
+ignore_input_prompt: true
+description: |
+  Vytvořte třídu `Obdelnik` s atributy `sirka` a `vyska`. Pomocí
+  dekorátoru `@property` přidejte vlastnost `plocha`, která vrátí jejich
+  součin.
+
+  Načtěte šířku a výšku jako celá čísla, vytvořte obdélník a vypište
+  `obdelnik.plocha`. Vlastnost se volá bez závorek.
+
+io: |
+  **Vstup:** šířka a výška, každá na samostatném řádku
+  **Výstup:** plocha obdélníku
+cases:
+  - name: ctverec
+    input: |
+      5
+      5
+    output: "25"
+  - name: obdelnik
+    input: |
+      4
+      7
+    output: "28"

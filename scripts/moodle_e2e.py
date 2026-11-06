@@ -9,6 +9,7 @@ import html
 import json
 import re
 import sys
+import time
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlparse
 
@@ -35,6 +36,204 @@ CZECH_MONTHS = (
     "listopadu",
     "prosince",
 )
+
+
+def log_progress(message: str) -> None:
+    print(f"[{datetime.now():%H:%M:%S}] {message}", flush=True)
+
+
+def wait_for_locator(locator, description: str, timeout: int = PAGE_TIMEOUT_MS):
+    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+    log_progress(f"Čekám na {description} ({timeout // 1000} s).")
+    started = time.monotonic()
+    try:
+        locator.wait_for(state="visible", timeout=timeout)
+    except PlaywrightTimeoutError:
+        elapsed = time.monotonic() - started
+        log_progress(f"{description} se nenašlo po {elapsed:.1f} s.")
+        raise
+    log_progress(f"{description} je připraveno ({time.monotonic() - started:.1f} s).")
+    return locator
+
+
+def wait_for_visible(
+    page, selector: str, description: str, timeout: int = PAGE_TIMEOUT_MS
+):
+    return wait_for_locator(
+        page.locator(selector).first, description, timeout=timeout
+    )
+
+
+_NO_WAIT_ARGUMENT = object()
+
+
+def wait_for_condition(
+    page,
+    description: str,
+    expression: str,
+    *,
+    timeout: int = PAGE_TIMEOUT_MS,
+    arg=_NO_WAIT_ARGUMENT,
+) -> None:
+    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+    log_progress(f"Čekám na {description} ({timeout // 1000} s).")
+    started = time.monotonic()
+    try:
+        if arg is _NO_WAIT_ARGUMENT:
+            page.wait_for_function(expression, timeout=timeout)
+        else:
+            page.wait_for_function(expression, arg=arg, timeout=timeout)
+    except PlaywrightTimeoutError:
+        elapsed = time.monotonic() - started
+        log_progress(f"Nepodařilo se: {description} ({elapsed:.1f} s).")
+        raise
+    log_progress(f"Hotovo: {description} ({time.monotonic() - started:.1f} s).")
+
+
+def click_and_wait_for_navigation(page, locator, description: str) -> None:
+    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+    log_progress(f"Odesílám: {description}.")
+    started = time.monotonic()
+    try:
+        with page.expect_navigation(
+            wait_until="domcontentloaded",
+            timeout=NAVIGATION_TIMEOUT_MS,
+        ):
+            locator.click(no_wait_after=True)
+    except PlaywrightTimeoutError as error:
+        elapsed = time.monotonic() - started
+        log_progress(
+            f"Po akci „{description}“ nenastala navigace "
+            f"({elapsed:.1f} s, URL: {page.url})."
+        )
+        raise RuntimeError(
+            f"Po akci „{description}“ Moodle nenačetl další stránku."
+        ) from error
+    log_progress(
+        f"Stránka po akci „{description}“ je načtena "
+        f"({time.monotonic() - started:.1f} s): {page.url}"
+    )
+
+
+def navigate(page, url: str) -> None:
+    parsed_url = urlparse(url)
+    log_progress(f"Otevírám stránku {parsed_url.path}; čekám na odpověď Moodle.")
+    started = time.monotonic()
+    page.goto(url, wait_until="commit")
+    log_progress(
+        f"Stránka {urlparse(page.url).path} odpověděla "
+        f"({time.monotonic() - started:.1f} s)."
+    )
+
+
+def reload_page(page, description: str) -> None:
+    log_progress(f"Obnovuji stránku: {description}.")
+    started = time.monotonic()
+    page.reload(wait_until="commit")
+    log_progress(
+        f"Stránka obnovena ({time.monotonic() - started:.1f} s): "
+        f"{urlparse(page.url).path}"
+    )
+
+
+def wait_for_url(page, url, description: str, timeout: int = NAVIGATION_TIMEOUT_MS):
+    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+    log_progress(f"Čekám na {description} ({timeout // 1000} s).")
+    started = time.monotonic()
+    try:
+        page.wait_for_url(url, timeout=timeout)
+    except PlaywrightTimeoutError:
+        log_progress(
+            f"{description} se nenačetlo ({time.monotonic() - started:.1f} s, "
+            f"aktuální stránka {urlparse(page.url).path})."
+        )
+        raise
+    log_progress(
+        f"{description} načteno ({time.monotonic() - started:.1f} s)."
+    )
+
+
+def login_to_moodle(page, config: dict) -> None:
+    from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+    login_url = f"{config['base_url']}/login/index.php"
+    navigate(page, login_url)
+
+    if page.locator("body.loggedin").count() or not urlparse(page.url).path.endswith(
+        "/login/index.php"
+    ):
+        log_progress(f"Moodle již potvrzuje přihlášení: {page.url}")
+        return
+
+    username = page.locator('input[name="username"], #username').first
+    password = page.locator('input[name="password"], #password').first
+    credentials_available = bool(config["username"] and config["password"])
+    form_ready = False
+
+    if credentials_available:
+        try:
+            wait_for_visible(
+                page,
+                'input[name="username"], #username',
+                "pole uživatelského jména",
+                timeout=15_000,
+            )
+        except PlaywrightTimeoutError:
+            if page.locator("body.loggedin").count() or not urlparse(
+                page.url
+            ).path.endswith("/login/index.php"):
+                log_progress(f"Moodle již potvrzuje přihlášení: {page.url}")
+                return
+            log_progress(
+                "Běžné přihlašovací pole není dostupné; přihlaste se ručně "
+                "přes školní SSO."
+            )
+        else:
+            wait_for_visible(
+                page,
+                'input[name="password"], #password',
+                "pole hesla",
+                timeout=PAGE_TIMEOUT_MS,
+            )
+            username.fill(config["username"])
+            password.fill(config["password"])
+            submit = wait_for_visible(
+                page,
+                "#loginbtn, button[type='submit'], input[type='submit']",
+                "tlačítko pro přihlášení",
+                timeout=PAGE_TIMEOUT_MS,
+            )
+            log_progress("Odesílám přihlašovací formulář.")
+            submit.click(no_wait_after=True)
+            form_ready = True
+    else:
+        log_progress(
+            "Automatické přihlášení není nakonfigurováno; přihlaste se "
+            "v otevřeném okně prohlížeče."
+        )
+
+    try:
+        wait_for_condition(
+            page,
+            "potvrzení přihlášení do Moodle",
+            """() => document.body?.classList.contains('loggedin')
+                || !location.pathname.endsWith('/login/index.php')""",
+            timeout=LOGIN_TIMEOUT_MS,
+        )
+    except PlaywrightTimeoutError:
+        reason = (
+            "Přihlášení nebylo potvrzeno po odeslání formuláře."
+            if form_ready
+            else "Přihlášení nebylo potvrzeno."
+        )
+        raise RuntimeError(
+            f"{reason} Ověřte údaje nebo dokončete přihlášení v prohlížeči."
+        ) from None
+    log_progress(f"Přihlášení potvrzeno: {page.url}")
 
 
 def load_config(path: Path) -> dict:
@@ -165,7 +364,9 @@ def task_description_html(task: dict, year: int, due_date: date) -> str:
 
 
 def ensure_vpl_editor_file(page, filename: str) -> str:
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"načtení VPL editoru souborů při hledání {filename}",
         """() => {
             const save = document.getElementById('vpl_ide_save');
             const tabs = document.querySelectorAll('#vpl_tabs_ul li');
@@ -190,15 +391,15 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
     if file_tabs.count() == 0:
         if not new_dialog.is_visible():
             more_button = page.locator("#vpl_ide_more")
-            more_button.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+            wait_for_locator(more_button, "tlačítko dalších souborů VPL")
             if not new_dialog.is_visible():
                 new_button = page.locator("#vpl_ide_new")
                 if not new_button.is_visible():
                     more_button.click()
                 if not new_dialog.is_visible():
-                    new_button.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+                    wait_for_locator(new_button, "tlačítko pro vytvoření souboru VPL")
                     new_button.click()
-        new_dialog.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+        wait_for_locator(new_dialog, f"dialog pro vytvoření {filename}")
         new_dialog.locator("#vpl_ide_input_newfilename").fill(filename)
         confirm = new_dialog.get_by_role("button", name="OK", exact=True)
         if confirm.count() != 1:
@@ -206,7 +407,9 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
                 f"V dialogu editoru VPL nebylo nalezeno potvrzení pro {filename}."
             )
         confirm.click()
-        page.wait_for_function(
+        wait_for_condition(
+            page,
+            f"vytvoření souboru {filename} v editoru",
             "name => [...document.querySelectorAll('#vpl_tabs_ul li')]"
             ".filter(tab => tab.innerText.trim() === name).length === 1",
             arg=filename,
@@ -220,7 +423,9 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
     if not editor_id or not re.fullmatch(r"vpl_file\d+", editor_id):
         raise RuntimeError(f"Nelze určit editor souboru {filename}.")
     file_tabs.locator("a").click()
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"inicializaci editoru ACE pro {filename}",
         "id => window.ace && document.getElementById(id) "
         "&& ace.edit(document.getElementById(id))",
         arg=editor_id,
@@ -241,22 +446,28 @@ def save_vpl_editor_file(page, filename: str, editor_id: str, content: str) -> N
         "ace.edit(document.getElementById(id)).setValue(content)",
         {"id": editor_id, "content": content},
     )
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"povolení uložení souboru {filename}",
         "!document.getElementById('vpl_ide_save')?.classList"
         ".contains('ui-button-disabled')",
         timeout=PAGE_TIMEOUT_MS,
     )
     page.locator("#vpl_ide_save").click()
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"dokončení ukládání souboru {filename}",
         "document.getElementById('vpl_ide_save')?.classList"
         ".contains('ui-button-disabled')",
         timeout=PAGE_TIMEOUT_MS,
     )
-    page.reload(wait_until="domcontentloaded")
+    reload_page(page, f"editor souboru {filename}")
     file_tabs = page.locator("#vpl_tabs_ul li").filter(
         has_text=re.compile(rf"^\s*{re.escape(filename)}\s*$")
     )
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"opětovné načtení editoru souboru {filename}",
         """() => {
             const save = document.getElementById('vpl_ide_save');
             const tabs = document.querySelectorAll('#vpl_tabs_ul li');
@@ -270,7 +481,9 @@ def save_vpl_editor_file(page, filename: str, editor_id: str, content: str) -> N
         }""",
         timeout=PAGE_TIMEOUT_MS,
     )
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"ověření existence uloženého souboru {filename}",
         "name => [...document.querySelectorAll('#vpl_tabs_ul li')]"
         ".filter(tab => tab.innerText.trim() === name).length === 1",
         arg=filename,
@@ -280,7 +493,9 @@ def save_vpl_editor_file(page, filename: str, editor_id: str, content: str) -> N
     if not saved_editor_id or not re.fullmatch(r"vpl_file\d+", saved_editor_id):
         raise RuntimeError(f"Nelze ověřit uložený soubor {filename}.")
     file_tabs.locator("a").click()
-    page.wait_for_function(
+    wait_for_condition(
+        page,
+        f"inicializaci editoru ACE pro uložený soubor {filename}",
         "id => window.ace && document.getElementById(id) "
         "&& ace.edit(document.getElementById(id))",
         arg=saved_editor_id,
@@ -397,6 +612,7 @@ def configure_submission_period(
 
 def configure_graded_task_access(page, available_after: datetime) -> None:
     show_description = page.locator("#id_showdescription")
+    wait_for_locator(show_description, "volbu zobrazení popisu v kurzu")
     if show_description.count() != 1:
         raise RuntimeError(
             "Ve formuláři nebyla nalezena volba zobrazení popisu v kurzu."
@@ -404,6 +620,7 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
     show_description.set_checked(False)
 
     panel = page.locator("#id_availabilityconditionsheader")
+    wait_for_locator(panel, "sekci Omezení přístupu")
     if panel.count() != 1:
         raise RuntimeError("Ve formuláři chybí sekce „Omezit přístup“.")
     toggle = panel.locator('a[data-bs-toggle="collapse"]')
@@ -413,8 +630,10 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
         )
     if toggle.get_attribute("aria-expanded") != "true":
         toggle.click()
-    page.locator("#id_availabilityconditionsheadercontainer").wait_for(
-        state="visible", timeout=PAGE_TIMEOUT_MS
+    wait_for_visible(
+        page,
+        "#id_availabilityconditionsheadercontainer",
+        "panel Omezení přístupu",
     )
 
     conditions_field = page.locator("#id_availabilityconditionsjson")
@@ -431,6 +650,7 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
     add_restriction = panel.get_by_role(
         "button", name="Přidat omezení ...", exact=True
     )
+    wait_for_locator(add_restriction, "tlačítko Přidat omezení")
     if add_restriction.count() != 1:
         raise RuntimeError(
             "V sekci „Omezit přístup“ nebylo nalezeno tlačítko "
@@ -443,7 +663,7 @@ def configure_graded_task_access(page, available_after: datetime) -> None:
             "V nabídce „Přidat omezení“ nebyla nalezena právě jedna volba "
             "„Datum“."
         )
-    date_option.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+    wait_for_locator(date_option, "volbu omezení Datum")
     date_option.click()
 
     direction = panel.locator('select[name="direction"]')
@@ -529,18 +749,22 @@ def configure_vpl_activity(
     requested_filename: str,
 ) -> None:
     if cases_content is not None:
-        page.goto(
+        log_progress("Otevírám konfiguraci testovacích souborů VPL.")
+        navigate(
+            page,
             f"{base_url}/mod/vpl/forms/testcasesfile.php?"
             f"{urlencode({'id': activity_id})}",
-            wait_until="domcontentloaded",
         )
-        page.wait_for_function(
+        log_progress("Čekám na editor testovacích souborů.")
+        wait_for_condition(
+            page,
+            "načtení karet souborů testů",
             "document.getElementById('vpl_ide_save') "
             "&& document.querySelectorAll('#vpl_tabs a').length > 0",
             timeout=PAGE_TIMEOUT_MS,
         )
         test_tabs = page.locator("#vpl_tabs a")
-        test_tabs.first.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+        wait_for_visible(page, "#vpl_tabs a", "karta souboru testů")
         cases_tab = test_tabs.filter(
             has_text=re.compile(r"^\s*vpl_evaluate\.cases\s*$")
         )
@@ -556,26 +780,34 @@ def configure_vpl_activity(
                 "Nelze určit editor pro soubor vpl_evaluate.cases."
             )
         cases_tab.click()
-        page.wait_for_function(
+        wait_for_condition(
+            page,
+            "inicializaci editoru ACE pro soubor testů",
             "id => window.ace && document.getElementById(id) "
             "&& ace.edit(document.getElementById(id))",
             arg=editor_id,
             timeout=PAGE_TIMEOUT_MS,
         )
         replace_vpl_editor_content(page, editor_id, cases_content)
-        page.wait_for_function(
+        wait_for_condition(
+            page,
+            "povolení uložení souboru testů",
             "!document.getElementById('vpl_ide_save')?.classList"
             ".contains('ui-button-disabled')",
             timeout=PAGE_TIMEOUT_MS,
         )
         page.locator("#vpl_ide_save").click()
-        page.wait_for_function(
+        wait_for_condition(
+            page,
+            "dokončení ukládání souboru testů",
             "document.getElementById('vpl_ide_save')?.classList"
             ".contains('ui-button-disabled')",
             timeout=PAGE_TIMEOUT_MS,
         )
-        page.reload(wait_until="domcontentloaded")
-        page.wait_for_function(
+        reload_page(page, "uložená konfigurace testů")
+        wait_for_condition(
+            page,
+            "načtení uložených karet souborů testů",
             "document.getElementById('vpl_ide_save') "
             "&& document.querySelectorAll('#vpl_tabs a').length > 0",
             timeout=PAGE_TIMEOUT_MS,
@@ -583,7 +815,9 @@ def configure_vpl_activity(
         cases_tab = page.locator("#vpl_tabs a").filter(
             has_text=re.compile(r"^\s*vpl_evaluate\.cases\s*$")
         )
-        page.wait_for_function(
+        wait_for_condition(
+            page,
+            "ověření karet uložených souborů testů",
             "document.querySelectorAll('#vpl_tabs a').length > 0",
             timeout=PAGE_TIMEOUT_MS,
         )
@@ -598,7 +832,9 @@ def configure_vpl_activity(
                 "Nelze znovu určit editor pro soubor vpl_evaluate.cases."
             )
         cases_tab.click()
-        page.wait_for_function(
+        wait_for_condition(
+            page,
+            "inicializaci editoru ACE pro uložené testy",
             "id => window.ace && document.getElementById(id) "
             "&& ace.edit(document.getElementById(id))",
             arg=saved_editor_id,
@@ -613,37 +849,51 @@ def configure_vpl_activity(
                 "nepodařilo uložit."
             )
 
-    page.goto(
+    log_progress("Otevírám nastavení Execution options.")
+    navigate(
+        page,
         f"{base_url}/mod/vpl/forms/executionoptions.php?"
         f"{urlencode({'id': activity_id})}",
-        wait_until="domcontentloaded",
     )
     for field in ("run", "evaluate"):
-        selector = page.locator(f"#id_{field}")
+        selector = wait_for_visible(
+            page,
+            f"#id_{field}",
+            f"volba Execution options {field}",
+        )
         if selector.count() != 1:
             raise RuntimeError(
                 f"V „Execution options“ nebyla nalezena volba {field}."
             )
         selector.select_option(label="Ano")
-    page.locator("#id_saveoptions").click()
-    page.wait_for_load_state("domcontentloaded")
-    page.goto(
+    save_options = wait_for_visible(
+        page, "#id_saveoptions", "tlačítko pro uložení Execution options"
+    )
+    click_and_wait_for_navigation(page, save_options, "uložení Execution options")
+    log_progress("Znovu ověřuji uložené Execution options.")
+    navigate(
+        page,
         f"{base_url}/mod/vpl/forms/executionoptions.php?"
         f"{urlencode({'id': activity_id})}",
-        wait_until="domcontentloaded",
     )
-    if any(
-        page.locator(f"#id_{field}").input_value() != "1"
-        for field in ("run", "evaluate")
-    ):
+    saved_options = {}
+    for field in ("run", "evaluate"):
+        selector = wait_for_visible(
+            page,
+            f"#id_{field}",
+            f"uložená volba Execution options {field}",
+        )
+        saved_options[field] = selector.input_value()
+    if any(value != "1" for value in saved_options.values()):
         raise RuntimeError(
             "Volby Run a Evaluate se v „Execution options“ nepodařilo uložit."
         )
 
-    page.goto(
+    log_progress("Otevírám Requested files.")
+    navigate(
+        page,
         f"{base_url}/mod/vpl/forms/requiredfiles.php?"
         f"{urlencode({'id': activity_id})}",
-        wait_until="domcontentloaded",
     )
     file_id = ensure_vpl_editor_file(page, requested_filename)
     if requested_filename.endswith(".py"):
@@ -658,27 +908,58 @@ def configure_vpl_activity(
             save_vpl_editor_file(page, requested_filename, file_id, file_content)
 
     if execution_files:
-        page.goto(
+        log_progress("Otevírám Execution files.")
+        navigate(
+            page,
             f"{base_url}/mod/vpl/forms/executionfiles.php?"
             f"{urlencode({'id': activity_id})}",
-            wait_until="domcontentloaded",
         )
         for filename, content in execution_files.items():
             editor_id = ensure_vpl_editor_file(page, filename)
             save_vpl_editor_file(page, filename, editor_id, content)
 
 
-def ensure_section(page, year: int, lesson: int, section_title: re.Pattern):
+def ensure_section(
+    page,
+    lesson: int,
+    section_title: re.Pattern,
+    predecessor_title: re.Pattern,
+):
     section = page.locator('li[id^="section-"]').filter(has_text=section_title)
-    if section.count() == 1 or year == 3:
+    if section.count() == 1:
+        log_progress(f"Sekce lekce {lesson:02d} byla nalezena.")
         return section
     if section.count() > 1:
         raise RuntimeError(
             f"V kurzu je více sekcí odpovídajících lekci {lesson:02d}."
         )
 
-    section = page.locator(f"#section-{lesson}")
+    if lesson == 1:
+        predecessor = page.locator("#section-0")
+    else:
+        predecessor = page.locator('li[id^="section-"]').filter(
+            has_text=predecessor_title
+        )
+    if predecessor.count() != 1:
+        raise RuntimeError(
+            f"Sekci před lekcí {lesson:02d} se nepodařilo jednoznačně "
+            f"určit podle názvu „{predecessor_title.pattern}“ "
+            f"(nalezeno: {predecessor.count()})."
+        )
+    predecessor_id = predecessor.get_attribute("id")
+    predecessor_match = re.fullmatch(r"section-(\d+)", predecessor_id or "")
+    if not predecessor_match:
+        raise RuntimeError(
+            "Nelze určit pořadí sekce před lekcí "
+            f"{lesson:02d} (ID: {predecessor_id!r})."
+        )
+    section_number = int(predecessor_match.group(1)) + 1
+    section = page.locator(f"#section-{section_number}")
+
     if section.count() == 1:
+        log_progress(
+            f"Sekce lekce {lesson:02d} existuje jako nová; připravuji její název."
+        )
         quick_edit = section.locator("a.quickeditlink")
         if quick_edit.count() != 1:
             raise RuntimeError(
@@ -695,7 +976,6 @@ def ensure_section(page, year: int, lesson: int, section_title: re.Pattern):
                 f"Nová sekce {lesson:02d} již obsahuje aktivity."
             )
     else:
-        predecessor = page.locator(f"#section-{lesson - 1}")
         add_section = predecessor.locator('a[data-action="addSection"]')
         if add_section.count() != 1:
             raise RuntimeError(
@@ -705,9 +985,14 @@ def ensure_section(page, year: int, lesson: int, section_title: re.Pattern):
         section_url = add_section.get_attribute("href")
         if not section_url:
             raise RuntimeError("Odkaz pro přidání sekce nemá cílovou adresu.")
-        page.goto(section_url, wait_until="domcontentloaded")
-        section = page.locator(f"#section-{lesson}")
-        section.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+        log_progress(f"Vytvářím sekci pro lekci {lesson:02d}.")
+        navigate(page, section_url)
+        section = page.locator(f"#section-{section_number}")
+        wait_for_visible(
+            page,
+            f"#section-{section_number}",
+            f"nová sekce pro lekci {lesson:02d}",
+        )
 
     if section.locator("li.activity").count():
         raise RuntimeError(
@@ -721,15 +1006,25 @@ def ensure_section(page, year: int, lesson: int, section_title: re.Pattern):
     edit_url = edit_link.get_attribute("href")
     if not edit_url:
         raise RuntimeError("Odkaz na nastavení sekce nemá cílovou adresu.")
-    page.goto(edit_url, wait_until="domcontentloaded")
+    log_progress(f"Otevírám nastavení názvu sekce lekce {lesson:02d}.")
+    navigate(page, edit_url)
     name_field = page.locator("#id_name")
-    name_field.wait_for(state="visible", timeout=PAGE_TIMEOUT_MS)
+    wait_for_visible(page, "#id_name", f"název sekce lekce {lesson:02d}")
     name_field.fill(f"Lekce {lesson:02d} - úkoly")
-    page.locator("#id_submitbutton").click()
-    page.wait_for_url(
-        re.compile(r"/course/view\.php\?"), timeout=PAGE_TIMEOUT_MS
+    submit_section = wait_for_visible(
+        page,
+        "#id_submitbutton",
+        f"tlačítko pro uložení sekce lekce {lesson:02d}",
+    )
+    click_and_wait_for_navigation(
+        page, submit_section, f"uložení názvu sekce lekce {lesson:02d}"
     )
 
+    wait_for_visible(
+        page,
+        'li[id^="section-"]',
+        f"sekce kurzu po uložení lekce {lesson:02d}",
+    )
     section = page.locator('li[id^="section-"]').filter(has_text=section_title)
     if section.count() != 1:
         raise RuntimeError(
@@ -826,75 +1121,27 @@ def main() -> int:
         return 1
 
     with sync_playwright() as playwright:
+        log_progress("Spouštím Chromium a otevírám Moodle.")
         browser = playwright.chromium.launch(headless=False)
         page = browser.new_page()
         page.set_default_timeout(PAGE_TIMEOUT_MS)
         page.set_default_navigation_timeout(NAVIGATION_TIMEOUT_MS)
-        page.goto(config["base_url"], wait_until="domcontentloaded")
-        if not page.locator("body.loggedin").count():
-            page.goto(
-                f"{config['base_url']}/login/index.php",
-                wait_until="domcontentloaded",
-            )
-
-        username_field = page.locator('input[name="username"], #username').first
-        password_field = page.locator('input[name="password"], #password').first
-
-        if (
-            config["username"]
-            and username_field.count()
-            and password_field.count()
-        ):
-            username_field.fill(config["username"])
-            password_field.fill(config["password"])
-            submit = page.locator(
-                "#loginbtn, button[type='submit'], input[type='submit']"
-            ).first
-            if submit.count():
-                submit.click()
-            else:
-                print(
-                    "Přihlašovací formulář nemá známé tlačítko. "
-                    "Dokončete přihlášení ručně v prohlížeči."
-                )
-        else:
-            print(
-                "Běžný Moodle formulář nebyl nalezen. Dokončete přihlášení "
-                "přes školní SSO nebo jiný formulář v otevřeném prohlížeči."
-            )
-
-        print("Čekám na potvrzení přihlášení do Moodle…")
         try:
-            page.wait_for_function(
-                """document.body?.classList.contains('loggedin')
-                    || !location.pathname.endsWith('/login/index.php')""",
-                timeout=LOGIN_TIMEOUT_MS,
-            )
-        except PlaywrightTimeoutError:
+            login_to_moodle(page, config)
+        except (PlaywrightError, RuntimeError) as error:
             print(
-                "Přihlášení nebylo potvrzeno. Zkontrolujte přihlašovací údaje "
-                "nebo dokončete přihlášení v prohlížeči a spusťte skript znovu.",
-                file=sys.stderr,
-            )
-            browser.close()
-            return 1
-        except PlaywrightError:
-            if not page.is_closed():
-                raise
-            print(
-                "Přihlašovací okno bylo zavřeno dříve, než se potvrdilo "
-                "přihlášení.",
+                f"Nepodařilo se přihlásit do Moodle: {error}",
                 file=sys.stderr,
             )
             browser.close()
             return 1
 
-        print(f"Přihlášení úspěšné: {page.url}")
         course_url = (
             f"{config['base_url']}/course/view.php?"
             f"{urlencode({'id': course_id})}"
         )
-        page.goto(course_url, wait_until="domcontentloaded")
+        log_progress(f"Otevírám kurz '{args.class_name}' (ID {course_id}).")
+        navigate(page, course_url)
         query = parse_qs(urlparse(page.url).query)
         if query.get("id") != [course_id]:
             print(
@@ -905,8 +1152,17 @@ def main() -> int:
             browser.close()
             return 1
 
-        print(f"Kurz '{args.class_name}' (ID {course_id}) je otevřen: {page.url}")
+        wait_for_visible(
+            page,
+            'li[id^="section-"]',
+            f"sekce kurzu '{args.class_name}'",
+        )
+        log_progress(f"Kurz '{args.class_name}' (ID {course_id}) je otevřen: {page.url}")
 
+        log_progress(
+            f"Načítám zadání pro {args.class_name}, lekci {args.lesson:02d}, "
+            f"úkol {task_label}."
+        )
         try:
             year = course_year(args.class_name, args.year)
             task, activity_name, task_directory = find_task(
@@ -997,11 +1253,11 @@ def main() -> int:
         else:
             due_date = date.today() + timedelta(days=10)
         description_html = task_description_html(task, year, due_date)
-        print(
+        log_progress(
             f"Načteno: {year}. ročník, lekce {args.lesson:02d}, "
             f"úkol {task_label} — {task['title']}"
         )
-        print(f"Datum odevzdání v popisu: {due_date_label(due_date)}")
+        log_progress(f"Datum odevzdání v popisu: {due_date_label(due_date)}")
         if graded_task:
             print(
                 "Submission period: otevření "
@@ -1014,43 +1270,54 @@ def main() -> int:
                 f"{access_after:%d.%m.%Y %H:%M}."
             )
         if execution_files:
-            print(
+            log_progress(
                 "Execution files k nahrání: "
                 + ", ".join(execution_files)
             )
 
         edit_mode = page.locator('input[name="setmode"]')
-        if not edit_mode.count():
-            print(
-                "V kurzu nebyl nalezen přepínač úprav 'setmode'.",
-                file=sys.stderr,
-            )
-            browser.close()
-            return 1
+        log_progress("Zapínám režim úprav kurzu a čekám na ovládací prvky.")
         try:
-            page.wait_for_function(
+            wait_for_visible(
+                page,
+                'input[name="setmode"]',
+                "přepínač režimu úprav",
+            )
+            wait_for_condition(
+                page,
+                "inicializaci přepínače režimu úprav",
                 """() => document.querySelector(
                     'input[name="setmode"][data-edit-switch-initialised="1"]'
                 ) !== null""",
                 timeout=EDIT_MODE_TIMEOUT_MS,
             )
             if not edit_mode.is_checked():
+                log_progress("Přepínám kurz do režimu úprav.")
                 edit_mode.check()
-            page.wait_for_function(
+            wait_for_condition(
+                page,
+                "potvrzení režimu úprav kurzu",
                 """() => document.querySelector('input[name="setmode"]')?.checked
                     && document.body?.classList.contains('editing')""",
                 timeout=EDIT_MODE_TIMEOUT_MS,
             )
-            page.locator("button.add-content:visible").first.wait_for(
-                state="visible", timeout=EDIT_MODE_TIMEOUT_MS
+            wait_for_visible(
+                page,
+                "button.add-content:visible",
+                "tlačítko Přidat obsah",
+                timeout=EDIT_MODE_TIMEOUT_MS,
             )
         except PlaywrightTimeoutError:
-            switch_state = edit_mode.evaluate(
-                """element => ({
-                    initialized: element.dataset.editSwitchInitialised === '1',
-                    checked: element.checked,
-                    editing: document.body.classList.contains('editing')
-                })"""
+            switch_state = (
+                edit_mode.evaluate(
+                    """element => ({
+                        initialized: element.dataset.editSwitchInitialised === '1',
+                        checked: element.checked,
+                        editing: document.body.classList.contains('editing')
+                    })"""
+                )
+                if edit_mode.count()
+                else "přepínač nebyl nalezen"
             )
             print(
                 "Nepodařilo se aktivovat režim úprav kurzu: přepínač "
@@ -1062,16 +1329,24 @@ def main() -> int:
             browser.close()
             return 1
 
-        if year == 3:
-            section_title = re.compile(r"Úkoly\s*-\s*odevzdání", re.IGNORECASE)
-        else:
-            section_title = re.compile(
-                rf"Lekce\s+0?{args.lesson}\s*[-–—]\s*úkoly\b",
-                re.IGNORECASE,
-            )
+        section_title = re.compile(
+            rf"Lekce\s+0?{args.lesson}\s*[-–—]\s*úkoly\b",
+            re.IGNORECASE,
+        )
+        predecessor_title = re.compile(
+            rf"Lekce\s+0?{args.lesson - 1}\s*[-–—]\s*úkoly\b",
+            re.IGNORECASE,
+        )
+        log_progress(
+            f"Hledám sekci lekce {args.lesson:02d} "
+            f"(název odpovídající: {section_title.pattern}); čekám nejvýše "
+            f"{PAGE_TIMEOUT_MS // 1000} s."
+        )
         try:
-            page.wait_for_function(
-                """({lesson, pattern, year}) => {
+            wait_for_condition(
+                page,
+                f"nalezení sekce lekce {args.lesson:02d} nebo jejího předchůdce",
+                """({lesson, pattern, predecessorPattern}) => {
                     const sections = [...document.querySelectorAll(
                         'li[id^="section-"]'
                     )];
@@ -1079,32 +1354,67 @@ def main() -> int:
                     if (sections.some(section => target.test(section.innerText))) {
                         return true;
                     }
-                    if (year === 3) {
+                    const predecessor = lesson === 1
+                        ? document.querySelector('#section-0')
+                        : sections.find(section =>
+                            new RegExp(predecessorPattern, 'i')
+                                .test(section.innerText)
+                        );
+                    if (!predecessor) {
                         return false;
                     }
-                    const emptySection = document.querySelector(
-                        `#section-${lesson} a.quickeditlink`
+                    const predecessorNumber = Number(
+                        predecessor.id.replace('section-', '')
                     );
-                    const predecessor = document.querySelector(
-                        `#section-${lesson - 1} a[data-action="addSection"]`
+                    const nextSection = document.getElementById(
+                        `section-${predecessorNumber + 1}`
                     );
-                    return emptySection?.innerText.trim() === "Nová sekce"
-                        || !!predecessor;
+                    const quickEdit = nextSection?.querySelector(
+                        'a.quickeditlink'
+                    );
+                    return quickEdit?.innerText.trim() === "Nová sekce"
+                        || !!predecessor.querySelector(
+                            'a[data-action="addSection"]'
+                        );
                 }""",
                 arg={
                     "lesson": args.lesson,
                     "pattern": section_title.pattern,
-                    "year": year,
+                    "predecessorPattern": predecessor_title.pattern,
                 },
                 timeout=PAGE_TIMEOUT_MS,
             )
-            section = ensure_section(page, year, args.lesson, section_title)
+            section = ensure_section(
+                page, args.lesson, section_title, predecessor_title
+            )
         except (PlaywrightError, RuntimeError) as error:
             print(
                 f"Nepodařilo se připravit sekci pro lekci {args.lesson:02d}: "
-                f"{error}",
+                f"{error}\nAktuální URL: {page.url}",
                 file=sys.stderr,
             )
+            if not page.is_closed():
+                try:
+                    section_details = page.locator(
+                        'li[id^="section-"]'
+                    ).evaluate_all(
+                        """sections => sections.map(section => ({
+                            id: section.id,
+                            text: section.innerText.trim()
+                                .replace(/\\s+/g, ' ')
+                                .slice(0, 160)
+                        }))"""
+                    )
+                    print(
+                        "Sekce nalezené na stránce: "
+                        + json.dumps(section_details, ensure_ascii=False),
+                        file=sys.stderr,
+                    )
+                except PlaywrightError:
+                    print(
+                        "Seznam sekcí se z aktuální stránky nepodařilo načíst.",
+                        file=sys.stderr,
+                    )
             browser.close()
             return 1
         if section.count() != 1:
@@ -1131,9 +1441,15 @@ def main() -> int:
                 return 1
 
         add_content = section.locator("button.add-content").last
+        log_progress(
+            f"Sekce lekce {args.lesson:02d} je připravená; otevírám nabídku "
+            "pro přidání VPL aktivity."
+        )
         try:
-            add_content.wait_for(
-                state="visible", timeout=EDIT_MODE_TIMEOUT_MS
+            wait_for_locator(
+                add_content,
+                "tlačítko Přidat obsah v cílové sekci",
+                timeout=EDIT_MODE_TIMEOUT_MS,
             )
         except PlaywrightTimeoutError:
             print(
@@ -1147,18 +1463,18 @@ def main() -> int:
         menu_option = page.locator(
             ".dropdown-menu.show:visible"
         ).get_by_text("Aktivita nebo zdroj", exact=True)
+        wait_for_locator(menu_option, "položka Aktivita nebo zdroj")
         menu_option.click()
 
+        log_progress(
+            "Vybírám aktivitu nebo zdroj a následně Virtual programming lab."
+        )
         chooser = page.locator(".modal.show")
+        wait_for_locator(chooser, "dialog výběru aktivity")
         vpl_option = chooser.locator(
             'a[data-action="add-chooser-option"][href*="add=vpl"]:visible'
         )
-        try:
-            vpl_option.first.wait_for(
-                state="visible", timeout=PAGE_TIMEOUT_MS
-            )
-        except PlaywrightTimeoutError:
-            pass
+        wait_for_locator(vpl_option.first, "volba Virtual programming lab")
         if vpl_option.count() != 1:
             print(
                 "V nabídce aktivit nebyla nalezena právě jedna volba "
@@ -1168,38 +1484,136 @@ def main() -> int:
             )
             browser.close()
             return 1
-        vpl_option.click()
+        log_progress(
+            "Volba VPL nalezena; vybírám ji "
+            f"({vpl_option.get_attribute('href')})."
+        )
+        vpl_option.click(no_wait_after=True)
+        log_progress("Kliknutí na volbu VPL odesláno.")
         add_selected = chooser.get_by_role("button", name="Přidat", exact=True)
+        form_url = re.compile(r"/course/modedit\.php\?.*add=vpl")
         try:
-            page.wait_for_function(
+            wait_for_condition(
+                page,
+                "aktivaci volby VPL v dialogu",
                 """() => {
+                    if (
+                        location.pathname.endsWith('/course/modedit.php')
+                        && new URLSearchParams(location.search).get('add') === 'vpl'
+                    ) {
+                        return true;
+                    }
                     const button = document.querySelector('.modal.show .addoption');
                     return button && !button.disabled;
                 }""",
                 timeout=PAGE_TIMEOUT_MS,
             )
         except PlaywrightTimeoutError:
+            try:
+                chooser_state = chooser.evaluate(
+                    """modal => {
+                        const option = modal.querySelector(
+                            'a[data-action="add-chooser-option"][href*="add=vpl"]'
+                        );
+                        const buttons = [...modal.querySelectorAll('button')]
+                            .map(button => ({
+                                text: button.innerText.trim(),
+                                className: button.className,
+                                disabled: button.disabled,
+                                ariaDisabled: button.getAttribute('aria-disabled')
+                            }));
+                        return {
+                            option: option ? {
+                                text: option.innerText.trim(),
+                                className: option.className,
+                                ariaSelected: option.getAttribute('aria-selected'),
+                                ariaPressed: option.getAttribute('aria-pressed'),
+                                href: option.getAttribute('href'),
+                                html: option.outerHTML.slice(0, 800)
+                            } : null,
+                            buttons,
+                            checkedInputs: [...modal.querySelectorAll(
+                                'input[type="radio"], input[type="checkbox"]'
+                            )].map(input => ({
+                                type: input.type,
+                                checked: input.checked,
+                                value: input.value
+                            }))
+                        };
+                    }"""
+                )
+            except PlaywrightError:
+                chooser_state = "dialog již není dostupný"
             print(
-                "Po výběru VPL se tlačítko „Přidat“ neaktivovalo.",
+                "Po kliknutí na volbu VPL se neaktivovalo tlačítko „Přidat“ "
+                "ani se neotevřel formulář "
+                f"(aktuální URL: {page.url}). Stav dialogu: "
+                f"{json.dumps(chooser_state, ensure_ascii=False)}",
                 file=sys.stderr,
             )
             browser.close()
             return 1
-        add_selected.click()
-        page.wait_for_url(
-            re.compile(r"/course/modedit\.php\?.*add=vpl"),
-            timeout=PAGE_TIMEOUT_MS,
+        if form_url.search(page.url):
+            log_progress(
+                f"Volba VPL otevřela formulář přímo ({page.url})."
+            )
+        else:
+            log_progress("VPL je vybráno; tlačítko „Přidat“ je aktivní.")
+            add_selected.click(no_wait_after=True)
+            log_progress("Kliknutí na „Přidat“ odesláno.")
+        log_progress("Čekám na otevření formuláře nové VPL aktivity.")
+        try:
+            if not form_url.search(page.url):
+                wait_for_url(
+                    page,
+                    form_url,
+                    "formulář VPL",
+                    timeout=PAGE_TIMEOUT_MS,
+                )
+        except PlaywrightTimeoutError as error:
+            raise RuntimeError(
+                "Po kliknutí na „Přidat“ se neotevřel formulář VPL "
+                f"(aktuální URL: {page.url})."
+            ) from error
+        log_progress(
+            f"Formulář VPL se otevřel ({page.url}); čekám na pole názvu."
         )
-        page.wait_for_load_state("domcontentloaded")
-        page.locator("#id_name").fill(activity_name)
+        name_field = page.locator("#id_name")
+        try:
+            wait_for_locator(name_field, "pole názvu VPL aktivity")
+        except PlaywrightTimeoutError as error:
+            raise RuntimeError(
+                "Stránka formuláře VPL se otevřela, ale pole názvu "
+                f"#id_name není viditelné (aktuální URL: {page.url})."
+            ) from error
+        name_field.fill(activity_name)
+        log_progress("Název vyplněn; čekám na editor zadání.")
         description_editor = page.frame_locator("#id_introeditor_ifr").locator("body")
-        description_editor.wait_for(
-            state="visible", timeout=PAGE_TIMEOUT_MS
-        )
-        page.wait_for_function(
-            "window.tinyMCE?.get('id_introeditor')?.initialized === true",
-            timeout=PAGE_TIMEOUT_MS,
-        )
+        try:
+            wait_for_locator(
+                description_editor,
+                "editor popisu aktivity",
+                timeout=PAGE_TIMEOUT_MS,
+            )
+        except PlaywrightTimeoutError as error:
+            raise RuntimeError(
+                "Pole názvu formuláře je připravené, ale editor zadání "
+                f"není viditelný (aktuální URL: {page.url})."
+            ) from error
+        log_progress("Editor zadání je viditelný; čekám na inicializaci TinyMCE.")
+        try:
+            wait_for_condition(
+                page,
+                "inicializaci editoru TinyMCE",
+                "window.tinyMCE?.get('id_introeditor')?.initialized === true",
+                timeout=PAGE_TIMEOUT_MS,
+            )
+        except PlaywrightTimeoutError as error:
+            raise RuntimeError(
+                "Editor zadání se zobrazil, ale TinyMCE se neinicializoval "
+                f"(aktuální URL: {page.url})."
+            ) from error
+        log_progress("Vyplňuji název, zadání a nastavení odevzdání.")
         page.evaluate(
             "html => window.tinyMCE.get('id_introeditor').setContent(html)",
             description_html,
@@ -1240,9 +1654,11 @@ def main() -> int:
             )
 
         if args.save:
+            log_progress("Ukládám aktivitu do Moodle.")
             save_button = page.get_by_role(
                 "button", name="Uložit a zobrazit", exact=True
             )
+            wait_for_locator(save_button, "tlačítko Uložit a zobrazit")
             if save_button.count() != 1:
                 print(
                     "Ve formuláři nebylo nalezeno právě jedno tlačítko "
@@ -1251,8 +1667,9 @@ def main() -> int:
                 )
                 browser.close()
                 return 1
-            save_button.click()
-            page.wait_for_load_state("domcontentloaded")
+            click_and_wait_for_navigation(
+                page, save_button, "uložení aktivity VPL"
+            )
             if "/course/modedit.php" in page.url:
                 print(
                     "Moodle po uložení ponechal otevřený editační formulář: "
@@ -1261,8 +1678,9 @@ def main() -> int:
                 )
                 browser.close()
                 return 1
-            page.get_by_text(activity_name, exact=True).first.wait_for(
-                state="visible", timeout=PAGE_TIMEOUT_MS
+            wait_for_locator(
+                page.get_by_text(activity_name, exact=True).first,
+                "zobrazení uložené aktivity",
             )
             saved_text = page.locator("body").inner_text()
             strong_text = page.locator("strong").all_inner_texts()
@@ -1295,7 +1713,13 @@ def main() -> int:
                 execution_files,
                 requested_filename,
             )
-            page.goto(course_url, wait_until="domcontentloaded")
+            log_progress("Ověřuji aktivitu v cílové sekci kurzu.")
+            navigate(page, course_url)
+            wait_for_visible(
+                page,
+                'li[id^="section-"]',
+                f"sekce kurzu '{args.class_name}' po uložení",
+            )
             section = page.locator('li[id^="section-"]').filter(
                 has_text=section_title
             )

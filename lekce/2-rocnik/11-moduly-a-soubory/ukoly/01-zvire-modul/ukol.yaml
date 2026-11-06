@@ -1,0 +1,25 @@
+title: Zvíře v samostatném modulu
+stars: 1
+moodle: PRG-2-11-01
+ignore_input_prompt: true
+description: |
+  Rozdělte program do souborů `zvire.py` a `main.py`.
+
+  V `zvire.py` vytvořte třídu `Zvire`. Konstruktor přijme jméno a uloží
+  ho do atributu `jmeno`. V `main.py` importujte třídu zápisem
+  `from zvire import Zvire`, načtěte jméno a vypište atribut objektu.
+
+odevzdani: |
+  Odevzdejte oba soubory: `zvire.py` a `main.py`.
+io: |
+  **Vstup:** jméno zvířete
+  **Výstup:** jméno zvířete
+cases:
+  - name: pes
+    input: |
+      Azor
+    output: "Azor"
+  - name: kocka
+    input: |
+      Mica
+    output: "Mica"

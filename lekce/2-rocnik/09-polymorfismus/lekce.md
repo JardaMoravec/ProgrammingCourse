@@ -16,7 +16,7 @@ migrovano_z:
 
 # Polymorfismus
 
-Lekce má **3 hodiny**. Navazuje na [dědičnost](../08-dedicnost/lekce.md). Další čas z týdne patří [pololetnímu projektu](../12-oop-navrh-a-procviceni/lekce.md).
+Lekce má **3 hodiny**. Navazuje na [dědičnost](../08-dedicnost/lekce.md). Zbytek týdenní dotace využijte na procvičení polymorfismu.
 
 Minule pes **je** zvíře a společné věci patří rodiči. Tady mají potomci **stejnou** metodu, ale **jiné** tělo. Zavoláte `ozvi_se()` — pes řekne `Haf!`, kočka `Mnou!`. ŠVP tomu říká *mnohotvárnost*.
 
@@ -142,4 +142,4 @@ Lekce končí **známkovaným úkolem** s tajným zadáním — dostanete ho od 
 
 ## Co dál
 
-→ [Lekce 10: Statické metody a proměnné](../10-staticke-cleny/lekce.md)
+→ [Lekce 10: Statické metody a proměnné](../10-staticke-metody-a-promenne/lekce.md)

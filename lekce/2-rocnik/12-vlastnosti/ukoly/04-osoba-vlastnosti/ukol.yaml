@@ -1,0 +1,29 @@
+title: Osoba a vlastnost dospělosti
+stars: 3
+moodle: PRG-2-12-04
+ignore_input_prompt: true
+description: |
+  Vytvořte třídu `Osoba` s vlastností `vek`. Setter odmítne záporný
+  věk výjimkou `ValueError` a uloží platnou hodnotu do `self._vek`.
+  Vlastnost pouze pro čtení `dospely` vrátí `True`, pokud je věk alespoň
+  18, jinak `False`.
+
+  Načtěte věk, vytvořte osobu a vypište `osoba.dospely`. Neplatný věk
+  zachyťte a vypište `Neplatny vek`.
+
+io: |
+  **Vstup:** věk jako celé číslo
+  **Výstup:** `True`, `False` nebo zpráva o neplatném věku
+cases:
+  - name: nezletily
+    input: |
+      17
+    output: "False"
+  - name: dospely
+    input: |
+      18
+    output: "True"
+  - name: zaporny-vek
+    input: |
+      -1
+    output: "Neplatny vek"

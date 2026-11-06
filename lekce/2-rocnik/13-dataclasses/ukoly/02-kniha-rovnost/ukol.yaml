@@ -1,0 +1,25 @@
+title: Knihy a rovnost dat
+stars: 2
+moodle: PRG-2-13-02
+ignore_input_prompt: true
+description: |
+  Vytvořte dataclass `Kniha` s atributy `nazev` (text) a `rok` (celé
+  číslo). Načtěte název a rok, vytvořte dvě knihy se stejnými údaji
+  a vypište jejich rovnost pomocí `==`.
+
+  Konstruktor ani `__eq__` nepište ručně; vytvoří je dekorátor.
+
+io: |
+  **Vstup:** název knihy a rok vydání, každý na řádku
+  **Výstup:** `True`
+cases:
+  - name: roboti
+    input: |
+      R.U.R.
+      1920
+    output: "True"
+  - name: hobit
+    input: |
+      Hobit
+      1937
+    output: "True"

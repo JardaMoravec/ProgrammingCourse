@@ -1,0 +1,11 @@
+id: 13-dataclasses
+rocnik: 2
+nazev: Dataclasses
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [12-vlastnosti]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [třídy a členy, vlastnosti tříd, objekty]
+tagy: [oop, dataclass, datova-trida]
+migrovano_z: []

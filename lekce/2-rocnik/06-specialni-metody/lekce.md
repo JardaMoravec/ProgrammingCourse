@@ -21,7 +21,7 @@ Lekce má **3 hodiny**. Navazuje na [metody](../05-metody/lekce.md).
 
 Minule jste psali `print(o.cele_jmeno())`. Když vypíšete **celý objekt**, Python ukáže jen typ a adresu v paměti. **`__str__`** to změní: `print(o)` vypíše čitelný text. Stejně fungují další speciální metody: `==` zavolá **`__eq__`**, `len()` zavolá **`__len__`**.
 
-Souhrn těchto lekcí je [lekce 07](../07-tridy-procviceni/lekce.md). Dědičnost je lekce 08. Iterace (`__iter__`) je [lekce 11](../11-vyjimky-a-iterace/lekce.md).
+Souhrn těchto lekcí je [lekce 07](../07-tridy-procviceni/lekce.md). Dědičnost je lekce 08. Iterace (`__iter__`) je [lekce 14](../14-vyjimky-a-iterace/lekce.md).
 
 ## Cíle lekce
 

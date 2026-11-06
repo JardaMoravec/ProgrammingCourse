@@ -1,0 +1,35 @@
+title: Půjčovna a jednosměrné importy
+stars: 3
+moodle: PRG-2-11-04
+ignore_input_prompt: true
+description: |
+  Vytvořte malý program ve třech souborech.
+
+  `kolo.py` definuje třídu `Kolo` s atributem `znacka`.
+  `pujcovna.py` importuje `Kolo` a definuje třídu `Pujcovna` se seznamem
+  kol, metodou `pridej(znacka)` a metodou `vypis()`, která vypíše značky
+  kol po jedné na řádek.
+
+  `main.py` importuje `Pujcovna`, načte počet kol a jejich značky,
+  přidá je do půjčovny a zavolá `vypis()`. Importy veďte jedním směrem:
+  hlavní program → půjčovna → kolo.
+
+odevzdani: |
+  Odevzdejte `kolo.py`, `pujcovna.py` a `main.py`.
+io: |
+  **Vstup:** počet kol a poté jejich značky, každá na samostatném řádku
+  **Výstup:** značky kol, každá na samostatném řádku
+cases:
+  - name: dve-kola
+    input: |
+      2
+      Author
+      Trek
+    output: |
+      Author
+      Trek
+  - name: jedno-kolo
+    input: |
+      1
+      Favorit
+    output: "Favorit"

@@ -1,0 +1,11 @@
+id: 11-moduly-a-soubory
+rocnik: 2
+nazev: Moduly a třídy ve více souborech
+modul: oop
+hodiny: 3
+obtiznost: stredni
+prerekvizity: [10-staticke-metody-a-promenne]
+kompetence: [k3-strukturovane-programy, k4-trida-objekt, k9-aplikace]
+svp: [implementace metod třídy, objektově orientovaná analýza a návrh]
+tagy: [oop, moduly, import, soubory]
+migrovano_z: []

@@ -1,0 +1,26 @@
+title: Zboží a celková cena
+stars: 2
+moodle: PRG-2-12-02
+ignore_input_prompt: true
+description: |
+  Třída `Zbozi` uchovává jednotkovou cenu `cena` a počet kusů `pocet`.
+  Pomocí vlastnosti `celkem` vypočítejte cenu všech kusů jako
+  `cena * pocet`.
+
+  Načtěte cenu a počet jako celá čísla, vytvořte objekt a vypište
+  `zbozi.celkem`. Vlastnost nesmí být samostatně uložená hodnota.
+
+io: |
+  **Vstup:** cena jednoho kusu a počet kusů, každý na řádku
+  **Výstup:** celková cena
+cases:
+  - name: tri-kusy
+    input: |
+      80
+      3
+    output: "240"
+  - name: jeden-kus
+    input: |
+      125
+      1
+    output: "125"

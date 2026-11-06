@@ -1,0 +1,29 @@
+title: Nádrž s ověřenou kapacitou
+stars: 2
+moodle: PRG-2-12-03
+ignore_input_prompt: true
+description: |
+  Vytvořte třídu `Nadrz` s vlastností `kapacita`. Setter odmítne
+  zápornou hodnotu výjimkou `ValueError` a jinak ji uloží do
+  `self._kapacita`.
+
+  Načtěte počáteční a novou kapacitu. Při neplatné změně zachyťte
+  `ValueError` a vypište `Neplatna kapacita`. Nakonec vypište
+  `Nadrz: <kapacita>` s aktuální hodnotou.
+
+io: |
+  **Vstup:** počáteční a nová kapacita, každá na samostatném řádku
+  **Výstup:** výsledek změny a aktuální kapacita
+cases:
+  - name: platna-zmena
+    input: |
+      50
+      80
+    output: "Nadrz: 80"
+  - name: zaporna-zmena
+    input: |
+      50
+      -2
+    output: |
+      Neplatna kapacita
+      Nadrz: 50

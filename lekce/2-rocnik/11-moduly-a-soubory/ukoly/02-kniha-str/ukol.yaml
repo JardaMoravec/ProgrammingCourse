@@ -1,0 +1,28 @@
+title: Kniha a textový výpis
+stars: 2
+moodle: PRG-2-11-02
+ignore_input_prompt: true
+description: |
+  V souboru `kniha.py` vytvořte třídu `Kniha` s konstruktorem, který
+  přijme název a autora. Metoda `__str__` vrátí text ve tvaru
+  `nazev - autor`.
+
+  V `main.py` importujte `Kniha`, načtěte název a autora ze dvou řádků,
+  vytvořte objekt a vypište ho pomocí `print(objekt)`.
+
+odevzdani: |
+  Odevzdejte `kniha.py` a `main.py`.
+io: |
+  **Vstup:** název knihy a autor, každý na samostatném řádku
+  **Výstup:** název, pomlčka a autor
+cases:
+  - name: roboti
+    input: |
+      R.U.R.
+      Karel Capek
+    output: "R.U.R. - Karel Capek"
+  - name: hobit
+    input: |
+      Hobit
+      J.R.R. Tolkien
+    output: "Hobit - J.R.R. Tolkien"

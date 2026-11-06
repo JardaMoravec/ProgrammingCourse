@@ -1,0 +1,11 @@
+id: 12-vlastnosti
+rocnik: 2
+nazev: Vlastnosti a @property
+modul: oop
+hodiny: 5
+obtiznost: stredni
+prerekvizity: [11-moduly-a-soubory]
+kompetence: [k4-trida-objekt, k5-jednoduche-objekty]
+svp: [vlastnosti tříd, objekty, implementace metod třídy]
+tagy: [oop, property, validace, atribut]
+migrovano_z: []

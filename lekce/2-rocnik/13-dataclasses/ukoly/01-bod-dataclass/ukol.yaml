@@ -1,0 +1,29 @@
+title: Bod jako dataclass
+stars: 1
+moodle: PRG-2-13-01
+ignore_input_prompt: true
+description: |
+  Pomocí `@dataclass` vytvořte třídu `Bod` s celočíselnými atributy
+  `x` a `y`.
+
+  Načtěte dvě souřadnice, vytvořte dva stejné body a vypište první bod
+  a výsledek jejich porovnání pomocí `==`, každý na samostatný řádek.
+
+io: |
+  **Vstup:** souřadnice x a y, každá na samostatném řádku
+  **Výstup:** automatický výpis bodu a `True`
+cases:
+  - name: kladny-bod
+    input: |
+      2
+      5
+    output: |
+      Bod(x=2, y=5)
+      True
+  - name: zaporny-bod
+    input: |
+      -1
+      4
+    output: |
+      Bod(x=-1, y=4)
+      True

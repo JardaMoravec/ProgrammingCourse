@@ -40,12 +40,19 @@ neukládá; k uložení je nutné výslovně přidat `--save`.
    Pomocí „Omezit přístup“ se známkovaná aktivita úplně skryje až do půlnoci
    následujícího dne; popis se nezobrazuje ani na titulní straně kurzu.
    Čas lze po vytvoření aktivity ručně doladit v jejím nastavení. Pokud sekce
-   pro lekci v 1. nebo 2. ročníku chybí, skript ji vytvoří a pojmenuje
-   `Lekce NN - úkoly`. S `--pause` zůstane
+   pro lekci chybí, skript ji vytvoří za sekcí předchozí lekce a pojmenuje
+   `Lekce NN - úkoly`. U první lekce použije jako předchozí sekci úvodní
+   sekci kurzu. S `--pause` zůstane
    formulář otevřený pro kontrolu. Moodle může přepnout režim úprav i načíst
-   editor asynchronně; skript počká na inicializaci JavaScriptového přepínače
+   editor asynchronně nebo pomalu načítat části kurzu; skript čeká na
+   zobrazení konkrétních ovládacích prvků místo čekání na úplné načtení
+   formuláře VPL. Počká na
+   inicializaci JavaScriptového přepínače
    před kliknutím, až 90 sekund na potvrzení režimu a až 60 sekund na další
-   prvky stránky.
+   prvky stránky. Běh vypisuje časované kroky; pokud se nepodaří najít sekci,
+   zobrazí také URL a názvy sekcí nalezené v kurzu. Pokud se v dialogu
+   výběru aktivity neaktivuje tlačítko „Přidat“, vypíše stav volby VPL,
+   tlačítek a případných zaškrtávacích polí.
 5. Po kontrole formulář uložte výslovným spuštěním s `--save`; skript použije
    tlačítko „Uložit a zobrazit“ a ověří, že se aktivita zobrazuje v cílové
    sekci. Pokud úkol obsahuje právě jeden soubor `*.cases`, nahraje jeho obsah
@@ -78,6 +85,8 @@ python scripts/moodle_download_submissions.py --class 3I --lesson 5 --task 1
 
 Použijte `Z01` pro známkovaný úkol a běžné číslo (např. `1`) pro ostatní.
 Při použití školního SSO dokončete přihlášení v otevřeném okně Chromium.
+Skript počká na načtení seznamu odevzdání, klikne na nabídku `#action-menu-toggle-1`
+a počká, až se zobrazí volba ke stažení.
 Výsledky zůstávají lokální v ignorované složce `řešení/`. Pokud cílová složka
 již existuje, nejprve ji ručně přejmenujte nebo přesuňte.
 
