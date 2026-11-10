@@ -94,6 +94,30 @@ if text not in ("muž", "žena"):
 | `TypeError` | špatný typ operace |
 | `IndexError` | neplatný index seznamu |
 
+Obecnější výjimka zastoupí několik konkrétních. `except` s ní odchytí i chyby z tabulky výše.
+
+| Výjimka | Co odchytí |
+|---------|------------|
+| `ArithmeticError` | chyby při výpočtu, tedy i `ZeroDivisionError` |
+| `Exception` | všechny běžné výjimky |
+| `BaseException` | úplně vše, i zastavení programu klávesami Ctrl+C |
+
+`Exception` dejte **až jako poslední** větev. Kdyby byla první, k `ValueError` a `ZeroDivisionError` se program nedostane.
+
+```python
+try:
+    x = int(input("Číslo: "))
+    print(10 / x)
+except ValueError:
+    print("Zadejte celé číslo.")
+except ZeroDivisionError:
+    print("Nulou dělit nelze.")
+except Exception:
+    print("Nastala jiná chyba.")
+```
+
+`BaseException` v úlohách neodchytávejte. Program by pak nešel zastavit pomocí Ctrl+C. Holé `except:` bez jména dělá totéž — chytí úplně všechno. V kódu pište `except Exception`.
+
 Kompletní seznam: [docs.python.org — Exceptions](https://docs.python.org/3/library/exceptions.html)
 
 ## Shrnutí
@@ -102,6 +126,7 @@ Kompletní seznam: [docs.python.org — Exceptions](https://docs.python.org/3/li
 |------------|------|
 | `try` | rizikový kód |
 | `except` | reakce na chybu |
+| `except Exception` | odchytí jakoukoli běžnou výjimku (až nakonec) |
 | `raise` | vyvolání výjimky |
 
 ## Co dál

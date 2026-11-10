@@ -1,0 +1,18 @@
+---
+description: Po změně obsahu, který jde do grafického výstupu, znovu spusť build HTML
+alwaysApply: true
+---
+
+# Grafický výstup
+
+Po každé změně, která se projeví v `graficky-vystup/`, spusť před dokončením úkolu:
+
+```bash
+python scripts/build_html_output.py
+```
+
+Týká se úprav v `lekce/**/*.md`, `lekce/**/meta.yaml`, `lekce/**/diagramy/`, `lekce/**/ukoly.md`, `kurikulum/**/*.yaml` a `assets/` (favicon a soubory, které build kopíruje).
+
+Když se mění `lekce/**/ukoly/*/ukol.yaml`, nejdřív `python scripts/generate_tasks.py` (obnoví `ukoly.md`), potom `build_html_output.py`.
+
+Složka `graficky-vystup/` se do Gitu necommituje. Stačí lokální obnova.
