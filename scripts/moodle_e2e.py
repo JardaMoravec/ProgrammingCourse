@@ -406,6 +406,56 @@ def due_date_label(value: date) -> str:
     return f"{value.day}. {CZECH_MONTHS[value.month - 1]} {value.year}"
 
 
+def saved_description_state(page, due_date: date) -> dict:
+    return page.evaluate(
+        """dueLabel => {
+            const text = document.body ? document.body.innerText : '';
+            const strong = [...document.querySelectorAll('strong')]
+                .map(element => element.innerText.trim());
+            const icons = document.querySelectorAll(
+                'div.box.py-3.generalbox > div.no-overflow i.fa.fa-calendar-check-o'
+            );
+            const marker = document.body.innerHTML.search(
+                /Datum odevzdání|fa-calendar-check-o|no-overflow/
+            );
+            return {
+                due: text.includes(dueLabel),
+                datum: strong.includes('Datum odevzdání'),
+                zadani: strong.includes('Zadání:'),
+                iconCount: icons.length,
+                excerpt: marker >= 0
+                    ? document.body.innerHTML.slice(
+                        Math.max(0, marker - 160), marker + 240
+                    )
+                    : text.replace(/\\s+/g, ' ').slice(0, 400),
+            };
+        }""",
+        due_date_label(due_date),
+    )
+
+
+def wait_for_saved_description(page, due_date: date) -> None:
+    log_progress("Ověřuji formátovaný termín a zadání uložené aktivity.")
+    deadline = time.monotonic() + 15
+    state = saved_description_state(page, due_date)
+    while not (
+        state["due"]
+        and state["datum"]
+        and state["zadani"]
+        and state["iconCount"] == 1
+    ):
+        if time.monotonic() >= deadline:
+            raise RuntimeError(
+                "Uložená aktivita nezobrazuje správně formátovaný termín "
+                "nebo zadání "
+                f"(termín: {state['due']}, Datum odevzdání: {state['datum']}, "
+                f"Zadání: {state['zadani']}, ikona: {state['iconCount']}). "
+                f"Úryvek stránky: {state['excerpt']}"
+            )
+        page.wait_for_timeout(250)
+        state = saved_description_state(page, due_date)
+
+
 def task_description_html(task: dict, year: int, due_date: date) -> str:
     assignment = assignment_markdown(task, str(year))
     assignment = re.sub(r"^# .*(?:\r?\n)+", "", assignment, count=1)
@@ -493,76 +543,11 @@ def ensure_vpl_editor_file(page, filename: str) -> str:
 
 
 def save_vpl_editor_file(page, filename: str, editor_id: str, content: str) -> None:
-    current_content = page.evaluate(
-        "id => ace.edit(document.getElementById(id)).getValue()",
-        arg=editor_id,
-    )
-    if current_content == content:
+    if vpl_editor_value(page, editor_id) == content:
         return
-    page.evaluate(
-        "({id, content}) => "
-        "ace.edit(document.getElementById(id)).setValue(content)",
-        {"id": editor_id, "content": content},
-    )
-    wait_for_condition(
-        page,
-        f"povolení uložení souboru {filename}",
-        "!document.getElementById('vpl_ide_save')?.classList"
-        ".contains('ui-button-disabled')",
-        timeout=PAGE_TIMEOUT_MS,
-    )
-    click_element(page.locator("#vpl_ide_save"), f"uložení souboru {filename}")
-    wait_for_condition(
-        page,
-        f"dokončení ukládání souboru {filename}",
-        "document.getElementById('vpl_ide_save')?.classList"
-        ".contains('ui-button-disabled')",
-        timeout=PAGE_TIMEOUT_MS,
-    )
-    reload_page(page, f"editor souboru {filename}")
-    file_tabs = page.locator("#vpl_tabs_ul li").filter(
-        has_text=re.compile(rf"^\s*{re.escape(filename)}\s*$")
-    )
-    wait_for_condition(
-        page,
-        f"opětovné načtení editoru souboru {filename}",
-        """() => {
-            const save = document.getElementById('vpl_ide_save');
-            const tabs = document.querySelectorAll('#vpl_tabs_ul li');
-            const dialog = document.querySelector(
-                '.ui-dialog[aria-describedby="vpl_ide_dialog_new"]'
-            );
-            const dialogVisible = dialog
-                && dialog.getClientRects().length > 0
-                && getComputedStyle(dialog).visibility !== 'hidden';
-            return !!save && (tabs.length > 0 || dialogVisible);
-        }""",
-        timeout=PAGE_TIMEOUT_MS,
-    )
-    wait_for_condition(
-        page,
-        f"ověření existence uloženého souboru {filename}",
-        "name => [...document.querySelectorAll('#vpl_tabs_ul li')]"
-        ".filter(tab => tab.innerText.trim() === name).length === 1",
-        arg=filename,
-        timeout=PAGE_TIMEOUT_MS,
-    )
-    saved_editor_id = file_tabs.get_attribute("aria-controls")
-    if not saved_editor_id or not re.fullmatch(r"vpl_file\d+", saved_editor_id):
-        raise RuntimeError(f"Nelze ověřit uložený soubor {filename}.")
-    click_element(file_tabs.locator("a"), f"ověření souboru {filename}")
-    wait_for_condition(
-        page,
-        f"inicializaci editoru ACE pro uložený soubor {filename}",
-        "id => window.ace && document.getElementById(id) "
-        "&& ace.edit(document.getElementById(id))",
-        arg=saved_editor_id,
-        timeout=PAGE_TIMEOUT_MS,
-    )
-    if page.evaluate(
-        "id => ace.edit(document.getElementById(id)).getValue()",
-        arg=saved_editor_id,
-    ) != content:
+    save_open_vpl_file(page, editor_id, filename, content)
+    saved_files = reload_vpl_ide(page, f"editor souboru {filename}")
+    if saved_files.get(filename) != content:
         raise RuntimeError(f"Soubor {filename} se nepodařilo uložit.")
 
 
@@ -576,6 +561,184 @@ def replace_vpl_editor_content(page, editor_id: str, content: str) -> None:
         arg=editor_id,
     ) != content:
         raise RuntimeError("Obsah testovacího souboru se nepodařilo vyplnit.")
+
+
+def vpl_editor_files(payload: object) -> dict[str, str]:
+    if not isinstance(payload, dict):
+        raise RuntimeError("Odpověď editoru VPL není JSON objekt.")
+    if payload.get("success") is False:
+        message = payload.get("error") or "neznámá chyba"
+        raise RuntimeError(f"Editor VPL odmítl načtení souborů: {message}")
+    body = payload.get("response", payload)
+    if isinstance(body, str):
+        try:
+            body = json.loads(body)
+        except json.JSONDecodeError as error:
+            raise RuntimeError(
+                "Odpověď editoru VPL obsahuje nečitelný seznam souborů."
+            ) from error
+    if not isinstance(body, dict):
+        raise RuntimeError("Odpověď editoru VPL neobsahuje seznam souborů.")
+    files = body.get("files")
+    if not isinstance(files, list):
+        keys = ", ".join(str(key) for key in body.keys())
+        raise RuntimeError(
+            "Odpověď editoru VPL neobsahuje seznam souborů "
+            f"(klíče: {keys})."
+        )
+    contents: dict[str, str] = {}
+    for item in files:
+        if not isinstance(item, dict):
+            continue
+        name = item.get("name")
+        text = item.get("contents")
+        if isinstance(name, str) and isinstance(text, str):
+            contents[name] = text
+    return contents
+
+
+def open_vpl_ide(page, url: str) -> dict[str, str]:
+    parsed_url = urlparse(url)
+    log_progress(
+        f"Otevírám stránku {parsed_url.path}; čekám na soubory editoru VPL."
+    )
+    started = time.monotonic()
+    try:
+        with page.expect_response(
+            lambda response: "action=load" in response.url and response.ok,
+            timeout=PAGE_TIMEOUT_MS,
+        ) as loaded:
+            page.goto(url, wait_until="commit")
+        files = vpl_editor_files(loaded.value.json())
+    except Exception as error:
+        elapsed = time.monotonic() - started
+        if isinstance(error, RuntimeError):
+            log_progress(
+                f"Editor VPL na {parsed_url.path} nenačetl soubory "
+                f"({elapsed:.1f} s)."
+            )
+            raise
+        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+        if isinstance(error, PlaywrightTimeoutError):
+            if page.locator("#vpl_ide_save").count():
+                log_progress(
+                    "Editor VPL je otevřený, seznam souborů v odpovědi nepřišel. "
+                    f"({elapsed:.1f} s)."
+                )
+                return {}
+            log_progress(
+                f"Editor VPL na {parsed_url.path} nenačetl soubory "
+                f"({elapsed:.1f} s)."
+            )
+            raise RuntimeError(
+                f"Editor VPL na {parsed_url.path} nenačetl soubory."
+            ) from error
+        log_progress(
+            f"Navigace na {parsed_url.path} selhala ({elapsed:.1f} s): {error}"
+        )
+        raise
+    log_progress(
+        f"Soubory editoru VPL načteny ({time.monotonic() - started:.1f} s): "
+        + (", ".join(files) if files else "(žádné)")
+    )
+    return files
+
+
+def reload_vpl_ide(page, description: str) -> dict[str, str]:
+    log_progress(f"Obnovuji stránku: {description}.")
+    started = time.monotonic()
+    try:
+        with page.expect_response(
+            lambda response: "action=load" in response.url and response.ok,
+            timeout=PAGE_TIMEOUT_MS,
+        ) as loaded:
+            page.reload(wait_until="commit")
+        files = vpl_editor_files(loaded.value.json())
+    except Exception as error:
+        elapsed = time.monotonic() - started
+        from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+        if isinstance(error, PlaywrightTimeoutError):
+            log_progress(
+                f"Editor VPL po obnovení „{description}“ nenačetl soubory "
+                f"({elapsed:.1f} s)."
+            )
+            raise RuntimeError(
+                f"Editor VPL po obnovení „{description}“ nenačetl soubory."
+            ) from error
+        log_progress(
+            f"Obnovení stránky „{description}“ selhalo "
+            f"({elapsed:.1f} s): {error}"
+        )
+        raise
+    log_progress(
+        f"Stránka obnovena ({time.monotonic() - started:.1f} s): "
+        f"{urlparse(page.url).path}"
+    )
+    return files
+
+
+def vpl_editor_value(page, editor_id: str) -> str:
+    return page.evaluate(
+        "id => ace.edit(document.getElementById(id)).getValue()",
+        arg=editor_id,
+    )
+
+
+def wait_for_vpl_editor_text(
+    page, editor_id: str, expected: str, description: str
+) -> None:
+    wait_for_condition(
+        page,
+        description,
+        """([id, expected]) => {
+            const element = document.getElementById(id);
+            if (!element || !window.ace) {
+                return false;
+            }
+            try {
+                return ace.edit(element).getValue() === expected;
+            } catch (error) {
+                return false;
+            }
+        }""",
+        arg=[editor_id, expected],
+    )
+
+
+def save_open_vpl_file(
+    page, editor_id: str, filename: str, content: str
+) -> None:
+    deadline = time.monotonic() + PAGE_TIMEOUT_MS / 1000
+    while True:
+        value = vpl_editor_value(page, editor_id)
+        save_disabled = page.locator("#vpl_ide_save").evaluate(
+            "element => element.classList.contains('ui-button-disabled')"
+        )
+        if value == content and not save_disabled:
+            break
+        if value != content:
+            replace_vpl_editor_content(page, editor_id, content)
+        if time.monotonic() >= deadline:
+            raise RuntimeError(
+                f"Editor souboru {filename} neobsahuje požadovaný text. "
+                "Výchozí mezera nebyla uložena."
+            )
+        page.wait_for_timeout(250)
+    if vpl_editor_value(page, editor_id) != content:
+        raise RuntimeError(
+            f"Editor souboru {filename} se před uložením vrátil k výchozímu "
+            "obsahu. Soubor nebyl uložen."
+        )
+    click_element(page.locator("#vpl_ide_save"), f"uložení souboru {filename}")
+    wait_for_condition(
+        page,
+        f"dokončení ukládání souboru {filename}",
+        "document.getElementById('vpl_ide_save')?.classList"
+        ".contains('ui-button-disabled')",
+        timeout=PAGE_TIMEOUT_MS,
+    )
 
 
 def configure_submission_period(
@@ -818,11 +981,15 @@ def configure_vpl_activity(
 ) -> None:
     if cases_content is not None:
         log_progress("Otevírám konfiguraci testovacích souborů VPL.")
-        navigate(
+        loaded_files = open_vpl_ide(
             page,
             f"{base_url}/mod/vpl/forms/testcasesfile.php?"
             f"{urlencode({'id': activity_id})}",
         )
+        if "vpl_evaluate.cases" not in loaded_files:
+            raise RuntimeError(
+                "V části „Tests configuration“ chybí soubor vpl_evaluate.cases."
+            )
         log_progress("Čekám na editor testovacích souborů.")
         wait_for_condition(
             page,
@@ -831,9 +998,7 @@ def configure_vpl_activity(
             "&& document.querySelectorAll('#vpl_tabs a').length > 0",
             timeout=PAGE_TIMEOUT_MS,
         )
-        test_tabs = page.locator("#vpl_tabs a")
-        wait_for_visible(page, "#vpl_tabs a", "karta souboru testů")
-        cases_tab = test_tabs.filter(
+        cases_tab = page.locator("#vpl_tabs a").filter(
             has_text=re.compile(r"^\s*vpl_evaluate\.cases\s*$")
         )
         if cases_tab.count() != 1:
@@ -848,76 +1013,24 @@ def configure_vpl_activity(
                 "Nelze určit editor pro soubor vpl_evaluate.cases."
             )
         click_element(cases_tab, "otevření souboru testů")
-        wait_for_condition(
+        wait_for_vpl_editor_text(
             page,
-            "inicializaci editoru ACE pro soubor testů",
-            "id => window.ace && document.getElementById(id) "
-            "&& ace.edit(document.getElementById(id))",
-            arg=editor_id,
-            timeout=PAGE_TIMEOUT_MS,
+            editor_id,
+            loaded_files["vpl_evaluate.cases"],
+            "zobrazení načteného souboru testů",
         )
-        replace_vpl_editor_content(page, editor_id, cases_content)
-        wait_for_condition(
-            page,
-            "povolení uložení souboru testů",
-            "!document.getElementById('vpl_ide_save')?.classList"
-            ".contains('ui-button-disabled')",
-            timeout=PAGE_TIMEOUT_MS,
-        )
-        click_element(page.locator("#vpl_ide_save"), "uložení souboru testů")
-        wait_for_condition(
-            page,
-            "dokončení ukládání souboru testů",
-            "document.getElementById('vpl_ide_save')?.classList"
-            ".contains('ui-button-disabled')",
-            timeout=PAGE_TIMEOUT_MS,
-        )
-        reload_page(page, "uložená konfigurace testů")
-        wait_for_condition(
-            page,
-            "načtení uložených karet souborů testů",
-            "document.getElementById('vpl_ide_save') "
-            "&& document.querySelectorAll('#vpl_tabs a').length > 0",
-            timeout=PAGE_TIMEOUT_MS,
-        )
-        cases_tab = page.locator("#vpl_tabs a").filter(
-            has_text=re.compile(r"^\s*vpl_evaluate\.cases\s*$")
-        )
-        wait_for_condition(
-            page,
-            "nalezení uložené karty vpl_evaluate.cases",
-            "name => [...document.querySelectorAll('#vpl_tabs a')]"
-            ".filter(tab => tab.innerText.trim() === name).length === 1",
-            arg="vpl_evaluate.cases",
-            timeout=PAGE_TIMEOUT_MS,
-        )
-        tab_target = cases_tab.get_attribute("href")
-        saved_editor_id = (
-            tab_target.rsplit("#", 1)[-1]
-            if tab_target and "#" in tab_target
-            else ""
-        )
-        if not re.fullmatch(r"vpl_file\d+", saved_editor_id):
-            raise RuntimeError(
-                "Nelze znovu určit editor pro soubor vpl_evaluate.cases."
+        if loaded_files["vpl_evaluate.cases"] != cases_content:
+            save_open_vpl_file(
+                page, editor_id, "vpl_evaluate.cases", cases_content
             )
-        click_element(cases_tab, "ověření uloženého souboru testů")
-        wait_for_condition(
-            page,
-            "inicializaci editoru ACE pro uložené testy",
-            "id => window.ace && document.getElementById(id) "
-            "&& ace.edit(document.getElementById(id))",
-            arg=saved_editor_id,
-            timeout=PAGE_TIMEOUT_MS,
-        )
-        if page.evaluate(
-            "id => ace.edit(document.getElementById(id)).getValue()",
-            arg=saved_editor_id,
-        ) != cases_content:
-            raise RuntimeError(
-                "Soubor testů *.cases se v části „Tests configuration“ "
-                "nepodařilo uložit."
-            )
+            saved_files = reload_vpl_ide(page, "uložená konfigurace testů")
+            if saved_files.get("vpl_evaluate.cases") != cases_content:
+                raise RuntimeError(
+                    "Soubor testů *.cases se v části „Tests configuration“ "
+                    "nepodařilo uložit."
+                )
+        else:
+            log_progress("Soubor testů už obsahuje požadované zadání.")
 
     log_progress("Otevírám nastavení Execution options.")
     navigate(
@@ -960,7 +1073,7 @@ def configure_vpl_activity(
         )
 
     log_progress("Otevírám Requested files.")
-    navigate(
+    open_vpl_ide(
         page,
         f"{base_url}/mod/vpl/forms/requiredfiles.php?"
         f"{urlencode({'id': activity_id})}",
@@ -979,7 +1092,7 @@ def configure_vpl_activity(
 
     if execution_files:
         log_progress("Otevírám Execution files.")
-        navigate(
+        open_vpl_ide(
             page,
             f"{base_url}/mod/vpl/forms/executionfiles.php?"
             f"{urlencode({'id': activity_id})}",
@@ -1698,11 +1811,11 @@ def main() -> int:
             raise RuntimeError("Název aktivity se do formuláře nepodařilo vyplnit.")
         editor_html = description_editor.inner_html()
         if (
-            "Datum odevzdání" not in editor_html
+            "<strong>Datum odevzdání</strong>" not in editor_html
             or due_date_label(due_date) not in editor_html
-            or 'class="fa fa-calendar-check-o "' not in editor_html
-            or "<strong>" not in editor_html
-            or "&lt;p&gt;" in editor_html
+            or "fa-calendar-check-o" not in editor_html
+            or "<strong>Zadání:</strong>" not in editor_html
+            or "&lt;strong&gt;Datum odevzdání" in editor_html
         ):
             raise RuntimeError(
                 "Formátovaný termín a zadání se do popisu nepodařilo vyplnit."
@@ -1751,24 +1864,7 @@ def main() -> int:
                 page.get_by_text(activity_name, exact=True).first,
                 "zobrazení uložené aktivity",
             )
-            saved_text = page.locator("body").inner_text()
-            strong_text = page.locator("strong").all_inner_texts()
-            if (
-                due_date_label(due_date) not in saved_text
-                or "Datum odevzdání" not in strong_text
-                or "Zadání:" not in strong_text
-                or page.locator(
-                    "div.box.py-3.generalbox > div.no-overflow"
-                )
-                .filter(has_text="Datum odevzdání")
-                .locator("i.fa.fa-calendar-check-o")
-                .count()
-                != 1
-            ):
-                raise RuntimeError(
-                    "Uložená aktivita nezobrazuje správně formátovaný termín "
-                    "nebo zadání."
-                )
+            wait_for_saved_description(page, due_date)
             activity_id_match = re.search(r"[?&]id=(\d+)", page.url)
             if not activity_id_match:
                 raise RuntimeError(

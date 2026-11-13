@@ -1,0 +1,42 @@
+title: Stránky muzea
+stars: 2
+moodle: PRG-3-07-02
+typ: soubor
+description: |
+  Napište Flask aplikaci v souboru `muzeum.py` pro **školní muzeum**
+  (název si vymyslete). Úkol prohlédne učitel.
+
+  Použijte dědičnost šablon a složku `static/`:
+
+  | Soubor | Účel |
+  |--------|------|
+  | `templates/zaklad.html` | kostra, menu, CSS, logo, favicon, skript |
+  | `templates/index.html` | `/` — `<h1>` název, jeden `<p>` |
+  | `templates/exponaty.html` | `/exponaty` — `<h1>Exponáty</h1>`, jeden `<p>` |
+  | `static/styly.css` | aspoň jedno pravidlo a pozadí obou stránek |
+  | `static/logo.svg` nebo `logo.png` | logo v hlavičce (`<img>`, vyplňte `alt`) |
+  | `static/favicon.svg` nebo `favicon.png` | ikona záložky prohlížeče |
+  | `static/pozadi-domu.svg` nebo `pozadi-domu.png` | pozadí stránky `/` |
+  | `static/pozadi-exponaty.svg` nebo `pozadi-exponaty.png` | pozadí stránky `/exponaty` |
+  | `static/hlaska.js` | jen výpis hlášky do konzole |
+
+  V základu odkazy na `/` a `/exponaty`. CSS, logo, favicon i skript napojte
+  ze šablony. Renderujte potomky, ne `zaklad.html`.
+
+  Na `/` je jiné pozadí než na `/exponaty`. Oba obrázky nastavte v `styly.css`.
+  V HTML šablonách cesta k obrázku pozadí není. Logo, favicon i obě pozadí
+  mohou být **SVG nebo PNG**.
+
+  Celý soubor `static/hlaska.js` je jeden výpis. Text si změňte, tvar nechte:
+
+  ```javascript
+  console.log("Muzeum má otevřeno");
+  ```
+
+  V prohlížeči ověřte záložku Síť: CSS, logo, favicon, obě pozadí i skript
+  mají stav **200**. Na `/` se stáhne jen pozadí domovské stránky, na
+  `/exponaty` jen to druhé. V záložce Konzole je vaše hláška.
+odevzdani: |
+  Do Moodle nahrajte `muzeum.py`, složku `templates/` a složku `static/`
+  (`styly.css`, logo, favicon a obě pozadí jako `.svg` nebo `.png`, `hlaska.js`).
+  Soubory prohlédne učitel.
